@@ -1,10 +1,20 @@
-┌--------------┐
-|    FACTURA   |
-├--------------┤
-| Inmueble:    |
-|  Casa Grande |
-| Precio:      |
-|  230€        |
-| Estancia:    |
-|  3 noches    |
-└--------------┘
+┌------------------------------------------┐
+|                  FACTURA                 |
+├##########################################┤
+|                                          |
+| Datos del inmueble                       |
+| ------------------                       |
+| Nombre: Casa                             |
+| Precio: 122€/noche                       |
+|                                          |
+| Datos del cliente                        |
+| -----------------                        |
+| Nombre: Marcos                           |
+| DNI: 00000000E                           |
+|                                          |
+| Datos de la estancia                     |
+| --------------------                     |
+| Fecha y hora de entrada: 24/6/2031 17:30 |
+| Fecha y hora de salida: 27/6/2031 19:30  |
+|                                          |
+└------------------------------------------┘
