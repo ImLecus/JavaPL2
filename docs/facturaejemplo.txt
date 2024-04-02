@@ -1,0 +1,10 @@
+┌--------------┐
+|    FACTURA   |
+├--------------┤
+| Inmueble:    |
+|  Casa Grande |
+| Precio:      |
+|  230€        |
+| Estancia:    |
+|  3 noches    |
+└--------------┘
