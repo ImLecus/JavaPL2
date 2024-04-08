@@ -4,7 +4,7 @@ class Cliente {
     public String DNI;
     public String nombre;
     public String correo;
-    public String clave;
+    private String clave;
     public String telefono;
 }
 
