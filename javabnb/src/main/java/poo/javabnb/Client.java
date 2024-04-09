@@ -4,7 +4,7 @@ import java.util.Date;
 
 class Client {
     private String DNI;
-    public String name;
+    private String name;
     private String mail;
     private String password;
     private String number;
@@ -46,6 +46,10 @@ class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 
