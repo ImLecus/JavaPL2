@@ -3,13 +3,9 @@ import java.util.Scanner;
 
 public class Javabnb {
 
+
     public static void main(String[] args) {
-        
-        /**
-         * Temporal client made until the database works
-         */
         Client defaultClient = new Client("00000000E", "Usuario", "user@user.com", "password", "666666666");
-        
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido. Escribe 'l' para hacer login y 'r' para registrarse.");
         String response = sc.nextLine();
