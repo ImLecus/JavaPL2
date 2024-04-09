@@ -1,7 +1,4 @@
 package poo.javabnb;
-
-import java.util.Date;
-
 class Client {
     private String DNI;
     private String name;
@@ -44,63 +41,5 @@ class Client {
         this.mail = mail;
         this.number = number;
         this.password = password;
-    }
-}
-
-class Particular extends Client {
-    private Card card;
-    public boolean VIP;
-    public PreferencesManager preferences;
-
-    // Constructor
-    public Particular(String DNI, String name, String mail, String password, String number, Card card, boolean VIP, PreferencesManager preferences) {
-        super(DNI, name, mail, password, number);
-        this.card = card;
-        this.VIP = VIP;
-        this.preferences = preferences;
-    }
-
-    // Getters
-    public boolean isVIP() {
-        return VIP;
-    }
-
-    public PreferencesManager getPreferences() {
-        return preferences;
-    }
-
-    // Setters
-    public void setVIP(boolean VIP) {
-        this.VIP = VIP;
-    }
-
-    public void setPreferences(PreferencesManager preferences) {
-        this.preferences = preferences;
-    }
-}
-
-class Host extends Client {
-    public Date date;
-    public boolean superhost;
-
-    // Constructor
-    public Host(String DNI, String name, String mail, String password, String number, Date date, boolean superhost) {
-        super(DNI, name, mail, password, number);
-        this.date = date;
-        this.superhost = superhost;
-    }
-
-    // Getter
-    public Date getDate() {
-        return date;
-    }
-
-    public boolean isSuperhost() {
-        return superhost;
-    }
-
-    // Setter
-    public void setSuperhost(boolean superhost) {
-        this.superhost = superhost;
     }
 }

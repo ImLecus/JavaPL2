@@ -5,9 +5,10 @@ public class Session {
     private final Client user;
     public final String ID;
     public final boolean isHost;
-
+    private boolean finished;
     /**
      * A session manages the current user data, and it's assigned to an ID.
+     * When a session finishes, it can't be reused, it requires to create a new one.
      * @param user the current client, which can be a particular or a host.
      * @param ID the session ID, which contains information about the session.
      */
@@ -15,19 +16,25 @@ public class Session {
         this.user = user;
         this.ID = ID;
         this.isHost = user instanceof Host;
+        this.finished = false;
     }
 
     /**
      * Finishes the actual session and saves the data.
      */
     public void endSession() {
-
+        saveData();
+        finished = true;
     }
 
     /**
      * Updates the current session and saves the data.
      */
     public void updateSession() {
+        saveData();
+    }
+
+    private void saveData(){
 
     }
 
