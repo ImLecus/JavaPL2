@@ -5,10 +5,10 @@ package poo.javabnb;
  * los inmuebles en los que se alojan.
  */
 class Card {
-    private String titular;
-    private String numero;
-    private String endDate;
-    private String cvv;
+    private final String titular;
+    private final String numero;
+    private final String endDate;
+    private final String cvv;
 
     // Constructor
     public Card(String titular, String numero, String endDate, String cvv) {

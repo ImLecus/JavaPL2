@@ -21,7 +21,7 @@ public class Javabnb {
              * Session con el Client designado
             */
             
-            Client client = getClientData(/*entry*/);
+            //Client client = getClientData(/*entry*/);
         }
         else if ("r".equals(response)){
             System.out.println("¿Cuál será el nombre de usuario?");

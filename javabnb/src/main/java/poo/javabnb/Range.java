@@ -1,8 +1,8 @@
 package poo.javabnb;
 
 public class Range {
-    private int min;
-    private int max;
+    public final int min;
+    public final int max;
 
     // Constructor
     public Range(int min, int max) {
