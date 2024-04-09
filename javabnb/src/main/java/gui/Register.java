@@ -1,24 +1,33 @@
 package gui;
 
 import poo.javabnb.Client;
-import poo.javabnb.DataBase;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Register {
-    private JTextField exampleExampleComTextField;
+    private JTextField mailInput;
     private JPanel panel1;
-    private JPasswordField passwordField1;
-    private JCheckBox aceptaLosTérminosYCheckBox;
-    private JButton registrarseButton;
+    private JPasswordField passwordInput;
+    private JCheckBox termsCheckbox;
+    private JButton submitButton;
+    private JTextField nameInput;
+    private JTextField DNIInput;
+    private JTextField phoneInput;
 
     public Register(){
-        registrarseButton.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Client client = new Client(
+                        DNIInput.getText(),
+                        nameInput.getText(),
+                        mailInput.getText(),
+                        String.valueOf(passwordInput.getPassword()),
+                        phoneInput.getText()
+                );
+                App.db.add(client);
                 Login.main(null);
             }
         });

@@ -52,5 +52,6 @@ public class DataBase {
         mails.add(client.getMail());
         passwords.add(client.getPassword());
         users.add(client);
+        System.out.println("Nuevo usuario: " + client.getName() + " (" + client.getMail() + ", " + client.getPassword()+")");
     }
 }
