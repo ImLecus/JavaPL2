@@ -5,27 +5,39 @@ public class SearchEngine {
     public String[] hashtags;
     PropertyType type;
     SortType sortBy;
-    public int[] priceBounds;
-    public int minStars;
-    public int minBeds;
-    public int minBaths;
-    public int minVisitors;
+    public Range price;
+    public Range stars;
+    public Range beds;
+    public Range baths;
+    public Range visitors;
     public String[] services;
     public String[] dateBounds;
     public String[] location;
     public String[] host;
 
     // Constructor
-    public SearchEngine(String search, String[] hashtags, PropertyType type, SortType sortBy, int[] priceBounds, int minStars, int minBeds, int minBaths, int minVisitors, String[] services, String[] dateBounds, String[] location, String[] host) {
+    public SearchEngine(String search,
+                        String[] hashtags,
+                        PropertyType type,
+                        SortType sortBy,
+                        Range price,
+                        Range stars,
+                        Range beds,
+                        Range baths,
+                        Range visitors,
+                        String[] services,
+                        String[] dateBounds,
+                        String[] location,
+                        String[] host) {
         this.search = search;
         this.hashtags = hashtags;
         this.type = type;
         this.sortBy = sortBy;
-        this.priceBounds = priceBounds;
-        this.minStars = minStars;
-        this.minBeds = minBeds;
-        this.minBaths = minBaths;
-        this.minVisitors = minVisitors;
+        this.price = price;
+        this.stars = stars;
+        this.beds = beds;
+        this.baths = baths;
+        this.visitors = visitors;
         this.services = services;
         this.dateBounds = dateBounds;
         this.location = location;

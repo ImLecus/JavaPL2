@@ -81,8 +81,6 @@ class Particular extends Client {
     }
 }
 
-import java.util.Date;
-
 class Host extends Client {
     public Date date;
     public boolean superhost;
