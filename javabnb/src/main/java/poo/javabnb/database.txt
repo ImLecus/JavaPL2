@@ -1,0 +1,5 @@
+IsHost|DNI|Name|Mail|Password|Number|Date/Card|Vip/SuperHost|preferences|
+0|08367511W|María|maria1975@hotmail.com|MariaBnB1975|1547144815471448|0|null|
+1|08651651W|Juan|juan.montero1985@gmail.com|MiPerritoEsElMejor<3|     |1|null|
+
+}
