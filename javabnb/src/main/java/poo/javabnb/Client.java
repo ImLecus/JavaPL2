@@ -1,5 +1,5 @@
 package poo.javabnb;
-class Client {
+public class Client {
     private String DNI;
     private String name;
     private String mail;

@@ -2,7 +2,7 @@ package poo.javabnb;
 import java.util.Calendar;
 
 public class Session {
-    private final Client user;
+    public final Client user;
     public final String ID;
     public final boolean isHost;
     private boolean finished;
@@ -47,7 +47,7 @@ public class Session {
         int sessionNumber = 1;
         String sessionID = "";
         Calendar date = Calendar.getInstance();
-        sessionID += String.format("%02d",date.get(Calendar.DAY_OF_MONTH))+String.format("%02d",date.get(Calendar.MONTH)+1)+String.format("%04d",date.get(Calendar.YEAR))+String.format("%04d",sessionNumber);
+        sessionID += String.format("%02d",date.get(Calendar.DAY_OF_MONTH))+String.format("%02d",date.get(Calendar.MONTH) + 1)+String.format("%04d",date.get(Calendar.YEAR))+String.format("%04d",sessionNumber);
         return new Session(client, sessionID);
     }
 }

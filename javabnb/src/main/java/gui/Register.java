@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Register {
     private JTextField exampleExampleComTextField;
@@ -8,6 +10,15 @@ public class Register {
     private JPasswordField passwordField1;
     private JCheckBox aceptaLosTérminosYCheckBox;
     private JButton registrarseButton;
+
+    public Register(){
+        registrarseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login.main(null);
+            }
+        });
+    }
 
     public static void main(String[] args) {
         // Crear una instancia de la clase Register
