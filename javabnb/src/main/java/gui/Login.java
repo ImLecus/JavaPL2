@@ -1,7 +1,6 @@
 package gui;
 
 import poo.javabnb.Client;
-import poo.javabnb.DataBase;
 import poo.javabnb.Session;
 
 import javax.swing.*;
@@ -9,33 +8,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login {
-    private JTextField textField1;
-    private JPasswordField passwordField1;
-    private JButton registrarseButton;
-    private JButton iniciarSesionButton;
+    private JTextField mailInput;
+    private JPasswordField passwordInput;
+    private JButton registerButton;
+    private JButton loginButton;
     private JPanel panel;
 
     public Login() {
-        registrarseButton.addActionListener(new ActionListener() {
+        registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Register.main(null);
             }
         });
-        iniciarSesionButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Client defaultClient = new Client("00000000E", "Usuario", "user@user.com", "password", "666666666");
-                if(textField1.getText().equals("user@user.com") && String.valueOf(passwordField1.getPassword()).equals("password") ){
-                    Session session = Session.init(defaultClient);
+
+                int key = App.db.getUserInDataBase(mailInput.getText(), String.valueOf(passwordInput.getPassword()));
+                if(key >= 0){
+                    Client user = App.db.getClientData(key);
+                    App.session = Session.init(user);
                     System.out.println("SESIÓN INICIADA\n------------"+
-                            "\nNombre: "    +   session.user.getName()+
-                            "\nCorreo: "    +   session.user.getMail() +
-                            "\nContraseña: "+   session.user.getPassword()+
-                            "\nID: "        +   session.ID + "\n");
+                            "\nNombre: "    +   App.session.user.getName()+
+                            "\nCorreo: "    +   App.session.user.getMail() +
+                            "\nContraseña: "+   App.session.user.getPassword()+
+                            "\nID: "        +   App.session.ID + "\n");
                     Main.main(null);
                 }
-                else{
+                else {
                     System.out.println("ERROR\n--------\nUsuario o contraseña incorrectos.");
                 }
             }

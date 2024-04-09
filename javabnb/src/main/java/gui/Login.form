@@ -7,7 +7,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="8e39f" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="8e39f" class="javax.swing.JTextField" binding="mailInput">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -25,7 +25,7 @@
           <text value="Correo electrónico"/>
         </properties>
       </component>
-      <component id="6cfcf" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+      <component id="6cfcf" class="javax.swing.JPasswordField" binding="passwordInput">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -43,7 +43,7 @@
           <text value="Contraseña"/>
         </properties>
       </component>
-      <component id="57d0b" class="javax.swing.JButton" binding="registrarseButton" default-binding="true">
+      <component id="57d0b" class="javax.swing.JButton" binding="registerButton">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -58,7 +58,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
       </hspacer>
-      <component id="876a" class="javax.swing.JButton" binding="iniciarSesionButton">
+      <component id="876a" class="javax.swing.JButton" binding="loginButton">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
