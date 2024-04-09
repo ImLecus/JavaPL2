@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Login {
     private JTextField textField1;
@@ -8,6 +10,15 @@ public class Login {
     private JButton registrarseButton;
     private JButton iniciarSesiónButton;
     private JPanel panel;
+
+    public Login() {
+        registrarseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Register.main(null);
+            }
+        });
+    }
 
     public static void main(String[] args){
         Login login = new Login();
