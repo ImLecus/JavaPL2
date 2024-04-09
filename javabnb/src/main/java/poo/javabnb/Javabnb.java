@@ -5,7 +5,7 @@ public class Javabnb {
 
 
     public static void main(String[] args) {
-        Client defaultClient = new Client("00000000E", "Usuario", "user@user.com", "password", "666666666");
+        Client defaultClient = new Client("00000000E", "Usuario", "user@user.com", "l", "666666666");
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido. Escribe 'l' para hacer login y 'r' para registrarse.");
         String response = sc.nextLine();
