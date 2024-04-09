@@ -9,7 +9,23 @@ public class Register {
     private JCheckBox aceptaLosTérminosYCheckBox;
     private JButton registrarseButton;
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public static void main(String[] args) {
+        // Crear una instancia de la clase Register
+        Register register = new Register();
+
+        // Crear una nueva ventana
+        JFrame frame = new JFrame("Register");
+
+        // Agregar el panel a la ventana
+        frame.setContentPane(register.panel1);
+
+        // Configurar la operación de cierre
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Ajustar el tamaño de la ventana a sus componentes
+        frame.pack();
+
+        // Hacer la ventana visible
+        frame.setVisible(true);
     }
 }
