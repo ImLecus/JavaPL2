@@ -17,7 +17,8 @@ public class Javabnb {
             
             //Client client = getClientData(getUserInDataBase());
             if(user.equals(defaultClient.getMail()) && password.equals(defaultClient.getPassword())){
-                Session session = new Session(defaultClient,"0000 0000 0000",false);
+                Session session = Session.init(defaultClient);
+                System.out.println(session.ID);
             }
             else{
                 System.out.println("ERROR: Usuario o contraseña erróneos");
