@@ -35,21 +35,11 @@ class Client {
         return DNI;
     }
 
-    // Setters
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setName(String name) {
+    public void setInfo(String name, String mail, String number, String password){
         this.name = name;
+        this.mail = file;
+        this.number = number;
+        this.password = password;
     }
 }
 
