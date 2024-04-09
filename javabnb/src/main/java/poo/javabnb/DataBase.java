@@ -6,6 +6,7 @@ public class DataBase {
     private ArrayList<String> mails;
     private ArrayList<String> passwords;
     private ArrayList<Client> users;
+    public int sessionNumber;
 
     /**
      * A DataBase consists in three columns: two String columns that contain the mail and password
@@ -16,6 +17,7 @@ public class DataBase {
         this.mails = new ArrayList<>();
         this.passwords = new ArrayList<>();
         this.users = new ArrayList<>();
+        sessionNumber = 0;
     }
 
     /**

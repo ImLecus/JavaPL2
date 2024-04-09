@@ -1,12 +1,12 @@
 package gui;
 
 import poo.javabnb.Client;
+import poo.javabnb.DataBase;
 import poo.javabnb.Session;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class Login {
     private JTextField textField1;

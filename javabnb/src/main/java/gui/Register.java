@@ -1,6 +1,10 @@
 package gui;
 
+import poo.javabnb.Client;
+import poo.javabnb.DataBase;
+
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
