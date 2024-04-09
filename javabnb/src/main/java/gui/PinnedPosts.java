@@ -1,9 +1,8 @@
 package gui;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class Building {
+public class PinnedPosts {
+    private JTabbedPane tabbedPane1;
     private JPanel panel1;
-
 }

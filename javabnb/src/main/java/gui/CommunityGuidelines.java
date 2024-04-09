@@ -3,12 +3,12 @@ package gui;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class CummunityGuidelines extends JDialog {
+public class CommunityGuidelines extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public CummunityGuidelines() {
+    public CommunityGuidelines() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,7 +52,7 @@ public class CummunityGuidelines extends JDialog {
     }
 
     public static void main(String[] args) {
-        CummunityGuidelines dialog = new CummunityGuidelines();
+        CommunityGuidelines dialog = new CommunityGuidelines();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

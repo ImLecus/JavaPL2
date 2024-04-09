@@ -3,8 +3,13 @@ package gui;
 import poo.javabnb.Client;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 public class Register {
     private JTextField mailInput;
@@ -16,7 +21,7 @@ public class Register {
     private JTextField DNIInput;
     private JTextField phoneInput;
 
-    public Register(){
+    public Register() {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -26,7 +31,7 @@ public class Register {
         });
     }
 
-    private void register(){
+    private void register() {
         validateDNI();
         validateMail();
         validateName();
@@ -42,11 +47,20 @@ public class Register {
         App.db.add(client);
     }
 
-    private void validateDNI(){}
-    private void validateName(){}
-    private void validateMail(){}
-    private void validatePassword(){}
-    private void validatePhone(){}
+    private void validateDNI() {
+    }
+
+    private void validateName() {
+    }
+
+    private void validateMail() {
+    }
+
+    private void validatePassword() {
+    }
+
+    private void validatePhone() {
+    }
 
     public static void main(String[] args) {
         Register register = new Register();
@@ -58,3 +72,4 @@ public class Register {
     }
 
 }
+

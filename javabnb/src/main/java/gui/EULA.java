@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class EULA extends JDialog {
@@ -58,3 +59,4 @@ public class EULA extends JDialog {
         System.exit(0);
     }
 }
+

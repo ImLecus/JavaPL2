@@ -1,4 +1,7 @@
 package gui;
 
-public class Profile {
-}
+import javax.swing.*;
+import java.awt.*;
+
+public class Profile {}
+
