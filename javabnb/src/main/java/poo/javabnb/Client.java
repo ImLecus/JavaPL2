@@ -34,6 +34,10 @@ class Client {
     public String getDNI() {
         return DNI;
     }
+    
+    public String getPassword(){
+        return password;
+    }
 
     public void setInfo(String name, String mail, String number, String password){
         this.name = name;
