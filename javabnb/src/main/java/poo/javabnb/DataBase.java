@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class DataBase {
 
-    private ArrayList<String> mails;
-    private ArrayList<String> passwords;
-    private ArrayList<Client> users;
+    private final ArrayList<String> mails;
+    private final ArrayList<String> passwords;
+    private final ArrayList<Client> users;
     public int sessionNumber;
 
     /**
@@ -52,6 +52,5 @@ public class DataBase {
         mails.add(client.getMail());
         passwords.add(client.getPassword());
         users.add(client);
-        System.out.println("Nuevo usuario: " + client.getName() + " (" + client.getMail() + ", " + client.getPassword()+")");
     }
 }

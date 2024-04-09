@@ -20,40 +20,41 @@ public class Register {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Client client = new Client(
-                        DNIInput.getText(),
-                        nameInput.getText(),
-                        mailInput.getText(),
-                        String.valueOf(passwordInput.getPassword()),
-                        phoneInput.getText()
-                );
-                App.db.add(client);
+                register();
                 Login.main(null);
             }
         });
     }
 
+    private void register(){
+        validateDNI();
+        validateMail();
+        validateName();
+        validatePassword();
+        validatePhone();
+        Client client = new Client(
+                DNIInput.getText(),
+                nameInput.getText(),
+                mailInput.getText(),
+                String.valueOf(passwordInput.getPassword()),
+                phoneInput.getText()
+        );
+        App.db.add(client);
+    }
+
+    private void validateDNI(){}
+    private void validateName(){}
+    private void validateMail(){}
+    private void validatePassword(){}
+    private void validatePhone(){}
+
     public static void main(String[] args) {
-        // Crear una instancia de la clase Register
         Register register = new Register();
-
-        // Crear una nueva ventana
         JFrame frame = new JFrame("Register");
-
-        // Agregar el panel a la ventana
         frame.setContentPane(register.panel1);
-
-        // Configurar la operación de cierre
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Ajustar el tamaño de la ventana a sus componentes
         frame.pack();
-
-        // Hacer la ventana visible
         frame.setVisible(true);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

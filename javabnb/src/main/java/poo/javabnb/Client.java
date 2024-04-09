@@ -1,6 +1,6 @@
 package poo.javabnb;
 public class Client {
-    private String DNI;
+    private final String DNI;
     private String name;
     private String mail;
     private String password;
