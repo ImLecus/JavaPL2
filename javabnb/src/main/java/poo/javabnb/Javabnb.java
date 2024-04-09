@@ -12,6 +12,16 @@ public class Javabnb {
             String user = sc.nextLine();
             System.out.println("Introduce tu contraseña: ");
             String password = sc.nextLine();
+            
+            // String entry <= getUserInDataBase();
+            
+            /**
+             * 
+             * Una vez iniciado sesión y comprobado que el usuario existe, se instancia un objeto
+             * Session con el Client designado
+            */
+            
+            Client client = getClientData(/*entry*/);
         }
         else if ("r".equals(response)){
             System.out.println("¿Cuál será el nombre de usuario?");
