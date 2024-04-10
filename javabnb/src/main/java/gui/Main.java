@@ -26,13 +26,14 @@ public class Main {
                     break;
                 case "Cerrar sesión":
                     //Space for future hiding of windows and showing of others implementations
+                    App.session.endSession();
                     Login.main(null);
                     break;
                 case "EULA":
                     //Space for future hiding of windows and showing of others implementations
                     EULA.main(null);
                     break;
-                case "Cummunity Guidelines":
+                case "Community Guidelines":
                     //Space for future hiding of windows and showing of others implementations
                     CommunityGuidelines.main(null);
                     break;
