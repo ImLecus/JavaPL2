@@ -28,8 +28,28 @@ public class Register {
     private JLabel mailLabel;
     private JLabel passwordLabel;
     private JLabel title;
+    private JLabel eulaLabel;
 
     public Register() {
+        FontManager.useFont(eulaLabel, FontManager.regularFont, Palette.mainColor);
+        eulaLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        eulaLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                App.redirect("EULA");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                eulaLabel.setForeground(Palette.highlightColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                eulaLabel.setForeground(Palette.mainColor);
+            }
+        });
+
         FontManager.useFont(submitButton, FontManager.boldFont, Color.WHITE);
         submitButton.setBorder(null);
         submitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
