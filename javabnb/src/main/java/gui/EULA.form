@@ -26,7 +26,8 @@
             <properties>
               <horizontalAlignment value="2"/>
               <horizontalTextPosition value="10"/>
-              <text value=""/>
+              <labelFor value="601ab"/>
+              <text value="To be implemented"/>
               <verticalAlignment value="1"/>
             </properties>
           </component>
@@ -41,22 +42,13 @@
           <text value="Acuerdo de Licencia del Usuario Final"/>
         </properties>
       </component>
-      <component id="249a9" class="javax.swing.JButton" binding="rechazarButton" default-binding="true">
+      <component id="249a9" class="javax.swing.JButton" binding="leidoButton">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-1799"/>
-          <text value="Rechazar"/>
-        </properties>
-      </component>
-      <component id="37921" class="javax.swing.JButton" binding="aceptarButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1799"/>
-          <text value="Aceptar"/>
+          <text value="Hecho"/>
         </properties>
       </component>
     </children>
