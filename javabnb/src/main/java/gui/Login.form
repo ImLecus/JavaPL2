@@ -21,8 +21,8 @@
           <background color="-1842205"/>
           <foreground color="-8816003"/>
           <horizontalAlignment value="2"/>
-          <margin top="2" left="9" bottom="2" right="6"/>
-          <text value="aaa"/>
+          <margin top="3" left="11" bottom="3" right="8"/>
+          <text value=""/>
           <toolTipText value="Introduzca el correo de su cuenta"/>
         </properties>
         <clientProperties>

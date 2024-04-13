@@ -1,6 +1,9 @@
 package gui;
 
+import poo.javabnb.FontManager;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +12,7 @@ public class Main {
     private JComboBox comboBox1;
     private JTextField barraDeBusquedaTextField;
     private JButton searchButton;
+    private JLabel titleMain;
 
     public Main() {
         comboBox1.addActionListener(e -> {
@@ -42,7 +46,9 @@ public class Main {
                     break;
 
             }
-
+            FontManager.useFont(titleMain, FontManager.titleFont, Color.BLACK);
+            FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont, Color.BLACK);
+            FontManager.useFont(searchButton, FontManager.boldFont, Color.WHITE);
         });
         searchButton.addActionListener(new ActionListener() {
             @Override

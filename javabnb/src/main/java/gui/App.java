@@ -44,7 +44,7 @@ public class App {
         frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(310, 425));
+        frame.setMinimumSize(new Dimension(320, 550));
         frame.setVisible(true);
     }
 
