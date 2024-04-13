@@ -13,6 +13,7 @@ public class Main {
     private JTextField barraDeBusquedaTextField;
     private JButton searchButton;
     private JLabel titleMain;
+    private JScrollPane muroScroll;
 
     public Main() {
         comboBox1.addActionListener(e -> {
@@ -49,6 +50,13 @@ public class Main {
             FontManager.useFont(titleMain, FontManager.titleFont, Color.BLACK);
             FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont, Color.BLACK);
             FontManager.useFont(searchButton, FontManager.boldFont, Color.WHITE);
+            FontManager.useFont(comboBox1, FontManager.boldFont, Color.BLACK);
+            titleMain.setBorder(null);
+            barraDeBusquedaTextField.setBorder(null);
+            muroScroll.setBorder(null);
+            searchButton.setBorder(null);
+            comboBox1.setBorder(null);
+
         });
         searchButton.addActionListener(new ActionListener() {
             @Override
@@ -56,15 +64,6 @@ public class Main {
                 System.out.println("Buscando: " + barraDeBusquedaTextField.getText());
             }
         });
-    }
-
-    public static void main(String[] args) {
-        Main main = new Main();
-        JFrame frame = new JFrame("Main");
-        frame.setContentPane(main.panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 }
 

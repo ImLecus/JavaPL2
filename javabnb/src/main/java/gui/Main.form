@@ -5,15 +5,22 @@
     <constraints>
       <xy x="20" y="20" width="775" height="661"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1799"/>
+    </properties>
     <border type="none"/>
     <children>
-      <scrollpane id="d29b6">
+      <scrollpane id="d29b6" binding="muroScroll">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
-        <border type="none"/>
+        <properties>
+          <background color="-1799"/>
+          <foreground color="-8816003"/>
+        </properties>
+        <border type="none">
+          <font/>
+        </border>
         <children/>
       </scrollpane>
       <component id="f247" class="javax.swing.JTextField" binding="barraDeBusquedaTextField">
@@ -23,6 +30,7 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-1842205"/>
           <text value="Barra de búsqueda" noi18n="true"/>
         </properties>
       </component>
@@ -35,19 +43,13 @@
           <text value="Main page"/>
         </properties>
       </component>
-      <component id="cf547" class="javax.swing.JButton" binding="searchButton">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Buscar"/>
-        </properties>
-      </component>
       <component id="6203" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1799"/>
+          <foreground color="-8816003"/>
           <model>
             <item value=""/>
             <item value="Perfil"/>
@@ -56,6 +58,15 @@
             <item value="EULA"/>
             <item value="Cerrar sesión"/>
           </model>
+        </properties>
+      </component>
+      <component id="cf547" class="javax.swing.JButton" binding="searchButton">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-48831"/>
+          <text value="Buscar"/>
         </properties>
       </component>
     </children>
