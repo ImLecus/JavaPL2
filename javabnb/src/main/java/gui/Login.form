@@ -14,7 +14,9 @@
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <toolTipText value="Introduzca el correo de su cuenta"/>
+        </properties>
       </component>
       <component id="d8d0f" class="javax.swing.JLabel">
         <constraints>
@@ -32,7 +34,9 @@
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <toolTipText value="Intruduzca su contraseña"/>
+        </properties>
       </component>
       <component id="cffba" class="javax.swing.JLabel">
         <constraints>
@@ -49,7 +53,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <enabled value="true"/>
           <text value="Registrarse"/>
+          <toolTipText value="Presione para registrarse"/>
         </properties>
       </component>
       <component id="876a" class="javax.swing.JButton" binding="loginButton">
@@ -59,6 +65,7 @@
         </constraints>
         <properties>
           <text value="Iniciar sesión"/>
+          <toolTipText value="Presione para iniciar sesion con sus credenciales"/>
         </properties>
       </component>
       <component id="dd709" class="javax.swing.JLabel">
