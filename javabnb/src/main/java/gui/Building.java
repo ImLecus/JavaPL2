@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Building {
-    private JPanel panel1;
+    public JPanel panel1;
+    private JLabel bannerLabel;
+    private JLabel buildingName;
+
 
 }
