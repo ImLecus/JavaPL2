@@ -67,12 +67,13 @@
       </component>
       <component id="876a" class="javax.swing.JButton" binding="loginButton">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="20" left="0" bottom="20" right="0" weightx="0.0" weighty="0.0" ipady="15"/>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="5" left="0" bottom="20" right="0" weightx="0.0" weighty="0.0" ipady="15"/>
         </constraints>
         <properties>
           <background color="-48831"/>
           <foreground color="-201224"/>
+          <selected value="false"/>
           <text value="Iniciar sesión"/>
           <toolTipText value="Presione para iniciar sesion con sus credenciales"/>
         </properties>
@@ -89,7 +90,7 @@
       </component>
       <component id="53b81" class="javax.swing.JLabel" binding="noaccountLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -98,11 +99,20 @@
       </component>
       <component id="ca3a6" class="javax.swing.JLabel" binding="registerLabel">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value=" Crea una ahora."/>
+        </properties>
+      </component>
+      <component id="75d32" class="javax.swing.JLabel" binding="errorLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="15" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Label"/>
         </properties>
       </component>
     </children>

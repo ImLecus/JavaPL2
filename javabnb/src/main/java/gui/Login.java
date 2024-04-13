@@ -22,12 +22,15 @@ public class Login {
     private JLabel tituloLabel;
     private JLabel noaccountLabel;
     private JLabel registerLabel;
+    private JLabel errorLabel;
 
     public Login() {
-
+        FontManager.useFont(errorLabel, FontManager.regularFont, Palette.secondaryColor);
+        errorLabel.setText("");
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         loginButton.setBorder(null);
+        loginButton.setFocusPainted(false);
         loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -41,9 +44,10 @@ public class Login {
                             "\nCorreo: " + App.session.user.getMail() +
                             "\nContraseña: " + App.session.user.getPassword() +
                             "\nID: " + App.session.ID + "\n");
+                    errorLabel.setText("");
                     App.redirect("MAIN");
                 } else {
-                    System.out.println("ERROR\n--------\nUsuario o contraseña incorrectos.");
+                    errorLabel.setText("Usuario o contraseña incorrectos");
                 }
             }
         });
@@ -59,6 +63,7 @@ public class Login {
             }
         });
 
+
         FontManager.useFont(noaccountLabel, FontManager.regularFont, Color.GRAY);
 
         FontManager.useFont(registerLabel, FontManager.boldFont, Palette.mainColor);
@@ -66,6 +71,7 @@ public class Login {
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                errorLabel.setText("");
                 App.redirect("REGISTER");
             }
         });
