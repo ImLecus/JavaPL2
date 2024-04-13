@@ -4,12 +4,16 @@
     <constraints>
       <xy x="20" y="20" width="797" height="701"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1"/>
+    </properties>
     <border type="bevel-lowered"/>
     <children>
       <grid id="e8efd" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <foreground color="-1"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="7d0b8" class="javax.swing.JTextField" binding="mailInput">
@@ -37,6 +41,7 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-48831"/>
               <text value="Registrarse"/>
             </properties>
           </component>
@@ -186,6 +191,8 @@
           <component id="82d12" class="javax.swing.JButton" binding="atrasButton">
             <constraints/>
             <properties>
+              <background color="-1"/>
+              <foreground color="-16777216"/>
               <text value="←"/>
             </properties>
           </component>
