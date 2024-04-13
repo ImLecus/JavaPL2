@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Register {
     public JPanel panel;
     private JTextField mailInput;
-    public JPanel panel;
+    public JPanel pane1;
     private JPasswordField passwordInput;
     private JCheckBox termsCheckbox;
     private JButton submitButton;

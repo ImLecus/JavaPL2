@@ -32,6 +32,7 @@ public class App {
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setMinimumSize(new Dimension(310, 425));
         frame.setVisible(true);
 
         redirect("LOGIN");
