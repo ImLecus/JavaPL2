@@ -105,6 +105,7 @@ public class Register {
             public void actionPerformed(ActionEvent e) {
                 resetText();
                 resetErrorLabels();
+                App.redirect("LOGIN");
             }
 
         });
@@ -169,7 +170,7 @@ public class Register {
 
     private void resetText(){
 
-        mailInput.setText("");
+        mailInput.setText("example@example.com");
         passwordInput.setText("");
         DNIInput.setText("");
         nameInput.setText("");
