@@ -19,9 +19,11 @@ public class App {
     private static final Main main = new Main();
     private static final Profile profile = new Profile();
 
+    public static JFrame frame = new JFrame("JavaB&B");
+
+
     public static void main(String[] args){
         db.add(new Client("00000000E","Example", "example", "example","666666666"));
-
         cards.add(login.panel, "LOGIN");
         cards.add(register.panel, "REGISTER");
         cards.add(main.panel, "MAIN");
@@ -36,6 +38,9 @@ public class App {
      * @param page A string with the page name.
      */
     public static void redirect(String page){
+        if(page.equals("MAIN")){
+            frame.setMinimumSize(new Dimension(540, 560));
+        }
         cardLayout.show(cards, page);
     }
 
@@ -44,7 +49,6 @@ public class App {
      * setting the minimum resizeable size.
      */
     public static void setupFrame(){
-        JFrame frame = new JFrame("JavaB&B");
         ImageIcon img =  new ImageIcon("/images/logo.png");
         frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
