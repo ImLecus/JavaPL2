@@ -6,8 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Building {
-    public JPanel panel1;
+    public JPanel panel;
     private JLabel bannerLabel;
+    private JScrollPane buildingScroll;
     private JLabel buildingName;
 
     public Building() {
