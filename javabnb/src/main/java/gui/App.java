@@ -13,7 +13,8 @@ public class App {
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
 
-    public Color mainColor = new Color(255,61,61);
+    public static Color mainColor = new Color(255,61,61);
+    public static Color highlightColor = new Color(255, 78, 78);
 
     private static final Login login = new Login();
     private static final Register register = new Register();

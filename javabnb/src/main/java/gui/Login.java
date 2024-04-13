@@ -8,35 +8,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login {
     private JTextField mailInput;
     private JPasswordField passwordInput;
-    private JButton registerButton;
     private JButton loginButton;
     public JPanel panel;
     private JLabel contrasenaLabel;
     private JLabel mailLabel;
     private JLabel tituloLabel;
+    private JLabel noaccountLabel;
+    private JLabel registerLabel;
 
     public Login() {
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
-        FontManager.useFont(registerButton, FontManager.boldFont, Color.BLACK);
-        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.RED);
-        FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
-
-
-
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                App.redirect("REGISTER");
-            }
-        });
+        loginButton.setBorder(null);
+        loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,5 +45,47 @@ public class Login {
                 }
             }
         });
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                loginButton.setBackground(App.highlightColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                loginButton.setBackground(App.mainColor);
+            }
+        });
+
+        FontManager.useFont(noaccountLabel, FontManager.regularFont, Color.GRAY);
+
+        FontManager.useFont(registerLabel, FontManager.boldFont, App.mainColor);
+        registerLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        registerLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                App.redirect("REGISTER");
+            }
+        });
+        registerLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                registerLabel.setForeground(App.highlightColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                registerLabel.setForeground(App.mainColor);
+            }
+        });
+
+        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.BLACK);
+
+        FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
+        passwordInput.setBorder(null);
+        mailInput.setBorder(null);
     }
 }

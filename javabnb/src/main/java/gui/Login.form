@@ -12,19 +12,27 @@
     <children>
       <component id="8e39f" class="javax.swing.JTextField" binding="mailInput">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
+          <gridbag top="5" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="40" ipady="10"/>
         </constraints>
         <properties>
+          <background color="-1842205"/>
+          <foreground color="-8816003"/>
+          <horizontalAlignment value="2"/>
+          <margin top="2" left="9" bottom="2" right="6"/>
+          <text value="aaa"/>
           <toolTipText value="Introduzca el correo de su cuenta"/>
         </properties>
+        <clientProperties>
+          <html.disable class="java.lang.Boolean" value="false"/>
+        </clientProperties>
       </component>
       <component id="d8d0f" class="javax.swing.JLabel" binding="mailLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="20" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="Correo electrónico"/>
@@ -32,39 +40,35 @@
       </component>
       <component id="6cfcf" class="javax.swing.JPasswordField" binding="passwordInput">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
+          <gridbag top="5" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="10" ipady="10"/>
         </constraints>
         <properties>
+          <background color="-1842205"/>
+          <foreground color="-8816003"/>
+          <margin top="2" left="5" bottom="2" right="5"/>
+          <text value=""/>
           <toolTipText value="Intruduzca su contraseña"/>
         </properties>
+        <clientProperties>
+          <JPasswordField.cutCopyAllowed class="java.lang.Boolean" value="false"/>
+        </clientProperties>
       </component>
       <component id="cffba" class="javax.swing.JLabel" binding="contrasenaLabel">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="20" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="Contraseña"/>
         </properties>
       </component>
-      <component id="57d0b" class="javax.swing.JButton" binding="registerButton">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <text value="Registrarse"/>
-          <toolTipText value="Presione para registrarse"/>
-        </properties>
-      </component>
       <component id="876a" class="javax.swing.JButton" binding="loginButton">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="20" left="0" bottom="20" right="0" weightx="0.0" weighty="0.0" ipady="15"/>
         </constraints>
         <properties>
           <background color="-48831"/>
@@ -75,12 +79,30 @@
       </component>
       <component id="dd709" class="javax.swing.JLabel" binding="tituloLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag top="5" left="10" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <font size="36"/>
           <text value="Iniciar Sesión"/>
+        </properties>
+      </component>
+      <component id="53b81" class="javax.swing.JLabel" binding="noaccountLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="¿No tienes cuenta?"/>
+        </properties>
+      </component>
+      <component id="ca3a6" class="javax.swing.JLabel" binding="registerLabel">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value=" Crea una ahora."/>
         </properties>
       </component>
     </children>
