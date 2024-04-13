@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.security.PublicKey;
 
 public class Login {
     private JTextField mailInput;
@@ -26,11 +27,9 @@ public class Login {
 
     public Login() {
         FontManager.useFont(errorLabel, FontManager.regularFont, Palette.secondaryColor);
-        errorLabel.setText("");
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         loginButton.setBorder(null);
-        loginButton.setFocusPainted(false);
         loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -44,9 +43,10 @@ public class Login {
                             "\nCorreo: " + App.session.user.getMail() +
                             "\nContraseña: " + App.session.user.getPassword() +
                             "\nID: " + App.session.ID + "\n");
-                    errorLabel.setText("");
+                    resetText();
                     App.redirect("MAIN");
                 } else {
+                    resetText();
                     errorLabel.setText("Usuario o contraseña incorrectos");
                 }
             }
@@ -71,7 +71,7 @@ public class Login {
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                errorLabel.setText("");
+                resetText();
                 App.redirect("REGISTER");
             }
         });
@@ -95,5 +95,11 @@ public class Login {
         FontManager.useFont(passwordInput, FontManager.regularFont, Palette.textColor);
         passwordInput.setBorder(null);
         mailInput.setBorder(null);
+    }
+
+    private void resetText(){
+        mailInput.setText("");
+        passwordInput.setText("");
+        errorLabel.setText("");
     }
 }

@@ -36,6 +36,7 @@ public class Register {
         eulaLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                resetText();
                 App.redirect("EULA");
             }
 
@@ -78,8 +79,10 @@ public class Register {
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resetText();
                 App.redirect("LOGIN");
             }
+
         });
 
         FontManager.useFont(termsCheckbox, FontManager.regularFont, Palette.textColor);
@@ -115,6 +118,7 @@ public class Register {
             );
             App.db.add(client);
         }
+        resetText();
     }
 
     private boolean validateDNI() {
@@ -173,6 +177,14 @@ public class Register {
             }
         }
         return true;
+    }
+
+    private void resetText(){
+        mailInput.setText("");
+        passwordInput.setText("");
+        DNIInput.setText("");
+        nameInput.setText("");
+        phoneInput.setText("");
     }
 }
 
