@@ -96,6 +96,7 @@ public class Register {
     private boolean validateDNI() {
         String dni = DNIInput.getText();
         if(dni.length() != 9){
+            System.out.println("DNI INVÁLIDO");
             return false;
         }
         // TO-DO: add letter validation
@@ -107,6 +108,7 @@ public class Register {
         String name = nameInput.getText();
         for(char c: name.toCharArray()){
             if(!Character.isAlphabetic(c)){
+                System.out.println("NOMBRE INVÁLIDO");
                 return false;
             }
         }
@@ -122,29 +124,41 @@ public class Register {
         boolean hasUpper = false, hasLower = false, hasDigit = false;
         for(char c: password){
             if(Character.isLowerCase(c)){
+                System.out.println("has lower");
                 hasLower = true;
             }
             if(Character.isUpperCase(c)){
+                System.out.println("has upper");
                 hasUpper = true;
             }
             if(Character.isDigit(c)){
+                System.out.println("has digit");
                 hasDigit = true;
             }
         }
-        return password.length >= 8 && (hasLower && hasUpper && hasDigit);
+        if(password.length < 8 ||  !(hasLower && hasUpper && hasDigit)){
+            System.out.println("CONTRASEÑA INVÁLIDA");
+            return  false;
+        }
         // hash the password
+        return true;
+
     }
 
     private boolean validatePhone() {
-        char[] phone = phoneInput.getText().toCharArray();
-        for(char c: phone){
-            if(!Character.isDigit(c) || c != ' ' || c != '-'){
+        String phone = phoneInput.getText();
+
+        if(phone.length() < 9){
+            System.out.println("TELÉFONO INVÁLIDO");
+            return false;
+        }
+        for(char c: phone.toCharArray()){
+            if(!Character.isDigit(c)) {
+                System.out.println("TELÉFONO INVÁLIDO");
                 return false;
             }
         }
-        if(phone.length < 9){
-            return false;
-        }
+
         return true;
     }
 }
