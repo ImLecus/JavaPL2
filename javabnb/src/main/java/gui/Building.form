@@ -36,8 +36,7 @@
         <properties>
           <background color="-1799"/>
           <horizontalAlignment value="2"/>
-          <icon value="images/search.png"/>
-          <text value=""/>
+          <text value="Banner to be implemented"/>
         </properties>
       </component>
     </children>
