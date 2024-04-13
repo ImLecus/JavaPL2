@@ -19,10 +19,10 @@ public class Login {
     public JPanel panel;
 
     public Login() {
-        Font font = App.useFont();
-        if(font != null){
-            loginButton.setFont(font);
-        }
+        loginButton.setFont(App.boldFont);
+        loginButton.setForeground(Color.WHITE);
+        registerButton.setFont(App.boldFont);
+
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

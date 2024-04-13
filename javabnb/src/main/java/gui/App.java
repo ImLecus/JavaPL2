@@ -8,11 +8,16 @@ import java.io.InputStream;
 
 public class App {
 
+
     public static DataBase db = new DataBase();
     public static Session session = null;
 
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
+
+    public static final Font lightFont = useFont("/fonts/Ubuntu-Light.ttf", 14);
+    public static final Font regularFont = useFont("/fonts/Ubuntu-Regular.ttf", 14);
+    public static final Font boldFont = useFont("/fonts/Ubuntu-Bold.ttf", 14);
 
     private static final Login login = new Login();
     private static final Register register = new Register();
@@ -49,9 +54,15 @@ public class App {
         frame.setVisible(true);
     }
 
-    public static Font useFont(){
+    /**
+     * useFont() adds a new custom text font to the proyect.
+     * @param path the font path relative to "resources/" folder
+     * @param size the size of the text
+     * @return a new custom font
+     */
+    private static Font useFont(String path,float size){
         try {
-            InputStream is = App.class.getResourceAsStream("/fonts/Ubuntu-Regular.ttf");
+            InputStream is = App.class.getResourceAsStream(path);
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
             return font.deriveFont(16f);
         }
