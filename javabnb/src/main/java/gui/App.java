@@ -41,6 +41,12 @@ public class App {
         if(page.equals("MAIN")){
             frame.setMinimumSize(new Dimension(540, 560));
         }
+        if(page.equals("REGISTER")){
+            frame.setSize(320, 550);
+        }
+        if(page.equals("LOGIN")){
+            frame.setSize(320, 450);
+        }
         cardLayout.show(cards, page);
     }
 
@@ -53,7 +59,7 @@ public class App {
         frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(320, 550));
+        frame.setMinimumSize(new Dimension(320, 450));
         frame.setVisible(true);
     }
 
