@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
-    private JPanel panel1;
+    public JPanel panel;
     private JComboBox comboBox1;
     private JTextField barraDeBusquedaTextField;
     private JButton searchButton;
@@ -18,24 +18,24 @@ public class Main {
             switch (selectedItem) {
                 case "Perfil":
                     //Space for future hiding of windows and showing of others implementations
-                    //Profile.main(null); dont exist
+                    App.redirect("PROFILE");
                     break;
                 case "Post guardados":
                     //Space for future hiding of windows and showing of others implementations
-                    //PinnedPosts.main(null); dont exist
+                    App.redirect("PINNED_POSTS");
                     break;
                 case "Cerrar sesión":
                     //Space for future hiding of windows and showing of others implementations
                     App.session.endSession();
-                    Login.main(null);
+                    App.redirect("LOGIN");
                     break;
                 case "EULA":
                     //Space for future hiding of windows and showing of others implementations
-                    EULA.main(null);
+                    App.redirect("EULA");
                     break;
                 case "Community Guidelines":
                     //Space for future hiding of windows and showing of others implementations
-                    CommunityGuidelines.main(null);
+                    App.redirect("COMMUNITY_GUIDELINES");
                     break;
                 default:
                     //No hacer nada
@@ -55,7 +55,7 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         JFrame frame = new JFrame("Main");
-        frame.setContentPane(main.panel1);
+        frame.setContentPane(main.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -16,10 +16,12 @@ public class App {
 
     private static Login login = new Login();
     private static Register register = new Register();
+    private static Main main = new Main();
 
     public static void main(String[] args){
         cards.add(login.panel, "LOGIN");
         cards.add(register.panel, "REGISTER");
+        cards.add(main.panel, "MAIN");
 
         Client juan = new Client("003333030E", "Juan", "juan@gmail.com", "juanito123", "696696696");
         Client dani = new Client("003333030E", "Dani", "dani@gmail.com", "jdd123", "696696696");

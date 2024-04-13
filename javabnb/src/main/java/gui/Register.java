@@ -15,12 +15,19 @@ public class Register {
     private JTextField nameInput;
     private JTextField DNIInput;
     private JTextField phoneInput;
+    private JButton atrasButton;
 
     public Register() {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 register();
+                App.redirect("LOGIN");
+            }
+        });
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 App.redirect("LOGIN");
             }
         });
