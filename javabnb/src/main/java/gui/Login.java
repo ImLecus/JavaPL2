@@ -25,7 +25,7 @@ public class Login {
         FontManager.useFont(registerButton, FontManager.boldFont, Color.BLACK);
         FontManager.useFont(contrasenaLabel, FontManager.regularFont, Color.BLACK);
         FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.RED);
         FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
         FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
 
