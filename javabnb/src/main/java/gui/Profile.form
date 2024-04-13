@@ -50,14 +50,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="c294d" class="javax.swing.JLabel" binding="tittleLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Tu perfil"/>
-            </properties>
-          </component>
           <component id="d2db3" class="javax.swing.JLabel" binding="usuarioLabel">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -84,7 +76,7 @@
           </component>
           <component id="d040" class="javax.swing.JButton" binding="editarButton">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Editar"/>
@@ -106,6 +98,14 @@
             </constraints>
             <properties>
               <text value="Recuperar"/>
+            </properties>
+          </component>
+          <component id="c294d" class="javax.swing.JLabel" binding="tittleLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Tu perfil"/>
             </properties>
           </component>
         </children>

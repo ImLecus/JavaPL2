@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+
 
 public class Profile {
    public JPanel panel;
@@ -22,8 +25,18 @@ public class Profile {
    private JLabel forgotpassLabel;
 
    public Profile(){
-      FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
+      FontManager.useFont(tittleLabel, FontManager.titleFont, Palette.textColor);
+      FontManager.useFont(usuarioLabel, FontManager.regularFont, Palette.textColor);
+      FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
+      FontManager.useFont(dniLabel, FontManager.regularFont, Palette.textColor);
+      FontManager.useFont(passLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
+      forgotpassLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      forgotpassLabel.addMouseListener(new MouseAdapter() {
+         public void mouseEntered (MouseEvent e) {forgotpassLabel.setForeground(Palette.highlightColor);}
 
+         public void mouseExited (MouseEvent e) {forgotpassLabel.setForeground(Palette.mainColor);}
+      });
       atrasButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
       atrasButton.setBorder(null);
       atrasButton.addActionListener(new ActionListener() {
