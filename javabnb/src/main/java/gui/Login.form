@@ -72,11 +72,26 @@
         </constraints>
         <properties>
           <background color="-48831"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="true"/>
+          <defaultCapable value="false"/>
+          <enabled value="true"/>
+          <focusPainted value="false"/>
+          <focusable value="false"/>
           <foreground color="-201224"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <requestFocusEnabled value="false"/>
+          <rolloverEnabled value="false"/>
           <selected value="false"/>
           <text value="Iniciar sesión"/>
           <toolTipText value="Presione para iniciar sesion con sus credenciales"/>
+          <verifyInputWhenFocusTarget value="false"/>
+          <visible value="true"/>
         </properties>
+        <clientProperties>
+          <hideActionText class="java.lang.Boolean" value="false"/>
+        </clientProperties>
       </component>
       <component id="dd709" class="javax.swing.JLabel" binding="tituloLabel">
         <constraints>
