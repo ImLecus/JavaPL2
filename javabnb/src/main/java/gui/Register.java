@@ -2,6 +2,7 @@ package gui;
 
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
+import poo.javabnb.Validate;
 import style.Palette;
 
 import javax.swing.*;
@@ -140,7 +141,18 @@ public class Register {
     }
 
     private void register() {
-        if(validateName() && validatePhone() && validateDNI() && validateMail() && validatePassword()){
+        boolean name = Validate.validateName(nameInput.getText());
+        errorLabel1.setVisible(!name);
+        boolean phone = Validate.validatePhone(phoneInput.getText());
+        errorLabel2.setVisible(!phone);
+        boolean dni = Validate.validateDNI(DNIInput.getText().toCharArray());
+        errorLabel3.setVisible(!dni);
+        boolean mail = Validate.validateMail(mailInput.getText());
+        errorLabel4.setVisible(!mail);
+        boolean password = Validate.validatePassword(passwordInput.getPassword());
+        errorLabel5.setVisible(!password);
+
+        if(name && phone && dni && mail && password){
             Client client = new Client(
                     DNIInput.getText(),
                     nameInput.getText(),
@@ -154,67 +166,6 @@ public class Register {
         resetText();
     }
 
-    private boolean validateDNI() {
-        String dni = DNIInput.getText();
-        if(dni.length() != 9){
-            errorLabel3.setVisible(true);
-            return false;
-        }
-        // TO-DO: add letter validation
-
-        return true;
-    }
-
-    private boolean validateName() {
-        String name = nameInput.getText();
-        for(char c: name.toCharArray()){
-            if(!Character.isAlphabetic(c)){
-                errorLabel1.setVisible(true);
-                return false;
-            }
-        }
-        if(name.isEmpty()){
-            errorLabel1.setVisible(true);
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateMail() {
-        return true;
-    }
-
-    private boolean validatePassword() {
-        char[] password = passwordInput.getPassword();
-        boolean hasUpper = false, hasLower = false, hasDigit = false;
-        for(char c: password){
-            hasLower |= Character.isLowerCase(c);
-            hasUpper |= Character.isUpperCase(c);
-            hasDigit |= Character.isDigit(c);
-        }
-        if(password.length < 8 ||  !(hasLower && hasUpper && hasDigit)){
-            errorLabel5.setVisible(true);
-            return  false;
-        }
-        // hash the password
-        return true;
-
-    }
-
-    private boolean validatePhone() {
-        String phone = phoneInput.getText();
-        if(phone.length() < 9){
-            errorLabel2.setVisible(true);
-            return false;
-        }
-        for(char c: phone.toCharArray()){
-            if(!Character.isDigit(c)) {
-                errorLabel2.setVisible(true);
-                return false;
-            }
-        }
-        return true;
-    }
 
     private void resetText(){
 
@@ -233,4 +184,3 @@ public class Register {
         errorLabel5.setVisible(false);
     }
 }
-
