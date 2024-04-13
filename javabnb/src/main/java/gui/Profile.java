@@ -10,10 +10,16 @@ import java.awt.event.ActionListener;
 
 public class Profile {
    public JPanel panel;
-   private JButton editarButton;
    private JLabel title;
    private JButton atrasButton;
    private JLabel iconoLabel;
+   private JLabel tittleLabel;
+   private JLabel usuarioLabel;
+   private JLabel mailLabel;
+   private JLabel dniLabel;
+   private JButton editarButton;
+   private JLabel passLabel;
+   private JLabel forgotpassLabel;
 
    public Profile(){
       FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
