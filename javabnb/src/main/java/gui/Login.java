@@ -5,6 +5,7 @@ import poo.javabnb.Session;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,9 +20,8 @@ public class Login {
     public JPanel panel;
 
     public Login() {
-        loginButton.setFont(App.boldFont);
-        loginButton.setForeground(Color.WHITE);
-        registerButton.setFont(App.boldFont);
+        App.useFont(loginButton, App.boldFont, Color.WHITE);
+        App.useFont(registerButton, App.boldFont, Color.BLACK);
 
         registerButton.addActionListener(new ActionListener() {
             @Override

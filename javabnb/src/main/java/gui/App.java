@@ -3,11 +3,11 @@ import poo.javabnb.DataBase;
 import poo.javabnb.Session;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.io.InputStream;
 
 public class App {
-
 
     public static DataBase db = new DataBase();
     public static Session session = null;
@@ -15,9 +15,9 @@ public class App {
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
 
-    public static final Font lightFont = useFont("/fonts/Ubuntu-Light.ttf", 14);
-    public static final Font regularFont = useFont("/fonts/Ubuntu-Regular.ttf", 14);
-    public static final Font boldFont = useFont("/fonts/Ubuntu-Bold.ttf", 14);
+    public static final Font lightFont = loadFont("/fonts/Ubuntu-Light.ttf", 14);
+    public static final Font regularFont = loadFont("/fonts/Ubuntu-Regular.ttf", 14);
+    public static final Font boldFont = loadFont("/fonts/Ubuntu-Bold.ttf", 14);
 
     private static final Login login = new Login();
     private static final Register register = new Register();
@@ -60,7 +60,7 @@ public class App {
      * @param size the size of the text
      * @return a new custom font
      */
-    private static Font useFont(String path,float size){
+    private static Font loadFont(String path,float size){
         try {
             InputStream is = App.class.getResourceAsStream(path);
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -70,5 +70,14 @@ public class App {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void useFont(JTextComponent component, Font font, Color color){
+        component.setFont(font);
+        component.setForeground(color);
+    }
+    public static void useFont(JButton component, Font font, Color color){
+        component.setFont(font);
+        component.setForeground(color);
     }
 }
