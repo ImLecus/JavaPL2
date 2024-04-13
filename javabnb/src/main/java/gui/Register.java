@@ -29,8 +29,13 @@ public class Register {
     private JLabel passwordLabel;
     private JLabel title;
     private JLabel eulaLabel;
+    private JLabel passwordLabel2;
+    private JLabel passwordLabel3;
 
     public Register() {
+        submitButton.setEnabled(false);
+        submitButton.setBackground(Palette.textColor);
+
         FontManager.useFont(eulaLabel, FontManager.regularFont, Palette.mainColor);
         eulaLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eulaLabel.addMouseListener(new MouseAdapter() {
@@ -65,12 +70,17 @@ public class Register {
         submitButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                submitButton.setBackground(Palette.highlightColor);
+                if(submitButton.isEnabled()){
+                    submitButton.setBackground(Palette.highlightColor);
+                }
+
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                submitButton.setBackground(Palette.mainColor);
+                if(submitButton.isEnabled()) {
+                    submitButton.setBackground(Palette.mainColor);
+                }
             }
         });
 
@@ -103,8 +113,17 @@ public class Register {
         FontManager.useFont(DNILabel, FontManager.regularFont, Palette.textColor);
         FontManager.useFont(phoneLabel, FontManager.regularFont, Palette.textColor);
         FontManager.useFont(passwordLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(passwordLabel2, FontManager.subText, Palette.textColor);
+        FontManager.useFont(passwordLabel3, FontManager.subText, Palette.textColor);
         FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
         FontManager.useFont(atrasButton, FontManager.titleFont, Palette.textColor);
+        termsCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                submitButton.setEnabled(termsCheckbox.isSelected());
+                submitButton.setBackground(submitButton.isEnabled() ? Palette.mainColor : Palette.textColor);
+            }
+        });
     }
 
     private void register() {

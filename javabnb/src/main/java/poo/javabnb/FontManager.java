@@ -15,6 +15,7 @@ public class FontManager {
     public static final Font boldFont = loadFont("/fonts/Ubuntu-Bold.ttf", 14);
 
     public static final Font titleFont = boldFont.deriveFont(36f);
+    public static final Font subText = lightFont.deriveFont(12f);
 
     /**
      * useFont() adds a new custom text font to the proyect.
