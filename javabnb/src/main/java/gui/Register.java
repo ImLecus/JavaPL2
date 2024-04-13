@@ -31,8 +31,20 @@ public class Register {
     private JLabel eulaLabel;
     private JLabel passwordLabel2;
     private JLabel passwordLabel3;
+    private JLabel errorLabel1;
+    private JLabel errorLabel2;
+    private JLabel errorLabel3;
+    private JLabel errorLabel4;
+    private JLabel errorLabel5;
 
     public Register() {
+
+        FontManager.useFont(errorLabel1, FontManager.regularFont, Palette.secondaryColor);
+        FontManager.useFont(errorLabel2, FontManager.regularFont, Palette.secondaryColor);
+        FontManager.useFont(errorLabel3, FontManager.regularFont, Palette.secondaryColor);
+        FontManager.useFont(errorLabel4, FontManager.regularFont, Palette.secondaryColor);
+        FontManager.useFont(errorLabel5, FontManager.regularFont, Palette.secondaryColor);
+
         submitButton.setEnabled(false);
         submitButton.setBackground(Palette.textColor);
 
@@ -41,6 +53,7 @@ public class Register {
         eulaLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                resetErrorLabels();
                 resetText();
                 App.redirect("EULA");
             }
@@ -63,8 +76,8 @@ public class Register {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resetErrorLabels();
                 register();
-                App.redirect("LOGIN");
             }
         });
         submitButton.addMouseListener(new MouseAdapter() {
@@ -90,7 +103,7 @@ public class Register {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetText();
-                App.redirect("LOGIN");
+                resetErrorLabels();
             }
 
         });
@@ -127,7 +140,7 @@ public class Register {
     }
 
     private void register() {
-        if(validatePhone() && validateDNI() && validateName() && validatePassword() && validateMail()){
+        if(validateName() && validatePhone() && validateDNI() && validateMail() && validatePassword()){
             Client client = new Client(
                     DNIInput.getText(),
                     nameInput.getText(),
@@ -136,6 +149,7 @@ public class Register {
                     phoneInput.getText()
             );
             App.db.add(client);
+            App.redirect("LOGIN");
         }
         resetText();
     }
@@ -143,7 +157,7 @@ public class Register {
     private boolean validateDNI() {
         String dni = DNIInput.getText();
         if(dni.length() != 9){
-            System.out.println("DNI INVÁLIDO");
+            errorLabel3.setVisible(true);
             return false;
         }
         // TO-DO: add letter validation
@@ -155,9 +169,13 @@ public class Register {
         String name = nameInput.getText();
         for(char c: name.toCharArray()){
             if(!Character.isAlphabetic(c)){
-                System.out.println("NOMBRE INVÁLIDO");
+                errorLabel1.setVisible(true);
                 return false;
             }
+        }
+        if(name.isEmpty()){
+            errorLabel1.setVisible(true);
+            return false;
         }
         return true;
     }
@@ -175,7 +193,7 @@ public class Register {
             hasDigit |= Character.isDigit(c);
         }
         if(password.length < 8 ||  !(hasLower && hasUpper && hasDigit)){
-            System.out.println("CONTRASEÑA INVÁLIDA");
+            errorLabel5.setVisible(true);
             return  false;
         }
         // hash the password
@@ -186,12 +204,12 @@ public class Register {
     private boolean validatePhone() {
         String phone = phoneInput.getText();
         if(phone.length() < 9){
-            System.out.println("TELÉFONO INVÁLIDO");
+            errorLabel2.setVisible(true);
             return false;
         }
         for(char c: phone.toCharArray()){
             if(!Character.isDigit(c)) {
-                System.out.println("TELÉFONO INVÁLIDO");
+                errorLabel2.setVisible(true);
                 return false;
             }
         }
@@ -199,11 +217,20 @@ public class Register {
     }
 
     private void resetText(){
+
         mailInput.setText("");
         passwordInput.setText("");
         DNIInput.setText("");
         nameInput.setText("");
         phoneInput.setText("");
+    }
+
+    private void resetErrorLabels(){
+        errorLabel1.setVisible(false);
+        errorLabel2.setVisible(false);
+        errorLabel3.setVisible(false);
+        errorLabel4.setVisible(false);
+        errorLabel5.setVisible(false);
     }
 }
 
