@@ -1,6 +1,7 @@
 package gui;
 
 import poo.javabnb.FontManager;
+import style.Palette;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class Profile {
    private JButton atrasButton;
 
    public Profile(){
-      FontManager.useFont(title, FontManager.titleFont, Color.BLACK);
+      FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
 
       atrasButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
       atrasButton.setBorder(null);

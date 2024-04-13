@@ -62,26 +62,26 @@ public class Register {
             }
         });
 
-        FontManager.useFont(termsCheckbox, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(termsCheckbox, FontManager.regularFont, Palette.textColor);
 
         nameInput.setBorder(null);
-        FontManager.useFont(nameInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(nameInput, FontManager.regularFont, Palette.textColor);
         mailInput.setBorder(null);
-        FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(mailInput, FontManager.regularFont, Palette.textColor);
         DNIInput.setBorder(null);
-        FontManager.useFont(DNIInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(DNIInput, FontManager.regularFont, Palette.textColor);
         phoneInput.setBorder(null);
-        FontManager.useFont(phoneInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(phoneInput, FontManager.regularFont, Palette.textColor);
         passwordInput.setBorder(null);
-        FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(passwordInput, FontManager.regularFont, Palette.textColor);
 
-        FontManager.useFont(nameLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(DNILabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(phoneLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(passwordLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(title, FontManager.titleFont, Color.BLACK);
-        FontManager.useFont(atrasButton, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(nameLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(DNILabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(phoneLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(passwordLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
+        FontManager.useFont(atrasButton, FontManager.titleFont, Palette.textColor);
     }
 
     private void register() {
