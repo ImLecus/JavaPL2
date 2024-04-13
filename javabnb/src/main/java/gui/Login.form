@@ -18,7 +18,7 @@
           <toolTipText value="Introduzca el correo de su cuenta"/>
         </properties>
       </component>
-      <component id="d8d0f" class="javax.swing.JLabel">
+      <component id="d8d0f" class="javax.swing.JLabel" binding="mailLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -38,7 +38,7 @@
           <toolTipText value="Intruduzca su contraseña"/>
         </properties>
       </component>
-      <component id="cffba" class="javax.swing.JLabel">
+      <component id="cffba" class="javax.swing.JLabel" binding="contrasenaLabel">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -70,14 +70,14 @@
           <toolTipText value="Presione para iniciar sesion con sus credenciales"/>
         </properties>
       </component>
-      <component id="dd709" class="javax.swing.JLabel">
+      <component id="dd709" class="javax.swing.JLabel" binding="tituloLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="5" left="10" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <font size="36"/>
-          <text value="Inicia Sesión"/>
+          <text value="Iniciar Sesión"/>
         </properties>
       </component>
       <vspacer id="5ac4d">

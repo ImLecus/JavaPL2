@@ -5,13 +5,9 @@ import poo.javabnb.FontManager;
 import poo.javabnb.Session;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 
 public class Login {
     private JTextField mailInput;
@@ -19,11 +15,21 @@ public class Login {
     private JButton registerButton;
     private JButton loginButton;
     public JPanel panel;
+    private JLabel contrasenaLabel;
+    private JLabel mailLabel;
+    private JLabel tituloLabel;
 
     public Login() {
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         FontManager.useFont(registerButton, FontManager.boldFont, Color.BLACK);
+        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
+
+
 
         registerButton.addActionListener(new ActionListener() {
             @Override
