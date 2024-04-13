@@ -19,6 +19,7 @@ public class App {
     private static final Main main = new Main();
     private static final Profile profile = new Profile();
     private static final PinnedPosts pinnedPosts = new PinnedPosts();
+    private static final EULA eula = new EULA();
 
     public static JFrame frame = new JFrame("JavaB&B");
 
@@ -30,6 +31,7 @@ public class App {
         cards.add(main.panel, "MAIN");
         cards.add(profile.panel, "PROFILE");
         cards.add(pinnedPosts.panel, "PINNED_POSTS");
+        cards.add(eula.panel, "EULA");
         setupFrame();
         redirect("LOGIN");
     }
@@ -52,7 +54,7 @@ public class App {
         frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(540, 560));
+        frame.setMinimumSize(new Dimension(700, 710));
         frame.setVisible(true);
     }
 
