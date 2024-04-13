@@ -3,6 +3,7 @@ package gui;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Session;
+import style.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +24,7 @@ public class Login {
     private JLabel registerLabel;
 
     public Login() {
+
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         loginButton.setBorder(null);
@@ -48,18 +50,18 @@ public class Login {
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                loginButton.setBackground(App.highlightColor);
+                loginButton.setBackground(Palette.highlightColor);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                loginButton.setBackground(App.mainColor);
+                loginButton.setBackground(Palette.mainColor);
             }
         });
 
         FontManager.useFont(noaccountLabel, FontManager.regularFont, Color.GRAY);
 
-        FontManager.useFont(registerLabel, FontManager.boldFont, App.mainColor);
+        FontManager.useFont(registerLabel, FontManager.boldFont, Palette.mainColor);
         registerLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,12 +72,12 @@ public class Login {
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                registerLabel.setForeground(App.highlightColor);
+                registerLabel.setForeground(Palette.highlightColor);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                registerLabel.setForeground(App.mainColor);
+                registerLabel.setForeground(Palette.mainColor);
             }
         });
 
