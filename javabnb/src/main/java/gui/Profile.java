@@ -13,6 +13,7 @@ public class Profile {
    private JButton editarButton;
    private JLabel title;
    private JButton atrasButton;
+   private JLabel iconoLabel;
 
    public Profile(){
       FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
