@@ -41,6 +41,7 @@ public class App {
      */
     public static void setupFrame(){
         JFrame frame = new JFrame("JavaB&B");
+        frame.setIconImage( new ImageIcon("./logo.png").getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(310, 425));
