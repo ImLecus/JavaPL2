@@ -162,7 +162,7 @@
           <component id="82d12" class="javax.swing.JButton" binding="atrasButton">
             <constraints/>
             <properties>
-              <background color="-1"/>
+              <background color="-1799"/>
               <foreground color="-16777216"/>
               <icon value="images/arrow.png"/>
               <text value=""/>
