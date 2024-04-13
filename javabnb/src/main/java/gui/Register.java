@@ -3,17 +3,12 @@ package gui;
 import poo.javabnb.Client;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 
 public class Register {
     private JTextField mailInput;
-    private JPanel panel1;
+    public JPanel panel;
     private JPasswordField passwordInput;
     private JCheckBox termsCheckbox;
     private JButton submitButton;
@@ -26,7 +21,7 @@ public class Register {
             @Override
             public void actionPerformed(ActionEvent e) {
                 register();
-                Login.main(null);
+                App.redirect("LOGIN");
             }
         });
     }
@@ -65,7 +60,7 @@ public class Register {
     public static void main(String[] args) {
         Register register = new Register();
         JFrame frame = new JFrame("Register");
-        frame.setContentPane(register.panel1);
+        frame.setContentPane(register.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -16,13 +16,13 @@ public class Login {
     private JPasswordField passwordInput;
     private JButton registerButton;
     private JButton loginButton;
-    private JPanel panel;
+    public JPanel panel;
 
     public Login() {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Register.main(null);
+                App.redirect("REGISTER");
             }
         });
         loginButton.addActionListener(new ActionListener() {
@@ -38,7 +38,7 @@ public class Login {
                             "\nCorreo: " + App.session.user.getMail() +
                             "\nContraseña: " + App.session.user.getPassword() +
                             "\nID: " + App.session.ID + "\n");
-                    Main.main(null);
+                    App.redirect("MAIN");
                 } else {
                     System.out.println("ERROR\n--------\nUsuario o contraseña incorrectos.");
                 }
