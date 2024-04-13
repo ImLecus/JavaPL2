@@ -4,6 +4,7 @@ import poo.javabnb.Session;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.InputStream;
 
 public class App {
 
@@ -21,7 +22,6 @@ public class App {
         cards.add(login.panel, "LOGIN");
         cards.add(register.panel, "REGISTER");
         cards.add(main.panel, "MAIN");
-
         setupFrame();
         redirect("LOGIN");
     }
@@ -41,10 +41,22 @@ public class App {
      */
     public static void setupFrame(){
         JFrame frame = new JFrame("JavaB&B");
-        frame.setIconImage( new ImageIcon("./logo.png").getImage());
+        frame.setIconImage( new ImageIcon("/images/logo.png").getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(310, 425));
         frame.setVisible(true);
+    }
+
+    public static Font useFont(){
+        try {
+            InputStream is = App.class.getResourceAsStream("/fonts/Ubuntu-Regular.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+            return font.deriveFont(16f);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

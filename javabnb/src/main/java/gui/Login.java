@@ -19,6 +19,10 @@ public class Login {
     public JPanel panel;
 
     public Login() {
+        Font font = App.useFont();
+        if(font != null){
+            loginButton.setFont(font);
+        }
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,7 +32,6 @@ public class Login {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int key = App.db.getUserInDataBase(mailInput.getText(), String.valueOf(passwordInput.getPassword()));
                 if (key >= 0) {
                     Client user = App.db.getClientData(key);
@@ -44,16 +47,5 @@ public class Login {
                 }
             }
         });
-    }
-
-    public static void main(String[] args) {
-        Login login = new Login();
-        JFrame frame = new JFrame("Login");
-
-        frame.setContentPane(login.panel);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 }
