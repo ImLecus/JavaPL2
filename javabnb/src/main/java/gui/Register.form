@@ -19,6 +19,7 @@
             </constraints>
             <properties>
               <text value="example@example.com"/>
+              <toolTipText value="Introduzca un correo valido"/>
             </properties>
           </component>
           <component id="b70bd" class="javax.swing.JLabel">
@@ -98,7 +99,9 @@
               </grid>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="Introduxca una contraseña de al menos 8 caracteres, que contenga al menos una mayuscula, minuscula y numero"/>
+            </properties>
           </component>
           <component id="fb5f2" class="javax.swing.JLabel">
             <constraints>
