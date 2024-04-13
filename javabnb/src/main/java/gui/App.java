@@ -18,7 +18,6 @@ public class App {
     private static final Register register = new Register();
     private static final Main main = new Main();
     private static final Profile profile = new Profile();
-    private static final PinnedPosts pinnedPosts = new PinnedPosts();
 
     public static JFrame frame = new JFrame("JavaB&B");
 
@@ -29,7 +28,6 @@ public class App {
         cards.add(register.panel, "REGISTER");
         cards.add(main.panel, "MAIN");
         cards.add(profile.panel, "PROFILE");
-        cards.add(pinnedPosts.panel, "PINNED_POSTS");
         setupFrame();
         redirect("LOGIN");
     }
@@ -40,15 +38,6 @@ public class App {
      * @param page A string with the page name.
      */
     public static void redirect(String page){
-        if(page.equals("MAIN")){
-            frame.setSize(540, 560);
-        }
-        if(page.equals("REGISTER")){
-            frame.setSize(320, 550);
-        }
-        if(page.equals("LOGIN")){
-            frame.setSize(540, 560);
-        }
         cardLayout.show(cards, page);
     }
 
