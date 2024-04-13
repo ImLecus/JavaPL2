@@ -26,7 +26,6 @@ public class Login {
     private JLabel errorLabel;
 
     public Login() {
-        FontManager.useFont(errorLabel, FontManager.regularFont, Palette.secondaryColor);
 
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         loginButton.setBorder(null);
@@ -66,7 +65,6 @@ public class Login {
 
         FontManager.useFont(noaccountLabel, FontManager.regularFont, Color.GRAY);
 
-        FontManager.useFont(registerLabel, FontManager.boldFont, Palette.mainColor);
         registerLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -87,12 +85,20 @@ public class Login {
             }
         });
 
-        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.setRegularFont(new JComponent[]{
+                contrasenaLabel,
+                mailLabel,
+                mailInput,
+                passwordInput
+        });
+        FontManager.setAnchorFont(new JComponent[]{
+                registerLabel
+        });
+        FontManager.setErrorFont(new JComponent[]{
+                errorLabel
+        });
         FontManager.useFont(tituloLabel, FontManager.titleFont, Palette.textColor);
 
-        FontManager.useFont(mailInput, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(passwordInput, FontManager.regularFont, Palette.textColor);
         passwordInput.setBorder(null);
         mailInput.setBorder(null);
     }

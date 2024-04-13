@@ -1,6 +1,7 @@
 package poo.javabnb;
 
 import gui.App;
+import style.Palette;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -40,4 +41,25 @@ public class FontManager {
         component.setForeground(color);
     }
 
+    public static void setRegularFont(JComponent[] components){
+        for (JComponent c: components){
+            useFont(c, regularFont, Palette.textColor);
+        }
+    }
+
+    public static void setErrorFont(JComponent[] components){
+        for (JComponent c: components){
+            useFont(c, regularFont, Palette.secondaryColor);
+        }
+    }
+    public static void setSubTextFont(JComponent[] components){
+        for (JComponent c: components){
+            useFont(c, subText, Palette.textColor);
+        }
+    }
+    public static void setAnchorFont(JComponent[] components){
+        for (JComponent c: components){
+            useFont(c, boldFont, Palette.mainColor);
+        }
+    }
 }

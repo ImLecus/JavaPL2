@@ -40,16 +40,9 @@ public class Register {
 
     public Register() {
 
-        FontManager.useFont(errorLabel1, FontManager.regularFont, Palette.secondaryColor);
-        FontManager.useFont(errorLabel2, FontManager.regularFont, Palette.secondaryColor);
-        FontManager.useFont(errorLabel3, FontManager.regularFont, Palette.secondaryColor);
-        FontManager.useFont(errorLabel4, FontManager.regularFont, Palette.secondaryColor);
-        FontManager.useFont(errorLabel5, FontManager.regularFont, Palette.secondaryColor);
-
         submitButton.setEnabled(false);
         submitButton.setBackground(Palette.textColor);
 
-        FontManager.useFont(eulaLabel, FontManager.regularFont, Palette.mainColor);
         eulaLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eulaLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -110,28 +103,41 @@ public class Register {
 
         });
 
-        FontManager.useFont(termsCheckbox, FontManager.regularFont, Palette.textColor);
-
         nameInput.setBorder(null);
-        FontManager.useFont(nameInput, FontManager.regularFont, Palette.textColor);
         mailInput.setBorder(null);
-        FontManager.useFont(mailInput, FontManager.regularFont, Palette.textColor);
         DNIInput.setBorder(null);
-        FontManager.useFont(DNIInput, FontManager.regularFont, Palette.textColor);
         phoneInput.setBorder(null);
-        FontManager.useFont(phoneInput, FontManager.regularFont, Palette.textColor);
         passwordInput.setBorder(null);
-        FontManager.useFont(passwordInput, FontManager.regularFont, Palette.textColor);
 
-        FontManager.useFont(nameLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(DNILabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(phoneLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(passwordLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(passwordLabel2, FontManager.subText, Palette.textColor);
-        FontManager.useFont(passwordLabel3, FontManager.subText, Palette.textColor);
+        FontManager.setRegularFont(new JComponent[]{
+                termsCheckbox,
+                nameLabel,
+                mailLabel,
+                DNILabel,
+                phoneLabel,
+                passwordLabel,
+                nameInput,
+                mailInput,
+                DNIInput,
+                mailInput,
+                passwordInput
+        });
+        FontManager.setErrorFont(new JComponent[]{
+                errorLabel1,
+                errorLabel2,
+                errorLabel3,
+                errorLabel4,
+                errorLabel5
+        });
+        FontManager.setSubTextFont(new JComponent[]{
+                passwordLabel2, passwordLabel3
+        });
+        FontManager.setAnchorFont(new JComponent[]{
+                eulaLabel
+        });
+
         FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
-        FontManager.useFont(atrasButton, FontManager.titleFont, Palette.textColor);
+
         termsCheckbox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
