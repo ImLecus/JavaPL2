@@ -103,16 +103,5 @@ public class Register {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        Register register = new Register();
-        JFrame frame = new JFrame("Register");
-        frame.setContentPane(register.panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-
 }
 
