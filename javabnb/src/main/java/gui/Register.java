@@ -5,6 +5,8 @@ import poo.javabnb.Client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Register {
     public JPanel panel;
@@ -35,34 +37,71 @@ public class Register {
     }
 
     private void register() {
-        validateDNI();
-        validateMail();
-        validateName();
-        validatePassword();
-        validatePhone();
-        Client client = new Client(
-                DNIInput.getText(),
-                nameInput.getText(),
-                mailInput.getText(),
-                String.valueOf(passwordInput.getPassword()),
-                phoneInput.getText()
-        );
-        App.db.add(client);
+        if(validatePhone() && validateDNI() && validateName() && validatePassword() && validateMail()){
+            Client client = new Client(
+                    DNIInput.getText(),
+                    nameInput.getText(),
+                    mailInput.getText(),
+                    String.valueOf(passwordInput.getPassword()),
+                    phoneInput.getText()
+            );
+            App.db.add(client);
+        }
     }
 
-    private void validateDNI() {
+    private boolean validateDNI() {
+        String dni = DNIInput.getText();
+        if(dni.length() != 9){
+            return false;
+        }
+        // TO-DO: add letter validation
+
+        return true;
     }
 
-    private void validateName() {
+    private boolean validateName() {
+        String name = nameInput.getText();
+        for(char c: name.toCharArray()){
+            if(!Character.isAlphabetic(c)){
+                return false;
+            }
+        }
+        return true;
     }
 
-    private void validateMail() {
+    private boolean validateMail() {
+        return true;
     }
 
-    private void validatePassword() {
+    private boolean validatePassword() {
+        char[] password = passwordInput.getPassword();
+        boolean hasUpper = false, hasLower = false, hasDigit = false;
+        for(char c: password){
+            if(Character.isLowerCase(c)){
+                hasLower = true;
+            }
+            if(Character.isUpperCase(c)){
+                hasUpper = true;
+            }
+            if(Character.isDigit(c)){
+                hasDigit = true;
+            }
+        }
+        return password.length >= 8 && (hasLower && hasUpper && hasDigit);
+        // hash the password
     }
 
-    private void validatePhone() {
+    private boolean validatePhone() {
+        char[] phone = phoneInput.getText().toCharArray();
+        for(char c: phone){
+            if(!Character.isDigit(c) || c != ' ' || c != '-'){
+                return false;
+            }
+        }
+        if(phone.length < 9){
+            return false;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
