@@ -52,6 +52,9 @@ public class Register {
                 submitButton.setBackground(Palette.mainColor);
             }
         });
+
+        atrasButton.setBorder(null);
+        atrasButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,6 +81,7 @@ public class Register {
         FontManager.useFont(phoneLabel, FontManager.regularFont, Color.BLACK);
         FontManager.useFont(passwordLabel, FontManager.regularFont, Color.BLACK);
         FontManager.useFont(title, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(atrasButton, FontManager.titleFont, Color.BLACK);
     }
 
     private void register() {

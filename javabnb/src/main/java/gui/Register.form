@@ -8,7 +8,7 @@
       <background color="-1799"/>
       <foreground color="-1799"/>
     </properties>
-    <border type="bevel-lowered"/>
+    <border type="none"/>
     <children>
       <grid id="e8efd" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
@@ -152,7 +152,7 @@
           </component>
         </children>
       </grid>
-      <grid id="3d64f" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+      <grid id="3d64f" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="0">
         <constraints border-constraint="North"/>
         <properties>
           <background color="-1799"/>
@@ -164,7 +164,8 @@
             <properties>
               <background color="-1"/>
               <foreground color="-16777216"/>
-              <text value="←"/>
+              <icon value="images/arrow.png"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
