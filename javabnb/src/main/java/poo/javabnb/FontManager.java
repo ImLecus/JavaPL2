@@ -38,5 +38,8 @@ public class FontManager {
         component.setFont(font);
         component.setForeground(color);
     }
-
+    public static void useFont(JLabel component, Font font, Color color){
+        component.setFont(font);
+        component.setForeground(color);
+    }
 }
