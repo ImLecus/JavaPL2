@@ -9,7 +9,9 @@
     <children>
       <grid id="ee35a" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <background color="-1799"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="e37ed" class="javax.swing.JLabel" binding="title">
@@ -61,12 +63,17 @@
       </grid>
       <grid id="63a02" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="0">
         <constraints border-constraint="North"/>
-        <properties/>
+        <properties>
+          <background color="-1799"/>
+          <enabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="fe34" class="javax.swing.JButton" binding="atrasButton">
             <constraints/>
             <properties>
+              <background color="-1799"/>
+              <foreground color="-16777216"/>
               <icon value="images/arrow.png"/>
               <text value=""/>
             </properties>
