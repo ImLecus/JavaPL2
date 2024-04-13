@@ -123,18 +123,9 @@ public class Register {
         char[] password = passwordInput.getPassword();
         boolean hasUpper = false, hasLower = false, hasDigit = false;
         for(char c: password){
-            if(Character.isLowerCase(c)){
-                System.out.println("has lower");
-                hasLower = true;
-            }
-            if(Character.isUpperCase(c)){
-                System.out.println("has upper");
-                hasUpper = true;
-            }
-            if(Character.isDigit(c)){
-                System.out.println("has digit");
-                hasDigit = true;
-            }
+            hasLower |= Character.isLowerCase(c);
+            hasUpper |= Character.isUpperCase(c);
+            hasDigit |= Character.isDigit(c);
         }
         if(password.length < 8 ||  !(hasLower && hasUpper && hasDigit)){
             System.out.println("CONTRASEÑA INVÁLIDA");
@@ -147,7 +138,6 @@ public class Register {
 
     private boolean validatePhone() {
         String phone = phoneInput.getText();
-
         if(phone.length() < 9){
             System.out.println("TELÉFONO INVÁLIDO");
             return false;
@@ -158,7 +148,6 @@ public class Register {
                 return false;
             }
         }
-
         return true;
     }
 }

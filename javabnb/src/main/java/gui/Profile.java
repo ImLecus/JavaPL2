@@ -1,4 +1,8 @@
 package gui;
 
-public class Profile {}
+import javax.swing.*;
+
+public class Profile {
+   public JPanel panel;
+}
 

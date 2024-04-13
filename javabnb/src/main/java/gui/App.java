@@ -1,4 +1,5 @@
 package gui;
+import poo.javabnb.Client;
 import poo.javabnb.DataBase;
 import poo.javabnb.Session;
 
@@ -16,11 +17,15 @@ public class App {
     private static final Login login = new Login();
     private static final Register register = new Register();
     private static final Main main = new Main();
+    private static final Profile profile = new Profile();
 
     public static void main(String[] args){
+        db.add(new Client("00000000E","Example", "example", "example","666666666"));
+
         cards.add(login.panel, "LOGIN");
         cards.add(register.panel, "REGISTER");
         cards.add(main.panel, "MAIN");
+        cards.add(profile.panel, "PROFILE");
         setupFrame();
         redirect("LOGIN");
     }
