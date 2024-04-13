@@ -14,7 +14,7 @@ public class FontManager {
     public static final Font regularFont = loadFont("/fonts/Ubuntu-Regular.ttf", 14);
     public static final Font boldFont = loadFont("/fonts/Ubuntu-Bold.ttf", 14);
 
-    public static final Font titleFont = loadFont("/fonts/Ubuntu-Bold.ttf", 28);
+    public static final Font titleFont = boldFont.deriveFont(36f);
 
     /**
      * useFont() adds a new custom text font to the proyect.
@@ -38,8 +38,5 @@ public class FontManager {
         component.setFont(font);
         component.setForeground(color);
     }
-    public static void useFont(JLabel component, Font font, Color color){
-        component.setFont(font);
-        component.setForeground(color);
-    }
+
 }
