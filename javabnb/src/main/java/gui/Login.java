@@ -81,12 +81,12 @@ public class Login {
             }
         });
 
-        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(mailLabel, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(tituloLabel, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(contrasenaLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(tituloLabel, FontManager.titleFont, Palette.textColor);
 
-        FontManager.useFont(mailInput, FontManager.regularFont, Color.BLACK);
-        FontManager.useFont(passwordInput, FontManager.regularFont, Color.BLACK);
+        FontManager.useFont(mailInput, FontManager.regularFont, Palette.textColor);
+        FontManager.useFont(passwordInput, FontManager.regularFont, Palette.textColor);
         passwordInput.setBorder(null);
         mailInput.setBorder(null);
     }
