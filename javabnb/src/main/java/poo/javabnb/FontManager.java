@@ -9,9 +9,12 @@ import java.io.InputStream;
 
 public class FontManager {
 
+
     public static final Font lightFont = loadFont("/fonts/Ubuntu-Light.ttf", 14);
     public static final Font regularFont = loadFont("/fonts/Ubuntu-Regular.ttf", 14);
     public static final Font boldFont = loadFont("/fonts/Ubuntu-Bold.ttf", 14);
+
+    public static final Font titleFont = loadFont("/fonts/Ubuntu-Bold.ttf", 28);
 
     /**
      * useFont() adds a new custom text font to the proyect.
@@ -31,12 +34,9 @@ public class FontManager {
         }
     }
 
-    public static void useFont(JTextComponent component, Font font, Color color){
+    public static void useFont(JComponent component, Font font, Color color){
         component.setFont(font);
         component.setForeground(color);
     }
-    public static void useFont(JButton component, Font font, Color color){
-        component.setFont(font);
-        component.setForeground(color);
-    }
+
 }
