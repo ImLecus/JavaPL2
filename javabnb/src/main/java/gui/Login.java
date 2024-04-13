@@ -1,6 +1,7 @@
 package gui;
 
 import poo.javabnb.Client;
+import poo.javabnb.FontManager;
 import poo.javabnb.Session;
 
 import javax.swing.*;
@@ -20,8 +21,9 @@ public class Login {
     public JPanel panel;
 
     public Login() {
-        App.useFont(loginButton, App.boldFont, Color.WHITE);
-        App.useFont(registerButton, App.boldFont, Color.BLACK);
+
+        FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
+        FontManager.useFont(registerButton, FontManager.boldFont, Color.BLACK);
 
         registerButton.addActionListener(new ActionListener() {
             @Override
