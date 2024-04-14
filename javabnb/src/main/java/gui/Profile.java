@@ -23,6 +23,9 @@ public class Profile {
    private JButton editarButton;
    private JLabel passLabel;
    private JLabel forgotpassLabel;
+   private JLabel tuuserLAbel;
+   private JLabel tudniLabel;
+   private JLabel tumailLabel;
 
    public Profile(){
       FontManager.useFont(tittleLabel, FontManager.titleFont, Palette.textColor);
@@ -30,15 +33,19 @@ public class Profile {
       FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
       FontManager.useFont(dniLabel, FontManager.regularFont, Palette.textColor);
       FontManager.useFont(passLabel, FontManager.regularFont, Palette.textColor);
-        FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
+      FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
       forgotpassLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
       forgotpassLabel.addMouseListener(new MouseAdapter() {
          public void mouseEntered (MouseEvent e) {forgotpassLabel.setForeground(Palette.highlightColor);}
 
          public void mouseExited (MouseEvent e) {forgotpassLabel.setForeground(Palette.mainColor);}
+         public void mouseClicked (MouseEvent e) {
+            //To be implemented
+         }
       });
       atrasButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
       atrasButton.setBorder(null);
+      editarButton.setBorder(null);
       atrasButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
