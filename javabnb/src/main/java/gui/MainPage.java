@@ -74,7 +74,6 @@ public class MainPage extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         muroScroll.setBackground(new java.awt.Color(255, 248, 249));
-        muroScroll.setForeground(new java.awt.Color(255, 248, 249));
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         add(muroScroll, java.awt.BorderLayout.CENTER);
