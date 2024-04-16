@@ -15,11 +15,11 @@ public class App {
     private static final JPanel cards = new JPanel(cardLayout);
 
     private static final LoginPage login = new LoginPage();
-    //private static final Register register = new Register();
-    //private static final Main main = new Main();
-    //private static final Profile profile = new Profile();
-    //private static final PinnedPosts pinnedPosts = new PinnedPosts();
-    //private static final EULA eula = new EULA();
+    private static final RegisterPage register = new RegisterPage();
+    private static final MainPage main = new MainPage();
+    private static final ProfilePage profile = new ProfilePage();
+    private static final PinnedPostsPage pinnedPosts = new PinnedPostsPage();
+    private static final EULAPage eula = new EULAPage();
 
     public static JFrame frame = new JFrame("JavaB&B");
 
@@ -27,11 +27,11 @@ public class App {
     public static void main(String[] args){
         db.add(new Client("00000000E","Example", "example", "example","666666666"));
         cards.add(login, "LOGIN");
-        //cards.add(register.panel, "REGISTER");
-        //cards.add(main.panel, "MAIN");
-        //cards.add(profile.panel, "PROFILE");
-        //cards.add(pinnedPosts.panel, "PINNED_POSTS");
-        //cards.add(eula.panel, "EULA");
+        cards.add(register, "REGISTER");
+        cards.add(main, "MAIN");
+        cards.add(profile, "PROFILE");
+        cards.add(pinnedPosts, "PINNED_POSTS");
+        cards.add(eula, "EULA");
         setupFrame();
         redirect("LOGIN");
     }
