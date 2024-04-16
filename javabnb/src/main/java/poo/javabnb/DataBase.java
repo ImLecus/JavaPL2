@@ -69,4 +69,8 @@ public class DataBase {
         passwords.removeLast();
         users.removeLast();
     }
+    
+    public boolean contains(String mail){
+        return mails.contains(mail);
+    }
 }

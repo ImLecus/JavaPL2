@@ -29,6 +29,13 @@ private void register() {
         boolean dni = Validate.validateDNI(DNIInput.getText().toCharArray());
         errorLabel3.setVisible(!dni);
         boolean mail = Validate.validateMail(mailInput.getText());
+        if(App.db.contains(mailInput.getText())){
+            errorLabel4.setText("Este correo ya está en uso");
+            mail = false;
+        }
+        else{
+            errorLabel4.setText("Formato inválido");
+        }
         errorLabel4.setVisible(!mail);
         boolean password = Validate.validatePassword(passwordInput.getPassword());
         errorLabel5.setVisible(!password);
