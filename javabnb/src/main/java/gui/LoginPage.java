@@ -1,25 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
-
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JComponent;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Session;
 import style.Palette;
 
-/**
- *
- * @author Alumno
- */
 public class LoginPage extends javax.swing.JPanel {
     
     private void resetText(){
@@ -27,16 +15,11 @@ public class LoginPage extends javax.swing.JPanel {
         passwordInput.setText("");
         errorLabel.setVisible(false);
     }
-    /**
-     * Creates new form LoginPage
-     */
+    
     public LoginPage() {
         initComponents();
         errorLabel.setVisible(false);
         
-        FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
-        loginButton.setBorder(null);
-        loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,11 +27,21 @@ public class LoginPage extends javax.swing.JPanel {
                 if (key >= 0) {
                     Client user = App.db.getClientData(key);
                     App.session = Session.init(user);
-                    System.out.println("SESIÓN INICIADA\n------------" +
-                            "\nNombre: " + App.session.user.getName() +
-                            "\nCorreo: " + App.session.user.getMail() +
-                            "\nContraseña: " + App.session.user.getPassword() +
-                            "\nID: " + App.session.ID + "\n");
+                    
+                    System.out.printf(
+                    """
+                    SESIÓN INICIADA
+                    ---------------
+                    Nombre: %s
+                    Correo: %s
+                    Contraseña: %s
+                    ID: %s
+                    %n""", 
+                    App.session.user.getName(), 
+                    App.session.user.getMail(), 
+                    App.session.user.getPassword(),
+                    App.session.ID);
+                    
                     resetText();
                     App.redirect("MAIN");
                 } else {
@@ -57,22 +50,8 @@ public class LoginPage extends javax.swing.JPanel {
                 }
             }
         });
-        loginButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                loginButton.setBackground(Palette.highlightColor);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                loginButton.setBackground(Palette.mainColor);
-            }
-        });
+        Palette.highlightOnHover(loginButton);
         
-        
-        FontManager.useFont(noaccountLabel, FontManager.regularFont, Color.GRAY);
-
-        registerLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -80,34 +59,8 @@ public class LoginPage extends javax.swing.JPanel {
                 App.redirect("REGISTER");
             }
         });
-        registerLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                registerLabel.setForeground(Palette.highlightColor);
-            }
+        Palette.highlightOnHover(registerLabel);
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                registerLabel.setForeground(Palette.mainColor);
-            }
-        });
-        
-        FontManager.setRegularFont(new JComponent[]{
-                passwordLabel,
-                mailLabel,
-                mailInput,
-                passwordInput
-        });
-        FontManager.setAnchorFont(new JComponent[]{
-                registerLabel
-        });
-        FontManager.setErrorFont(new JComponent[]{
-                errorLabel
-        });
-        FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
-
-        passwordInput.setBorder(null);
-        mailInput.setBorder(null);
     }
 
     /**
@@ -134,6 +87,8 @@ public class LoginPage extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.GridBagLayout());
 
+        title.setFont(FontManager.titleFont);
+        title.setForeground(Palette.textColor);
         title.setText("Te damos la bienvenida");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -141,6 +96,8 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         add(title, gridBagConstraints);
 
+        mailLabel.setFont(FontManager.regularFont);
+        mailLabel.setForeground(Palette.textColor);
         mailLabel.setText("Correo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -150,6 +107,7 @@ public class LoginPage extends javax.swing.JPanel {
         add(mailLabel, gridBagConstraints);
 
         mailInput.setBackground(new java.awt.Color(225, 225, 225));
+        mailInput.setBorder(null);
         mailInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mailInputActionPerformed(evt);
@@ -164,6 +122,8 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         add(mailInput, gridBagConstraints);
 
+        passwordLabel.setFont(FontManager.regularFont);
+        passwordLabel.setForeground(Palette.textColor);
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -173,6 +133,7 @@ public class LoginPage extends javax.swing.JPanel {
         add(passwordLabel, gridBagConstraints);
 
         passwordInput.setBackground(new java.awt.Color(225, 225, 225));
+        passwordInput.setBorder(null);
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordInputActionPerformed(evt);
@@ -187,8 +148,9 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
         add(passwordInput, gridBagConstraints);
 
-        loginButton.setBackground(new java.awt.Color(255, 61, 61));
-        loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.setBackground(Palette.mainColor);
+        loginButton.setFont(FontManager.boldFont);
+        loginButton.setForeground(Palette.bgColor);
         loginButton.setText("Iniciar sesión");
         loginButton.setAlignmentX(0.5F);
         loginButton.setBorder(null);
@@ -206,12 +168,17 @@ public class LoginPage extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 249));
 
+        noaccountLabel.setFont(FontManager.regularFont);
+        noaccountLabel.setForeground(Palette.textColor);
         noaccountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         noaccountLabel.setText("¿No tienes cuenta?");
         jPanel1.add(noaccountLabel);
 
+        registerLabel.setFont(FontManager.boldFont);
+        registerLabel.setForeground(Palette.mainColor);
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         registerLabel.setText("Crea una ahora.");
+        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(registerLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -219,6 +186,8 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 7;
         add(jPanel1, gridBagConstraints);
 
+        errorLabel.setFont(FontManager.regularFont);
+        errorLabel.setForeground(Palette.secondaryColor);
         errorLabel.setText("Usuario o contraseña incorrectos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
