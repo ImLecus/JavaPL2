@@ -7,7 +7,8 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
-
+import style.Style;
+import poo.javabnb.FontManager;
 /**
  *
  * @author Alumno
@@ -64,60 +65,58 @@ public class MainPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        searchBar = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
-        comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        searchBar = new javax.swing.JTextField();
+        comboBox = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
 
-        searchBar.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        searchBar.setText("Barra de busqueda");
-
-        searchButton.setText("Buscar");
-
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
-        comboBox.setToolTipText("");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addComponent(comboBox))
-                    .addComponent(searchBar, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
+        muroScroll.setBackground(new java.awt.Color(255, 248, 249));
+        muroScroll.setForeground(new java.awt.Color(255, 248, 249));
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         add(muroScroll, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(255, 248, 249));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        searchBar.setBackground(Style.INPUT_BG_COLOR);
+        searchBar.setText("Barra de busqueda");
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 580, 30));
+
+        comboBox.setBackground(new java.awt.Color(255, 248, 249));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setToolTipText("");
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(656, 12, 230, 30));
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBarActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane muroScroll;
     private javax.swing.JTextField searchBar;
-    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
