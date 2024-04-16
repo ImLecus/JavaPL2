@@ -28,11 +28,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="barraDeBusquedaTextField" min="-2" pref="525" max="-2" attributes="0"/>
+                  <Component id="searchBar" min="-2" pref="525" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="searchButton" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace pref="84" max="32767" attributes="0"/>
-                  <Component id="comboBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -44,9 +44,9 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="searchButton" alignment="3" pref="32" max="32767" attributes="0"/>
-                          <Component id="comboBox1" alignment="3" max="32767" attributes="0"/>
+                          <Component id="comboBox" alignment="3" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="barraDeBusquedaTextField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="searchBar" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -54,21 +54,18 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="barraDeBusquedaTextField">
+        <Component class="javax.swing.JTextField" name="searchBar">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Barra de busqueda"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="barraDeBusquedaTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboBox1">
+        <Component class="javax.swing.JComboBox" name="comboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
@@ -81,9 +78,6 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBox1ActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
