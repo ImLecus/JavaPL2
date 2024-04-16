@@ -107,6 +107,7 @@ public class LoginPage extends javax.swing.JPanel {
         add(mailLabel, gridBagConstraints);
 
         mailInput.setBackground(new java.awt.Color(225, 225, 225));
+        mailInput.setFont(FontManager.regularFont);
         mailInput.setBorder(null);
         mailInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,12 +134,8 @@ public class LoginPage extends javax.swing.JPanel {
         add(passwordLabel, gridBagConstraints);
 
         passwordInput.setBackground(new java.awt.Color(225, 225, 225));
+        passwordInput.setFont(FontManager.regularFont);
         passwordInput.setBorder(null);
-        passwordInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordInputActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -199,10 +196,6 @@ public class LoginPage extends javax.swing.JPanel {
     private void mailInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mailInputActionPerformed
-
-    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordInputActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

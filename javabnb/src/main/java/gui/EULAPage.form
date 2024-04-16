@@ -22,6 +22,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="titleEula">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FontManager.titleFont" type="code"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="EULA"/>
       </Properties>
@@ -33,11 +36,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="leidoButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FontManager.regularFont" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Hecho"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leidoButtonActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Last"/>
@@ -62,6 +68,9 @@
         <Component class="javax.swing.JTextArea" name="eulaText">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FontManager.regularFont" type="code"/>
+            </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="text" type="java.lang.String" value="Por favor, lea atentamente este Acuerdo de Licencia de Usuario Final (&quot;EULA&quot;) antes de utilizar esta aplicaci&#xf3;n. Al utilizar la aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este acuerdo.&#xa;&#xa;1. Licencia de Uso&#xa;&#xa;1.1. Concesi&#xf3;n de Licencia: El titular de los derechos de autor de esta aplicaci&#xf3;n (&quot;Licenciante&quot;) le otorga una licencia limitada, no exclusiva, intransferible y revocable para utilizar la aplicaci&#xf3;n &#xfa;nicamente para fines personales y no comerciales.&#xa;&#xa;1.2. Restricciones: Usted no puede sublicenciar, transferir, distribuir ni vender la aplicaci&#xf3;n ni su contenido. Tampoco puede modificar, adaptar, realizar ingenier&#xed;a inversa, descompilar o desensamblar la aplicaci&#xf3;n, ni intentar crear trabajos derivados basados en la misma.&#xa;&#xa;2. Propiedad&#xa;&#xa;2.1. Derechos de Propiedad: Usted reconoce y acepta que la aplicaci&#xf3;n y todos los derechos de propiedad intelectual asociados son propiedad exclusiva del Licenciante. Este acuerdo no le otorga ning&#xfa;n derecho de propiedad sobre la aplicaci&#xf3;n, excepto por la licencia limitada expresamente concedida aqu&#xed;.&#xa;&#xa;3. Uso Aceptable&#xa;&#xa;3.1. Cumplimiento de las Leyes: Usted se compromete a utilizar la aplicaci&#xf3;n de conformidad con todas las leyes, normativas y regulaciones aplicables.&#xa;&#xa;3.2. Contenido del Usuario: Al utilizar la aplicaci&#xf3;n, usted acepta ser el &#xfa;nico responsable del contenido que comparta a trav&#xe9;s de la misma, y garantiza que dicho contenido cumple con estos t&#xe9;rminos y condiciones, as&#xed; como con cualquier ley aplicable.&#xa;&#xa;4. Exclusi&#xf3;n de Garant&#xed;as&#xa;&#xa;4.1. La aplicaci&#xf3;n se proporciona &quot;tal cual&quot; y &quot;seg&#xfa;n disponibilidad&quot;, sin garant&#xed;as de ning&#xfa;n tipo, ya sean expresas o impl&#xed;citas. El Licenciante no garantiza la exactitud, fiabilidad ni la disponibilidad continua de la aplicaci&#xf3;n.&#xa;&#xa;5. Limitaci&#xf3;n de Responsabilidad&#xa;&#xa;5.1. En ning&#xfa;n caso el Licenciante ser&#xe1; responsable por da&#xf1;os directos, indirectos, incidentales, especiales, ejemplares o consecuentes, incluyendo, pero no limitado a, p&#xe9;rdida de beneficios, datos o uso, incluso si se le ha advertido de la posibilidad de tales da&#xf1;os.&#xa;&#xa;6. Terminaci&#xf3;n&#xa;&#xa;6.1. Este acuerdo tendr&#xe1; vigencia hasta que sea terminado por usted o por el Licenciante. El Licenciante se reserva el derecho de terminar este acuerdo en cualquier momento y sin previo aviso si usted viola alguno de los t&#xe9;rminos y condiciones establecidos en el mismo.&#xa;&#xa;7. Ley Aplicable&#xa;&#xa;7.1. Este acuerdo se regir&#xe1; e interpretar&#xe1; de acuerdo con las leyes del pa&#xed;s o jurisdicci&#xf3;n del Licenciante, sin tener en cuenta sus conflictos de principios legales.&#xa;&#xa;Al utilizar esta aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este Acuerdo de Licencia de Usuario Final. Si no est&#xe1; de acuerdo con estos t&#xe9;rminos, por favor no utilice la aplicaci&#xf3;n.&#xa;&#xa;Fecha de entrada en vigencia: 01/05/2024&#xa;&#xa;&#xa;"/>

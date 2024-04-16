@@ -36,9 +36,9 @@ public class Main {
                 default:
                     break;
             }
-            FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont,  Palette.textColor);
-            FontManager.useFont(searchButton, FontManager.boldFont,  Palette.textColor);
-            FontManager.useFont(comboBox1, FontManager.boldFont,  Palette.textColor);
+            //FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont,  Palette.textColor);
+            //FontManager.useFont(searchButton, FontManager.boldFont,  Palette.textColor);
+            //FontManager.useFont(comboBox1, FontManager.boldFont,  Palette.textColor);
             barraDeBusquedaTextField.setBorder(null);
             muroScroll.setBorder(null);
             searchButton.setBorder(null);

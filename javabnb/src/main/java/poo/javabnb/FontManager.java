@@ -1,10 +1,6 @@
 package poo.javabnb;
 
 import gui.App;
-import style.Palette;
-
-import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.io.InputStream;
 
@@ -33,33 +29,6 @@ public class FontManager {
         catch (Exception e){
             e.printStackTrace();
             return null;
-        }
-    }
-
-    public static void useFont(JComponent component, Font font, Color color){
-        component.setFont(font);
-        component.setForeground(color);
-    }
-
-    public static void setRegularFont(JComponent[] components){
-        for (JComponent c: components){
-            useFont(c, regularFont, Palette.textColor);
-        }
-    }
-
-    public static void setErrorFont(JComponent[] components){
-        for (JComponent c: components){
-            useFont(c, regularFont, Palette.secondaryColor);
-        }
-    }
-    public static void setSubTextFont(JComponent[] components){
-        for (JComponent c: components){
-            useFont(c, subText, Palette.textColor);
-        }
-    }
-    public static void setAnchorFont(JComponent[] components){
-        for (JComponent c: components){
-            useFont(c, boldFont, Palette.mainColor);
         }
     }
 }

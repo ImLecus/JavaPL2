@@ -28,12 +28,12 @@ public class Profile {
    private JLabel tumailLabel;
 
    public Profile(){
-      FontManager.useFont(tittleLabel, FontManager.titleFont, Palette.textColor);
-      FontManager.useFont(usuarioLabel, FontManager.regularFont, Palette.textColor);
-      FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
-      FontManager.useFont(dniLabel, FontManager.regularFont, Palette.textColor);
-      FontManager.useFont(passLabel, FontManager.regularFont, Palette.textColor);
-      FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
+      //FontManager.useFont(tittleLabel, FontManager.titleFont, Palette.textColor);
+      //FontManager.useFont(usuarioLabel, FontManager.regularFont, Palette.textColor);
+      //FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
+      //FontManager.useFont(dniLabel, FontManager.regularFont, Palette.textColor);
+      //FontManager.useFont(passLabel, FontManager.regularFont, Palette.textColor);
+      //FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
       forgotpassLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
       forgotpassLabel.addMouseListener(new MouseAdapter() {
          public void mouseEntered (MouseEvent e) {forgotpassLabel.setForeground(Palette.highlightColor);}

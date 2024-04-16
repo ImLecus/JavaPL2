@@ -19,12 +19,16 @@ public class Palette {
     public static void highlightOnHover(JButton component){
         component.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e) {
-                component.setBackground(Palette.highlightColor);
+                if(component.isEnabled()){
+                    component.setBackground(Palette.highlightColor);
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                component.setBackground(Palette.mainColor);
+                if(component.isEnabled()){
+                    component.setBackground(Palette.mainColor);
+                }
             }
         });
     }
@@ -32,12 +36,16 @@ public class Palette {
     public static void highlightOnHover(JLabel component){
         component.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e) {
-                component.setForeground(Palette.highlightColor);
+                if(component.isEnabled()){
+                    component.setForeground(Palette.highlightColor);
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                component.setForeground(Palette.mainColor);
+                if(component.isEnabled()){
+                    component.setForeground(Palette.mainColor);
+                }
             }
         });
     }

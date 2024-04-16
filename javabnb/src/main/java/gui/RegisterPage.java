@@ -4,13 +4,10 @@
  */
 package gui;
 
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JComponent;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Validate;
@@ -21,7 +18,52 @@ import style.Palette;
  * @author Alumno
  */
 public class RegisterPage extends javax.swing.JPanel {
-private void register() {
+    
+    public RegisterPage() {
+        initComponents();
+        resetErrorLabels();
+        submitButton.setEnabled(false);
+        submitButton.setBackground(Palette.textColor);
+
+        
+        eulaLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                resetErrorLabels();
+                resetText();
+                App.redirect("EULA");
+            }
+        });
+        Palette.highlightOnHover(eulaLabel);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetErrorLabels();
+                register();
+            }
+        });
+        Palette.highlightOnHover(submitButton);
+
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetText();
+                resetErrorLabels();
+                App.redirect("LOGIN");
+            }
+        });
+
+        termsCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                submitButton.setEnabled(termsCheckbox.isSelected());
+                submitButton.setBackground(submitButton.isEnabled() ? Palette.mainColor : Palette.textColor);
+            }
+        });
+    }
+    
+    private void register() {
         boolean name = Validate.validateName(nameInput.getText());
         errorLabel1.setVisible(!name);
         boolean phone = Validate.validatePhone(phoneInput.getText());
@@ -70,118 +112,6 @@ private void register() {
         errorLabel3.setVisible(false);
         errorLabel4.setVisible(false);
         errorLabel5.setVisible(false);
-    }
-    /**
-     * Creates new form RegisterPage
-     */
-    public RegisterPage() {
-        initComponents();
-        resetErrorLabels();
-        submitButton.setEnabled(false);
-        submitButton.setBackground(Palette.textColor);
-
-        eulaLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        eulaLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                resetErrorLabels();
-                resetText();
-                App.redirect("EULA");
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                eulaLabel.setForeground(Palette.highlightColor);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                eulaLabel.setForeground(Palette.mainColor);
-            }
-        });
-
-        FontManager.useFont(submitButton, FontManager.boldFont, Color.WHITE);
-        submitButton.setBorder(null);
-        submitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetErrorLabels();
-                register();
-            }
-        });
-        submitButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                if(submitButton.isEnabled()){
-                    submitButton.setBackground(Palette.highlightColor);
-                }
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                if(submitButton.isEnabled()) {
-                    submitButton.setBackground(Palette.mainColor);
-                }
-            }
-        });
-
-        atrasButton.setBorder(null);
-        atrasButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        atrasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetText();
-                resetErrorLabels();
-                App.redirect("LOGIN");
-            }
-
-        });
-
-        nameInput.setBorder(null);
-        mailInput.setBorder(null);
-        DNIInput.setBorder(null);
-        phoneInput.setBorder(null);
-        passwordInput.setBorder(null);
-
-        FontManager.setRegularFont(new JComponent[]{
-                termsCheckbox,
-                nameLabel,
-                mailLabel,
-                DNILabel,
-                phoneLabel,
-                passwordLabel,
-                nameInput,
-                mailInput,
-                DNIInput,
-                mailInput,
-                passwordInput
-        });
-        FontManager.setErrorFont(new JComponent[]{
-                errorLabel1,
-                errorLabel2,
-                errorLabel3,
-                errorLabel4,
-                errorLabel5
-        });
-        FontManager.setSubTextFont(new JComponent[]{
-                passwordLabel2, passwordLabel3
-        });
-        FontManager.setAnchorFont(new JComponent[]{
-                eulaLabel
-        });
-
-        FontManager.useFont(title, FontManager.titleFont, Palette.textColor);
-
-        termsCheckbox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                submitButton.setEnabled(termsCheckbox.isSelected());
-                submitButton.setBackground(submitButton.isEnabled() ? Palette.mainColor : Palette.textColor);
-            }
-        });
     }
 
     /**
@@ -234,15 +164,12 @@ private void register() {
 
         atrasButton.setBackground(new java.awt.Color(255, 248, 249));
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
+        atrasButton.setBorder(null);
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         atrasButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        atrasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasButtonActionPerformed(evt);
-            }
-        });
         jPanel6.add(atrasButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         add(jPanel6, java.awt.BorderLayout.PAGE_START);
@@ -250,17 +177,17 @@ private void register() {
         jPanel7.setBackground(new java.awt.Color(255, 248, 249));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
+        title.setFont(FontManager.titleFont);
+        title.setForeground(Palette.textColor);
         title.setText("Crea tu cuenta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         jPanel7.add(title, gridBagConstraints);
 
         nameInput.setBackground(new java.awt.Color(225, 225, 225));
-        nameInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameInputActionPerformed(evt);
-            }
-        });
+        nameInput.setFont(FontManager.regularFont);
+        nameInput.setForeground(Palette.textColor);
+        nameInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -270,6 +197,8 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel7.add(nameInput, gridBagConstraints);
 
+        nameLabel.setFont(FontManager.regularFont);
+        nameLabel.setForeground(Palette.textColor);
         nameLabel.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -278,6 +207,8 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(nameLabel, gridBagConstraints);
 
+        phoneLabel.setFont(FontManager.regularFont);
+        phoneLabel.setForeground(Palette.textColor);
         phoneLabel.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -287,6 +218,9 @@ private void register() {
         jPanel7.add(phoneLabel, gridBagConstraints);
 
         phoneInput.setBackground(new java.awt.Color(225, 225, 225));
+        phoneInput.setFont(FontManager.regularFont);
+        phoneInput.setForeground(Palette.textColor);
+        phoneInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -296,6 +230,8 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel7.add(phoneInput, gridBagConstraints);
 
+        DNILabel.setFont(FontManager.regularFont);
+        DNILabel.setForeground(Palette.textColor);
         DNILabel.setText("DNI");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -305,11 +241,9 @@ private void register() {
         jPanel7.add(DNILabel, gridBagConstraints);
 
         DNIInput.setBackground(new java.awt.Color(225, 225, 225));
-        DNIInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DNIInputActionPerformed(evt);
-            }
-        });
+        DNIInput.setFont(FontManager.regularFont);
+        DNIInput.setForeground(Palette.textColor);
+        DNIInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -319,36 +253,48 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel7.add(DNIInput, gridBagConstraints);
 
+        errorLabel1.setFont(FontManager.regularFont);
+        errorLabel1.setForeground(Palette.secondaryColor);
         errorLabel1.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         jPanel7.add(errorLabel1, gridBagConstraints);
 
+        errorLabel2.setFont(FontManager.regularFont);
+        errorLabel2.setForeground(Palette.secondaryColor);
         errorLabel2.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         jPanel7.add(errorLabel2, gridBagConstraints);
 
+        errorLabel3.setFont(FontManager.regularFont);
+        errorLabel3.setForeground(Palette.secondaryColor);
         errorLabel3.setText("El DNI no existe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         jPanel7.add(errorLabel3, gridBagConstraints);
 
+        errorLabel4.setFont(FontManager.regularFont);
+        errorLabel4.setForeground(Palette.secondaryColor);
         errorLabel4.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
         jPanel7.add(errorLabel4, gridBagConstraints);
 
+        errorLabel5.setFont(FontManager.regularFont);
+        errorLabel5.setForeground(Palette.secondaryColor);
         errorLabel5.setText("La contraseña no cumple los requisitos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 17;
         jPanel7.add(errorLabel5, gridBagConstraints);
 
+        mailLabel.setFont(FontManager.regularFont);
+        mailLabel.setForeground(Palette.textColor);
         mailLabel.setText("Mail");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -358,11 +304,9 @@ private void register() {
         jPanel7.add(mailLabel, gridBagConstraints);
 
         mailInput.setBackground(new java.awt.Color(225, 225, 225));
-        mailInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailInputActionPerformed(evt);
-            }
-        });
+        mailInput.setFont(FontManager.regularFont);
+        mailInput.setForeground(Palette.textColor);
+        mailInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
@@ -372,6 +316,8 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel7.add(mailInput, gridBagConstraints);
 
+        passwordLabel.setFont(FontManager.regularFont);
+        passwordLabel.setForeground(Palette.textColor);
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -381,7 +327,9 @@ private void register() {
         jPanel7.add(passwordLabel, gridBagConstraints);
 
         passwordInput.setBackground(new java.awt.Color(225, 225, 225));
-        passwordInput.setText("jPasswordField1");
+        passwordInput.setFont(FontManager.regularFont);
+        passwordInput.setForeground(Palette.textColor);
+        passwordInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
@@ -391,6 +339,8 @@ private void register() {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel7.add(passwordInput, gridBagConstraints);
 
+        passwordLabel2.setFont(FontManager.subText);
+        passwordLabel2.setForeground(Palette.textColor);
         passwordLabel2.setText("La contraseña debe tener como mínimo 8 caracteres,");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -398,6 +348,8 @@ private void register() {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel7.add(passwordLabel2, gridBagConstraints);
 
+        passwordLabel3.setFont(FontManager.subText);
+        passwordLabel3.setForeground(Palette.textColor);
         passwordLabel3.setText("una mayúscula y un número.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -408,15 +360,15 @@ private void register() {
         jPanel1.setBackground(new java.awt.Color(255, 248, 249));
 
         termsCheckbox.setBackground(new java.awt.Color(255, 248, 249));
+        termsCheckbox.setFont(FontManager.regularFont);
+        termsCheckbox.setForeground(Palette.textColor);
         termsCheckbox.setText("Acepta los términos de uso");
-        termsCheckbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                termsCheckboxActionPerformed(evt);
-            }
-        });
         jPanel1.add(termsCheckbox);
 
+        eulaLabel.setFont(FontManager.boldFont);
+        eulaLabel.setForeground(Palette.mainColor);
         eulaLabel.setText("y el EULA");
+        eulaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(eulaLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -424,13 +376,12 @@ private void register() {
         gridBagConstraints.gridy = 18;
         jPanel7.add(jPanel1, gridBagConstraints);
 
+        submitButton.setFont(FontManager.boldFont);
+        submitButton.setForeground(Palette.bgColor);
         submitButton.setText("Registrarse");
+        submitButton.setBorder(null);
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitButton.setFocusable(false);
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 19;
@@ -441,30 +392,6 @@ private void register() {
 
         add(jPanel7, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameInputActionPerformed
-
-    private void DNIInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DNIInputActionPerformed
-
-    private void mailInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailInputActionPerformed
-
-    private void termsCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_termsCheckboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_termsCheckboxActionPerformed
-
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitButtonActionPerformed
-
-    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_atrasButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
