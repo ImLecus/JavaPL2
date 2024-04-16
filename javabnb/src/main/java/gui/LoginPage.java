@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Session;
@@ -28,8 +29,10 @@ public class LoginPage extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e){
                 viewPassword = !viewPassword;
-                System.out.println("ver contraseña: "+ viewPassword);
                 passwordInput.setEchoChar(viewPassword? '\0' : '\u2022');
+                passwordViewToggle.setIcon(new ImageIcon(
+                        getClass().getResource(viewPassword? "/images/eye_closed.png" : "/images/eye_open.png")
+                ));
             }
         });
         
@@ -99,7 +102,7 @@ public class LoginPage extends javax.swing.JPanel {
         errorLabel = new javax.swing.JLabel();
         passwordPanel = new javax.swing.JPanel();
         passwordInput = new javax.swing.JPasswordField();
-        passwordViewToggle = new javax.swing.JToggleButton();
+        passwordViewToggle = new javax.swing.JButton();
         leftSide = new javax.swing.JPanel();
         logo = new javax.swing.JButton();
 
@@ -201,7 +204,7 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 7, 0);
         rightSide.add(errorLabel, gridBagConstraints);
 
-        passwordPanel.setLayout(new java.awt.BorderLayout(0, 8));
+        passwordPanel.setLayout(new java.awt.BorderLayout());
 
         passwordInput.setBackground(Style.INPUT_BG_COLOR);
         passwordInput.setFont(FontManager.regularFont);
@@ -218,13 +221,9 @@ public class LoginPage extends javax.swing.JPanel {
         passwordViewToggle.setBackground(Style.INPUT_BG_COLOR);
         passwordViewToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_open.png"))); // NOI18N
         passwordViewToggle.setBorder(null);
-        passwordViewToggle.setBorderPainted(false);
-        passwordViewToggle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        passwordViewToggle.setFocusPainted(false);
         passwordViewToggle.setFocusable(false);
-        passwordViewToggle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         passwordViewToggle.setPreferredSize(new java.awt.Dimension(30, 17));
-        passwordPanel.add(passwordViewToggle, java.awt.BorderLayout.LINE_END);
+        passwordPanel.add(passwordViewToggle, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -274,7 +273,7 @@ public class LoginPage extends javax.swing.JPanel {
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel passwordPanel;
-    private javax.swing.JToggleButton passwordViewToggle;
+    private javax.swing.JButton passwordViewToggle;
     private javax.swing.JLabel registerLabel;
     private javax.swing.JPanel rightSide;
     private javax.swing.JLabel title;
