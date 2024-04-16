@@ -1,10 +1,12 @@
 package gui;
+import java.awt.CardLayout;
+import java.awt.Dimension;
 import poo.javabnb.Client;
 import poo.javabnb.DataBase;
 import poo.javabnb.Session;
-
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class App {
 
@@ -14,12 +16,12 @@ public class App {
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
 
-    private static final LoginPage login = new LoginPage();
-    private static final RegisterPage register = new RegisterPage();
-    private static final MainPage main = new MainPage();
-    private static final ProfilePage profile = new ProfilePage();
-    private static final PinnedPostsPage pinnedPosts = new PinnedPostsPage();
-    private static final EULAPage eula = new EULAPage();
+    private static final LoginPage login =                   new LoginPage();
+    private static final RegisterPage register =             new RegisterPage();
+    private static final MainPage main =                     new MainPage();
+    private static final ProfilePage profile =               new ProfilePage();
+    private static final PinnedPostsPage pinnedPosts =       new PinnedPostsPage();
+    private static final EULAPage eula =                     new EULAPage();
 
     public static JFrame frame = new JFrame("JavaB&B");
 
@@ -63,7 +65,7 @@ public class App {
         frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(700, 710));
+        frame.setMinimumSize(new Dimension(1000, 710));
         frame.setVisible(true);
     }
 
