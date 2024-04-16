@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Session;
@@ -14,11 +15,27 @@ public class LoginPage extends javax.swing.JPanel {
         mailInput.setText("");
         passwordInput.setText("");
         errorLabel.setVisible(false);
+        viewPassword = false;
     }
+    
+    boolean viewPassword = false;
     
     public LoginPage() {
         initComponents();
         errorLabel.setVisible(false);
+        
+        
+        passwordViewToggle.addActionListener(new ActionListener (){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                viewPassword = !viewPassword;
+                passwordInput.setEchoChar(viewPassword? '\0' : '\u2022');
+                passwordViewToggle.setIcon(new ImageIcon(
+                        getClass().getResource(viewPassword? "/images/eye_closed.png" : "/images/eye_open.png")
+                ));
+            }
+        });
+        
         
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -73,28 +90,30 @@ public class LoginPage extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel3 = new javax.swing.JPanel();
+        rightSide = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
         mailLabel = new javax.swing.JLabel();
         mailInput = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        passwordInput = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         noaccountLabel = new javax.swing.JLabel();
         registerLabel = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        passwordPanel = new javax.swing.JPanel();
+        passwordInput = new javax.swing.JPasswordField();
+        passwordViewToggle = new javax.swing.JButton();
+        leftSide = new javax.swing.JPanel();
         logo = new javax.swing.JButton();
 
         setBackground(Style.BG_COLOR);
         setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 248, 249));
-        jPanel3.setAlignmentX(0.4F);
-        jPanel3.setMinimumSize(new java.awt.Dimension(600, 710));
-        jPanel3.setPreferredSize(new java.awt.Dimension(500, 710));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        rightSide.setBackground(new java.awt.Color(255, 248, 249));
+        rightSide.setAlignmentX(0.4F);
+        rightSide.setMinimumSize(new java.awt.Dimension(600, 710));
+        rightSide.setPreferredSize(new java.awt.Dimension(500, 710));
+        rightSide.setLayout(new java.awt.GridBagLayout());
 
         title.setFont(FontManager.titleFont);
         title.setForeground(style.Style.TEXT_COLOR);
@@ -103,53 +122,41 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        jPanel3.add(title, gridBagConstraints);
+        rightSide.add(title, gridBagConstraints);
 
         mailLabel.setFont(FontManager.regularFont);
         mailLabel.setForeground(style.Style.TEXT_COLOR);
         mailLabel.setText("Correo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
-        jPanel3.add(mailLabel, gridBagConstraints);
+        rightSide.add(mailLabel, gridBagConstraints);
 
         mailInput.setBackground(Style.INPUT_BG_COLOR);
         mailInput.setFont(FontManager.regularFont);
         mailInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        jPanel3.add(mailInput, gridBagConstraints);
+        rightSide.add(mailInput, gridBagConstraints);
 
         passwordLabel.setFont(FontManager.regularFont);
         passwordLabel.setForeground(style.Style.TEXT_COLOR);
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
-        jPanel3.add(passwordLabel, gridBagConstraints);
-
-        passwordInput.setBackground(Style.INPUT_BG_COLOR);
-        passwordInput.setFont(FontManager.regularFont);
-        passwordInput.setBorder(null);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 24;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
-        jPanel3.add(passwordInput, gridBagConstraints);
+        rightSide.add(passwordLabel, gridBagConstraints);
 
         loginButton.setBackground(style.Style.MAIN_COLOR);
         loginButton.setFont(FontManager.boldFont);
@@ -162,11 +169,11 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.ipadx = 36;
         gridBagConstraints.ipady = 12;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        jPanel3.add(loginButton, gridBagConstraints);
+        rightSide.add(loginButton, gridBagConstraints);
 
         jPanel4.setBackground(new java.awt.Color(255, 248, 249));
 
@@ -185,43 +192,79 @@ public class LoginPage extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        jPanel3.add(jPanel4, gridBagConstraints);
+        gridBagConstraints.gridy = 8;
+        rightSide.add(jPanel4, gridBagConstraints);
 
         errorLabel.setFont(FontManager.regularFont);
         errorLabel.setForeground(style.Style.SECONDARY_COLOR);
         errorLabel.setText("Usuario o contraseña incorrectos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 7, 0);
-        jPanel3.add(errorLabel, gridBagConstraints);
+        rightSide.add(errorLabel, gridBagConstraints);
 
-        add(jPanel3, java.awt.BorderLayout.CENTER);
+        passwordPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(Style.MAIN_COLOR);
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        passwordInput.setBackground(Style.INPUT_BG_COLOR);
+        passwordInput.setFont(FontManager.regularFont);
+        passwordInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        passwordInput.setBorder(null);
+        passwordInput.setMinimumSize(new java.awt.Dimension(64, 25));
+        passwordInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordInputActionPerformed(evt);
+            }
+        });
+        passwordPanel.add(passwordInput, java.awt.BorderLayout.CENTER);
+
+        passwordViewToggle.setBackground(Style.INPUT_BG_COLOR);
+        passwordViewToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_open.png"))); // NOI18N
+        passwordViewToggle.setBorder(null);
+        passwordViewToggle.setFocusable(false);
+        passwordViewToggle.setPreferredSize(new java.awt.Dimension(30, 17));
+        passwordPanel.add(passwordViewToggle, java.awt.BorderLayout.EAST);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        rightSide.add(passwordPanel, gridBagConstraints);
+
+        add(rightSide, java.awt.BorderLayout.CENTER);
+
+        leftSide.setBackground(Style.MAIN_COLOR);
+        leftSide.setPreferredSize(new java.awt.Dimension(500, 500));
+        leftSide.setLayout(new java.awt.GridBagLayout());
 
         logo.setBackground(Style.MAIN_COLOR);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logowhite.png"))); // NOI18N
         logo.setBorder(null);
+        logo.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logowhite.png"))); // NOI18N
+        logo.setEnabled(false);
+        logo.setFocusPainted(false);
         logo.setFocusable(false);
         logo.setMargin(new java.awt.Insets(200, 200, 200, 200));
         logo.setMaximumSize(new java.awt.Dimension(200, 200));
         logo.setMinimumSize(new java.awt.Dimension(50, 50));
         logo.setPreferredSize(new java.awt.Dimension(375, 375));
-        jPanel1.add(logo, new java.awt.GridBagConstraints());
+        leftSide.add(logo, new java.awt.GridBagConstraints());
 
-        add(jPanel1, java.awt.BorderLayout.WEST);
+        add(leftSide, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordInputActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel leftSide;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton logo;
     private javax.swing.JTextField mailInput;
@@ -229,7 +272,10 @@ public class LoginPage extends javax.swing.JPanel {
     private javax.swing.JLabel noaccountLabel;
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JLabel passwordLabel;
+    private javax.swing.JPanel passwordPanel;
+    private javax.swing.JButton passwordViewToggle;
     private javax.swing.JLabel registerLabel;
+    private javax.swing.JPanel rightSide;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
