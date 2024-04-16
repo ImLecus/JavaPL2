@@ -221,6 +221,7 @@ public class LoginPage extends javax.swing.JPanel {
         passwordViewToggle.setBackground(Style.INPUT_BG_COLOR);
         passwordViewToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_open.png"))); // NOI18N
         passwordViewToggle.setBorder(null);
+        passwordViewToggle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         passwordViewToggle.setFocusable(false);
         passwordViewToggle.setPreferredSize(new java.awt.Dimension(30, 17));
         passwordPanel.add(passwordViewToggle, java.awt.BorderLayout.EAST);

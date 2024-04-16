@@ -6,18 +6,31 @@ import style.Style;
 import poo.javabnb.FontManager;
 
 public class ProfilePage extends javax.swing.JPanel {
-
+    
+    private boolean isEditing = false;
+    
     public ProfilePage() {
         initComponents();
         reloadInfo();
+        
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
         });
+        
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                isEditing = true;
+                userPhoneLabel.setEditable(isEditing);
+                userMailLabel.setEditable(isEditing);
+            }
+        });
+        
     }
     
     public void reloadInfo(){
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
+        //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
     }
@@ -33,101 +46,105 @@ public class ProfilePage extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        pfp = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
         userNameLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        userDNILabel = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        userMailLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        userPhoneLabel = new javax.swing.JLabel();
+        mailLabel = new javax.swing.JLabel();
+        userMailLabel = new javax.swing.JTextField();
+        phoneLabel = new javax.swing.JLabel();
+        userPhoneLabel = new javax.swing.JTextField();
+        banner = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setBackground(Style.BG_COLOR);
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setForeground(Style.TEXT_COLOR);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        backButton.setBackground(Style.BG_COLOR);
+        backButton.setBackground(Style.TRANSPARENT_COLOR);
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
         backButton.setFocusable(false);
-        jPanel2.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        pfp.setBackground(Style.BG_COLOR);
+        pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
+        pfp.setBorder(null);
+        pfp.setBorderPainted(false);
+        pfp.setContentAreaFilled(false);
+        pfp.setDefaultCapable(false);
+        pfp.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
+        pfp.setEnabled(false);
+        pfp.setFocusPainted(false);
+        pfp.setFocusable(false);
+        add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+
+        editButton.setText("Editar perfil");
+        editButton.setBorder(null);
+        editButton.setBorderPainted(false);
+        add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+
+        userNameLabel.setFont(FontManager.titleFont);
+        userNameLabel.setText("Nombre");
+        add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+
+        mailLabel.setFont(FontManager.boldFont);
+        mailLabel.setText("Correo");
+        add(mailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+
+        userMailLabel.setEditable(false);
+        userMailLabel.setText("****");
+        userMailLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userMailLabelActionPerformed(evt);
+            }
+        });
+        add(userMailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
+
+        phoneLabel.setFont(FontManager.boldFont);
+        phoneLabel.setText("Teléfono");
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
+
+        userPhoneLabel.setEditable(false);
+        userPhoneLabel.setText("****");
+        add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
+
+        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.jpg"))); // NOI18N
+        banner.setBorder(null);
+        banner.setBorderPainted(false);
+        banner.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.jpg"))); // NOI18N
+        banner.setEnabled(false);
+        banner.setFocusPainted(false);
+        banner.setFocusable(false);
+        banner.setRequestFocusEnabled(false);
+        banner.setRolloverEnabled(false);
+        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -230, -1, -1));
 
         jLabel1.setFont(FontManager.titleFont);
-        jLabel1.setText("Perfil");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
-
-        add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new java.awt.GridBagConstraints());
-
-        userNameLabel.setText(App.session == null ? "null" : App.session.user.getName());
-        jPanel1.add(userNameLabel, new java.awt.GridBagConstraints());
-
-        jLabel4.setText("DNI");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        jPanel1.add(jLabel4, gridBagConstraints);
-
-        userDNILabel.setText("****");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        jPanel1.add(userDNILabel, gridBagConstraints);
-
-        jLabel6.setText("Correo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        jPanel1.add(jLabel6, gridBagConstraints);
-
-        userMailLabel.setText("****");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        jPanel1.add(userMailLabel, gridBagConstraints);
-
-        jLabel8.setText("Teléfono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        jPanel1.add(jLabel8, gridBagConstraints);
-
-        userPhoneLabel.setText("****");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        jPanel1.add(userPhoneLabel, gridBagConstraints);
-
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        jLabel1.setForeground(Style.TEXT_COLOR);
+        jLabel1.setText("Inmuebles guardados");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void userMailLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMailLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userMailLabelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton banner;
+    private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel userDNILabel;
-    private javax.swing.JLabel userMailLabel;
+    private javax.swing.JLabel mailLabel;
+    private javax.swing.JButton pfp;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;
-    private javax.swing.JLabel userPhoneLabel;
+    private javax.swing.JTextField userPhoneLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,8 @@ public class Style {
     public static Color INPUT_BG_COLOR =        new Color(225,225,225);
     // Disabled background color
     public static Color DISABLED_COLOR =        new Color(80,80,80);
+    // Transparent color
+    public static Color TRANSPARENT_COLOR =     new Color(0,0,0,0);
     
     /**
      * Applies HIGHLIGHT_COLOR to the element when the mouse is hovering
