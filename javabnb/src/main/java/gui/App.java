@@ -14,24 +14,24 @@ public class App {
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
 
-    private static final Login login = new Login();
-    private static final Register register = new Register();
-    private static final Main main = new Main();
-    private static final Profile profile = new Profile();
-    private static final PinnedPosts pinnedPosts = new PinnedPosts();
-    private static final EULA eula = new EULA();
+    private static final LoginPage login = new LoginPage();
+    //private static final Register register = new Register();
+    //private static final Main main = new Main();
+    //private static final Profile profile = new Profile();
+    //private static final PinnedPosts pinnedPosts = new PinnedPosts();
+    //private static final EULA eula = new EULA();
 
     public static JFrame frame = new JFrame("JavaB&B");
 
 
     public static void main(String[] args){
         db.add(new Client("00000000E","Example", "example", "example","666666666"));
-        cards.add(login.panel, "LOGIN");
-        cards.add(register.panel, "REGISTER");
-        cards.add(main.panel, "MAIN");
-        cards.add(profile.panel, "PROFILE");
-        cards.add(pinnedPosts.panel, "PINNED_POSTS");
-        cards.add(eula.panel, "EULA");
+        cards.add(login, "LOGIN");
+        //cards.add(register.panel, "REGISTER");
+        //cards.add(main.panel, "MAIN");
+        //cards.add(profile.panel, "PROFILE");
+        //cards.add(pinnedPosts.panel, "PINNED_POSTS");
+        //cards.add(eula.panel, "EULA");
         setupFrame();
         redirect("LOGIN");
     }
