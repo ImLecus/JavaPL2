@@ -53,4 +53,20 @@ public class DataBase {
         passwords.add(client.getPassword());
         users.add(client);
     }
+    
+    /**
+     * Removes an entry based on the index, moves
+     * the last entry to the free index and removes
+     * the duplicated entry.
+     * @param index the entry index
+     */
+    public void remove(int index){
+        mails.set(index, mails.getLast());
+        passwords.set(index, passwords.getLast());
+        users.set(index, users.getLast());
+        
+        mails.removeLast();
+        passwords.removeLast();
+        users.removeLast();
+    }
 }
