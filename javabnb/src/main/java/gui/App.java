@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class App {
 
-    public static DataBase db = new DataBase();
+    public static DataBase db; 
     public static Session session = null;
 
     private static final CardLayout cardLayout = new CardLayout();
@@ -25,7 +25,16 @@ public class App {
 
 
     public static void main(String[] args){
-        db.add(new Client("00000000E","Example", "example", "example","666666666"));
+        
+        try{
+            db = DataBase.from("data.dat");
+        }
+        catch(Exception e){
+            System.out.println(e.fillInStackTrace());
+            db = new DataBase();
+            db.add(new Client("00000000E","Example", "example", "example","666666666"));
+        }
+
         cards.add(login, "LOGIN");
         cards.add(register, "REGISTER");
         cards.add(main, "MAIN");

@@ -20,23 +20,14 @@ public class Session {
     }
 
     /**
-     * Finishes the actual session and saves the data.
+     * Finishes the actual session.
      */
     public void endSession() {
-        saveData();
         finished = true;
     }
 
-    /**
-     * Updates the current session and saves the data.
-     */
-    public void updateSession() {
-        saveData();
-    }
+        
 
-    private void saveData(){
-
-    }
 
     /**
      * Creates a new session and generates a session ID.

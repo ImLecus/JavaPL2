@@ -1,5 +1,8 @@
 package poo.javabnb;
-public class Client {
+
+import java.io.Serializable;
+
+public class Client implements Serializable {
     private final String DNI;
     private String name;
     private String mail;

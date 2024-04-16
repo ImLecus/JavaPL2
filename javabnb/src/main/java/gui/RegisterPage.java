@@ -81,6 +81,12 @@ public class RegisterPage extends javax.swing.JPanel {
                     phoneInput.getText()
             );
             App.db.add(client);
+            try{
+               App.db.saveData(); 
+            }
+            catch(Exception e){
+                System.out.println(e.fillInStackTrace());
+            }
             App.redirect("LOGIN");
         }
         resetText();
