@@ -4,6 +4,9 @@
  */
 package gui;
 
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author Alumno
@@ -26,19 +29,98 @@ public class MainPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel2 = new javax.swing.JPanel();
+        barraDeBusquedaTextField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        comboBox1 = new javax.swing.JComboBox<>();
+        muroScroll = new javax.swing.JScrollPane();
+
+        setLayout(new java.awt.BorderLayout());
+
+        barraDeBusquedaTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        barraDeBusquedaTextField.setText("Barra de busqueda");
+        barraDeBusquedaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barraDeBusquedaTextFieldActionPerformed(evt);
+            }
+        });
+
+        searchButton.setText("Buscar");
+
+        comboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
+        comboBox1.setToolTipText("");
+        comboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(barraDeBusquedaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(comboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(comboBox1))
+                    .addComponent(barraDeBusquedaTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void barraDeBusquedaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barraDeBusquedaTextFieldActionPerformed
+        public void actionPerformed(ActionEvent evt) {
+                System.out.println("Buscando: " + barraDeBusquedaTextField.getText());
+            }
+    }//GEN-LAST:event_barraDeBusquedaTextFieldActionPerformed
+
+    private void comboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox1ActionPerformed
+        JComboBox cb = (JComboBox) evt.getSource();
+            String selectedItem = (String) cb.getSelectedItem();
+            System.out.println("Item seleccionado: " + selectedItem);
+            switch (selectedItem) {
+                case "Perfil":
+                    App.redirect("PROFILE");
+                    break;
+                case "Post guardados":
+                    App.redirect("PINNED_POSTS");
+                    break;
+                case "Cerrar sesión":
+                    App.session.endSession();
+                    App.redirect("LOGIN");
+                    break;
+                case "Community Guidelines":
+                    App.redirect("COMMUNITY_GUIDELINES");
+                    break;
+                default:
+                    break;
+    }//GEN-LAST:event_comboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField barraDeBusquedaTextField;
+    private javax.swing.JComboBox<String> comboBox1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
