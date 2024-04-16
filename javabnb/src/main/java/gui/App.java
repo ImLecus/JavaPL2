@@ -16,6 +16,7 @@ public class App {
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
 
+    public static JFrame frame = new JFrame("JavaB&B");
     private static final LoginPage login =                   new LoginPage();
     private static final RegisterPage register =             new RegisterPage();
     private static final MainPage main =                     new MainPage();
@@ -23,7 +24,7 @@ public class App {
     private static final PinnedPostsPage pinnedPosts =       new PinnedPostsPage();
     private static final EULAPage eula =                     new EULAPage();
 
-    public static JFrame frame = new JFrame("JavaB&B");
+    
 
 
     public static void main(String[] args){
@@ -53,6 +54,7 @@ public class App {
      * @param page A string with the page name.
      */
     public static void redirect(String page){
+        if("PROFILE".equals(page)){profile.reloadInfo();}
         cardLayout.show(cards, page);
     }
 

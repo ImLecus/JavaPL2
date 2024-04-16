@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
-    </Component>
-  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -15,18 +11,27 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,44,0,0,1,-112"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-119,0,0,3,100"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="titleEula">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Style.BG_COLOR" type="code"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="FontManager.titleFont" type="code"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Style.TEXT_COLOR" type="code"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="EULA"/>
+        <Property name="text" type="java.lang.String" value="Acuerdo de Licencia de Usuario Final"/>
+        <Property name="focusable" type="boolean" value="false"/>
+        <Property name="opaque" type="boolean" value="true"/>
+        <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -34,23 +39,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="leidoButton">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="FontManager.regularFont" type="code"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Hecho"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Last"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="scroll">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -67,13 +56,17 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="eulaText">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Style.BG_COLOR" type="code"/>
+            </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="FontManager.regularFont" type="code"/>
             </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Por favor, lea atentamente este Acuerdo de Licencia de Usuario Final (&quot;EULA&quot;) antes de utilizar esta aplicaci&#xf3;n. Al utilizar la aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este acuerdo.&#xa;&#xa;1. Licencia de Uso&#xa;&#xa;1.1. Concesi&#xf3;n de Licencia: El titular de los derechos de autor de esta aplicaci&#xf3;n (&quot;Licenciante&quot;) le otorga una licencia limitada, no exclusiva, intransferible y revocable para utilizar la aplicaci&#xf3;n &#xfa;nicamente para fines personales y no comerciales.&#xa;&#xa;1.2. Restricciones: Usted no puede sublicenciar, transferir, distribuir ni vender la aplicaci&#xf3;n ni su contenido. Tampoco puede modificar, adaptar, realizar ingenier&#xed;a inversa, descompilar o desensamblar la aplicaci&#xf3;n, ni intentar crear trabajos derivados basados en la misma.&#xa;&#xa;2. Propiedad&#xa;&#xa;2.1. Derechos de Propiedad: Usted reconoce y acepta que la aplicaci&#xf3;n y todos los derechos de propiedad intelectual asociados son propiedad exclusiva del Licenciante. Este acuerdo no le otorga ning&#xfa;n derecho de propiedad sobre la aplicaci&#xf3;n, excepto por la licencia limitada expresamente concedida aqu&#xed;.&#xa;&#xa;3. Uso Aceptable&#xa;&#xa;3.1. Cumplimiento de las Leyes: Usted se compromete a utilizar la aplicaci&#xf3;n de conformidad con todas las leyes, normativas y regulaciones aplicables.&#xa;&#xa;3.2. Contenido del Usuario: Al utilizar la aplicaci&#xf3;n, usted acepta ser el &#xfa;nico responsable del contenido que comparta a trav&#xe9;s de la misma, y garantiza que dicho contenido cumple con estos t&#xe9;rminos y condiciones, as&#xed; como con cualquier ley aplicable.&#xa;&#xa;4. Exclusi&#xf3;n de Garant&#xed;as&#xa;&#xa;4.1. La aplicaci&#xf3;n se proporciona &quot;tal cual&quot; y &quot;seg&#xfa;n disponibilidad&quot;, sin garant&#xed;as de ning&#xfa;n tipo, ya sean expresas o impl&#xed;citas. El Licenciante no garantiza la exactitud, fiabilidad ni la disponibilidad continua de la aplicaci&#xf3;n.&#xa;&#xa;5. Limitaci&#xf3;n de Responsabilidad&#xa;&#xa;5.1. En ning&#xfa;n caso el Licenciante ser&#xe1; responsable por da&#xf1;os directos, indirectos, incidentales, especiales, ejemplares o consecuentes, incluyendo, pero no limitado a, p&#xe9;rdida de beneficios, datos o uso, incluso si se le ha advertido de la posibilidad de tales da&#xf1;os.&#xa;&#xa;6. Terminaci&#xf3;n&#xa;&#xa;6.1. Este acuerdo tendr&#xe1; vigencia hasta que sea terminado por usted o por el Licenciante. El Licenciante se reserva el derecho de terminar este acuerdo en cualquier momento y sin previo aviso si usted viola alguno de los t&#xe9;rminos y condiciones establecidos en el mismo.&#xa;&#xa;7. Ley Aplicable&#xa;&#xa;7.1. Este acuerdo se regir&#xe1; e interpretar&#xe1; de acuerdo con las leyes del pa&#xed;s o jurisdicci&#xf3;n del Licenciante, sin tener en cuenta sus conflictos de principios legales.&#xa;&#xa;Al utilizar esta aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este Acuerdo de Licencia de Usuario Final. Si no est&#xe1; de acuerdo con estos t&#xe9;rminos, por favor no utilice la aplicaci&#xf3;n.&#xa;&#xa;Fecha de entrada en vigencia: 01/05/2024&#xa;&#xa;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="Por favor, lea atentamente este Acuerdo de Licencia de Usuario Final (EULA) antes de utilizar esta aplicaci&#xf3;n. Al utilizar la aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este acuerdo.&#xa;&#xa;1. Licencia de Uso&#xa;&#xa;1.1. Concesi&#xf3;n de Licencia: El titular de los derechos de autor de esta aplicaci&#xf3;n (&quot;Licenciante&quot;) le otorga una licencia limitada, no exclusiva, intransferible y revocable para utilizar la aplicaci&#xf3;n &#xfa;nicamente para fines personales y no comerciales.&#xa;&#xa;1.2. Restricciones: Usted no puede sublicenciar, transferir, distribuir ni vender la aplicaci&#xf3;n ni su contenido. Tampoco puede modificar, adaptar, realizar ingenier&#xed;a inversa, descompilar o desensamblar la aplicaci&#xf3;n, ni intentar crear trabajos derivados basados en la misma.&#xa;&#xa;2. Propiedad&#xa;&#xa;2.1. Derechos de Propiedad: Usted reconoce y acepta que la aplicaci&#xf3;n y todos los derechos de propiedad intelectual asociados son propiedad exclusiva del Licenciante. Este acuerdo no le otorga ning&#xfa;n derecho de propiedad sobre la aplicaci&#xf3;n, excepto por la licencia limitada expresamente concedida aqu&#xed;.&#xa;&#xa;3. Uso Aceptable&#xa;&#xa;3.1. Cumplimiento de las Leyes: Usted se compromete a utilizar la aplicaci&#xf3;n de conformidad con todas las leyes, normativas y regulaciones aplicables.&#xa;&#xa;3.2. Contenido del Usuario: Al utilizar la aplicaci&#xf3;n, usted acepta ser el &#xfa;nico responsable del contenido que comparta a trav&#xe9;s de la misma, y garantiza que dicho contenido cumple con estos t&#xe9;rminos y condiciones, as&#xed; como con cualquier ley aplicable.&#xa;&#xa;4. Exclusi&#xf3;n de Garant&#xed;as&#xa;&#xa;4.1. La aplicaci&#xf3;n se proporciona &quot;tal cual&quot; y &quot;seg&#xfa;n disponibilidad&quot;, sin garant&#xed;as de ning&#xfa;n tipo, ya sean expresas o impl&#xed;citas. El Licenciante no garantiza la exactitud, fiabilidad ni la disponibilidad continua de la aplicaci&#xf3;n.&#xa;&#xa;5. Limitaci&#xf3;n de Responsabilidad&#xa;&#xa;5.1. En ning&#xfa;n caso el Licenciante ser&#xe1; responsable por da&#xf1;os directos, indirectos, incidentales, especiales, ejemplares o consecuentes, incluyendo, pero no limitado a, p&#xe9;rdida de beneficios, datos o uso, incluso si se le ha advertido de la posibilidad de tales da&#xf1;os.&#xa;&#xa;6. Terminaci&#xf3;n&#xa;&#xa;6.1. Este acuerdo tendr&#xe1; vigencia hasta que sea terminado por usted o por el Licenciante. El Licenciante se reserva el derecho de terminar este acuerdo en cualquier momento y sin previo aviso si usted viola alguno de los t&#xe9;rminos y condiciones establecidos en el mismo.&#xa;&#xa;7. Ley Aplicable&#xa;&#xa;7.1. Este acuerdo se regir&#xe1; e interpretar&#xe1; de acuerdo con las leyes del pa&#xed;s o jurisdicci&#xf3;n del Licenciante, sin tener en cuenta sus conflictos de principios legales.&#xa;&#xa;Al utilizar esta aplicaci&#xf3;n, usted acepta estar sujeto a los t&#xe9;rminos y condiciones de este Acuerdo de Licencia de Usuario Final. Si no est&#xe1; de acuerdo con estos t&#xe9;rminos, por favor no utilice la aplicaci&#xf3;n.&#xa;&#xa;Fecha de entrada en vigencia: 01/05/2024&#xa;&#xa;&#xa;"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -83,5 +76,72 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Style.BG_COLOR" type="code"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Last"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="leidoButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Style.MAIN_COLOR" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FontManager.boldFont" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Style.BG_COLOR" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Hecho"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="36" ipadY="12" insetsTop="5" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="20" weightX="0.0" weightY="0.0"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.Box$Filler" name="filler1">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[20, 32767]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[20, 0]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[20, 0]"/>
+        </Property>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Style.BG_COLOR" type="code"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="After"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

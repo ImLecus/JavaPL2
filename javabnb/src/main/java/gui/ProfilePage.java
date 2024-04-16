@@ -1,20 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 
-/**
- *
- * @author Alumno
- */
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import style.Style;
+import poo.javabnb.FontManager;
+
 public class ProfilePage extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ProfilePage
-     */
     public ProfilePage() {
         initComponents();
+        reloadInfo();
+        backButton.addActionListener((ActionEvent e) -> {
+            App.redirect("MAIN");
+        });
+    }
+    
+    public void reloadInfo(){
+        userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
+        userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
+        userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
+        userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
     }
 
     /**
@@ -25,32 +30,104 @@ public class ProfilePage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        userNameLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        userDNILabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        userMailLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        userPhoneLabel = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
+        setBackground(Style.BG_COLOR);
         setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setForeground(Style.TEXT_COLOR);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        backButton.setBackground(Style.BG_COLOR);
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setBorderPainted(false);
+        backButton.setFocusable(false);
+        jPanel2.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
+        jLabel1.setFont(FontManager.titleFont);
         jLabel1.setText("Perfil");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setText("Nombre");
+        jPanel1.add(jLabel2, new java.awt.GridBagConstraints());
+
+        userNameLabel.setText(App.session == null ? "null" : App.session.user.getName());
+        jPanel1.add(userNameLabel, new java.awt.GridBagConstraints());
+
+        jLabel4.setText("DNI");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel1.add(jLabel4, gridBagConstraints);
+
+        userDNILabel.setText("****");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanel1.add(userDNILabel, gridBagConstraints);
+
+        jLabel6.setText("Correo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        jPanel1.add(jLabel6, gridBagConstraints);
+
+        userMailLabel.setText("****");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        jPanel1.add(userMailLabel, gridBagConstraints);
+
+        jLabel8.setText("Teléfono");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        userPhoneLabel.setText("****");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        jPanel1.add(userPhoneLabel, gridBagConstraints);
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel userDNILabel;
+    private javax.swing.JLabel userMailLabel;
+    private javax.swing.JLabel userNameLabel;
+    private javax.swing.JLabel userPhoneLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -172,7 +172,7 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 7;
         gridBagConstraints.ipadx = 36;
         gridBagConstraints.ipady = 12;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         rightSide.add(loginButton, gridBagConstraints);
 
         jPanel4.setBackground(new java.awt.Color(255, 248, 249));
