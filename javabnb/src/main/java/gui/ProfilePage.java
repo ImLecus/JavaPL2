@@ -2,16 +2,44 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.*;
+import poo.javabnb.Building;
 import style.Style;
 import poo.javabnb.FontManager;
+import poo.javabnb.PropertyType;
+import poo.javabnb.Host;
 
 public class ProfilePage extends javax.swing.JPanel {
     
     private boolean isEditing = false;
     
+   
+    
     public ProfilePage() {
         initComponents();
         reloadInfo();
+
+        /*
+        BuildingWidget b = new BuildingWidget(new Building(
+            "Casa en la playa", 
+            "direccion", 
+            1,
+            1, 
+            PropertyType.HOUSE, 
+            12.0f, 
+            new String[]{"playa"}, 
+            "Una descripción",
+            new String[]{},
+            new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
+            new String[]{},
+            new String[]{}
+        ));
+        
+        add(b);
+        
+        */
+        
         
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
