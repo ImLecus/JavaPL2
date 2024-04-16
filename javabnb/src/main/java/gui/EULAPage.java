@@ -4,6 +4,11 @@
  */
 package gui;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import poo.javabnb.FontManager;
+
 /**
  *
  * @author Alumno
@@ -15,6 +20,20 @@ public class EULAPage extends javax.swing.JPanel {
      */
     public EULAPage() {
         initComponents();
+        titleEula.setBorder(null);
+        eulaScroll.setBorder(null);
+        FontManager.useFont(titleEula, FontManager.titleFont, Color.BLACK);
+        FontManager.useFont(leidoButton, FontManager.boldFont, Color.black);
+        FontManager.useFont(eulaText, FontManager.regularFont, Color.BLACK);
+        leidoButton.setBorder(null);
+
+
+        leidoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                App.redirect("REGISTER");
+            }
+        });
     }
 
     /**
@@ -26,19 +45,41 @@ public class EULAPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        titleEula = new javax.swing.JLabel();
+        eulaScroll = new javax.swing.JScrollPane();
+        eulaText = new javax.swing.JLabel();
+        leidoButton = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        titleEula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleEula.setText("EULA");
+        add(titleEula, java.awt.BorderLayout.PAGE_START);
+
+        eulaText.setText("To be implemented");
+        eulaText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        eulaScroll.setViewportView(eulaText);
+
+        add(eulaScroll, java.awt.BorderLayout.CENTER);
+
+        leidoButton.setText("Hecho");
+        leidoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leidoButtonActionPerformed(evt);
+            }
+        });
+        add(leidoButton, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void leidoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leidoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_leidoButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane eulaScroll;
+    private javax.swing.JLabel eulaText;
+    private javax.swing.JButton leidoButton;
+    private javax.swing.JLabel titleEula;
     // End of variables declaration//GEN-END:variables
 }

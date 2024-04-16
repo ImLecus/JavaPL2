@@ -25,13 +25,14 @@ public class LoginPage extends javax.swing.JPanel {
     private void resetText(){
         mailInput.setText("");
         passwordInput.setText("");
-        errorLabel.setText("");
+        errorLabel.setVisible(false);
     }
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
         initComponents();
+        errorLabel.setVisible(false);
         
         FontManager.useFont(loginButton, FontManager.boldFont, Color.WHITE);
         loginButton.setBorder(null);
@@ -52,7 +53,7 @@ public class LoginPage extends javax.swing.JPanel {
                     App.redirect("MAIN");
                 } else {
                     resetText();
-                    errorLabel.setText("Usuario o contraseña incorrectos");
+                    errorLabel.setVisible(true);
                 }
             }
         });
@@ -135,14 +136,14 @@ public class LoginPage extends javax.swing.JPanel {
 
         title.setText("Te damos la bienvenida");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         add(title, gridBagConstraints);
 
         mailLabel.setText("Correo");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
@@ -155,7 +156,7 @@ public class LoginPage extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
@@ -165,7 +166,7 @@ public class LoginPage extends javax.swing.JPanel {
 
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
@@ -178,12 +179,12 @@ public class LoginPage extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
         add(passwordInput, gridBagConstraints);
 
         loginButton.setBackground(new java.awt.Color(255, 61, 61));
@@ -195,7 +196,7 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 12;
@@ -214,15 +215,15 @@ public class LoginPage extends javax.swing.JPanel {
         jPanel1.add(registerLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
         add(jPanel1, gridBagConstraints);
 
-        errorLabel.setText("   ");
+        errorLabel.setText("Usuario o contraseña incorrectos");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 4, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 0, 7, 0);
         add(errorLabel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
