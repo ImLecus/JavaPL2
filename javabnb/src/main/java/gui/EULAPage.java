@@ -21,7 +21,7 @@ public class EULAPage extends javax.swing.JPanel {
     public EULAPage() {
         initComponents();
         titleEula.setBorder(null);
-        eulaScroll.setBorder(null);
+        //eulaScroll.setBorder(null);
         FontManager.useFont(titleEula, FontManager.titleFont, Color.BLACK);
         FontManager.useFont(leidoButton, FontManager.boldFont, Color.black);
         FontManager.useFont(eulaText, FontManager.regularFont, Color.BLACK);
@@ -45,22 +45,17 @@ public class EULAPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSpinner1 = new javax.swing.JSpinner();
         titleEula = new javax.swing.JLabel();
-        eulaScroll = new javax.swing.JScrollPane();
-        eulaText = new javax.swing.JLabel();
         leidoButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        eulaText = new javax.swing.JTextArea();
 
         setLayout(new java.awt.BorderLayout());
 
         titleEula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleEula.setText("EULA");
         add(titleEula, java.awt.BorderLayout.PAGE_START);
-
-        eulaText.setText("To be implemented");
-        eulaText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        eulaScroll.setViewportView(eulaText);
-
-        add(eulaScroll, java.awt.BorderLayout.CENTER);
 
         leidoButton.setText("Hecho");
         leidoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +64,20 @@ public class EULAPage extends javax.swing.JPanel {
             }
         });
         add(leidoButton, java.awt.BorderLayout.PAGE_END);
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        eulaText.setColumns(20);
+        eulaText.setLineWrap(true);
+        eulaText.setRows(5);
+        eulaText.setText("Por favor, lea atentamente este Acuerdo de Licencia de Usuario Final (\"EULA\") antes de utilizar esta aplicación. Al utilizar la aplicación, usted acepta estar sujeto a los términos y condiciones de este acuerdo.\n\n1. Licencia de Uso\n\n1.1. Concesión de Licencia: El titular de los derechos de autor de esta aplicación (\"Licenciante\") le otorga una licencia limitada, no exclusiva, intransferible y revocable para utilizar la aplicación únicamente para fines personales y no comerciales.\n\n1.2. Restricciones: Usted no puede sublicenciar, transferir, distribuir ni vender la aplicación ni su contenido. Tampoco puede modificar, adaptar, realizar ingeniería inversa, descompilar o desensamblar la aplicación, ni intentar crear trabajos derivados basados en la misma.\n\n2. Propiedad\n\n2.1. Derechos de Propiedad: Usted reconoce y acepta que la aplicación y todos los derechos de propiedad intelectual asociados son propiedad exclusiva del Licenciante. Este acuerdo no le otorga ningún derecho de propiedad sobre la aplicación, excepto por la licencia limitada expresamente concedida aquí.\n\n3. Uso Aceptable\n\n3.1. Cumplimiento de las Leyes: Usted se compromete a utilizar la aplicación de conformidad con todas las leyes, normativas y regulaciones aplicables.\n\n3.2. Contenido del Usuario: Al utilizar la aplicación, usted acepta ser el único responsable del contenido que comparta a través de la misma, y garantiza que dicho contenido cumple con estos términos y condiciones, así como con cualquier ley aplicable.\n\n4. Exclusión de Garantías\n\n4.1. La aplicación se proporciona \"tal cual\" y \"según disponibilidad\", sin garantías de ningún tipo, ya sean expresas o implícitas. El Licenciante no garantiza la exactitud, fiabilidad ni la disponibilidad continua de la aplicación.\n\n5. Limitación de Responsabilidad\n\n5.1. En ningún caso el Licenciante será responsable por daños directos, indirectos, incidentales, especiales, ejemplares o consecuentes, incluyendo, pero no limitado a, pérdida de beneficios, datos o uso, incluso si se le ha advertido de la posibilidad de tales daños.\n\n6. Terminación\n\n6.1. Este acuerdo tendrá vigencia hasta que sea terminado por usted o por el Licenciante. El Licenciante se reserva el derecho de terminar este acuerdo en cualquier momento y sin previo aviso si usted viola alguno de los términos y condiciones establecidos en el mismo.\n\n7. Ley Aplicable\n\n7.1. Este acuerdo se regirá e interpretará de acuerdo con las leyes del país o jurisdicción del Licenciante, sin tener en cuenta sus conflictos de principios legales.\n\nAl utilizar esta aplicación, usted acepta estar sujeto a los términos y condiciones de este Acuerdo de Licencia de Usuario Final. Si no está de acuerdo con estos términos, por favor no utilice la aplicación.\n\nFecha de entrada en vigencia: 01/05/2024\n\n\n");
+        eulaText.setToolTipText("");
+        eulaText.setWrapStyleWord(true);
+        eulaText.setMargin(new java.awt.Insets(20, 20, 20, 20));
+        jScrollPane1.setViewportView(eulaText);
+
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void leidoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leidoButtonActionPerformed
@@ -77,8 +86,9 @@ public class EULAPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane eulaScroll;
-    private javax.swing.JLabel eulaText;
+    private javax.swing.JTextArea eulaText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton leidoButton;
     private javax.swing.JLabel titleEula;
     // End of variables declaration//GEN-END:variables
