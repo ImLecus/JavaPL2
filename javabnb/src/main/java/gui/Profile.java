@@ -1,7 +1,7 @@
 package gui;
 
 import poo.javabnb.FontManager;
-import style.Palette;
+import style.Style;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,17 +28,17 @@ public class Profile {
    private JLabel tumailLabel;
 
    public Profile(){
-      //FontManager.useFont(tittleLabel, FontManager.titleFont, Palette.textColor);
-      //FontManager.useFont(usuarioLabel, FontManager.regularFont, Palette.textColor);
-      //FontManager.useFont(mailLabel, FontManager.regularFont, Palette.textColor);
-      //FontManager.useFont(dniLabel, FontManager.regularFont, Palette.textColor);
-      //FontManager.useFont(passLabel, FontManager.regularFont, Palette.textColor);
-      //FontManager.useFont(forgotpassLabel, FontManager.boldFont, Palette.mainColor);
+      //FontManager.useFont(tittleLabel, FontManager.titleFont, Style.TEXT_COLOR);
+      //FontManager.useFont(usuarioLabel, FontManager.regularFont, Style.TEXT_COLOR);
+      //FontManager.useFont(mailLabel, FontManager.regularFont, Style.TEXT_COLOR);
+      //FontManager.useFont(dniLabel, FontManager.regularFont, Style.TEXT_COLOR);
+      //FontManager.useFont(passLabel, FontManager.regularFont, Style.TEXT_COLOR);
+      //FontManager.useFont(forgotpassLabel, FontManager.boldFont, Style.MAIN_COLOR);
       forgotpassLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
       forgotpassLabel.addMouseListener(new MouseAdapter() {
-         public void mouseEntered (MouseEvent e) {forgotpassLabel.setForeground(Palette.highlightColor);}
+         public void mouseEntered (MouseEvent e) {forgotpassLabel.setForeground(Style.HIGHLIGHT_COLOR);}
 
-         public void mouseExited (MouseEvent e) {forgotpassLabel.setForeground(Palette.mainColor);}
+         public void mouseExited (MouseEvent e) {forgotpassLabel.setForeground(Style.MAIN_COLOR);}
          public void mouseClicked (MouseEvent e) {
             //To be implemented
          }

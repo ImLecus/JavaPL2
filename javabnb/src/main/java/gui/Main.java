@@ -1,7 +1,7 @@
 package gui;
 
 import poo.javabnb.FontManager;
-import style.Palette;
+import style.Style;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -36,9 +36,9 @@ public class Main {
                 default:
                     break;
             }
-            //FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont,  Palette.textColor);
-            //FontManager.useFont(searchButton, FontManager.boldFont,  Palette.textColor);
-            //FontManager.useFont(comboBox1, FontManager.boldFont,  Palette.textColor);
+            //FontManager.useFont(barraDeBusquedaTextField, FontManager.regularFont,  Style.TEXT_COLOR);
+            //FontManager.useFont(searchButton, FontManager.boldFont,  Style.TEXT_COLOR);
+            //FontManager.useFont(comboBox1, FontManager.boldFont,  Style.TEXT_COLOR);
             barraDeBusquedaTextField.setBorder(null);
             muroScroll.setBorder(null);
             searchButton.setBorder(null);
