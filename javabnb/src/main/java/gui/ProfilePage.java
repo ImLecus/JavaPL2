@@ -71,7 +71,6 @@ public class ProfilePage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
@@ -140,7 +139,7 @@ public class ProfilePage extends javax.swing.JPanel {
         userPhoneLabel.setText("****");
         add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
 
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.jpg"))); // NOI18N
+        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
         banner.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.jpg"))); // NOI18N
@@ -149,7 +148,7 @@ public class ProfilePage extends javax.swing.JPanel {
         banner.setFocusable(false);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
-        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -230, -1, -1));
+        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setFont(FontManager.titleFont);
         jLabel1.setForeground(Style.TEXT_COLOR);

@@ -64,20 +64,42 @@ public class MainPage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         searchBar = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
-        comboBox = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel6 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 249));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(Style.MAIN_COLOR);
+        jPanel1.setLayout(new java.awt.GridLayout());
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
@@ -86,7 +108,7 @@ public class MainPage extends javax.swing.JPanel {
                 searchBarActionPerformed(evt);
             }
         });
-        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 180, 30));
+        jPanel1.add(searchBar);
 
         jTextField1.setBackground(Style.INPUT_BG_COLOR);
         jTextField1.setText("Fecha ida");
@@ -95,17 +117,7 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 130, 30));
-
-        comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
-        comboBox.setToolTipText("");
-        comboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 230, 30));
+        jPanel1.add(jTextField1);
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(Style.INPUT_BG_COLOR);
@@ -115,7 +127,7 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 110, 30));
+        jPanel1.add(jTextField2);
 
         jTextField3.setBackground(Style.INPUT_BG_COLOR);
         jTextField3.setText("nº Personas");
@@ -124,13 +136,199 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 100, 30));
+        jPanel1.add(jTextField3);
+
+        comboBox.setBackground(new java.awt.Color(255, 248, 249));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setToolTipText("");
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboBox);
 
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        muroScroll.setBackground(new java.awt.Color(255, 248, 249));
+        muroScroll.setBackground(Style.BG_COLOR);
+        muroScroll.setBorder(null);
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jPanel2.setBackground(Style.BG_COLOR);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(FontManager.titleFont);
+        jLabel1.setForeground(Style.TEXT_COLOR);
+        jLabel1.setText("Para ti");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
+        jPanel2.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setFont(FontManager.titleFont);
+        jLabel2.setForeground(Style.TEXT_COLOR);
+        jLabel2.setText("Destinos frecuentes");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel2.add(jLabel2, gridBagConstraints);
+
+        jPanel3.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+
+        jButton9.setText("Paris");
+        jButton9.setBorder(null);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setFocusable(false);
+        jButton9.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel3.add(jButton9);
+
+        jButton2.setText("Roma");
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusable(false);
+        jButton2.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel3.add(jButton2);
+
+        jButton3.setText("California");
+        jButton3.setBorder(null);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setFocusable(false);
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel3.add(jButton3);
+
+        jButton4.setText("Tokio");
+        jButton4.setBorder(null);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setFocusable(false);
+        jButton4.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel3.add(jButton4);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
+        jPanel2.add(jPanel3, gridBagConstraints);
+
+        jPanel4.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+
+        jButton5.setText("Montaña");
+        jButton5.setBorder(null);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setFocusable(false);
+        jButton5.setPreferredSize(new java.awt.Dimension(150, 200));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5);
+
+        jButton6.setText("Playa");
+        jButton6.setBorder(null);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setFocusable(false);
+        jButton6.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel4.add(jButton6);
+
+        jButton7.setText("Rural");
+        jButton7.setBorder(null);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setFocusable(false);
+        jButton7.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel4.add(jButton7);
+
+        jButton8.setText("Turístico");
+        jButton8.setBorder(null);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setFocusable(false);
+        jButton8.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel4.add(jButton8);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
+        jPanel2.add(jPanel4, gridBagConstraints);
+
+        jLabel4.setFont(FontManager.regularFont);
+        jLabel4.setForeground(Style.TEXT_COLOR);
+        jLabel4.setText("¿Buscas algo más específico? Puedes utilizar la barra de búsqueda para encontrar inmuebles a tu gusto.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 50, 0);
+        jPanel2.add(jLabel4, gridBagConstraints);
+
+        jLabel5.setFont(FontManager.titleFont);
+        jLabel5.setForeground(Style.TEXT_COLOR);
+        jLabel5.setText("Vivir nuevas experiencias");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel2.add(jLabel5, gridBagConstraints);
+
+        jScrollPane1.setBackground(Style.TRANSPARENT_COLOR);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jPanel6.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+
+        jButton10.setText("Inmueble 1");
+        jButton10.setBorder(null);
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.setFocusable(false);
+        jButton10.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel6.add(jButton10);
+
+        jButton11.setText("Inmueble 2");
+        jButton11.setBorder(null);
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.setFocusable(false);
+        jButton11.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel6.add(jButton11);
+
+        jButton12.setText("Inmueble 3");
+        jButton12.setBorder(null);
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.setFocusable(false);
+        jButton12.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel6.add(jButton12);
+
+        jButton13.setText("Inmueble 4");
+        jButton13.setBorder(null);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.setFocusable(false);
+        jButton13.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel6.add(jButton13);
+
+        jScrollPane1.setViewportView(jPanel6);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
+        jPanel2.add(jScrollPane1, gridBagConstraints);
+
+        muroScroll.setViewportView(jPanel2);
+
         add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,10 +352,35 @@ public class MainPage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
