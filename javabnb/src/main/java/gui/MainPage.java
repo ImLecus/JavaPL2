@@ -65,30 +65,37 @@ public class MainPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        muroScroll = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         searchBar = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         comboBox = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        muroScroll = new javax.swing.JScrollPane();
 
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
-
-        muroScroll.setBackground(new java.awt.Color(255, 248, 249));
-        muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        add(muroScroll, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
-        searchBar.setText("Barra de busqueda");
+        searchBar.setText("Destino");
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBarActionPerformed(evt);
             }
         });
-        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 580, 30));
+        jPanel1.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 180, 30));
+
+        jTextField1.setBackground(Style.INPUT_BG_COLOR);
+        jTextField1.setText("Fecha ida");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 130, 30));
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
@@ -98,9 +105,33 @@ public class MainPage extends javax.swing.JPanel {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(656, 12, 230, 30));
+        jPanel1.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 230, 30));
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(Style.INPUT_BG_COLOR);
+        jTextField2.setText("Fecha vuelta");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 110, 30));
+
+        jTextField3.setBackground(Style.INPUT_BG_COLOR);
+        jTextField3.setText("nº Personas");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 100, 30));
+
+        add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        muroScroll.setBackground(new java.awt.Color(255, 248, 249));
+        muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
@@ -111,10 +142,25 @@ public class MainPage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JScrollPane muroScroll;
     private javax.swing.JTextField searchBar;
     // End of variables declaration//GEN-END:variables
