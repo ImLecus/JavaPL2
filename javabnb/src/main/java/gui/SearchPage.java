@@ -6,14 +6,14 @@ package gui;
 
 /**
  *
- * @author Alumno
+ * @author marcos
  */
-public class PinnedPostsPage extends javax.swing.JPanel {
+public class SearchPage extends javax.swing.JPanel {
 
     /**
-     * Creates new form PinnedPostsPage
+     * Creates new form SearchPage
      */
-    public PinnedPostsPage() {
+    public SearchPage() {
         initComponents();
     }
 

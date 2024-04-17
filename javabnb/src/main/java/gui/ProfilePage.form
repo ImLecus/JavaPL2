@@ -166,7 +166,7 @@
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/banner.jpg"/>
+          <Image iconType="3" name="/images/banner.png"/>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
@@ -193,6 +193,13 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="160" y="460" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="gui.BuildingWidget" name="buildingWidget1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="160" y="520" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

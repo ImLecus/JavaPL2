@@ -20,8 +20,8 @@ public class ProfilePage extends javax.swing.JPanel {
         initComponents();
         reloadInfo();
 
-        /*
-        BuildingWidget b = new BuildingWidget(new Building(
+        
+        Building b = new Building(
             "Casa en la playa", 
             "direccion", 
             1,
@@ -34,11 +34,12 @@ public class ProfilePage extends javax.swing.JPanel {
             new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
             new String[]{},
             new String[]{}
-        ));
+        );
         
-        add(b);
+        buildingWidget1.init(b);
         
-        */
+        
+        
         
         
         backButton.addActionListener((ActionEvent e) -> {
@@ -83,6 +84,7 @@ public class ProfilePage extends javax.swing.JPanel {
         userPhoneLabel = new javax.swing.JTextField();
         banner = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buildingWidget1 = new gui.BuildingWidget();
 
         jButton1.setText("jButton1");
 
@@ -142,7 +144,7 @@ public class ProfilePage extends javax.swing.JPanel {
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
-        banner.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.jpg"))); // NOI18N
+        banner.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setEnabled(false);
         banner.setFocusPainted(false);
         banner.setFocusable(false);
@@ -154,6 +156,7 @@ public class ProfilePage extends javax.swing.JPanel {
         jLabel1.setForeground(Style.TEXT_COLOR);
         jLabel1.setText("Inmuebles guardados");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+        add(buildingWidget1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userMailLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMailLabelActionPerformed
@@ -164,6 +167,7 @@ public class ProfilePage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton banner;
+    private gui.BuildingWidget buildingWidget1;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

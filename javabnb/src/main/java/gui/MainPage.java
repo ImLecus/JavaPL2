@@ -28,6 +28,14 @@ public class MainPage extends javax.swing.JPanel {
                 }
         });
         
+        inmuebleButton.addActionListener(new ActionListener(){
+            @Override
+                public void actionPerformed(ActionEvent e) {
+                    App.redirect("BUILDING");
+                }
+        });
+        
+        
         comboBox.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {
@@ -67,6 +75,7 @@ public class MainPage extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         searchBar = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -90,7 +99,7 @@ public class MainPage extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
+        inmuebleButton = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -99,7 +108,9 @@ public class MainPage extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(Style.MAIN_COLOR);
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jPanel5.setLayout(new java.awt.GridLayout());
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
@@ -108,7 +119,7 @@ public class MainPage extends javax.swing.JPanel {
                 searchBarActionPerformed(evt);
             }
         });
-        jPanel1.add(searchBar);
+        jPanel5.add(searchBar);
 
         jTextField1.setBackground(Style.INPUT_BG_COLOR);
         jTextField1.setText("Fecha ida");
@@ -117,7 +128,7 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
+        jPanel5.add(jTextField1);
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(Style.INPUT_BG_COLOR);
@@ -127,7 +138,7 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2);
+        jPanel5.add(jTextField2);
 
         jTextField3.setBackground(Style.INPUT_BG_COLOR);
         jTextField3.setText("nº Personas");
@@ -136,7 +147,7 @@ public class MainPage extends javax.swing.JPanel {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3);
+        jPanel5.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
@@ -146,7 +157,11 @@ public class MainPage extends javax.swing.JPanel {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(comboBox);
+        jPanel5.add(comboBox);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        jPanel1.add(jPanel5, gridBagConstraints);
 
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
@@ -291,12 +306,12 @@ public class MainPage extends javax.swing.JPanel {
         jPanel6.setBackground(Style.TRANSPARENT_COLOR);
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        jButton10.setText("Inmueble 1");
-        jButton10.setBorder(null);
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setFocusable(false);
-        jButton10.setPreferredSize(new java.awt.Dimension(150, 200));
-        jPanel6.add(jButton10);
+        inmuebleButton.setText("Inmueble 1");
+        inmuebleButton.setBorder(null);
+        inmuebleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inmuebleButton.setFocusable(false);
+        inmuebleButton.setPreferredSize(new java.awt.Dimension(150, 200));
+        jPanel6.add(inmuebleButton);
 
         jButton11.setText("Inmueble 2");
         jButton11.setBorder(null);
@@ -359,7 +374,7 @@ public class MainPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JButton jButton10;
+    private javax.swing.JButton inmuebleButton;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -379,6 +394,7 @@ public class MainPage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;

@@ -1,18 +1,20 @@
 package gui;
-
+import java.awt.*;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import style.Style;
 
 public class BuildingWidget extends javax.swing.JPanel {
 
-    public BuildingWidget(Building b) {
+    public BuildingWidget() {
         initComponents();
-        
+    }
+    
+    public void init(Building b){
         title.setText(b.title);
-        address.setText(b.address);
-        price.setText(String.valueOf(b.price));
-        
+        host.setText(b.getHost().getName());
+        price.setText(String.valueOf(b.price) + "€/noche");
+
     }
 
     /**
@@ -24,51 +26,82 @@ public class BuildingWidget extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        photo = new javax.swing.JButton();
+        pfp = new javax.swing.JButton();
+        host = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        rating = new javax.swing.JLabel();
-        timeRange = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
-        address = new javax.swing.JLabel();
+        rating = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pfp.setBackground(Style.BG_COLOR);
+        pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
+        pfp.setBorder(null);
+        pfp.setBorderPainted(false);
+        pfp.setContentAreaFilled(false);
+        pfp.setDefaultCapable(false);
+        pfp.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
+        pfp.setEnabled(false);
+        pfp.setFocusPainted(false);
+        pfp.setFocusable(false);
 
-        photo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
-        add(photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, -1, -1));
+        host.setFont(FontManager.boldFont);
+        host.setText("Anfitrión");
 
         title.setFont(FontManager.subtitleFont);
         title.setForeground(Style.TEXT_COLOR);
-        title.setText("Inmueble");
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        title.setText("Title");
 
-        rating.setFont(FontManager.regularFont);
-        rating.setForeground(Style.TEXT_COLOR);
-        rating.setText("5/5");
-        add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        price.setFont(FontManager.boldFont);
+        price.setText("Precio por noche");
 
-        timeRange.setFont(FontManager.regularFont);
-        timeRange.setForeground(Style.TEXT_COLOR);
-        timeRange.setText("Tiempo disponible");
-        add(timeRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
+        rating.setFont(FontManager.boldFont);
+        rating.setText("Estrellas");
 
-        price.setFont(FontManager.regularFont);
-        price.setForeground(Style.TEXT_COLOR);
-        price.setText("10€/noche");
-        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
-
-        address.setFont(FontManager.regularFont);
-        address.setForeground(Style.TEXT_COLOR);
-        address.setText("Dirección");
-        add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title)
+                    .addComponent(host)
+                    .addComponent(price)
+                    .addComponent(rating))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(pfp)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pfp)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGap(18, 18, 18)
+                        .addComponent(host)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rating)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(price)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
+    protected void paintComponent(Graphics grphcs){
+        Graphics2D g2 = (Graphics2D) grphcs;
+        
+        
+        super.paintComponent(grphcs);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel address;
-    private javax.swing.JButton photo;
+    private javax.swing.JLabel host;
+    private javax.swing.JButton pfp;
     private javax.swing.JLabel price;
     private javax.swing.JLabel rating;
-    private javax.swing.JLabel timeRange;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
