@@ -3,7 +3,6 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import javax.swing.*;
 import poo.javabnb.Building;
 import style.Style;
 import poo.javabnb.FontManager;
@@ -18,7 +17,6 @@ public class ProfilePage extends javax.swing.JPanel {
     
     public ProfilePage() {
         initComponents();
-        reloadInfo();
 
         
         Building b = new Building(

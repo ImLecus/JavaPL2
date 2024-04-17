@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import style.Style;
@@ -20,6 +23,8 @@ public class BuildingPage extends javax.swing.JPanel {
       props.setText(String.valueOf(b.rooms) + " habitaciones");
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +49,7 @@ public class BuildingPage extends javax.swing.JPanel {
         description = new javax.swing.JTextArea();
         props = new javax.swing.JLabel();
         rating = new javax.swing.JLabel();
+        saveButton = new javax.swing.JToggleButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -90,7 +96,7 @@ public class BuildingPage extends javax.swing.JPanel {
         jPanel5.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +154,14 @@ public class BuildingPage extends javax.swing.JPanel {
         rating.setText("5/5 estrellas");
         jPanel2.add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 520, 20));
 
+        saveButton.setText("Guardar");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,8 +182,32 @@ public class BuildingPage extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        // TODO add your handling code here:
+        JComboBox cb = (JComboBox) evt.getSource();
+        String selectedItem = (String) cb.getSelectedItem();
+        System.out.println("Item seleccionado: " + selectedItem);
+        switch (selectedItem) {
+            case "Perfil":
+                App.redirect("PROFILE");
+                break;
+            case "Post guardados":
+                App.redirect("PINNED_POSTS");
+                break;
+            case "Cerrar sesión":
+                App.session.endSession();
+                App.redirect("LOGIN");
+                break;
+            case "Community Guidelines":
+                App.redirect("COMMUNITY_GUIDELINES");
+                break;
+            default:
+                break;
+        }
+        
     }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+
+    }//GEN-LAST:event_saveButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -186,6 +224,7 @@ public class BuildingPage extends javax.swing.JPanel {
     private javax.swing.JLabel name;
     private javax.swing.JLabel props;
     private javax.swing.JLabel rating;
+    private javax.swing.JToggleButton saveButton;
     private javax.swing.JTextField searchBar;
     // End of variables declaration//GEN-END:variables
 }

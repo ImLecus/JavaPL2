@@ -2,9 +2,13 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JComboBox;
+import poo.javabnb.Building;
 import style.Style;
 import poo.javabnb.FontManager;
+import poo.javabnb.Host;
+import poo.javabnb.PropertyType;
 
 public class MainPage extends javax.swing.JPanel {
 
@@ -18,12 +22,24 @@ public class MainPage extends javax.swing.JPanel {
                 }
         });
         
-        inmuebleButton.addActionListener(new ActionListener(){
-            @Override
-                public void actionPerformed(ActionEvent e) {
-                    App.redirect("BUILDING");
-                }
-        });
+         Building b = new Building(
+            "Casa en la playa", 
+            "direccion", 
+            1,
+            1, 
+            PropertyType.HOUSE, 
+            12, 
+            new String[]{"playa"}, 
+            "Una descripción",
+            new String[]{},
+            new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
+            new String[]{},
+            new String[]{},
+            5.0f
+        );
+        
+        buildingWidget1.init(b);
+        buildingWidget2.init(b);
         
         
         comboBox.addActionListener(new ActionListener(){
@@ -89,10 +105,8 @@ public class MainPage extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
-        inmuebleButton = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        buildingWidget1 = new gui.BuildingWidget();
+        buildingWidget2 = new gui.BuildingWidget();
 
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
@@ -140,7 +154,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel5.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Post guardados", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,34 +309,8 @@ public class MainPage extends javax.swing.JPanel {
 
         jPanel6.setBackground(Style.TRANSPARENT_COLOR);
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
-
-        inmuebleButton.setText("Inmueble 1");
-        inmuebleButton.setBorder(null);
-        inmuebleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        inmuebleButton.setFocusable(false);
-        inmuebleButton.setPreferredSize(new java.awt.Dimension(150, 200));
-        jPanel6.add(inmuebleButton);
-
-        jButton11.setText("Inmueble 2");
-        jButton11.setBorder(null);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.setFocusable(false);
-        jButton11.setPreferredSize(new java.awt.Dimension(150, 200));
-        jPanel6.add(jButton11);
-
-        jButton12.setText("Inmueble 3");
-        jButton12.setBorder(null);
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.setFocusable(false);
-        jButton12.setPreferredSize(new java.awt.Dimension(150, 200));
-        jPanel6.add(jButton12);
-
-        jButton13.setText("Inmueble 4");
-        jButton13.setBorder(null);
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton13.setFocusable(false);
-        jButton13.setPreferredSize(new java.awt.Dimension(150, 200));
-        jPanel6.add(jButton13);
+        jPanel6.add(buildingWidget1);
+        jPanel6.add(buildingWidget2);
 
         jScrollPane1.setViewportView(jPanel6);
 
@@ -363,11 +351,9 @@ public class MainPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private gui.BuildingWidget buildingWidget1;
+    private gui.BuildingWidget buildingWidget2;
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JButton inmuebleButton;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
