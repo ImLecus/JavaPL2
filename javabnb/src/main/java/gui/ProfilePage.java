@@ -27,13 +27,14 @@ public class ProfilePage extends javax.swing.JPanel {
             1,
             1, 
             PropertyType.HOUSE, 
-            12.0f, 
+            12, 
             new String[]{"playa"}, 
             "Una descripción",
             new String[]{},
             new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
             new String[]{},
-            new String[]{}
+            new String[]{},
+            5.0f
         );
         
         buildingWidget1.init(b);

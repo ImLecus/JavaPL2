@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 
 import java.awt.event.ActionEvent;
@@ -9,15 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import style.Style;
 import poo.javabnb.FontManager;
-/**
- *
- * @author Alumno
- */
+
 public class MainPage extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MainPageç
-     */
     public MainPage() {
         initComponents();
         

@@ -16,7 +16,7 @@ public class App {
 
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
-
+    public static Building focusedBuilding;
     public static JFrame frame = new JFrame("JavaB&B");
     private static final LoginPage login =                   new LoginPage();
     private static final RegisterPage register =             new RegisterPage();
@@ -59,6 +59,7 @@ public class App {
      */
     public static void redirect(String page){
         if("PROFILE".equals(page)){profile.reloadInfo();}
+        if("BUILDING".equals(page)){building.reloadInfo();}
         cardLayout.show(cards, page);
     }
 
@@ -74,5 +75,5 @@ public class App {
         frame.setMinimumSize(new Dimension(1000, 710));
         frame.setVisible(true);
     }
-
+    
 }

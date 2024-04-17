@@ -1,12 +1,23 @@
 package gui;
 
+import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import style.Style;
 
 public class BuildingPage extends javax.swing.JPanel {
 
+    private Building b;
     public BuildingPage() {
         initComponents();
+    }
+    
+    public void reloadInfo(){
+      b = App.focusedBuilding;
+      name.setText(b.title);
+      description.setText(b.description);
+      host.setText(b.getHost().getName() + (b.getHost().isSuperhost() ? "(Superanfitrión)" : ""));
+      rating.setText(String.valueOf(b.rating) + " estrellas");
+      props.setText(String.valueOf(b.rooms) + " habitaciones");
     }
 
     /**
@@ -27,19 +38,19 @@ public class BuildingPage extends javax.swing.JPanel {
         jTextField3 = new javax.swing.JTextField();
         comboBox = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        host = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        description = new javax.swing.JTextArea();
+        props = new javax.swing.JLabel();
+        rating = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(Style.MAIN_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
@@ -97,45 +108,45 @@ public class BuildingPage extends javax.swing.JPanel {
         jPanel2.setBackground(Style.BG_COLOR);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(Style.TEXT_COLOR);
-        jLabel1.setFont(FontManager.regularFont);
-        jLabel1.setText("Anfitrión: Pedrito (Superanfitrión)");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 520, 20));
+        host.setBackground(Style.TEXT_COLOR);
+        host.setFont(FontManager.regularFont);
+        host.setText("Anfitrión: Pedrito (Superanfitrión)");
+        jPanel2.add(host, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 520, 20));
 
-        jLabel2.setBackground(Style.TEXT_COLOR);
-        jLabel2.setFont(FontManager.titleFont);
-        jLabel2.setText("Nombre del inmueble");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 520, 50));
+        name.setBackground(Style.TEXT_COLOR);
+        name.setFont(FontManager.titleFont);
+        name.setText("Nombre del inmueble");
+        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 520, 50));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(FontManager.regularFont);
-        jTextArea1.setForeground(Style.TEXT_COLOR);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setBorder(null);
-        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTextArea1.setFocusable(false);
-        jTextArea1.setVerifyInputWhenFocusTarget(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        description.setEditable(false);
+        description.setColumns(20);
+        description.setFont(FontManager.regularFont);
+        description.setForeground(Style.TEXT_COLOR);
+        description.setLineWrap(true);
+        description.setRows(5);
+        description.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
+        description.setWrapStyleWord(true);
+        description.setBorder(null);
+        description.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        description.setFocusable(false);
+        description.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(description);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
-        jLabel3.setBackground(Style.TEXT_COLOR);
-        jLabel3.setFont(FontManager.regularFont);
-        jLabel3.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 520, 20));
+        props.setBackground(Style.TEXT_COLOR);
+        props.setFont(FontManager.regularFont);
+        props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
+        jPanel2.add(props, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 520, 20));
 
-        jLabel4.setBackground(Style.TEXT_COLOR);
-        jLabel4.setFont(FontManager.regularFont);
-        jLabel4.setText("5/5 estrellas");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 520, 20));
+        rating.setBackground(Style.TEXT_COLOR);
+        rating.setFont(FontManager.regularFont);
+        rating.setText("5/5 estrellas");
+        jPanel2.add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 520, 20));
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -163,18 +174,18 @@ public class BuildingPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextArea description;
+    private javax.swing.JLabel host;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel name;
+    private javax.swing.JLabel props;
+    private javax.swing.JLabel rating;
     private javax.swing.JTextField searchBar;
     // End of variables declaration//GEN-END:variables
 }

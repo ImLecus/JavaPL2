@@ -6,16 +6,17 @@ public class Building {
     public int rooms;
     public int baths;
     PropertyType type;
-    public float price;
+    public int price;
     public String[] Hashtags;
     public String description;
     public String[] images;
     Host host;
     public String[] visitors;
     public String[] services;
+    public float rating;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, float price, String[] Hashtags, String description, String[] images, Host host, String[] visitors, String[] services) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, String[] visitors, String[] services, float rating) {
         this.title = title;
         this.address = address;
         this.rooms = rooms;
@@ -100,7 +101,7 @@ public class Building {
         this.type = type;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

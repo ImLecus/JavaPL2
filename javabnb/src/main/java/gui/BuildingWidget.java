@@ -6,17 +6,22 @@ import style.Style;
 
 public class BuildingWidget extends javax.swing.JPanel {
 
+    private Building b;
+    
     public BuildingWidget() {
         initComponents();
     }
+
     
     public void init(Building b){
+        this.b = b;
         title.setText(b.title);
         host.setText(b.getHost().getName());
-        price.setText(String.valueOf(b.price) + "€/noche");
-
-    }
-
+        price.setText(String.valueOf(b.price) + "€ / noche");
+        rating.setText(String.valueOf(b.rating) + " estrellas");
+    };
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,11 +31,19 @@ public class BuildingWidget extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button = new javax.swing.JPanel();
         pfp = new javax.swing.JButton();
         host = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         rating = new javax.swing.JLabel();
+
+        button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonMouseClicked(evt);
+            }
+        });
 
         pfp.setBackground(Style.BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
@@ -42,6 +55,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         pfp.setEnabled(false);
         pfp.setFocusPainted(false);
         pfp.setFocusable(false);
+        pfp.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         host.setFont(FontManager.boldFont);
         host.setText("Anfitrión");
@@ -56,38 +70,63 @@ public class BuildingWidget extends javax.swing.JPanel {
         rating.setFont(FontManager.boldFont);
         rating.setText("Estrellas");
 
+        javax.swing.GroupLayout buttonLayout = new javax.swing.GroupLayout(button);
+        button.setLayout(buttonLayout);
+        buttonLayout.setHorizontalGroup(
+            buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonLayout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(pfp)
+                .addContainerGap())
+            .addGroup(buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(title)
+                        .addComponent(host)
+                        .addComponent(price)
+                        .addComponent(rating))
+                    .addContainerGap(191, Short.MAX_VALUE)))
+        );
+        buttonLayout.setVerticalGroup(
+            buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonLayout.createSequentialGroup()
+                .addComponent(pfp)
+                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(title)
+                    .addGap(18, 18, 18)
+                    .addComponent(host)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                    .addComponent(rating)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(price)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(title)
-                    .addComponent(host)
-                    .addComponent(price)
-                    .addComponent(rating))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(pfp)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pfp)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addGap(18, 18, 18)
-                        .addComponent(host)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rating)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(price)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMouseClicked
+        App.focusedBuilding = this.b;
+        App.redirect("BUILDING");
+    }//GEN-LAST:event_buttonMouseClicked
 
     @Override
     protected void paintComponent(Graphics grphcs){
@@ -98,6 +137,7 @@ public class BuildingWidget extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel button;
     private javax.swing.JLabel host;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel price;
