@@ -42,6 +42,7 @@ public class BuildingPage extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         comboBox = new javax.swing.JComboBox<>();
+        atrasButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         host = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
@@ -106,8 +107,30 @@ public class BuildingPage extends javax.swing.JPanel {
         jPanel5.add(comboBox);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
         jPanel1.add(jPanel5, gridBagConstraints);
+
+        atrasButton.setBackground(Style.MAIN_COLOR);
+        atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
+        atrasButton.setBorder(null);
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setFocusable(false);
+        atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        atrasButton.setMargin(new java.awt.Insets(2, 0, 2, 0));
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 13);
+        jPanel1.add(atrasButton, gridBagConstraints);
 
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
@@ -209,8 +232,13 @@ public class BuildingPage extends javax.swing.JPanel {
 
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        App.redirect("MAIN");
+    }//GEN-LAST:event_atrasButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JTextArea description;
     private javax.swing.JLabel host;

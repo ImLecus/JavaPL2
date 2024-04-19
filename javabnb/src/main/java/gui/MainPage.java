@@ -114,7 +114,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel1.setBackground(Style.MAIN_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
@@ -154,7 +154,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel5.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,28 +203,28 @@ public class MainPage extends javax.swing.JPanel {
 
         jButton9.setText("Paris");
         jButton9.setBorder(null);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton9.setFocusable(false);
         jButton9.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel3.add(jButton9);
 
         jButton2.setText("Roma");
         jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusable(false);
         jButton2.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel3.add(jButton2);
 
         jButton3.setText("California");
         jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusable(false);
         jButton3.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel3.add(jButton3);
 
         jButton4.setText("Tokio");
         jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusable(false);
         jButton4.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel3.add(jButton4);
@@ -242,7 +242,7 @@ public class MainPage extends javax.swing.JPanel {
 
         jButton5.setText("Montaña");
         jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setFocusable(false);
         jButton5.setPreferredSize(new java.awt.Dimension(150, 200));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -254,21 +254,21 @@ public class MainPage extends javax.swing.JPanel {
 
         jButton6.setText("Playa");
         jButton6.setBorder(null);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusable(false);
         jButton6.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel4.add(jButton6);
 
         jButton7.setText("Rural");
         jButton7.setBorder(null);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setFocusable(false);
         jButton7.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel4.add(jButton7);
 
         jButton8.setText("Turístico");
         jButton8.setBorder(null);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton8.setFocusable(false);
         jButton8.setPreferredSize(new java.awt.Dimension(150, 200));
         jPanel4.add(jButton8);
