@@ -30,7 +30,7 @@ public class App {
     public static void main(String[] args){
         
         try{
-            db = DataBase.from("./src/main/resorces/data/data.dat");
+            db = DataBase.from("./src/main/resources/data/data.dat");
         }
         catch(Exception e){
             System.out.println(e.fillInStackTrace());
