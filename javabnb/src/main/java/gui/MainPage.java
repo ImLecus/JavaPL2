@@ -22,7 +22,7 @@ public class MainPage extends javax.swing.JPanel {
                 }
         });
         
-         Building b = new Building(
+        Building b = new Building(
             "Casa en la playa", 
             "direccion", 
             1,
@@ -114,7 +114,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel1.setBackground(Style.MAIN_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
@@ -154,7 +154,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel5.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

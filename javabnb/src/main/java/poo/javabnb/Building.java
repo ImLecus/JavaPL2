@@ -29,6 +29,7 @@ public class Building {
         this.host = host;
         this.visitors = visitors;
         this.services = services;
+        this.rating = rating;
     }
 
     // Getters

@@ -98,10 +98,11 @@
                   <Color blue="f9" green="f8" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Perfil"/>
-                    <StringItem index="1" value="Community Guidelines"/>
-                    <StringItem index="2" value="Cerrar sesi&#xf3;n"/>
+                  <StringArray count="4">
+                    <StringItem index="0" value=""/>
+                    <StringItem index="1" value="Perfil"/>
+                    <StringItem index="2" value="Community Guidelines"/>
+                    <StringItem index="3" value="Cerrar sesi&#xf3;n"/>
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
