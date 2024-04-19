@@ -23,19 +23,27 @@ public class App {
     private static final EULAPage eula =                     new EULAPage();
     private static final BuildingPage building =             new BuildingPage();
     private static final SearchPage search =                 new SearchPage();
-    private static final CommunityGuidelinesPage community= new CommunityGuidelinesPage();
+    private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
     
 
 
     public static void main(String[] args){
         
         try{
-            db = DataBase.from("./src/main/resorces/data/data.dat");
+            db = DataBase.from("./src/main/resources/data/data.dat");
         }
         catch(Exception e){
             System.out.println(e.fillInStackTrace());
             db = new DataBase();
             db.add(new Client("00000000E","Example", "example", "example","666666666"));
+            
+            try{
+                db.saveData();
+            }
+            catch(Exception e2){
+                e2.fillInStackTrace();
+            }
+            
         }
 
         cards.add(login, "LOGIN");

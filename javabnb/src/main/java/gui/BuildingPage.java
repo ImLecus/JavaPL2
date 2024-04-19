@@ -1,9 +1,5 @@
 package gui;
 
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
@@ -14,6 +10,7 @@ public class BuildingPage extends javax.swing.JPanel {
     private Building b;
     public BuildingPage() {
         initComponents();
+        Style.highlightOnHover(submitButton);
     }
     
     public void reloadInfo(){
@@ -22,7 +19,7 @@ public class BuildingPage extends javax.swing.JPanel {
       description.setText(b.description);
       host.setText(b.getHost().getName() + (b.getHost().isSuperhost() ? "(Superanfitrión)" : ""));
       rating.setText(String.valueOf(b.rating) + " estrellas");
-      props.setText(String.valueOf(b.rooms) + " habitaciones");
+      props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
     }
 
     
@@ -38,15 +35,16 @@ public class BuildingPage extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        searchBar = new javax.swing.JTextField();
+        atrasButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        searchBar = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         comboBox = new javax.swing.JComboBox<>();
-        atrasButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 0));
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
@@ -57,71 +55,21 @@ public class BuildingPage extends javax.swing.JPanel {
         host = new javax.swing.JLabel();
         props = new javax.swing.JLabel();
         rating = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
         saveButton = new javax.swing.JToggleButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        submitButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 0));
 
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanel1.setBackground(Style.MAIN_COLOR);
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
-
-        searchBar.setBackground(Style.INPUT_BG_COLOR);
-        searchBar.setText("Destino");
-        searchBar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBarActionPerformed(evt);
-            }
-        });
-        jPanel5.add(searchBar);
-
-        jTextField1.setBackground(Style.INPUT_BG_COLOR);
-        jTextField1.setText("Fecha ida");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField1);
-
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(Style.INPUT_BG_COLOR);
-        jTextField2.setText("Fecha vuelta");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField2);
-
-        jTextField3.setBackground(Style.INPUT_BG_COLOR);
-        jTextField3.setText("nº Personas");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField3);
-
-        comboBox.setBackground(new java.awt.Color(255, 248, 249));
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
-        comboBox.setToolTipText("");
-        comboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxActionPerformed(evt);
-            }
-        });
-        jPanel5.add(comboBox);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
-        jPanel1.add(jPanel5, gridBagConstraints);
+        jPanel1.setMaximumSize(new java.awt.Dimension(32767, 100));
 
         atrasButton.setBackground(Style.MAIN_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
@@ -136,23 +84,70 @@ public class BuildingPage extends javax.swing.JPanel {
                 atrasButtonActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 13);
-        jPanel1.add(atrasButton, gridBagConstraints);
+        jPanel1.add(atrasButton);
 
-        add(jPanel1, java.awt.BorderLayout.NORTH);
+        jTextField1.setBackground(Style.INPUT_BG_COLOR);
+        jTextField1.setText("Fecha ida");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1);
+
+        searchBar.setBackground(Style.INPUT_BG_COLOR);
+        searchBar.setText("Destino");
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchBar);
+
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(Style.INPUT_BG_COLOR);
+        jTextField2.setText("Fecha vuelta");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField2);
+
+        jTextField3.setBackground(Style.INPUT_BG_COLOR);
+        jTextField3.setText("nº Personas");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField3);
+
+        comboBox.setBackground(new java.awt.Color(255, 248, 249));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setToolTipText("");
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboBox);
+
+        add(jPanel1);
 
         jPanel2.setBackground(Style.BG_COLOR);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jPanel6.setBackground(Style.BG_COLOR);
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
+        jPanel6.add(filler4);
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
+        jButton1.setBackground(Style.TRANSPARENT_COLOR);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setFocusPainted(false);
@@ -163,36 +158,52 @@ public class BuildingPage extends javax.swing.JPanel {
         jPanel6.add(filler1);
 
         jPanel8.setBackground(Style.TRANSPARENT_COLOR);
-        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.setLayout(new java.awt.GridLayout(1, 0));
         jPanel8.add(filler2);
 
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
+        jPanel4.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel4.setLayout(new java.awt.GridBagLayout());
 
         name.setBackground(Style.TEXT_COLOR);
         name.setFont(FontManager.titleFont);
         name.setText("Nombre del inmueble");
-        jPanel4.add(name);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        jPanel4.add(name, gridBagConstraints);
 
         host.setBackground(Style.TEXT_COLOR);
-        host.setFont(FontManager.regularFont);
+        host.setFont(FontManager.boldFont);
         host.setText("Anfitrión: Pedrito (Superanfitrión)");
-        jPanel4.add(host);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel4.add(host, gridBagConstraints);
 
         props.setBackground(Style.TEXT_COLOR);
-        props.setFont(FontManager.regularFont);
+        props.setFont(FontManager.boldFont);
         props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
-        jPanel4.add(props);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel4.add(props, gridBagConstraints);
 
         rating.setBackground(Style.TEXT_COLOR);
-        rating.setFont(FontManager.regularFont);
+        rating.setFont(FontManager.boldFont);
         rating.setText("5/5 estrellas");
-        jPanel4.add(rating);
-
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel4.add(rating, gridBagConstraints);
 
         description.setEditable(false);
+        description.setBackground(Style.TRANSPARENT_COLOR);
         description.setColumns(20);
         description.setFont(FontManager.regularFont);
         description.setForeground(Style.TEXT_COLOR);
@@ -204,28 +215,78 @@ public class BuildingPage extends javax.swing.JPanel {
         description.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         description.setFocusable(false);
         description.setVerifyInputWhenFocusTarget(false);
-        jScrollPane1.setViewportView(description);
-
-        jPanel4.add(jScrollPane1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel4.add(description, gridBagConstraints);
 
         jPanel8.add(jPanel4);
 
-        saveButton.setText("Guardar");
+        jPanel9.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        saveButton.setText("G");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
-        jPanel9.add(saveButton);
+        jPanel9.add(saveButton, new java.awt.GridBagConstraints());
+
+        jButton2.setText("D");
+        jPanel9.add(jButton2, new java.awt.GridBagConstraints());
+
+        jLabel1.setText("Total XXX€");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 10, 0);
+        jPanel9.add(jLabel1, gridBagConstraints);
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel9.add(jFormattedTextField1, gridBagConstraints);
+
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel9.add(jFormattedTextField2, gridBagConstraints);
+
+        submitButton.setBackground(Style.MAIN_COLOR);
+        submitButton.setFont(FontManager.boldFont);
+        submitButton.setForeground(Style.BG_COLOR);
+        submitButton.setText("RESERVA");
+        submitButton.setBorder(null);
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        jPanel9.add(submitButton, gridBagConstraints);
 
         jPanel8.add(jPanel9);
         jPanel8.add(filler3);
 
         jPanel6.add(jPanel8);
+        jPanel6.add(filler5);
 
-        jPanel2.add(jPanel6);
+        jScrollPane2.setViewportView(jPanel6);
 
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jScrollPane2);
+
+        add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
@@ -284,17 +345,22 @@ public class BuildingPage extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
     private javax.swing.JLabel host;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -303,5 +369,6 @@ public class BuildingPage extends javax.swing.JPanel {
     private javax.swing.JLabel rating;
     private javax.swing.JToggleButton saveButton;
     private javax.swing.JTextField searchBar;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }

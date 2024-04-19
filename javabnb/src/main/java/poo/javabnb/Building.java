@@ -11,12 +11,12 @@ public class Building {
     public String description;
     public String[] images;
     Host host;
-    public String[] visitors;
+    public int visitors;
     public String[] services;
     public float rating;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, String[] visitors, String[] services, float rating) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, int visitors, String[] services, float rating) {
         this.title = title;
         this.address = address;
         this.rooms = rooms;
@@ -73,10 +73,6 @@ public class Building {
         return host;
     }
 
-    public String[] getVisitors() {
-        return visitors;
-    }
-
     public String[] getServices() {
         return services;
     }
@@ -116,10 +112,6 @@ public class Building {
 
     public void setImages(String[] images) {
         this.images = images;
-    }
-
-    public void setVisitors(String[] visitors) {
-        this.visitors = visitors;
     }
 
     public void setServices(String[] services) {

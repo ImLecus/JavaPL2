@@ -30,7 +30,7 @@ public class ProfilePage extends javax.swing.JPanel {
             "Una descripción",
             new String[]{},
             new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
-            new String[]{},
+            1,
             new String[]{},
             5.0f
         );
