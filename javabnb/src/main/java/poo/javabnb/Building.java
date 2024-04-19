@@ -26,6 +26,13 @@ public class Building {
         this.visitors = visitors;
         this.services = services;
     }
+    
+    public int getID(){
+        return this.id;
+    }
+    public void setID(int id){
+        this.id = id;
+    }
 
     public String getAddress() {
         return address;

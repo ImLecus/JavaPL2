@@ -8,13 +8,16 @@ import style.Style;
 public class BuildingPage extends javax.swing.JPanel {
 
     private Building b;
+    private boolean saved = false;
     public BuildingPage() {
         initComponents();
         Style.highlightOnHover(submitButton);
+        
     }
     
-    public void reloadInfo(){
+    public void reloadInfo(){  
       b = App.focusedBuilding;
+      saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
       host.setText(b.info.host.getName() + (b.info.host.isSuperhost() ? "(Superanfitrión)" : ""));
@@ -22,7 +25,7 @@ public class BuildingPage extends javax.swing.JPanel {
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
     }
 
-    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -355,7 +358,15 @@ public class BuildingPage extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-
+        saved = !saved;
+        if(saved){
+            App.session.addPinnedPost(b.getID());
+            System.out.println("Añadido el inmueble con id " + String.valueOf(b.getID()) + ". El usuario tiene " + String.valueOf(App.session.user.pinnedPosts.size()) + " posts guardados");
+        }
+        if(!saved && App.session.user.pinnedPosts.contains(b.getID())){
+            App.session.deletePinnedPost(b.getID());
+            System.out.println("Eliminado el inmueble con id " + String.valueOf(b.getID()) + ". El usuario tiene " + String.valueOf(App.session.user.pinnedPosts.size()) + " posts guardados");
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed

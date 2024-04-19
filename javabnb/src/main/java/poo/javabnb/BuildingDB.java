@@ -9,8 +9,7 @@ public class BuildingDB {
     
     public BuildingDB(){
         this.entries = new ArrayList<>();
-        
-        entries.add(
+        add(
                 new Building(
                 "Chalet en Madrid",
                 "C/Los Rosales 12",
@@ -21,10 +20,10 @@ public class BuildingDB {
                 "00000000E", "Dueño", "dueño@tuyo.me", "contraseña", "666666666", new Date(), true),
                 3,
                 new String[]{},
-                5.0f
+                5.0f  
             ));
         
-        entries.add(new Building(
+        add(new Building(
             "Apartamento en Barcelona",
             "C/Passeig de Gràcia 123",
             2, 1, PropertyType.APARTMENT,
@@ -37,7 +36,7 @@ public class BuildingDB {
             4.5f
         ));
         
-        entries.add(new Building(
+        add(new Building(
             "Casa Rural en Valencia",
             "C/Camino del Bosque s/n",
             4, 2, PropertyType.HOUSE,
@@ -51,4 +50,10 @@ public class BuildingDB {
         ));
         
     }
+    
+    public void add(Building b){
+        entries.add(b);
+        entries.getLast().setID(entries.size());
+    }
 }
+ 

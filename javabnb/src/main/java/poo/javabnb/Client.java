@@ -1,6 +1,7 @@
 package poo.javabnb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Client implements Serializable {
     private final String DNI;
@@ -8,7 +9,7 @@ public class Client implements Serializable {
     private String mail;
     private String password;
     private String number;
-
+    public final ArrayList<Integer> pinnedPosts;
     
 
     // Constructor
@@ -18,10 +19,10 @@ public class Client implements Serializable {
         this.mail = mail;
         this.password = password;
         this.number = number;
-}
+        this.pinnedPosts = new ArrayList<>(); 
+    }
 
     // Getters
-
     public String getName() {
         return name;
     }

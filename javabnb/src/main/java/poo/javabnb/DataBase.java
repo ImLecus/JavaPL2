@@ -61,6 +61,10 @@ public class DataBase implements Serializable {
         users.add(client);
     }
     
+    public void update(int index, Client client){
+        users.set(index, client);
+    }
+    
     /**
      * Removes an entry based on the index, moves
      * the last entry to the free index and removes

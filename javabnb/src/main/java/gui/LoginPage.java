@@ -43,7 +43,7 @@ public class LoginPage extends javax.swing.JPanel {
                 int key = App.db.getUserInDataBase(mailInput.getText(), String.valueOf(passwordInput.getPassword()));
                 if (key >= 0) {
                     Client user = App.db.getClientData(key);
-                    App.session = Session.init(user);
+                    App.session = Session.init(user, key);
                     
                     System.out.printf(
                     """
@@ -58,6 +58,8 @@ public class LoginPage extends javax.swing.JPanel {
                     App.session.user.getMail(), 
                     App.session.user.getPassword(),
                     App.session.ID);
+                    
+                    System.out.printf("El usuario tiene %s posts guardados", App.session.user.pinnedPosts.size());
                     
                     resetText();
                     App.redirect("MAIN");

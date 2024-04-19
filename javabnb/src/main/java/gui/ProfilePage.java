@@ -2,44 +2,19 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
-import poo.javabnb.Building;
+import java.util.ArrayList;
 import style.Style;
 import poo.javabnb.FontManager;
-import poo.javabnb.PropertyType;
-import poo.javabnb.Host;
 
 public class ProfilePage extends javax.swing.JPanel {
     
     private boolean isEditing = false;
     
-   
+    public ArrayList<BuildingWidget> widgets;
     
     public ProfilePage() {
         initComponents();
-
-        
-        Building b = new Building(
-            "Casa en la playa", 
-            "direccion", 
-            1,
-            1, 
-            PropertyType.HOUSE, 
-            12, 
-            new String[]{"playa"}, 
-            "Una descripción",
-            new String[]{},
-            new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
-            1,
-            new String[]{},
-            5.0f
-        );
-        
-        buildingWidget1.init(b);
-        
-        
-        
-        
+        widgets = new ArrayList<>();
         
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
@@ -57,10 +32,30 @@ public class ProfilePage extends javax.swing.JPanel {
     }
     
     public void reloadInfo(){
+        removeWidgets();
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
         //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
+        
+        
+        App.session.updateSession();
+        for(int i = 0; i < App.session.user.pinnedPosts.size(); ++i){
+            BuildingWidget bw = new BuildingWidget();
+            widgets.add(bw);
+            add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + (168 + 30)* i, -1, -1));
+            bw.init(
+            App.buildings.entries.get(
+                    App.session.user.pinnedPosts.get(i) - 1
+                )
+            );
+        }
+    }
+    
+    private void removeWidgets(){
+        for(BuildingWidget bw : widgets){
+            remove(bw);
+        }
     }
 
     /**
@@ -83,7 +78,6 @@ public class ProfilePage extends javax.swing.JPanel {
         userPhoneLabel = new javax.swing.JTextField();
         banner = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        buildingWidget1 = new gui.BuildingWidget();
 
         jButton1.setText("jButton1");
 
@@ -156,7 +150,6 @@ public class ProfilePage extends javax.swing.JPanel {
         jLabel1.setForeground(Style.TEXT_COLOR);
         jLabel1.setText("Inmuebles guardados");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
-        add(buildingWidget1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userMailLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMailLabelActionPerformed
@@ -167,7 +160,6 @@ public class ProfilePage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton banner;
-    private gui.BuildingWidget buildingWidget1;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

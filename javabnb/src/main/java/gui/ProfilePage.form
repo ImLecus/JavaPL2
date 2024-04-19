@@ -197,12 +197,5 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="gui.BuildingWidget" name="buildingWidget1">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="520" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
   </SubComponents>
 </Form>
