@@ -171,6 +171,7 @@
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="rolloverEnabled" type="boolean" value="false"/>
       </Properties>

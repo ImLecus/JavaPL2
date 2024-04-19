@@ -147,6 +147,7 @@ public class ProfilePage extends javax.swing.JPanel {
         banner.setEnabled(false);
         banner.setFocusPainted(false);
         banner.setFocusable(false);
+        banner.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
         add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
