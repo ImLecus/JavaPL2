@@ -59,8 +59,8 @@ public class MainPage extends javax.swing.JPanel {
                             App.session.endSession();
                             App.redirect("LOGIN");
                         break;
-                    case "Community Guidelines":
-                        App.redirect("COMMUNITY_GUIDELINES");
+                        case "Community Guidelines":
+                            App.redirect("COMMUNITY_GUIDELINES");
                         break;
                     default:
                         break;

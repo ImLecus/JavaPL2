@@ -95,7 +95,7 @@ public class EULAPage extends javax.swing.JPanel {
         leidoButton.setForeground(Style.BG_COLOR);
         leidoButton.setText("Hecho");
         leidoButton.setBorder(null);
-        leidoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        leidoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         leidoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 36;

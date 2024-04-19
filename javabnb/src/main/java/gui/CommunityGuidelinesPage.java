@@ -4,6 +4,11 @@
  */
 package gui;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import poo.javabnb.FontManager;
+import style.*;
+
 /**
  *
  * @author Alumno
@@ -15,6 +20,12 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
      */
     public CommunityGuidelinesPage() {
         initComponents();
+        scroll.getVerticalScrollBar().setUI(new ScrollBarUI());
+        scroll.getVerticalScrollBar().setBorder(null);
+        scroll.getVerticalScrollBar().setPreferredSize(new Dimension(12, Integer.MAX_VALUE));
+        hechoButton.addActionListener((ActionEvent e) -> {
+            App.redirect("MAIN");
+        });
     }
 
     /**
@@ -25,20 +36,75 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        titleEula = new javax.swing.JLabel();
+        scroll = new javax.swing.JScrollPane();
+        eulaText = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        hechoButton = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
+
+        setLayout(new java.awt.BorderLayout());
+
+        titleEula.setBackground(Style.BG_COLOR);
+        titleEula.setFont(FontManager.titleFont);
+        titleEula.setForeground(Style.TEXT_COLOR);
+        titleEula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleEula.setText("Normas de la Comunidad");
+        titleEula.setFocusable(false);
+        titleEula.setOpaque(true);
+        titleEula.setRequestFocusEnabled(false);
+        add(titleEula, java.awt.BorderLayout.PAGE_START);
+
+        scroll.setBorder(null);
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        eulaText.setEditable(false);
+        eulaText.setBackground(Style.BG_COLOR);
+        eulaText.setColumns(20);
+        eulaText.setFont(FontManager.regularFont);
+        eulaText.setLineWrap(true);
+        eulaText.setRows(5);
+        eulaText.setText("\nBienvenidos a la comunidad de JavaBnB!\n\nAquí podrás compartir tus experiencias, conectar con otros usuarios y descubrir nuevos lugares increíbles. Para que todos podamos disfrutar de una experiencia positiva y segura, es importante seguir estas normas de la comunidad:\n\n1. Respeto mutuo:\n\nTrata a todos los usuarios con respeto, independientemente de su origen, cultura, creencias o ideas.\nEvita comentarios discriminatorios, ofensivos o de acoso.\nPromueve un ambiente positivo y acogedor para todos.\n2. Contenido adecuado:\n\nSube solo contenido que sea relevante para la comunidad de JavaBnB.\nAsegúrate de que las imágenes y vídeos que compartes sean apropiados para todos los públicos.\nEvita publicar contenido spam, promocional o engañoso.\n3. Veracidad y autenticidad:\n\nSé honesto y transparente en tus comentarios y descripciones.\nNo publiques información falsa o engañosa.\nNo te hagas pasar por otra persona o entidad.\n4. Seguridad:\n\nNo compartas información personal tuya o de otros usuarios.\nEvita publicar contenido que pueda poner en riesgo la seguridad de otros.\nSi observas algún comportamiento sospechoso o inapropiado, repórtalo inmediatamente al equipo de moderadores.\n5. Propiedad intelectual:\n\nRespeta los derechos de autor y propiedad intelectual de otros usuarios.\nNo copies, reproduzcas ni distribuyas contenido sin la autorización del propietario.\nSi utilizas contenido de terceros, asegúrate de citar la fuente correctamente.\n6. Cumplimiento de las leyes:\n\nCumple con todas las leyes y regulaciones aplicables al usar la aplicación JavaBnB.\nNo uses la aplicación para realizar actividades ilegales o dañinas.\n7. Moderación:\n\nUn equipo de moderadores se encargará de revisar el contenido y las interacciones en la comunidad.\nLos moderadores tienen la autoridad para eliminar contenido que no cumpla con estas normas.\nSi tienes alguna duda o pregunta sobre las normas de la comunidad, puedes contactarnos a través del soporte de la aplicación.\n¡Gracias por ser parte de la comunidad de JavaBnB!\n\nAl seguir estas normas, podemos crear un espacio seguro y positivo para que todos disfruten de la aplicación.\n\nRecuerda:\n\nSi observas algún comportamiento que incumpla estas normas, repórtalo inmediatamente al equipo de moderadores.\nJuntos podemos crear una comunidad vibrante y acogedora para todos.");
+        eulaText.setToolTipText("");
+        eulaText.setWrapStyleWord(true);
+        eulaText.setMargin(new java.awt.Insets(20, 20, 20, 20));
+        scroll.setViewportView(eulaText);
+
+        add(scroll, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(Style.BG_COLOR);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        hechoButton.setBackground(Style.MAIN_COLOR);
+        hechoButton.setFont(FontManager.boldFont);
+        hechoButton.setForeground(Style.BG_COLOR);
+        hechoButton.setText("Hecho");
+        hechoButton.setBorder(null);
+        hechoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        hechoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(hechoButton, gridBagConstraints);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        filler1.setBackground(Style.BG_COLOR);
+        filler1.setOpaque(true);
+        add(filler1, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea eulaText;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton hechoButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JLabel titleEula;
     // End of variables declaration//GEN-END:variables
 }
