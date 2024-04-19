@@ -15,10 +15,10 @@ public class BuildingWidget extends javax.swing.JPanel {
     
     public void init(Building b){
         this.b = b;
-        title.setText(b.title);
-        host.setText(b.getHost().getName());
-        price.setText(String.valueOf(b.price) + "€ / noche");
-        rating.setText(String.valueOf(b.rating) + " estrellas");
+        title.setText(b.info.title);
+        host.setText(b.info.host.getName());
+        price.setText(String.valueOf(b.info.price) + "€ / noche");
+        rating.setText(String.valueOf(b.info.rating) + " estrellas");
     };
     
     

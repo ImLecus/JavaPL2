@@ -42,7 +42,7 @@ public class Client implements Serializable {
         return password;
     }
 
-    public void setInfo(String name, String mail, String number, String password,int[] id){
+    public void setInfo(String name, String mail, String number, String password){
         this.name = name;
         this.mail = mail;
         this.number = number;
