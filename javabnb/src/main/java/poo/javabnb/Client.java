@@ -9,6 +9,8 @@ public class Client implements Serializable {
     private String password;
     private String number;
 
+    
+
     // Constructor
     public Client(String DNI, String name, String mail, String password, String number) {
         this.DNI = DNI;
@@ -16,9 +18,10 @@ public class Client implements Serializable {
         this.mail = mail;
         this.password = password;
         this.number = number;
-    }
+}
 
     // Getters
+
     public String getName() {
         return name;
     }
@@ -39,7 +42,7 @@ public class Client implements Serializable {
         return password;
     }
 
-    public void setInfo(String name, String mail, String number, String password){
+    public void setInfo(String name, String mail, String number, String password,int[] id){
         this.name = name;
         this.mail = mail;
         this.number = number;
