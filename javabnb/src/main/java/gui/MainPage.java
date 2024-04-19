@@ -21,25 +21,9 @@ public class MainPage extends javax.swing.JPanel {
                     System.out.println("Buscando: " + searchBar.getText());
                 }
         });
-        
-        Building b = new Building(
-            "Casa en la playa", 
-            "direccion", 
-            1,
-            1, 
-            PropertyType.HOUSE, 
-            12, 
-            new String[]{"playa"}, 
-            "Una descripción",
-            new String[]{},
-            new Host("00000000E", "Dueño", "dueño@tuyo.me", "password", "666666666",new Date() ,false),
-            new String[]{},
-            new String[]{},
-            5.0f
-        );
-        
-        buildingWidget1.init(b);
-        buildingWidget2.init(b);
+
+        buildingWidget1.init(App.buildings.entries.get(0));
+        buildingWidget2.init(App.buildings.entries.get(1));
         
         
         comboBox.addActionListener(new ActionListener(){

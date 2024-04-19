@@ -1,7 +1,9 @@
 package gui;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
@@ -44,13 +46,22 @@ public class BuildingPage extends javax.swing.JPanel {
         comboBox = new javax.swing.JComboBox<>();
         atrasButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        host = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
+        jPanel8 = new javax.swing.JPanel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        jPanel4 = new javax.swing.JPanel();
         name = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        description = new javax.swing.JTextArea();
+        host = new javax.swing.JLabel();
         props = new javax.swing.JLabel();
         rating = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        description = new javax.swing.JTextArea();
+        jPanel9 = new javax.swing.JPanel();
         saveButton = new javax.swing.JToggleButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
 
         setLayout(new java.awt.BorderLayout());
 
@@ -135,17 +146,47 @@ public class BuildingPage extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel2.setBackground(Style.BG_COLOR);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
 
-        host.setBackground(Style.TEXT_COLOR);
-        host.setFont(FontManager.regularFont);
-        host.setText("Anfitrión: Pedrito (Superanfitrión)");
-        jPanel2.add(host, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 520, 20));
+        jPanel6.setBackground(Style.BG_COLOR);
+        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jPanel3.add(jButton1);
+
+        jPanel6.add(jPanel3);
+        jPanel6.add(filler1);
+
+        jPanel8.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.add(filler2);
+
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
 
         name.setBackground(Style.TEXT_COLOR);
         name.setFont(FontManager.titleFont);
         name.setText("Nombre del inmueble");
-        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 520, 50));
+        jPanel4.add(name);
+
+        host.setBackground(Style.TEXT_COLOR);
+        host.setFont(FontManager.regularFont);
+        host.setText("Anfitrión: Pedrito (Superanfitrión)");
+        jPanel4.add(host);
+
+        props.setBackground(Style.TEXT_COLOR);
+        props.setFont(FontManager.regularFont);
+        props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
+        jPanel4.add(props);
+
+        rating.setBackground(Style.TEXT_COLOR);
+        rating.setFont(FontManager.regularFont);
+        rating.setText("5/5 estrellas");
+        jPanel4.add(rating);
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -165,17 +206,9 @@ public class BuildingPage extends javax.swing.JPanel {
         description.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(description);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        jPanel4.add(jScrollPane1);
 
-        props.setBackground(Style.TEXT_COLOR);
-        props.setFont(FontManager.regularFont);
-        props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
-        jPanel2.add(props, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 520, 20));
-
-        rating.setBackground(Style.TEXT_COLOR);
-        rating.setFont(FontManager.regularFont);
-        rating.setText("5/5 estrellas");
-        jPanel2.add(rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 520, 20));
+        jPanel8.add(jPanel4);
 
         saveButton.setText("Guardar");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +216,14 @@ public class BuildingPage extends javax.swing.JPanel {
                 saveButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+        jPanel9.add(saveButton);
+
+        jPanel8.add(jPanel9);
+        jPanel8.add(filler3);
+
+        jPanel6.add(jPanel8);
+
+        jPanel2.add(jPanel6);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -241,10 +281,19 @@ public class BuildingPage extends javax.swing.JPanel {
     private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JTextArea description;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JLabel host;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
