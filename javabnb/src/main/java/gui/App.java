@@ -10,7 +10,7 @@ public class App {
 
     public static DataBase db; 
     public static Session session = null;
-    public static BuildingDB buildings;
+    public static BuildingDB buildings = new BuildingDB();
 
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
