@@ -25,7 +25,7 @@ public class BuildingDB {
                 "00000000E", "Dueño", "dueño@tuyo.me", "contraseña", "666666666", new Date(), true),
                 3,
                 new String[]{},
-                5.0f  
+                3f  
             ));
         
         add(new Building(
