@@ -22,7 +22,7 @@ public class MainPage extends javax.swing.JPanel {
                 }
         });
         
-         Building b = new Building(
+        Building b = new Building(
             "Casa en la playa", 
             "direccion", 
             1,

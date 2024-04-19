@@ -1,18 +1,16 @@
 package gui;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import poo.javabnb.Client;
-import poo.javabnb.DataBase;
-import poo.javabnb.Session;
+import poo.javabnb.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
-import poo.javabnb.Building;
 
 public class App {
 
     public static DataBase db; 
     public static Session session = null;
+    public static BuildingDB buildings;
 
     private static final CardLayout cardLayout = new CardLayout();
     private static final JPanel cards = new JPanel(cardLayout);
