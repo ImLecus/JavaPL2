@@ -31,12 +31,7 @@ public class Session {
     
     public void updateSession(){
         App.db.update(entry, user);
-        try{
-            App.db.saveData();
-        }
-        catch(Exception e){
-            e.fillInStackTrace();
-        }
+        App.db.saveData();
     }
 
     public void addPinnedPost(int id){

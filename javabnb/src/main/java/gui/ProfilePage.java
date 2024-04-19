@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import style.Style;
 import poo.javabnb.FontManager;
 
-public class ProfilePage extends javax.swing.JPanel {
+public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     
     private boolean isEditing = false;
     
@@ -31,8 +31,9 @@ public class ProfilePage extends javax.swing.JPanel {
         
     }
     
-    public void reloadInfo(){
-        removeWidgets();
+    @Override
+    public void reloadContent(){
+        deleteDynamicContent();
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
         //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
@@ -40,6 +41,18 @@ public class ProfilePage extends javax.swing.JPanel {
         
         
         App.session.updateSession();
+        createDynamicContent();
+    }
+    
+    @Override
+    public void deleteDynamicContent(){
+        for(BuildingWidget bw : widgets){
+            remove(bw);
+        }
+    }
+    
+    @Override
+    public void createDynamicContent(){
         for(int i = 0; i < App.session.user.pinnedPosts.size(); ++i){
             BuildingWidget bw = new BuildingWidget();
             widgets.add(bw);
@@ -49,12 +62,6 @@ public class ProfilePage extends javax.swing.JPanel {
                     App.session.user.pinnedPosts.get(i) - 1
                 )
             );
-        }
-    }
-    
-    private void removeWidgets(){
-        for(BuildingWidget bw : widgets){
-            remove(bw);
         }
     }
 
@@ -119,11 +126,6 @@ public class ProfilePage extends javax.swing.JPanel {
 
         userMailLabel.setEditable(false);
         userMailLabel.setText("****");
-        userMailLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userMailLabelActionPerformed(evt);
-            }
-        });
         add(userMailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         phoneLabel.setFont(FontManager.boldFont);
@@ -152,10 +154,6 @@ public class ProfilePage extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userMailLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMailLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userMailLabelActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
@@ -170,4 +168,5 @@ public class ProfilePage extends javax.swing.JPanel {
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField userPhoneLabel;
     // End of variables declaration//GEN-END:variables
+
 }

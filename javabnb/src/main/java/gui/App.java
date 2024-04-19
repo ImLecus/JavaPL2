@@ -37,12 +37,7 @@ public class App {
             db = new DataBase();
             db.add(new Client("00000000E","Example", "example", "example","666666666"));
             
-            try{
-                db.saveData();
-            }
-            catch(Exception e2){
-                e2.fillInStackTrace();
-            }
+            db.saveData();
             
         }
 
@@ -66,9 +61,9 @@ public class App {
      * @param page A string with the page name.
      * @param args
      */
-    public static void redirect(String page){
-        if("PROFILE".equals(page)){profile.reloadInfo();}
-        if("BUILDING".equals(page)){building.reloadInfo();}
+    public static void redirect(String page){        
+        if("PROFILE".equals(page)){profile.reloadContent();}
+        if("BUILDING".equals(page)){building.reloadContent();}
         cardLayout.show(cards, page);
     }
 

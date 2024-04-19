@@ -107,11 +107,16 @@ public class DataBase implements Serializable {
     /**
      * Saves the data in "data.dat"
      */
-    public void saveData() throws FileNotFoundException, IOException{
-        FileOutputStream fos = new FileOutputStream("./src/main/resources/data/data.dat");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this);
-        fos.close();
+    public void saveData(){
+        try{
+            FileOutputStream fos = new FileOutputStream("./src/main/resources/data/data.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+            fos.close();
+        }
+        catch(Exception e){
+            e.fillInStackTrace();
+        }
     }
 
 }

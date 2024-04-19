@@ -213,11 +213,6 @@ public class LoginPage extends javax.swing.JPanel {
         passwordInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         passwordInput.setBorder(null);
         passwordInput.setMinimumSize(new java.awt.Dimension(64, 25));
-        passwordInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordInputActionPerformed(evt);
-            }
-        });
         passwordPanel.add(passwordInput, java.awt.BorderLayout.CENTER);
 
         passwordViewToggle.setBackground(Style.INPUT_BG_COLOR);
@@ -258,10 +253,6 @@ public class LoginPage extends javax.swing.JPanel {
 
         add(leftSide, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordInputActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

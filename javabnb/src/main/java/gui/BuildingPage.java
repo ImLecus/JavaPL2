@@ -5,7 +5,7 @@ import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import style.Style;
 
-public class BuildingPage extends javax.swing.JPanel {
+public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private Building b;
     private boolean saved = false;
@@ -15,7 +15,8 @@ public class BuildingPage extends javax.swing.JPanel {
         
     }
     
-    public void reloadInfo(){  
+    @Override
+    public void reloadContent(){  
       b = App.focusedBuilding;
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
@@ -25,7 +26,15 @@ public class BuildingPage extends javax.swing.JPanel {
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
     }
 
-
+    @Override
+    public void createDynamicContent(){
+        
+    }
+    
+    @Override
+    public void deleteDynamicContent(){
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
