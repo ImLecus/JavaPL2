@@ -1,11 +1,5 @@
 package poo.javabnb;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class DataBase implements Serializable {
@@ -61,6 +55,12 @@ public class DataBase implements Serializable {
         users.add(client);
     }
     
+    
+    /**
+     * Updates a Client in a specific index
+     * @param index the index to be replaced
+     * @param client the client new information
+     */
     public void update(int index, Client client){
         users.set(index, client);
     }
@@ -81,6 +81,12 @@ public class DataBase implements Serializable {
         users.removeLast();
     }
     
+    
+    /**
+     * Searches if the mail already exists in the database.
+     * @param mail the mail to be searched
+     * @return true if the mail already exists, false otherwise
+     */
     public boolean contains(String mail){
         return mails.contains(mail);
     }

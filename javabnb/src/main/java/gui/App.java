@@ -24,8 +24,6 @@ public class App {
     private static final BuildingPage building =             new BuildingPage();
     private static final SearchPage search =                 new SearchPage();
     private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
-    
-
 
     public static void main(String[] args){
         
@@ -49,7 +47,6 @@ public class App {
         cards.add(building, "BUILDING");
         cards.add(search, "SEARCH");
         cards.add(community,"COMMUNITY_GUIDELINES");
-        
         
         setupFrame();
         redirect("LOGIN");

@@ -29,16 +29,27 @@ public class Session {
         finished = true;
     }
     
+    /**
+     * Updates the client information in the database and saves the data
+     */
     public void updateSession(){
         App.db.update(entry, user);
         App.db.saveData();
     }
-
+    
+    /**
+     * Adds a new ID in the client pinned posts.
+     * @param id the ID to be added.
+     */
     public void addPinnedPost(int id){
         this.user.pinnedPosts.add(id);
         updateSession();
     }
 
+    /**
+     * 
+     * @param id 
+     */
     public void deletePinnedPost(int id){
         this.user.pinnedPosts.remove(this.user.pinnedPosts.indexOf(id));
         updateSession();

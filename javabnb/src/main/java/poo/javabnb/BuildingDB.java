@@ -7,6 +7,11 @@ import poo.javabnb.Building;
 public class BuildingDB {
     public ArrayList<Building> entries;
     
+    /**
+     * This class manages all the data about buildings. It's responsable
+     * for adding and getting the information about the buildings and assigning
+     * their ID.
+     */
     public BuildingDB(){
         this.entries = new ArrayList<>();
         add(
@@ -51,6 +56,11 @@ public class BuildingDB {
         
     }
     
+    /**
+     * Adds a new Building and assigns a new ID based on the order
+     * of addition.
+     * @param b the building to be added.
+     */
     public void add(Building b){
         entries.add(b);
         entries.getLast().setID(entries.size());

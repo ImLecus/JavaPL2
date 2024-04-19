@@ -62,9 +62,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha ida"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="searchBar">
           <Properties>
@@ -73,9 +70,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Destino"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
           <Properties>
@@ -85,9 +79,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha vuelta"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField3">
           <Properties>
@@ -96,9 +87,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="n&#xba; Personas"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBox">
           <Properties>

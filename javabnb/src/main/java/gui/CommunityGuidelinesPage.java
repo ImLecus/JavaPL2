@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 
 import java.awt.Dimension;
@@ -9,15 +5,8 @@ import java.awt.event.ActionEvent;
 import poo.javabnb.FontManager;
 import style.*;
 
-/**
- *
- * @author Alumno
- */
 public class CommunityGuidelinesPage extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CommunityGuidelinesPage
-     */
     public CommunityGuidelinesPage() {
         initComponents();
         scroll.getVerticalScrollBar().setUI(new ScrollBarUI());

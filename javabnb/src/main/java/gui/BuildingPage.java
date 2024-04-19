@@ -103,39 +103,19 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         jTextField1.setBackground(Style.INPUT_BG_COLOR);
         jTextField1.setText("Fecha ida");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField1);
 
         searchBar.setBackground(Style.INPUT_BG_COLOR);
         searchBar.setText("Destino");
-        searchBar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBarActionPerformed(evt);
-            }
-        });
         jPanel1.add(searchBar);
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(Style.INPUT_BG_COLOR);
         jTextField2.setText("Fecha vuelta");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField2);
 
         jTextField3.setBackground(Style.INPUT_BG_COLOR);
         jTextField3.setText("nº Personas");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField3);
 
         comboBox.setBackground(new java.awt.Color(255, 248, 249));
@@ -325,22 +305,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBarActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         JComboBox cb = (JComboBox) evt.getSource();
