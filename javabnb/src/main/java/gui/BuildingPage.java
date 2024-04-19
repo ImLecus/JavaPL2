@@ -51,20 +51,26 @@ public class BuildingPage extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         jPanel4 = new javax.swing.JPanel();
-        name = new javax.swing.JLabel();
         host = new javax.swing.JLabel();
         props = new javax.swing.JLabel();
         rating = new javax.swing.JLabel();
         description = new javax.swing.JTextArea();
+        name = new javax.swing.JLabel();
+        description1 = new javax.swing.JTextArea();
+        description2 = new javax.swing.JTextArea();
+        description3 = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
-        saveButton = new javax.swing.JToggleButton();
+        jPanel7 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        saveButton = new javax.swing.JToggleButton();
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        jPanel5 = new javax.swing.JPanel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 0));
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -139,7 +145,7 @@ public class BuildingPage extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         jPanel6.setBackground(Style.BG_COLOR);
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
@@ -163,14 +169,6 @@ public class BuildingPage extends javax.swing.JPanel {
 
         jPanel4.setBackground(Style.TRANSPARENT_COLOR);
         jPanel4.setLayout(new java.awt.GridBagLayout());
-
-        name.setBackground(Style.TEXT_COLOR);
-        name.setFont(FontManager.titleFont);
-        name.setText("Nombre del inmueble");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        jPanel4.add(name, gridBagConstraints);
 
         host.setBackground(Style.TEXT_COLOR);
         host.setFont(FontManager.boldFont);
@@ -219,31 +217,106 @@ public class BuildingPage extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
         jPanel4.add(description, gridBagConstraints);
+
+        name.setBackground(Style.TEXT_COLOR);
+        name.setFont(FontManager.titleFont);
+        name.setText("Nombre del inmueble");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel4.add(name, gridBagConstraints);
+
+        description1.setEditable(false);
+        description1.setBackground(Style.TRANSPARENT_COLOR);
+        description1.setColumns(20);
+        description1.setFont(FontManager.regularFont);
+        description1.setForeground(Style.TEXT_COLOR);
+        description1.setLineWrap(true);
+        description1.setRows(5);
+        description1.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
+        description1.setWrapStyleWord(true);
+        description1.setBorder(null);
+        description1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        description1.setFocusable(false);
+        description1.setVerifyInputWhenFocusTarget(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
+        jPanel4.add(description1, gridBagConstraints);
+
+        description2.setEditable(false);
+        description2.setBackground(Style.TRANSPARENT_COLOR);
+        description2.setColumns(20);
+        description2.setFont(FontManager.regularFont);
+        description2.setForeground(Style.TEXT_COLOR);
+        description2.setLineWrap(true);
+        description2.setRows(5);
+        description2.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
+        description2.setWrapStyleWord(true);
+        description2.setBorder(null);
+        description2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        description2.setFocusable(false);
+        description2.setVerifyInputWhenFocusTarget(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
+        jPanel4.add(description2, gridBagConstraints);
+
+        description3.setEditable(false);
+        description3.setBackground(Style.TRANSPARENT_COLOR);
+        description3.setColumns(20);
+        description3.setFont(FontManager.regularFont);
+        description3.setForeground(Style.TEXT_COLOR);
+        description3.setLineWrap(true);
+        description3.setRows(5);
+        description3.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
+        description3.setWrapStyleWord(true);
+        description3.setBorder(null);
+        description3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        description3.setFocusable(false);
+        description3.setVerifyInputWhenFocusTarget(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
+        jPanel4.add(description3, gridBagConstraints);
 
         jPanel8.add(jPanel4);
 
         jPanel9.setBackground(Style.TRANSPARENT_COLOR);
-        jPanel9.setLayout(new java.awt.GridBagLayout());
+        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.PAGE_AXIS));
 
-        saveButton.setText("G");
+        jPanel7.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        jButton2.setBackground(Style.TRANSPARENT_COLOR);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel7.add(jButton2);
+
+        saveButton.setBackground(Style.TRANSPARENT_COLOR);
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveButton.setBorder(null);
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
-        jPanel9.add(saveButton, new java.awt.GridBagConstraints());
+        jPanel7.add(saveButton);
+        jPanel7.add(filler7);
 
-        jButton2.setText("D");
-        jPanel9.add(jButton2, new java.awt.GridBagConstraints());
+        jPanel9.add(jPanel7);
 
-        jLabel1.setText("Total XXX€");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 10, 0);
-        jPanel9.add(jLabel1, gridBagConstraints);
+        jPanel5.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel5.setLayout(new java.awt.GridBagLayout());
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -251,7 +324,9 @@ public class BuildingPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel9.add(jFormattedTextField1, gridBagConstraints);
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        jPanel5.add(jFormattedTextField1, gridBagConstraints);
 
         jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -259,7 +334,18 @@ public class BuildingPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel9.add(jFormattedTextField2, gridBagConstraints);
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        jPanel5.add(jFormattedTextField2, gridBagConstraints);
+
+        jLabel1.setFont(FontManager.boldFont);
+        jLabel1.setText("Total XXX€");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 10, 0);
+        jPanel5.add(jLabel1, gridBagConstraints);
 
         submitButton.setBackground(Style.MAIN_COLOR);
         submitButton.setFont(FontManager.boldFont);
@@ -271,16 +357,18 @@ public class BuildingPage extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 36;
         gridBagConstraints.ipady = 12;
-        jPanel9.add(submitButton, gridBagConstraints);
+        jPanel5.add(submitButton, gridBagConstraints);
+
+        jPanel9.add(jPanel5);
 
         jPanel8.add(jPanel9);
         jPanel8.add(filler3);
 
         jPanel6.add(jPanel8);
-        jPanel6.add(filler5);
+        jPanel6.add(jLabel2);
 
         jScrollPane2.setViewportView(jPanel6);
 
@@ -342,22 +430,28 @@ public class BuildingPage extends javax.swing.JPanel {
     private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JTextArea description;
+    private javax.swing.JTextArea description1;
+    private javax.swing.JTextArea description2;
+    private javax.swing.JTextArea description3;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler7;
     private javax.swing.JLabel host;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;

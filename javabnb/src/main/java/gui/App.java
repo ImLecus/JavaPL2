@@ -55,6 +55,7 @@ public class App {
         cards.add(search, "SEARCH");
         cards.add(community,"COMMUNITY_GUIDELINES");
         
+        
         setupFrame();
         redirect("LOGIN");
     }
