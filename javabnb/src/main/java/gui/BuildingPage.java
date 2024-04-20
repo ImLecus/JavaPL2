@@ -54,11 +54,16 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         java.awt.GridBagConstraints gridBagConstraints;
 
         header = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         atrasButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        searchBar = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        searchBar = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         body = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -74,8 +79,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         props = new javax.swing.JLabel();
         description = new javax.swing.JTextArea();
         name = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        starsPanel = new javax.swing.JPanel();
         star1 = new javax.swing.JButton();
         star2 = new javax.swing.JButton();
         star3 = new javax.swing.JButton();
@@ -97,11 +101,15 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         header.setBackground(Style.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
+        header.setLayout(new java.awt.GridLayout());
 
-        atrasButton.setBackground(Style.MAIN_COLOR);
+        jPanel2.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
+
+        atrasButton.setBackground(Style.TRANSPARENT_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -111,44 +119,108 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
                 atrasButtonActionPerformed(evt);
             }
         });
-        header.add(atrasButton);
+        jPanel2.add(atrasButton);
 
-        jTextField1.setBackground(Style.INPUT_BG_COLOR);
-        jTextField1.setText("Fecha ida");
-        header.add(jTextField1);
+        header.add(jPanel2);
 
-        searchBar.setBackground(Style.INPUT_BG_COLOR);
-        searchBar.setText("Destino");
-        header.add(searchBar);
+        jPanel1.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jTextField2.setEditable(false);
+        jPanel4.setBackground(Style.INPUT_BG_COLOR);
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
         jTextField2.setBackground(Style.INPUT_BG_COLOR);
+        jTextField2.setFont(FontManager.regularFont);
         jTextField2.setText("Fecha vuelta");
-        header.add(jTextField2);
+        jTextField2.setBorder(null);
+        jTextField2.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
+        jPanel4.add(jTextField2, gridBagConstraints);
 
         jTextField3.setBackground(Style.INPUT_BG_COLOR);
+        jTextField3.setFont(FontManager.regularFont);
         jTextField3.setText("nº Personas");
-        header.add(jTextField3);
+        jTextField3.setBorder(null);
+        jTextField3.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel4.add(jTextField3, gridBagConstraints);
 
-        comboBox.setBackground(new java.awt.Color(255, 248, 249));
+        searchBar.setBackground(Style.INPUT_BG_COLOR);
+        searchBar.setFont(FontManager.regularFont);
+        searchBar.setText("Destino");
+        searchBar.setBorder(null);
+        searchBar.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel4.add(searchBar, gridBagConstraints);
+
+        jTextField1.setBackground(Style.INPUT_BG_COLOR);
+        jTextField1.setFont(FontManager.regularFont);
+        jTextField1.setText("Fecha ida");
+        jTextField1.setBorder(null);
+        jTextField1.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 5);
+        jPanel4.add(jTextField1, gridBagConstraints);
+
+        jButton2.setText("Buscar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel4.add(jButton2, gridBagConstraints);
+
+        jPanel1.add(jPanel4);
+
+        header.add(jPanel1);
+
+        jPanel3.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+
+        comboBox.setBackground(Style.TRANSPARENT_COLOR);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
+        comboBox.setBorder(null);
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
-        header.add(comboBox);
+        jPanel3.add(comboBox);
+
+        header.add(jPanel3);
 
         add(header);
 
         body.setBackground(Style.BG_COLOR);
+        body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
         jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setViewportView(mainBody);
 
         mainBody.setBackground(Style.BG_COLOR);
+        mainBody.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                mainBodyComponentMoved(evt);
+            }
+        });
         mainBody.setLayout(new javax.swing.BoxLayout(mainBody, javax.swing.BoxLayout.PAGE_AXIS));
         mainBody.add(filler4);
 
@@ -157,8 +229,14 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         jButton1.setBackground(Style.TRANSPARENT_COLOR);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setDefaultCapable(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.setRolloverEnabled(false);
+        jButton1.setVerifyInputWhenFocusTarget(false);
         carousel.add(jButton1);
 
         mainBody.add(carousel);
@@ -217,10 +295,9 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         leftSide.add(name, gridBagConstraints);
-        leftSide.add(jPanel11, new java.awt.GridBagConstraints());
 
-        jPanel10.setBackground(Style.TRANSPARENT_COLOR);
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
+        starsPanel.setBackground(Style.TRANSPARENT_COLOR);
+        starsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
         star1.setBackground(Style.TRANSPARENT_COLOR);
         star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -231,7 +308,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star1.setFocusPainted(false);
         star1.setFocusable(false);
         star1.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanel10.add(star1);
+        starsPanel.add(star1);
 
         star2.setBackground(Style.TRANSPARENT_COLOR);
         star2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -242,7 +319,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star2.setFocusPainted(false);
         star2.setFocusable(false);
         star2.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanel10.add(star2);
+        starsPanel.add(star2);
 
         star3.setBackground(Style.TRANSPARENT_COLOR);
         star3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -253,7 +330,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star3.setFocusPainted(false);
         star3.setFocusable(false);
         star3.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanel10.add(star3);
+        starsPanel.add(star3);
 
         star4.setBackground(Style.TRANSPARENT_COLOR);
         star4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -264,7 +341,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star4.setFocusPainted(false);
         star4.setFocusable(false);
         star4.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanel10.add(star4);
+        starsPanel.add(star4);
 
         star5.setBackground(Style.TRANSPARENT_COLOR);
         star5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
@@ -275,13 +352,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star5.setFocusPainted(false);
         star5.setFocusable(false);
         star5.setPreferredSize(new java.awt.Dimension(20, 20));
-        jPanel10.add(star5);
+        starsPanel.add(star5);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        leftSide.add(jPanel10, gridBagConstraints);
+        leftSide.add(starsPanel, gridBagConstraints);
 
         information.add(leftSide);
 
@@ -422,6 +499,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void mainBodyComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mainBodyComponentMoved
+        repaint();
+    }//GEN-LAST:event_mainBodyComponentMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -438,11 +519,14 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JLabel host;
     private javax.swing.JPanel information;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -462,6 +546,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton star3;
     private javax.swing.JButton star4;
     private javax.swing.JButton star5;
+    private javax.swing.JPanel starsPanel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }
