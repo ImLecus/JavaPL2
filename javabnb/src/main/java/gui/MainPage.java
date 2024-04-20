@@ -64,12 +64,17 @@ public class MainPage extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        searchBar = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        header = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        atrasButton = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        searchBar1 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        searchBar = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -95,63 +100,114 @@ public class MainPage extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(Style.MAIN_COLOR);
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        header.setBackground(Style.MAIN_COLOR);
+        header.setMaximumSize(new java.awt.Dimension(32767, 100));
+        header.setLayout(new java.awt.GridLayout());
 
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel7.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
 
-        searchBar.setBackground(Style.INPUT_BG_COLOR);
-        searchBar.setText("Destino");
-        searchBar.addActionListener(new java.awt.event.ActionListener() {
+        atrasButton.setBackground(Style.TRANSPARENT_COLOR);
+        atrasButton.setBorder(null);
+        atrasButton.setBorderPainted(false);
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setEnabled(false);
+        atrasButton.setFocusable(false);
+        atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        atrasButton.setMargin(new java.awt.Insets(2, 0, 2, 0));
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBarActionPerformed(evt);
+                atrasButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(searchBar);
+        jPanel7.add(atrasButton);
 
-        jTextField1.setBackground(Style.INPUT_BG_COLOR);
-        jTextField1.setText("Fecha ida");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField1);
+        header.add(jPanel7);
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(Style.INPUT_BG_COLOR);
-        jTextField2.setText("Fecha vuelta");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField2);
+        jPanel8.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jTextField3.setBackground(Style.INPUT_BG_COLOR);
-        jTextField3.setText("nº Personas");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField3);
+        jPanel9.setBackground(Style.INPUT_BG_COLOR);
+        jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        comboBox.setBackground(new java.awt.Color(255, 248, 249));
+        jTextField4.setBackground(Style.INPUT_BG_COLOR);
+        jTextField4.setFont(FontManager.regularFont);
+        jTextField4.setText("Fecha vuelta");
+        jTextField4.setBorder(null);
+        jTextField4.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
+        jPanel9.add(jTextField4, gridBagConstraints);
+
+        jTextField5.setBackground(Style.INPUT_BG_COLOR);
+        jTextField5.setFont(FontManager.regularFont);
+        jTextField5.setText("nº Personas");
+        jTextField5.setBorder(null);
+        jTextField5.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel9.add(jTextField5, gridBagConstraints);
+
+        searchBar1.setBackground(Style.INPUT_BG_COLOR);
+        searchBar1.setFont(FontManager.regularFont);
+        searchBar1.setText("Destino");
+        searchBar1.setBorder(null);
+        searchBar1.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel9.add(searchBar1, gridBagConstraints);
+
+        jTextField6.setBackground(Style.INPUT_BG_COLOR);
+        jTextField6.setFont(FontManager.regularFont);
+        jTextField6.setText("Fecha ida");
+        jTextField6.setBorder(null);
+        jTextField6.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 5);
+        jPanel9.add(jTextField6, gridBagConstraints);
+
+        searchBar.setText("Buscar");
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel9.add(searchBar, gridBagConstraints);
+
+        jPanel8.add(jPanel9);
+
+        header.add(jPanel8);
+
+        jPanel10.setBackground(Style.TRANSPARENT_COLOR);
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+
+        comboBox.setBackground(Style.TRANSPARENT_COLOR);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
+        comboBox.setBorder(null);
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel5.add(comboBox);
+        jPanel10.add(comboBox);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
-        jPanel1.add(jPanel5, gridBagConstraints);
+        header.add(jPanel10);
 
-        add(jPanel1, java.awt.BorderLayout.NORTH);
+        add(header, java.awt.BorderLayout.NORTH);
 
         muroScroll.setBackground(Style.BG_COLOR);
         muroScroll.setBorder(null);
@@ -309,35 +365,45 @@ public class MainPage extends javax.swing.JPanel {
         add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBarActionPerformed
-
-    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        App.redirect("MAIN");
+    }//GEN-LAST:event_atrasButtonActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        JComboBox cb = (JComboBox) evt.getSource();
+        String selectedItem = (String) cb.getSelectedItem();
+        System.out.println("Item seleccionado: " + selectedItem);
+        switch (selectedItem) {
+            case "Perfil":
+            App.redirect("PROFILE");
+            break;
+            case "Post guardados":
+            App.redirect("PINNED_POSTS");
+            break;
+            case "Cerrar sesión":
+            App.session.endSession();
+            App.redirect("LOGIN");
+            break;
+            case "Community Guidelines":
+            App.redirect("COMMUNITY_GUIDELINES");
+            break;
+            default:
+            break;
+        }
+
+    }//GEN-LAST:event_comboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atrasButton;
     private gui.BuildingWidget buildingWidget1;
     private gui.BuildingWidget buildingWidget2;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JPanel header;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -350,17 +416,20 @@ public class MainPage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JScrollPane muroScroll;
-    private javax.swing.JTextField searchBar;
+    private javax.swing.JButton searchBar;
+    private javax.swing.JTextField searchBar1;
     // End of variables declaration//GEN-END:variables
 }

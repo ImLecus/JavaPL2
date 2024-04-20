@@ -58,16 +58,20 @@ public class BuildingWidget extends javax.swing.JPanel {
         pfp.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         host.setFont(FontManager.boldFont);
+        host.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         host.setText("Anfitrión");
 
         title.setFont(FontManager.subtitleFont);
         title.setForeground(Style.TEXT_COLOR);
+        title.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         title.setText("Title");
 
         price.setFont(FontManager.boldFont);
+        price.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         price.setText("Precio por noche");
 
         rating.setFont(FontManager.boldFont);
+        rating.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         rating.setText("Estrellas");
 
         javax.swing.GroupLayout buttonLayout = new javax.swing.GroupLayout(button);

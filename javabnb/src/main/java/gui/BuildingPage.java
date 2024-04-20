@@ -101,7 +101,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         header.setBackground(Style.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
-        header.setLayout(new java.awt.GridLayout());
+        header.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel2.setBackground(Style.TRANSPARENT_COLOR);
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
@@ -294,6 +294,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         name.setText("Nombre del inmueble");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         leftSide.add(name, gridBagConstraints);
 
         starsPanel.setBackground(Style.TRANSPARENT_COLOR);
@@ -358,6 +359,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
 
         information.add(leftSide);
