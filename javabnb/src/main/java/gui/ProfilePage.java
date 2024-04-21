@@ -55,7 +55,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         for(int i = 0; i < App.session.user.pinnedPosts.size(); ++i){
             BuildingWidget bw = new BuildingWidget();
             widgets.add(bw);
-            add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + (185 + 30)* i, -1, -1));
+            add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + (300 + 30)* i, -1, -1));
             bw.init(
             App.buildings.entries.get(
                     App.session.user.pinnedPosts.get(i) - 1
