@@ -52,16 +52,26 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void createDynamicContent(){
-        for(int i = 0; i < App.session.user.pinnedPosts.size(); ++i){
-            BuildingWidget bw = new BuildingWidget();
-            widgets.add(bw);
-            add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + (300 + 30)* i, -1, -1));
-            bw.init(
-            App.buildings.entries.get(
-                    App.session.user.pinnedPosts.get(i) - 1
-                )
-            );
+        int max = App.session.user.pinnedPosts.size();
+        int i = 0;
+        int rows = 0;
+        
+        while(i < max){
+            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+                BuildingWidget bw = new BuildingWidget();
+                widgets.add(bw);
+                add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                bw.init(
+                App.buildings.entries.get(
+                        App.session.user.pinnedPosts.get(i) - 1
+                    )
+                );
+                ++i;
+            }
+            ++rows;
         }
+        
+        
     }
 
     /**
