@@ -23,6 +23,10 @@ public class Style {
     public static Color DISABLED_COLOR =        new Color(80,80,80);
     // Transparent color
     public static Color TRANSPARENT_COLOR =     new Color(0,0,0,0);
+    // Shadow color
+    public static Color SHADOW_COLOR =          new Color(0,0,0,8);
+    // Background highlight color
+    public static Color BG_HIGHLIGHT_COLOR =    new Color(255,250,250);
     
     /**
      * Applies HIGHLIGHT_COLOR to the element when the mouse is hovering
