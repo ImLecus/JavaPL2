@@ -24,7 +24,7 @@
     <Container class="javax.swing.JPanel" name="header">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.MAIN_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.MAIN_COLOR" type="code"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[32767, 100]"/>
@@ -44,7 +44,7 @@
         <Container class="javax.swing.JPanel" name="jPanel7">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
             </Property>
           </Properties>
 
@@ -57,7 +57,7 @@
             <Component class="javax.swing.JButton" name="atrasButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -83,7 +83,7 @@
         <Container class="javax.swing.JPanel" name="jPanel8">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
             </Property>
           </Properties>
 
@@ -94,7 +94,7 @@
             <Container class="javax.swing.JPanel" name="jPanel9">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.INPUT_BG_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.INPUT_BG_COLOR" type="code"/>
                 </Property>
               </Properties>
 
@@ -103,7 +103,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField4">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Style.INPUT_BG_COLOR" type="code"/>
+                      <Connection code="polaris.Polaris.INPUT_BG_COLOR" type="code"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="FontManager.regularFont" type="code"/>
@@ -125,7 +125,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField5">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Style.INPUT_BG_COLOR" type="code"/>
+                      <Connection code="polaris.Polaris.INPUT_BG_COLOR" type="code"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="FontManager.regularFont" type="code"/>
@@ -147,7 +147,7 @@
                 <Component class="javax.swing.JTextField" name="searchBar1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Style.INPUT_BG_COLOR" type="code"/>
+                      <Connection code="polaris.Polaris.INPUT_BG_COLOR" type="code"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="FontManager.regularFont" type="code"/>
@@ -169,7 +169,7 @@
                 <Component class="javax.swing.JTextField" name="jTextField6">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Style.INPUT_BG_COLOR" type="code"/>
+                      <Connection code="polaris.Polaris.INPUT_BG_COLOR" type="code"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="FontManager.regularFont" type="code"/>
@@ -208,7 +208,7 @@
         <Container class="javax.swing.JPanel" name="jPanel10">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
             </Property>
           </Properties>
 
@@ -221,7 +221,7 @@
             <Component class="javax.swing.JComboBox" name="comboBox">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -250,7 +250,7 @@
     <Container class="javax.swing.JScrollPane" name="muroScroll">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.BG_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -269,7 +269,7 @@
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.BG_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
             </Property>
           </Properties>
 
@@ -281,7 +281,7 @@
                   <Connection code="FontManager.titleFont" type="code"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TEXT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Para ti"/>
               </Properties>
@@ -297,7 +297,7 @@
                   <Connection code="FontManager.titleFont" type="code"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TEXT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Destinos frecuentes"/>
               </Properties>
@@ -310,7 +310,7 @@
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -390,7 +390,7 @@
             <Container class="javax.swing.JPanel" name="jPanel4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -476,7 +476,7 @@
                   <Connection code="FontManager.regularFont" type="code"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TEXT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#xbf;Buscas algo m&#xe1;s espec&#xed;fico? Puedes utilizar la barra de b&#xfa;squeda para encontrar inmuebles a tu gusto."/>
               </Properties>
@@ -492,7 +492,7 @@
                   <Connection code="FontManager.titleFont" type="code"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TEXT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vivir nuevas experiencias"/>
               </Properties>
@@ -505,7 +505,7 @@
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -523,7 +523,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel6">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+                      <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
                     </Property>
                   </Properties>
 

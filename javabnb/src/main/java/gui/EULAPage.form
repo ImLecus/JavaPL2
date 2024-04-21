@@ -19,13 +19,13 @@
     <Component class="javax.swing.JLabel" name="titleEula">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.BG_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="FontManager.titleFont" type="code"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.TEXT_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Acuerdo de Licencia de Usuario Final"/>
@@ -58,7 +58,7 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.BG_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
             </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -79,7 +79,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.BG_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
         </Property>
       </Properties>
       <Constraints>
@@ -93,13 +93,13 @@
         <Component class="javax.swing.JButton" name="leidoButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.MAIN_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.MAIN_COLOR" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="FontManager.boldFont" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Style.BG_COLOR" type="code"/>
+              <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Hecho"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -130,7 +130,7 @@
           <Dimension value="[20, 0]"/>
         </Property>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.BG_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>

@@ -1,9 +1,9 @@
 package gui;
 
+import polaris.Polaris;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import poo.javabnb.FontManager;
-import style.*;
 
 public class CommunityGuidelinesPage extends javax.swing.JPanel {
 
@@ -36,9 +36,9 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        titleEula.setBackground(Style.BG_COLOR);
+        titleEula.setBackground(Polaris.BG_COLOR);
         titleEula.setFont(FontManager.titleFont);
-        titleEula.setForeground(Style.TEXT_COLOR);
+        titleEula.setForeground(Polaris.TEXT_COLOR);
         titleEula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleEula.setText("Normas de la Comunidad");
         titleEula.setFocusable(false);
@@ -50,7 +50,7 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         eulaText.setEditable(false);
-        eulaText.setBackground(Style.BG_COLOR);
+        eulaText.setBackground(Polaris.BG_COLOR);
         eulaText.setColumns(20);
         eulaText.setFont(FontManager.regularFont);
         eulaText.setLineWrap(true);
@@ -63,12 +63,12 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
 
         add(scroll, java.awt.BorderLayout.CENTER);
 
-        jPanel1.setBackground(Style.BG_COLOR);
+        jPanel1.setBackground(Polaris.BG_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        hechoButton.setBackground(Style.MAIN_COLOR);
+        hechoButton.setBackground(Polaris.MAIN_COLOR);
         hechoButton.setFont(FontManager.boldFont);
-        hechoButton.setForeground(Style.BG_COLOR);
+        hechoButton.setForeground(Polaris.BG_COLOR);
         hechoButton.setText("Hecho");
         hechoButton.setBorder(null);
         hechoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -82,7 +82,7 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        filler1.setBackground(Style.BG_COLOR);
+        filler1.setBackground(Polaris.BG_COLOR);
         filler1.setOpaque(true);
         add(filler1, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents

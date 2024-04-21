@@ -1,5 +1,6 @@
 package gui;
 
+import polaris.Polaris;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -8,13 +9,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import poo.javabnb.FontManager;
-import style.*;
 
 class ScrollBarUI extends BasicScrollBarUI {
         @Override
         protected void configureScrollBarColors() {
-            thumbColor = Style.MAIN_COLOR; 
-            trackColor = Style.INPUT_BG_COLOR; 
+            thumbColor = Polaris.MAIN_COLOR; 
+            trackColor = Polaris.INPUT_BG_COLOR; 
         }
         
         /*
@@ -60,9 +60,9 @@ public class EULAPage extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        titleEula.setBackground(Style.BG_COLOR);
+        titleEula.setBackground(Polaris.BG_COLOR);
         titleEula.setFont(FontManager.titleFont);
-        titleEula.setForeground(Style.TEXT_COLOR);
+        titleEula.setForeground(Polaris.TEXT_COLOR);
         titleEula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleEula.setText("Acuerdo de Licencia de Usuario Final");
         titleEula.setFocusable(false);
@@ -74,7 +74,7 @@ public class EULAPage extends javax.swing.JPanel {
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         eulaText.setEditable(false);
-        eulaText.setBackground(Style.BG_COLOR);
+        eulaText.setBackground(Polaris.BG_COLOR);
         eulaText.setColumns(20);
         eulaText.setFont(FontManager.regularFont);
         eulaText.setLineWrap(true);
@@ -87,12 +87,12 @@ public class EULAPage extends javax.swing.JPanel {
 
         add(scroll, java.awt.BorderLayout.CENTER);
 
-        jPanel1.setBackground(Style.BG_COLOR);
+        jPanel1.setBackground(Polaris.BG_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        leidoButton.setBackground(Style.MAIN_COLOR);
+        leidoButton.setBackground(Polaris.MAIN_COLOR);
         leidoButton.setFont(FontManager.boldFont);
-        leidoButton.setForeground(Style.BG_COLOR);
+        leidoButton.setForeground(Polaris.BG_COLOR);
         leidoButton.setText("Hecho");
         leidoButton.setBorder(null);
         leidoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -106,7 +106,7 @@ public class EULAPage extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        filler1.setBackground(Style.BG_COLOR);
+        filler1.setBackground(Polaris.BG_COLOR);
         filler1.setOpaque(true);
         add(filler1, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents

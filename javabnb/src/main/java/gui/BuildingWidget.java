@@ -3,9 +3,7 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
-import style.RoundedIcon;
-import style.RoundedPanel;
-import style.Style;
+import polaris.*;
 
 public class BuildingWidget extends javax.swing.JPanel {
 
@@ -53,31 +51,31 @@ public class BuildingWidget extends javax.swing.JPanel {
         pfp = new javax.swing.JButton();
         shadow = new RoundedPanel(20);
 
-        setBackground(Style.TRANSPARENT_COLOR);
+        setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(300, 310));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         button.setBackground(new java.awt.Color(255, 255, 255));
-        button.setForeground(Style.TRANSPARENT_COLOR);
+        button.setForeground(polaris.Polaris.TRANSPARENT_COLOR);
         button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button.setMaximumSize(new java.awt.Dimension(300, 300));
         button.setMinimumSize(new java.awt.Dimension(300, 300));
         button.setPreferredSize(new java.awt.Dimension(300, 300));
         button.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        text.setBackground(Style.BG_HIGHLIGHT_COLOR);
-        text.setForeground(Style.TRANSPARENT_COLOR);
+        text.setBackground(polaris.Polaris.BG_HIGHLIGHT_COLOR);
+        text.setForeground(polaris.Polaris.TRANSPARENT_COLOR);
         text.setPreferredSize(new java.awt.Dimension(300, 150));
 
         host.setFont(FontManager.boldFont);
         host.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         host.setText("Anfitrión");
 
-        jPanel1.setBackground(Style.TRANSPARENT_COLOR);
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
+        jPanel1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        star1.setBackground(Style.TRANSPARENT_COLOR);
+        star1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star1.setBorder(null);
         star1.setBorderPainted(false);
@@ -88,7 +86,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star1.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel1.add(star1);
 
-        star2.setBackground(Style.TRANSPARENT_COLOR);
+        star2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star2.setBorder(null);
         star2.setBorderPainted(false);
@@ -99,7 +97,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star2.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel1.add(star2);
 
-        star3.setBackground(Style.TRANSPARENT_COLOR);
+        star3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star3.setBorder(null);
         star3.setBorderPainted(false);
@@ -110,7 +108,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star3.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel1.add(star3);
 
-        star4.setBackground(Style.TRANSPARENT_COLOR);
+        star4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star4.setBorder(null);
         star4.setBorderPainted(false);
@@ -121,7 +119,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star4.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel1.add(star4);
 
-        star5.setBackground(Style.TRANSPARENT_COLOR);
+        star5.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star5.setBorder(null);
         star5.setBorderPainted(false);
@@ -133,7 +131,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         jPanel1.add(star5);
 
         title.setFont(FontManager.subtitleFont);
-        title.setForeground(Style.TEXT_COLOR);
+        title.setForeground(polaris.Polaris.TEXT_COLOR);
         title.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         title.setText("Title");
 
@@ -151,26 +149,26 @@ public class BuildingWidget extends javax.swing.JPanel {
                     .addComponent(price)
                     .addComponent(title)
                     .addComponent(host)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         textLayout.setVerticalGroup(
             textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(textLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-                .addGap(9, 9, 9)
+                .addGap(15, 15, 15)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(host)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(price)
                 .addGap(34, 34, 34))
         );
 
         button.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
-        pfp.setBackground(Style.INPUT_BG_COLOR);
+        pfp.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example4.png"))); // NOI18N
         pfp.setBorder(null);
         pfp.setBorderPainted(false);
@@ -190,7 +188,7 @@ public class BuildingWidget extends javax.swing.JPanel {
 
         add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, -1, -1));
 
-        shadow.setBackground(Style.SHADOW_COLOR);
+        shadow.setBackground(polaris.Polaris.SHADOW_COLOR);
         shadow.setOpaque(false);
         shadow.setPreferredSize(new java.awt.Dimension(306, 305));
 

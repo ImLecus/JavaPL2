@@ -33,7 +33,7 @@ public class App {
         catch(Exception e){
             System.out.println(e.fillInStackTrace());
             db = new DataBase();
-            db.add(new Client("00000000E","Example", "example", "example","666666666"));
+            db.add(new Client("00000000E","Example", "example", "3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a","666666666"));
             
             db.saveData();
             

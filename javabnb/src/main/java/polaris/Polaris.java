@@ -1,11 +1,11 @@
-package style;
+package polaris;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Style {
+public class Polaris {
     
     // Main color, made for bigger visual impact
     public static Color MAIN_COLOR =            new Color(255,61,61);
@@ -37,14 +37,14 @@ public class Style {
         component.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e) {
                 if(component.isEnabled()){
-                    component.setBackground(Style.HIGHLIGHT_COLOR);
+                    component.setBackground(Polaris.HIGHLIGHT_COLOR);
                 }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 if(component.isEnabled()){
-                    component.setBackground(Style.MAIN_COLOR);
+                    component.setBackground(Polaris.MAIN_COLOR);
                 }
             }
         });
@@ -54,14 +54,14 @@ public class Style {
         component.addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e) {
                 if(component.isEnabled()){
-                    component.setForeground(Style.HIGHLIGHT_COLOR);
+                    component.setForeground(Polaris.HIGHLIGHT_COLOR);
                 }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 if(component.isEnabled()){
-                    component.setForeground(Style.MAIN_COLOR);
+                    component.setForeground(Polaris.MAIN_COLOR);
                 }
             }
         });

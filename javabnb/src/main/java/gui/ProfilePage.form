@@ -10,7 +10,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="Style.BG_COLOR" type="code"/>
+      <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -33,7 +33,7 @@
     <Component class="javax.swing.JButton" name="backButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.TRANSPARENT_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/arrow.png"/>
@@ -57,7 +57,7 @@
     <Component class="javax.swing.JButton" name="pfp">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.BG_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/profile_default.png"/>
@@ -187,7 +187,7 @@
           <Connection code="FontManager.titleFont" type="code"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Style.TEXT_COLOR" type="code"/>
+          <Connection code="polaris.Polaris.TEXT_COLOR" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inmuebles guardados"/>
       </Properties>

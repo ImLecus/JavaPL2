@@ -2,7 +2,7 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import style.Style;
+import polaris.Polaris;
 import poo.javabnb.FontManager;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
@@ -97,10 +97,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jButton1.setText("jButton1");
 
-        setBackground(Style.BG_COLOR);
+        setBackground(Polaris.BG_COLOR);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backButton.setBackground(Style.TRANSPARENT_COLOR);
+        backButton.setBackground(Polaris.TRANSPARENT_COLOR);
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
@@ -109,7 +109,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.setFocusable(false);
         add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        pfp.setBackground(Style.BG_COLOR);
+        pfp.setBackground(Polaris.BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
         pfp.setBorder(null);
         pfp.setBorderPainted(false);
@@ -159,7 +159,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setFont(FontManager.titleFont);
-        jLabel1.setForeground(Style.TEXT_COLOR);
+        jLabel1.setForeground(Polaris.TEXT_COLOR);
         jLabel1.setText("Inmuebles guardados");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

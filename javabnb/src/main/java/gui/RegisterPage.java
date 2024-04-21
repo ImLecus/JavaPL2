@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Validate;
-import style.Style;
+import polaris.Polaris;
 import poo.javabnb.Hashing;
 
 public class RegisterPage extends javax.swing.JPanel {
@@ -15,7 +15,7 @@ public class RegisterPage extends javax.swing.JPanel {
     public RegisterPage() {
         initComponents();
         resetErrorLabels();
-        Style.disable(submitButton);
+        Polaris.disable(submitButton);
         
         eulaLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -25,7 +25,7 @@ public class RegisterPage extends javax.swing.JPanel {
                 App.redirect("EULA");
             }
         });
-        Style.highlightOnHover(eulaLabel);
+        Polaris.highlightOnHover(eulaLabel);
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -34,7 +34,7 @@ public class RegisterPage extends javax.swing.JPanel {
                 register();
             }
         });
-        Style.highlightOnHover(submitButton);
+        Polaris.highlightOnHover(submitButton);
 
         atrasButton.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +49,7 @@ public class RegisterPage extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 submitButton.setEnabled(termsCheckbox.isSelected());
-                submitButton.setBackground(submitButton.isEnabled() ? Style.MAIN_COLOR : Style.DISABLED_COLOR);
+                submitButton.setBackground(submitButton.isEnabled() ? Polaris.MAIN_COLOR : Polaris.DISABLED_COLOR);
             }
         });
     }
@@ -172,15 +172,15 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
         title.setFont(FontManager.titleFont);
-        title.setForeground(style.Style.TEXT_COLOR);
+        title.setForeground(polaris.Polaris.TEXT_COLOR);
         title.setText("Crea tu cuenta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         jPanel7.add(title, gridBagConstraints);
 
-        nameInput.setBackground(Style.INPUT_BG_COLOR);
+        nameInput.setBackground(Polaris.INPUT_BG_COLOR);
         nameInput.setFont(FontManager.regularFont);
-        nameInput.setForeground(style.Style.TEXT_COLOR);
+        nameInput.setForeground(polaris.Polaris.TEXT_COLOR);
         nameInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -192,7 +192,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(nameInput, gridBagConstraints);
 
         nameLabel.setFont(FontManager.regularFont);
-        nameLabel.setForeground(style.Style.TEXT_COLOR);
+        nameLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         nameLabel.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -202,7 +202,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(nameLabel, gridBagConstraints);
 
         phoneLabel.setFont(FontManager.regularFont);
-        phoneLabel.setForeground(style.Style.TEXT_COLOR);
+        phoneLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         phoneLabel.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -211,9 +211,9 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(phoneLabel, gridBagConstraints);
 
-        phoneInput.setBackground(Style.INPUT_BG_COLOR);
+        phoneInput.setBackground(Polaris.INPUT_BG_COLOR);
         phoneInput.setFont(FontManager.regularFont);
-        phoneInput.setForeground(style.Style.TEXT_COLOR);
+        phoneInput.setForeground(polaris.Polaris.TEXT_COLOR);
         phoneInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -225,7 +225,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(phoneInput, gridBagConstraints);
 
         DNILabel.setFont(FontManager.regularFont);
-        DNILabel.setForeground(style.Style.TEXT_COLOR);
+        DNILabel.setForeground(polaris.Polaris.TEXT_COLOR);
         DNILabel.setText("DNI");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -234,9 +234,9 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(DNILabel, gridBagConstraints);
 
-        DNIInput.setBackground(Style.INPUT_BG_COLOR);
+        DNIInput.setBackground(Polaris.INPUT_BG_COLOR);
         DNIInput.setFont(FontManager.regularFont);
-        DNIInput.setForeground(style.Style.TEXT_COLOR);
+        DNIInput.setForeground(polaris.Polaris.TEXT_COLOR);
         DNIInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -248,7 +248,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(DNIInput, gridBagConstraints);
 
         errorLabel1.setFont(FontManager.regularFont);
-        errorLabel1.setForeground(style.Style.SECONDARY_COLOR);
+        errorLabel1.setForeground(polaris.Polaris.SECONDARY_COLOR);
         errorLabel1.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -256,7 +256,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(errorLabel1, gridBagConstraints);
 
         errorLabel2.setFont(FontManager.regularFont);
-        errorLabel2.setForeground(style.Style.SECONDARY_COLOR);
+        errorLabel2.setForeground(polaris.Polaris.SECONDARY_COLOR);
         errorLabel2.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -264,7 +264,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(errorLabel2, gridBagConstraints);
 
         errorLabel3.setFont(FontManager.regularFont);
-        errorLabel3.setForeground(style.Style.SECONDARY_COLOR);
+        errorLabel3.setForeground(polaris.Polaris.SECONDARY_COLOR);
         errorLabel3.setText("El DNI no existe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -272,7 +272,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(errorLabel3, gridBagConstraints);
 
         errorLabel4.setFont(FontManager.regularFont);
-        errorLabel4.setForeground(style.Style.SECONDARY_COLOR);
+        errorLabel4.setForeground(polaris.Polaris.SECONDARY_COLOR);
         errorLabel4.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -280,7 +280,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(errorLabel4, gridBagConstraints);
 
         errorLabel5.setFont(FontManager.regularFont);
-        errorLabel5.setForeground(style.Style.SECONDARY_COLOR);
+        errorLabel5.setForeground(polaris.Polaris.SECONDARY_COLOR);
         errorLabel5.setText("La contraseña no cumple los requisitos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -288,7 +288,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(errorLabel5, gridBagConstraints);
 
         mailLabel.setFont(FontManager.regularFont);
-        mailLabel.setForeground(style.Style.TEXT_COLOR);
+        mailLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         mailLabel.setText("Mail");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -297,9 +297,9 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(mailLabel, gridBagConstraints);
 
-        mailInput.setBackground(Style.INPUT_BG_COLOR);
+        mailInput.setBackground(Polaris.INPUT_BG_COLOR);
         mailInput.setFont(FontManager.regularFont);
-        mailInput.setForeground(style.Style.TEXT_COLOR);
+        mailInput.setForeground(polaris.Polaris.TEXT_COLOR);
         mailInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -311,7 +311,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(mailInput, gridBagConstraints);
 
         passwordLabel.setFont(FontManager.regularFont);
-        passwordLabel.setForeground(style.Style.TEXT_COLOR);
+        passwordLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -320,9 +320,9 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(passwordLabel, gridBagConstraints);
 
-        passwordInput.setBackground(Style.INPUT_BG_COLOR);
+        passwordInput.setBackground(Polaris.INPUT_BG_COLOR);
         passwordInput.setFont(FontManager.regularFont);
-        passwordInput.setForeground(style.Style.TEXT_COLOR);
+        passwordInput.setForeground(polaris.Polaris.TEXT_COLOR);
         passwordInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -334,7 +334,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(passwordInput, gridBagConstraints);
 
         passwordLabel2.setFont(FontManager.subText);
-        passwordLabel2.setForeground(style.Style.TEXT_COLOR);
+        passwordLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
         passwordLabel2.setText("La contraseña debe tener como mínimo 8 caracteres,");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -343,7 +343,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(passwordLabel2, gridBagConstraints);
 
         passwordLabel3.setFont(FontManager.subText);
-        passwordLabel3.setForeground(style.Style.TEXT_COLOR);
+        passwordLabel3.setForeground(polaris.Polaris.TEXT_COLOR);
         passwordLabel3.setText("una mayúscula y un número.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -355,12 +355,12 @@ public class RegisterPage extends javax.swing.JPanel {
 
         termsCheckbox.setBackground(new java.awt.Color(255, 248, 249));
         termsCheckbox.setFont(FontManager.regularFont);
-        termsCheckbox.setForeground(style.Style.TEXT_COLOR);
+        termsCheckbox.setForeground(polaris.Polaris.TEXT_COLOR);
         termsCheckbox.setText("Acepta los términos de uso");
         jPanel1.add(termsCheckbox);
 
         eulaLabel.setFont(FontManager.boldFont);
-        eulaLabel.setForeground(style.Style.MAIN_COLOR);
+        eulaLabel.setForeground(polaris.Polaris.MAIN_COLOR);
         eulaLabel.setText("y el EULA");
         eulaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(eulaLabel);
@@ -371,7 +371,7 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel7.add(jPanel1, gridBagConstraints);
 
         submitButton.setFont(FontManager.boldFont);
-        submitButton.setForeground(style.Style.BG_COLOR);
+        submitButton.setForeground(polaris.Polaris.BG_COLOR);
         submitButton.setText("Registrarse");
         submitButton.setBorder(null);
         submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
