@@ -4,14 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
+import java.util.Calendar;
 import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Validate;
 import polaris.Polaris;
 import poo.javabnb.Hashing;
+import poo.javabnb.Host;
 
 public class RegisterPage extends javax.swing.JPanel {
     
+    private boolean hostRegister = false;
     public RegisterPage() {
         initComponents();
         resetErrorLabels();
@@ -76,14 +80,29 @@ public class RegisterPage extends javax.swing.JPanel {
         if(name && phone && dni && mail && password){
             String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
             System.out.println("Hashed password: " + hashedPassword);
-            Client client = new Client(
+            if(hostRegister){
+                Host host = new Host(
+                    DNIInput.getText(),
+                    nameInput.getText(),
+                    mailInput.getText(),
+                    hashedPassword,
+                    phoneInput.getText(),
+                    Calendar.getInstance().getTime(),
+                    false
+                );
+                App.db.add(host);
+            }
+            else {
+                Client client = new Client(
                     DNIInput.getText(),
                     nameInput.getText(),
                     mailInput.getText(),
                     hashedPassword,
                     phoneInput.getText()
-            );
-            App.db.add(client);
+                );
+                App.db.add(client);
+            }
+            
             App.db.saveData(); 
             App.redirect("LOGIN");
         }
@@ -106,6 +125,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel3.setVisible(false);
         errorLabel4.setVisible(false);
         errorLabel5.setVisible(false);
+        errorLabel6.setVisible(false);
     }
 
     /**
@@ -146,6 +166,15 @@ public class RegisterPage extends javax.swing.JPanel {
         termsCheckbox = new javax.swing.JCheckBox();
         eulaLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        particularButton = new javax.swing.JButton();
+        hostButton = new javax.swing.JButton();
+        mailLabel1 = new javax.swing.JLabel();
+        mailInput1 = new javax.swing.JTextField();
+        errorLabel6 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -153,13 +182,13 @@ public class RegisterPage extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel6.setBackground(new java.awt.Color(255, 248, 249));
+        jPanel6.setBackground(Polaris.BG_COLOR);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        atrasButton.setBackground(new java.awt.Color(255, 248, 249));
+        atrasButton.setBackground(Polaris.TRANSPARENT_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -168,7 +197,7 @@ public class RegisterPage extends javax.swing.JPanel {
 
         add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
-        jPanel7.setBackground(new java.awt.Color(255, 248, 249));
+        jPanel7.setBackground(Polaris.BG_COLOR);
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
         title.setFont(FontManager.titleFont);
@@ -178,13 +207,13 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         jPanel7.add(title, gridBagConstraints);
 
-        nameInput.setBackground(Polaris.INPUT_BG_COLOR);
+        nameInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         nameInput.setFont(FontManager.regularFont);
         nameInput.setForeground(polaris.Polaris.TEXT_COLOR);
         nameInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
@@ -196,7 +225,7 @@ public class RegisterPage extends javax.swing.JPanel {
         nameLabel.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(nameLabel, gridBagConstraints);
@@ -206,18 +235,18 @@ public class RegisterPage extends javax.swing.JPanel {
         phoneLabel.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(phoneLabel, gridBagConstraints);
 
-        phoneInput.setBackground(Polaris.INPUT_BG_COLOR);
+        phoneInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         phoneInput.setFont(FontManager.regularFont);
         phoneInput.setForeground(polaris.Polaris.TEXT_COLOR);
         phoneInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
@@ -229,18 +258,18 @@ public class RegisterPage extends javax.swing.JPanel {
         DNILabel.setText("DNI");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(DNILabel, gridBagConstraints);
 
-        DNIInput.setBackground(Polaris.INPUT_BG_COLOR);
+        DNIInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         DNIInput.setFont(FontManager.regularFont);
         DNIInput.setForeground(polaris.Polaris.TEXT_COLOR);
         DNIInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
@@ -252,7 +281,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel1.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         jPanel7.add(errorLabel1, gridBagConstraints);
 
         errorLabel2.setFont(FontManager.regularFont);
@@ -260,7 +289,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel2.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         jPanel7.add(errorLabel2, gridBagConstraints);
 
         errorLabel3.setFont(FontManager.regularFont);
@@ -268,7 +297,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel3.setText("El DNI no existe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         jPanel7.add(errorLabel3, gridBagConstraints);
 
         errorLabel4.setFont(FontManager.regularFont);
@@ -276,7 +305,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel4.setText("El formato es inválido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         jPanel7.add(errorLabel4, gridBagConstraints);
 
         errorLabel5.setFont(FontManager.regularFont);
@@ -284,7 +313,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel5.setText("La contraseña no cumple los requisitos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridy = 18;
         jPanel7.add(errorLabel5, gridBagConstraints);
 
         mailLabel.setFont(FontManager.regularFont);
@@ -292,18 +321,18 @@ public class RegisterPage extends javax.swing.JPanel {
         mailLabel.setText("Mail");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(mailLabel, gridBagConstraints);
 
-        mailInput.setBackground(Polaris.INPUT_BG_COLOR);
+        mailInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         mailInput.setFont(FontManager.regularFont);
         mailInput.setForeground(polaris.Polaris.TEXT_COLOR);
         mailInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
@@ -315,18 +344,18 @@ public class RegisterPage extends javax.swing.JPanel {
         passwordLabel.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         jPanel7.add(passwordLabel, gridBagConstraints);
 
-        passwordInput.setBackground(Polaris.INPUT_BG_COLOR);
+        passwordInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         passwordInput.setFont(FontManager.regularFont);
         passwordInput.setForeground(polaris.Polaris.TEXT_COLOR);
         passwordInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
@@ -338,7 +367,7 @@ public class RegisterPage extends javax.swing.JPanel {
         passwordLabel2.setText("La contraseña debe tener como mínimo 8 caracteres,");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel7.add(passwordLabel2, gridBagConstraints);
 
@@ -347,13 +376,13 @@ public class RegisterPage extends javax.swing.JPanel {
         passwordLabel3.setText("una mayúscula y un número.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         jPanel7.add(passwordLabel3, gridBagConstraints);
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 249));
 
-        termsCheckbox.setBackground(new java.awt.Color(255, 248, 249));
+        termsCheckbox.setBackground(Polaris.BG_COLOR);
         termsCheckbox.setFont(FontManager.regularFont);
         termsCheckbox.setForeground(polaris.Polaris.TEXT_COLOR);
         termsCheckbox.setText("Acepta los términos de uso");
@@ -362,30 +391,138 @@ public class RegisterPage extends javax.swing.JPanel {
         eulaLabel.setFont(FontManager.boldFont);
         eulaLabel.setForeground(polaris.Polaris.MAIN_COLOR);
         eulaLabel.setText("y el EULA");
-        eulaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eulaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(eulaLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 23;
         jPanel7.add(jPanel1, gridBagConstraints);
 
         submitButton.setFont(FontManager.boldFont);
         submitButton.setForeground(polaris.Polaris.BG_COLOR);
         submitButton.setText("Registrarse");
         submitButton.setBorder(null);
-        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         submitButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridy = 24;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 12;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
         jPanel7.add(submitButton, gridBagConstraints);
 
+        jPanel3.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        particularButton.setBackground(Polaris.MAIN_COLOR);
+        particularButton.setFont(FontManager.boldFont);
+        particularButton.setForeground(Polaris.BG_COLOR);
+        particularButton.setText("Particular");
+        particularButton.setBorder(null);
+        particularButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        particularButton.setFocusPainted(false);
+        particularButton.setFocusable(false);
+        particularButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                particularButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        jPanel3.add(particularButton, gridBagConstraints);
+
+        hostButton.setBackground(Polaris.INPUT_BG_COLOR);
+        hostButton.setFont(FontManager.boldFont);
+        hostButton.setForeground(Polaris.TEXT_COLOR);
+        hostButton.setText("Anfitrión");
+        hostButton.setBorder(null);
+        hostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hostButton.setFocusPainted(false);
+        hostButton.setFocusable(false);
+        hostButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hostButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        jPanel3.add(hostButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel7.add(jPanel3, gridBagConstraints);
+
+        mailLabel1.setFont(FontManager.regularFont);
+        mailLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        mailLabel1.setText("Número de tarjeta");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        jPanel7.add(mailLabel1, gridBagConstraints);
+
+        mailInput1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        mailInput1.setFont(FontManager.regularFont);
+        mailInput1.setForeground(polaris.Polaris.TEXT_COLOR);
+        mailInput1.setBorder(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
+        jPanel7.add(mailInput1, gridBagConstraints);
+
+        errorLabel6.setFont(FontManager.regularFont);
+        errorLabel6.setForeground(polaris.Polaris.SECONDARY_COLOR);
+        errorLabel6.setText("El formato es inválido");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 22;
+        jPanel7.add(errorLabel6, gridBagConstraints);
+
+        jTextField1.setText("mm/yy");
+        jPanel5.add(jTextField1);
+
+        jTextField2.setText("cvv");
+        jPanel5.add(jTextField2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 21;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel7.add(jPanel5, gridBagConstraints);
+
         add(jPanel7, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void particularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_particularButtonActionPerformed
+        particularButton.setForeground(Polaris.BG_COLOR);
+        particularButton.setBackground(Polaris.MAIN_COLOR);
+        hostButton.setBackground(Polaris.INPUT_BG_COLOR);
+        hostButton.setForeground(Polaris.TEXT_COLOR);
+        hostRegister = false;
+    }//GEN-LAST:event_particularButtonActionPerformed
+
+    private void hostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostButtonActionPerformed
+        hostButton.setForeground(Polaris.BG_COLOR);
+        hostButton.setBackground(Polaris.MAIN_COLOR);
+        particularButton.setBackground(Polaris.INPUT_BG_COLOR);
+        particularButton.setForeground(Polaris.TEXT_COLOR);
+        hostRegister = true;
+    }//GEN-LAST:event_hostButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,17 +534,26 @@ public class RegisterPage extends javax.swing.JPanel {
     private javax.swing.JLabel errorLabel3;
     private javax.swing.JLabel errorLabel4;
     private javax.swing.JLabel errorLabel5;
+    private javax.swing.JLabel errorLabel6;
     private javax.swing.JLabel eulaLabel;
+    private javax.swing.JButton hostButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField mailInput;
+    private javax.swing.JTextField mailInput1;
     private javax.swing.JLabel mailLabel;
+    private javax.swing.JLabel mailLabel1;
     private javax.swing.JTextField nameInput;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JButton particularButton;
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel passwordLabel2;

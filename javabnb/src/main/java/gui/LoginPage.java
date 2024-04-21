@@ -6,6 +6,7 @@ import poo.javabnb.FontManager;
 import poo.javabnb.Session;
 import polaris.Polaris;
 import poo.javabnb.Hashing;
+import poo.javabnb.Host;
 
 public class LoginPage extends javax.swing.JPanel {
     
@@ -60,6 +61,9 @@ public class LoginPage extends javax.swing.JPanel {
                     App.session.ID);
                     
                     System.out.printf("El usuario tiene %s posts guardados", App.session.user.pinnedPosts.size());
+                    if(App.session.user instanceof Host){
+                        System.out.println("El usuario es un anfitrión!");
+                    }
                     
                     resetText();
                     App.redirect("MAIN");

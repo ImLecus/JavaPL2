@@ -46,7 +46,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void deleteDynamicContent(){
         for(BuildingWidget bw : widgets){
-            remove(bw);
+            content.remove(bw);
         }
     }
     
@@ -60,7 +60,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
                 bw.init(
                 App.buildings.entries.get(
                         App.session.user.pinnedPosts.get(i) - 1
@@ -84,6 +84,8 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        content = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
         pfp = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
@@ -97,19 +99,25 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jButton1.setText("jButton1");
 
-        setBackground(Polaris.BG_COLOR);
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(polaris.Polaris.BG_COLOR);
+        setLayout(new java.awt.GridLayout());
 
-        backButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setFocusable(false);
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        content.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        pfp.setBackground(Polaris.BG_COLOR);
+        pfp.setBackground(polaris.Polaris.BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
         pfp.setBorder(null);
         pfp.setBorderPainted(false);
@@ -119,32 +127,32 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         pfp.setEnabled(false);
         pfp.setFocusPainted(false);
         pfp.setFocusable(false);
-        add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        content.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
 
         editButton.setText("Editar perfil");
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
-        add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        content.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
         userNameLabel.setFont(FontManager.titleFont);
         userNameLabel.setText("Nombre");
-        add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        content.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         mailLabel.setFont(FontManager.boldFont);
         mailLabel.setText("Correo");
-        add(mailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+        content.add(mailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
         userMailLabel.setEditable(false);
         userMailLabel.setText("****");
-        add(userMailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
+        content.add(userMailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
         phoneLabel.setFont(FontManager.boldFont);
         phoneLabel.setText("Teléfono");
-        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
+        content.add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
 
         userPhoneLabel.setEditable(false);
         userPhoneLabel.setText("****");
-        add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
+        content.add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
@@ -156,21 +164,27 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         banner.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
-        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setFont(FontManager.titleFont);
-        jLabel1.setForeground(Polaris.TEXT_COLOR);
+        jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel1.setText("Inmuebles guardados");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+        content.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+
+        jScrollPane1.setViewportView(content);
+
+        add(jScrollPane1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton banner;
+    private javax.swing.JPanel content;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
