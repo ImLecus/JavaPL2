@@ -105,6 +105,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setFocusable(false);
         add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
