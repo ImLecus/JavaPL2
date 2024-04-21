@@ -8,6 +8,7 @@ import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Validate;
 import style.Style;
+import poo.javabnb.Hashing;
 
 public class RegisterPage extends javax.swing.JPanel {
     
@@ -73,11 +74,13 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel5.setVisible(!password);
 
         if(name && phone && dni && mail && password){
+            String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
+            System.out.println("Hashed password: " + hashedPassword);
             Client client = new Client(
                     DNIInput.getText(),
                     nameInput.getText(),
                     mailInput.getText(),
-                    String.valueOf(passwordInput.getPassword()),
+                    hashedPassword,
                     phoneInput.getText()
             );
             App.db.add(client);

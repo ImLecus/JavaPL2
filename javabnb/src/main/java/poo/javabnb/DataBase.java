@@ -1,6 +1,7 @@
 package poo.javabnb;
 import java.io.*;
 import java.util.ArrayList;
+import poo.javabnb.Hashing;
 
 public class DataBase implements Serializable {
 
@@ -29,7 +30,7 @@ public class DataBase implements Serializable {
      */
     public int getUserInDataBase(String mail, String password) {
         for(int i = 0; i < mails.size(); ++i){
-            if(mails.get(i).equals(mail) && passwords.get(i).equals(password)){
+            if(mails.get(i).equals(mail) && passwords.get(i).equals(Hashing.hashPassword(password))){
                 return i;
             }
         }
@@ -51,7 +52,7 @@ public class DataBase implements Serializable {
      */
     public void add(Client client){
         mails.add(client.getMail());
-        passwords.add(client.getPassword());
+        passwords.add(Hashing.hashPassword(client.getPassword()));
         users.add(client);
     }
     

@@ -5,6 +5,7 @@ import poo.javabnb.Client;
 import poo.javabnb.FontManager;
 import poo.javabnb.Session;
 import style.Style;
+import poo.javabnb.Hashing;
 
 public class LoginPage extends javax.swing.JPanel {
     
@@ -37,7 +38,9 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int key = App.db.getUserInDataBase(mailInput.getText(), String.valueOf(passwordInput.getPassword()));
+                String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
+                System.out.println("Hashed password: " + hashedPassword);
+                int key = App.db.getUserInDataBase(mailInput.getText(), Hashing.hashPassword(String.valueOf(passwordInput.getPassword())));
                 if (key >= 0) {
                     Client user = App.db.getClientData(key);
                     App.session = Session.init(user, key);
@@ -53,7 +56,7 @@ public class LoginPage extends javax.swing.JPanel {
                     %n""", 
                     App.session.user.getName(), 
                     App.session.user.getMail(), 
-                    App.session.user.getPassword(),
+                    String.valueOf(passwordInput.getPassword()),
                     App.session.ID);
                     
                     System.out.printf("El usuario tiene %s posts guardados", App.session.user.pinnedPosts.size());
