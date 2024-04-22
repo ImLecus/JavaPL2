@@ -20,4 +20,5 @@ public class BuildingInfo {
         this.price = price;
         this.rating = rating;
     }
+
 }

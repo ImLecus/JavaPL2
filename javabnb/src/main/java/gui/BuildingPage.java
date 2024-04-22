@@ -6,6 +6,10 @@ import javax.swing.JComboBox;
 import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import polaris.Polaris;
+import poo.javabnb.Bill;
+import poo.javabnb.Client;
+        
+
 
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -92,25 +96,25 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reportButton = new javax.swing.JButton();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         reservation = new javax.swing.JPanel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        idaLabel = new javax.swing.JFormattedTextField();
+        vueltaLabel = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
-        header.setBackground(Polaris.MAIN_COLOR);
+        header.setBackground(polaris.Polaris.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
         header.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel2.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
 
-        atrasButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        atrasButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -124,13 +128,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         header.add(jPanel2);
 
-        jPanel1.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jPanel4.setBackground(Polaris.INPUT_BG_COLOR);
+        jPanel4.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jTextField2.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField2.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField2.setFont(FontManager.regularFont);
         jTextField2.setText("Fecha vuelta");
         jTextField2.setBorder(null);
@@ -142,7 +146,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
         jPanel4.add(jTextField2, gridBagConstraints);
 
-        jTextField3.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField3.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField3.setFont(FontManager.regularFont);
         jTextField3.setText("nº Personas");
         jTextField3.setBorder(null);
@@ -154,7 +158,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         jPanel4.add(jTextField3, gridBagConstraints);
 
-        searchBar.setBackground(Polaris.INPUT_BG_COLOR);
+        searchBar.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         searchBar.setFont(FontManager.regularFont);
         searchBar.setText("Destino");
         searchBar.setBorder(null);
@@ -166,7 +170,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         jPanel4.add(searchBar, gridBagConstraints);
 
-        jTextField1.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField1.setFont(FontManager.regularFont);
         jTextField1.setText("Fecha ida");
         jTextField1.setBorder(null);
@@ -179,7 +183,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         jPanel4.add(jTextField1, gridBagConstraints);
 
         jButton2.setText("Buscar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -190,10 +194,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         header.add(jPanel1);
 
-        jPanel3.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
 
-        comboBox.setBackground(Polaris.TRANSPARENT_COLOR);
+        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
@@ -208,7 +212,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         add(header);
 
-        body.setBackground(Polaris.BG_COLOR);
+        body.setBackground(polaris.Polaris.BG_COLOR);
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
         jScrollPane2.setBorder(null);
@@ -216,7 +220,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setViewportView(mainBody);
 
-        mainBody.setBackground(Polaris.BG_COLOR);
+        mainBody.setBackground(polaris.Polaris.BG_COLOR);
         mainBody.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
                 mainBodyComponentMoved(evt);
@@ -227,7 +231,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         carousel.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        jButton1.setBackground(Polaris.TRANSPARENT_COLOR);
+        jButton1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -243,14 +247,14 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         mainBody.add(carousel);
         mainBody.add(filler1);
 
-        information.setBackground(Polaris.TRANSPARENT_COLOR);
+        information.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         information.setLayout(new java.awt.GridLayout(1, 0));
         information.add(filler2);
 
-        leftSide.setBackground(Polaris.TRANSPARENT_COLOR);
+        leftSide.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         leftSide.setLayout(new java.awt.GridBagLayout());
 
-        host.setBackground(Polaris.TEXT_COLOR);
+        host.setBackground(polaris.Polaris.TEXT_COLOR);
         host.setFont(FontManager.boldFont);
         host.setText("Anfitrión: Pedrito (Superanfitrión)");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -260,7 +264,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         leftSide.add(host, gridBagConstraints);
 
-        props.setBackground(Polaris.TEXT_COLOR);
+        props.setBackground(polaris.Polaris.TEXT_COLOR);
         props.setFont(FontManager.boldFont);
         props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -271,10 +275,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         leftSide.add(props, gridBagConstraints);
 
         description.setEditable(false);
-        description.setBackground(Polaris.TRANSPARENT_COLOR);
+        description.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         description.setColumns(20);
         description.setFont(FontManager.regularFont);
-        description.setForeground(Polaris.TEXT_COLOR);
+        description.setForeground(polaris.Polaris.TEXT_COLOR);
         description.setLineWrap(true);
         description.setRows(5);
         description.setText("Esta es la descripción del inmueble.\n\nEn principio cuando esto sobrepase el tamaño de la preview, habrá un botón de \"Mostrar más\" que mostrará el texto completo.");
@@ -290,7 +294,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
         leftSide.add(description, gridBagConstraints);
 
-        name.setBackground(Polaris.TEXT_COLOR);
+        name.setBackground(polaris.Polaris.TEXT_COLOR);
         name.setFont(FontManager.titleFont);
         name.setText("Nombre del inmueble");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -298,10 +302,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         leftSide.add(name, gridBagConstraints);
 
-        starsPanel.setBackground(Polaris.TRANSPARENT_COLOR);
+        starsPanel.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         starsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        star1.setBackground(Polaris.TRANSPARENT_COLOR);
+        star1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star1.setBorder(null);
         star1.setBorderPainted(false);
@@ -312,7 +316,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star1.setPreferredSize(new java.awt.Dimension(20, 20));
         starsPanel.add(star1);
 
-        star2.setBackground(Polaris.TRANSPARENT_COLOR);
+        star2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star2.setBorder(null);
         star2.setBorderPainted(false);
@@ -323,7 +327,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star2.setPreferredSize(new java.awt.Dimension(20, 20));
         starsPanel.add(star2);
 
-        star3.setBackground(Polaris.TRANSPARENT_COLOR);
+        star3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star3.setBorder(null);
         star3.setBorderPainted(false);
@@ -334,7 +338,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star3.setPreferredSize(new java.awt.Dimension(20, 20));
         starsPanel.add(star3);
 
-        star4.setBackground(Polaris.TRANSPARENT_COLOR);
+        star4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star4.setBorder(null);
         star4.setBorderPainted(false);
@@ -345,7 +349,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star4.setPreferredSize(new java.awt.Dimension(20, 20));
         starsPanel.add(star4);
 
-        star5.setBackground(Polaris.TRANSPARENT_COLOR);
+        star5.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         star5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         star5.setBorder(null);
         star5.setBorderPainted(false);
@@ -365,18 +369,18 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         information.add(leftSide);
 
-        rightSide.setBackground(Polaris.TRANSPARENT_COLOR);
+        rightSide.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         rightSide.setLayout(new javax.swing.BoxLayout(rightSide, javax.swing.BoxLayout.PAGE_AXIS));
 
-        savedAndReport.setBackground(Polaris.TRANSPARENT_COLOR);
+        savedAndReport.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         savedAndReport.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        saveButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        saveButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -389,20 +393,20 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         });
         savedAndReport.add(saveButton);
 
-        reportButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        reportButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         savedAndReport.add(reportButton);
         savedAndReport.add(filler7);
 
         rightSide.add(savedAndReport);
 
-        reservation.setBackground(Polaris.TRANSPARENT_COLOR);
+        reservation.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         reservation.setLayout(new java.awt.GridBagLayout());
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
+        idaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -410,9 +414,9 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 16;
         gridBagConstraints.ipady = 8;
-        reservation.add(jFormattedTextField1, gridBagConstraints);
+        reservation.add(idaLabel, gridBagConstraints);
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
+        vueltaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -420,7 +424,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 16;
         gridBagConstraints.ipady = 8;
-        reservation.add(jFormattedTextField2, gridBagConstraints);
+        reservation.add(vueltaLabel, gridBagConstraints);
 
         jLabel1.setFont(FontManager.boldFont);
         jLabel1.setText("Total XXX€");
@@ -431,12 +435,17 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 10, 0);
         reservation.add(jLabel1, gridBagConstraints);
 
-        submitButton.setBackground(Polaris.MAIN_COLOR);
+        submitButton.setBackground(polaris.Polaris.MAIN_COLOR);
         submitButton.setFont(FontManager.boldFont);
-        submitButton.setForeground(Polaris.BG_COLOR);
+        submitButton.setForeground(polaris.Polaris.BG_COLOR);
         submitButton.setText("RESERVA");
         submitButton.setBorder(null);
-        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -506,6 +515,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         repaint();
     }//GEN-LAST:event_mainBodyComponentMoved
 
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Bill bill = new Bill();
+        bill.generateBill(App.session.user,b,idaLabel.getText(),vueltaLabel.getText());
+        
+    }//GEN-LAST:event_submitButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -520,11 +535,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler7;
     private javax.swing.JPanel header;
     private javax.swing.JLabel host;
+    private javax.swing.JFormattedTextField idaLabel;
     private javax.swing.JPanel information;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -551,5 +565,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton star5;
     private javax.swing.JPanel starsPanel;
     private javax.swing.JButton submitButton;
+    private javax.swing.JFormattedTextField vueltaLabel;
     // End of variables declaration//GEN-END:variables
 }
