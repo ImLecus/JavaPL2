@@ -493,10 +493,16 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 22;
         jPanel7.add(errorLabel6, gridBagConstraints);
 
+        jTextField1.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField1.setFont(FontManager.regularFont);
         jTextField1.setText("mm/yy");
+        jTextField1.setBorder(null);
         jPanel5.add(jTextField1);
 
+        jTextField2.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField2.setFont(FontManager.regularFont);
         jTextField2.setText("cvv");
+        jTextField2.setBorder(null);
         jPanel5.add(jTextField2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

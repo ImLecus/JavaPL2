@@ -1,6 +1,8 @@
 package gui;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 import poo.javabnb.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +18,11 @@ public class App {
     private static final JPanel cards = new JPanel(cardLayout);
     public static Building focusedBuilding;
     public static JFrame frame = new JFrame("JavaB&B");
+    
+    private static final Map<String, JPanel> pages = new HashMap<>();
+    
+    
+    
     private static final LoginPage login =                   new LoginPage();
     private static final RegisterPage register =             new RegisterPage();
     private static final MainPage main =                     new MainPage();
@@ -24,7 +31,8 @@ public class App {
     private static final BuildingPage building =             new BuildingPage();
     private static final SearchPage search =                 new SearchPage();
     private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
-
+    private static JPanel currentPanel = login;
+    
     public static void main(String[] args){
         
         try{
@@ -38,16 +46,8 @@ public class App {
             db.saveData();
             
         }
-
-        cards.add(login, "LOGIN");
-        cards.add(register, "REGISTER");
-        cards.add(main, "MAIN");
-        cards.add(profile, "PROFILE");
-        cards.add(eula, "EULA");
-        cards.add(building, "BUILDING");
-        cards.add(search, "SEARCH");
-        cards.add(community,"COMMUNITY_GUIDELINES");
         
+        setupPages();
         setupFrame();
         redirect("LOGIN");
     }
@@ -58,11 +58,23 @@ public class App {
      * @param page A string with the page name.
      * @param args
      */
-    public static void redirect(String page){        
-        if("PROFILE".equals(page)){profile.reloadContent();}
-        if("BUILDING".equals(page)){building.reloadContent();}
+    public static void redirect(String page){
+        
+        JPanel p = pages.get(page);
+        cards.add(p, page);
+        if(p instanceof DynamicPage){
+            ((DynamicPage) p).reloadContent();
+        }
         cardLayout.show(cards, page);
+        if(currentPanel != p){
+            cards.remove(currentPanel);
+        }
+        currentPanel = p;
     }
+    
+    /**
+     * 
+     */
 
     /**
      * setupFrame() method prepares the JFrame, making it visible, adding the title and
@@ -75,6 +87,17 @@ public class App {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(1000, 710));
         frame.setVisible(true);
+    }
+    
+    public static void setupPages(){
+        pages.put("LOGIN", login);
+        pages.put("REGISTER", register);
+        pages.put("MAIN", main);
+        pages.put("PROFILE", profile);
+        pages.put("EULA", eula);
+        pages.put("BUILDING", building);
+        pages.put("SEARCH",search);
+        pages.put("COMMUNITY_GUIDELINES",community);
     }
     
 }
