@@ -2,6 +2,7 @@ package poo.javabnb;
 import java.io.*;
 import java.util.ArrayList;
 import poo.javabnb.Hashing;
+import poo.javabnb.exceptions.DataBaseNotFoundException;
 
 public class DataBase implements Serializable {
 
@@ -95,19 +96,19 @@ public class DataBase implements Serializable {
     /**
      * Imports an existing serialized DataBase.
      * @param path the file path
+     * @exception throws DataBaseNotFoundException if the DataBase does not exist.
      * @return the existing DataBase
      */
-    public static DataBase from(String path) throws FileNotFoundException, IOException{
-        FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
+    public static DataBase from(String path) throws DataBaseNotFoundException {
         try{
-            return (DataBase) ois.readObject();
+            FileInputStream fis = new FileInputStream(path);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            DataBase result = (DataBase) ois.readObject();
+            fis.close();
+            return result;
         }
         catch(Exception e){
-            return null;
-        }
-        finally{
-            fis.close();
+            throw new DataBaseNotFoundException();
         }
     }
     
