@@ -23,7 +23,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
-      host.setText(b.info.host.getName() + (b.info.host.isSuperhost() ? "(Superanfitrión)" : ""));
+      host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       
       star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating == 0.5f? "/images/star_half.png" : "/images/star.png")));
       star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating == 1.5f? "/images/star_half.png" : "/images/star.png")));

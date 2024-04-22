@@ -72,11 +72,6 @@ public class App {
         }
         currentPanel = p;
     }
-    
-    /**
-     * 
-     */
-
     /**
      * setupFrame() method prepares the JFrame, making it visible, adding the title and
      * setting the minimum resizeable size.

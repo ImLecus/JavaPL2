@@ -112,7 +112,7 @@ public class LoginPage extends javax.swing.JPanel {
         leftSide = new javax.swing.JPanel();
         logo = new javax.swing.JButton();
 
-        setBackground(Polaris.BG_COLOR);
+        setBackground(polaris.Polaris.BG_COLOR);
         setLayout(new java.awt.BorderLayout());
 
         rightSide.setBackground(new java.awt.Color(255, 248, 249));
@@ -141,7 +141,7 @@ public class LoginPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         rightSide.add(mailLabel, gridBagConstraints);
 
-        mailInput.setBackground(Polaris.INPUT_BG_COLOR);
+        mailInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         mailInput.setFont(FontManager.regularFont);
         mailInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -171,7 +171,7 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.setAlignmentX(0.5F);
         loginButton.setBorder(null);
         loginButton.setBorderPainted(false);
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -193,7 +193,7 @@ public class LoginPage extends javax.swing.JPanel {
         registerLabel.setForeground(polaris.Polaris.MAIN_COLOR);
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         registerLabel.setText("Crea una ahora.");
-        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.add(registerLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -212,17 +212,17 @@ public class LoginPage extends javax.swing.JPanel {
 
         passwordPanel.setLayout(new java.awt.BorderLayout());
 
-        passwordInput.setBackground(Polaris.INPUT_BG_COLOR);
+        passwordInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         passwordInput.setFont(FontManager.regularFont);
         passwordInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         passwordInput.setBorder(null);
         passwordInput.setMinimumSize(new java.awt.Dimension(64, 25));
         passwordPanel.add(passwordInput, java.awt.BorderLayout.CENTER);
 
-        passwordViewToggle.setBackground(Polaris.INPUT_BG_COLOR);
+        passwordViewToggle.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         passwordViewToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye_open.png"))); // NOI18N
         passwordViewToggle.setBorder(null);
-        passwordViewToggle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        passwordViewToggle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         passwordViewToggle.setFocusable(false);
         passwordViewToggle.setPreferredSize(new java.awt.Dimension(30, 17));
         passwordPanel.add(passwordViewToggle, java.awt.BorderLayout.EAST);
@@ -238,11 +238,11 @@ public class LoginPage extends javax.swing.JPanel {
 
         add(rightSide, java.awt.BorderLayout.CENTER);
 
-        leftSide.setBackground(Polaris.MAIN_COLOR);
+        leftSide.setBackground(polaris.Polaris.MAIN_COLOR);
         leftSide.setPreferredSize(new java.awt.Dimension(500, 500));
         leftSide.setLayout(new java.awt.GridBagLayout());
 
-        logo.setBackground(Polaris.MAIN_COLOR);
+        logo.setBackground(polaris.Polaris.MAIN_COLOR);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logowhite.png"))); // NOI18N
         logo.setBorder(null);
         logo.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logowhite.png"))); // NOI18N

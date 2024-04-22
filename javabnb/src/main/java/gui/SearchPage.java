@@ -175,7 +175,7 @@ public class SearchPage extends javax.swing.JPanel {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jPanel6.setLayout(new java.awt.GridLayout(Integer.MAX_VALUE, 2, 20, 0));
+        jPanel6.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
         jPanel6.add(buildingWidget1);
         jPanel6.add(buildingWidget2);
 

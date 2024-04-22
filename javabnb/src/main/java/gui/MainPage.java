@@ -9,6 +9,7 @@ import polaris.Polaris;
 import poo.javabnb.FontManager;
 import poo.javabnb.Host;
 import poo.javabnb.PropertyType;
+import poo.javabnb.SearchEngine;
 
 public class MainPage extends javax.swing.JPanel {
 
@@ -70,10 +71,10 @@ public class MainPage extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        searchBar1 = new javax.swing.JTextField();
+        locationInput = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         searchBar = new javax.swing.JButton();
+        peopleInput = new javax.swing.JFormattedTextField();
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
@@ -143,29 +144,17 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
         jPanel9.add(jTextField4, gridBagConstraints);
 
-        jTextField5.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        jTextField5.setFont(FontManager.regularFont);
-        jTextField5.setText("nº Personas");
-        jTextField5.setBorder(null);
-        jTextField5.setPreferredSize(new java.awt.Dimension(80, 17));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        jPanel9.add(jTextField5, gridBagConstraints);
-
-        searchBar1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        searchBar1.setFont(FontManager.regularFont);
-        searchBar1.setText("Destino");
-        searchBar1.setBorder(null);
-        searchBar1.setPreferredSize(new java.awt.Dimension(80, 17));
+        locationInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        locationInput.setFont(FontManager.regularFont);
+        locationInput.setText("Destino");
+        locationInput.setBorder(null);
+        locationInput.setPreferredSize(new java.awt.Dimension(80, 17));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 15;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        jPanel9.add(searchBar1, gridBagConstraints);
+        jPanel9.add(locationInput, gridBagConstraints);
 
         jTextField6.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField6.setFont(FontManager.regularFont);
@@ -191,6 +180,14 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         jPanel9.add(searchBar, gridBagConstraints);
+
+        peopleInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        jPanel9.add(peopleInput, gridBagConstraints);
 
         jPanel8.add(jPanel9);
 
@@ -403,7 +400,8 @@ public class MainPage extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-       App.redirect("SEARCH");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText(), Integer.parseInt(peopleInput.getText()));
+        App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
 
@@ -435,10 +433,10 @@ public class MainPage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField locationInput;
     private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JFormattedTextField peopleInput;
     private javax.swing.JButton searchBar;
-    private javax.swing.JTextField searchBar1;
     // End of variables declaration//GEN-END:variables
 }
