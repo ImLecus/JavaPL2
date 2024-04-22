@@ -1,4 +1,5 @@
 package gui;
+import polaris.DynamicPage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void reloadContent(){
         deleteDynamicContent();
+        pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
         //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
@@ -95,12 +97,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         phoneLabel = new javax.swing.JLabel();
         userPhoneLabel = new javax.swing.JTextField();
         banner = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        pinnedPostsLabel = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setBackground(polaris.Polaris.BG_COLOR);
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -166,10 +168,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         banner.setRolloverEnabled(false);
         content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setFont(FontManager.titleFont);
-        jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
-        jLabel1.setText("Inmuebles guardados");
-        content.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+        pinnedPostsLabel.setFont(FontManager.titleFont);
+        pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel.setText("Inmuebles guardados");
+        content.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
 
         jScrollPane1.setViewportView(content);
 
@@ -183,11 +185,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel content;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel pinnedPostsLabel;
     private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField userPhoneLabel;

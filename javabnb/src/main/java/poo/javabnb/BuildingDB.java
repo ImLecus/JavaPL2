@@ -14,19 +14,18 @@ public class BuildingDB {
      */
     public BuildingDB(){
         this.entries = new ArrayList<>();
-        add(
-                new Building(
-                "Chalet en Madrid",
-                "C/Los Rosales 12",
-                3, 3, PropertyType.HOUSE,
-                125, new String[]{"madrid", "chalet"},
-                "Un chalet alejado de la zona urbanísica de la ciudad de Madrid",
-                new String[]{}, new Host(
-                "00000000E", "Dueño", "dueño@tuyo.me", "contraseña", "666666666", new Date(), true),
-                3,
-                new String[]{},
-                3f  
-            ));
+        add(new Building(
+            "Chalet en Madrid",
+            "C/Los Rosales 12",
+            3, 3, PropertyType.HOUSE,
+            125, new String[]{"madrid", "chalet"},
+            "Un chalet alejado de la zona urbanísica de la ciudad de Madrid",
+            new String[]{}, new Host(
+            "00000000E", "Dueño", "dueño@tuyo.me", "contraseña", "666666666", new Date(), true),
+            3,
+            new String[]{},
+            3f  
+        ));
         
         add(new Building(
             "Apartamento en Barcelona",

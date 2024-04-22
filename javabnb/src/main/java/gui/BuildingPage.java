@@ -1,5 +1,6 @@
 package gui;
 
+import polaris.DynamicPage;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.Building;

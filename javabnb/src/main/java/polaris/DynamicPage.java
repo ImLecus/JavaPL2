@@ -1,4 +1,4 @@
-package gui;
+package polaris;
 
 /**
  * Interface for all the pages that

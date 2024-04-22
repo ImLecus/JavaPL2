@@ -1,4 +1,5 @@
 package gui;
+import polaris.DynamicPage;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.util.HashMap;
