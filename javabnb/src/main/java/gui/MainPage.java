@@ -100,14 +100,14 @@ public class MainPage extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
 
-        header.setBackground(Polaris.MAIN_COLOR);
+        header.setBackground(polaris.Polaris.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
-        header.setLayout(new java.awt.GridLayout());
+        header.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel7.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel7.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
 
-        atrasButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        atrasButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         atrasButton.setBorder(null);
         atrasButton.setBorderPainted(false);
         atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,13 +125,13 @@ public class MainPage extends javax.swing.JPanel {
 
         header.add(jPanel7);
 
-        jPanel8.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel8.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jPanel9.setBackground(Polaris.INPUT_BG_COLOR);
+        jPanel9.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jTextField4.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField4.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField4.setFont(FontManager.regularFont);
         jTextField4.setText("Fecha vuelta");
         jTextField4.setBorder(null);
@@ -143,7 +143,7 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
         jPanel9.add(jTextField4, gridBagConstraints);
 
-        jTextField5.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField5.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField5.setFont(FontManager.regularFont);
         jTextField5.setText("nº Personas");
         jTextField5.setBorder(null);
@@ -155,7 +155,7 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         jPanel9.add(jTextField5, gridBagConstraints);
 
-        searchBar1.setBackground(Polaris.INPUT_BG_COLOR);
+        searchBar1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         searchBar1.setFont(FontManager.regularFont);
         searchBar1.setText("Destino");
         searchBar1.setBorder(null);
@@ -167,7 +167,7 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         jPanel9.add(searchBar1, gridBagConstraints);
 
-        jTextField6.setBackground(Polaris.INPUT_BG_COLOR);
+        jTextField6.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         jTextField6.setFont(FontManager.regularFont);
         jTextField6.setText("Fecha ida");
         jTextField6.setBorder(null);
@@ -181,6 +181,11 @@ public class MainPage extends javax.swing.JPanel {
 
         searchBar.setText("Buscar");
         searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -191,10 +196,10 @@ public class MainPage extends javax.swing.JPanel {
 
         header.add(jPanel8);
 
-        jPanel10.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
 
-        comboBox.setBackground(Polaris.TRANSPARENT_COLOR);
+        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
@@ -209,16 +214,16 @@ public class MainPage extends javax.swing.JPanel {
 
         add(header, java.awt.BorderLayout.NORTH);
 
-        muroScroll.setBackground(Polaris.BG_COLOR);
+        muroScroll.setBackground(polaris.Polaris.BG_COLOR);
         muroScroll.setBorder(null);
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel2.setBackground(Polaris.BG_COLOR);
+        jPanel2.setBackground(polaris.Polaris.BG_COLOR);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(FontManager.titleFont);
-        jLabel1.setForeground(Polaris.TEXT_COLOR);
+        jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel1.setText("Para ti");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -228,7 +233,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(FontManager.titleFont);
-        jLabel2.setForeground(Polaris.TEXT_COLOR);
+        jLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel2.setText("Destinos frecuentes");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -238,7 +243,7 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        jPanel3.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jButton9.setText("Paris");
@@ -277,7 +282,7 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
         jPanel2.add(jPanel3, gridBagConstraints);
 
-        jPanel4.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jButton5.setText("Montaña");
@@ -322,7 +327,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel2.add(jPanel4, gridBagConstraints);
 
         jLabel4.setFont(FontManager.regularFont);
-        jLabel4.setForeground(Polaris.TEXT_COLOR);
+        jLabel4.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel4.setText("¿Buscas algo más específico? Puedes utilizar la barra de búsqueda para encontrar inmuebles a tu gusto.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -333,7 +338,7 @@ public class MainPage extends javax.swing.JPanel {
         jPanel2.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(FontManager.titleFont);
-        jLabel5.setForeground(Polaris.TEXT_COLOR);
+        jLabel5.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel5.setText("Vivir nuevas experiencias");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -343,11 +348,11 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         jPanel2.add(jLabel5, gridBagConstraints);
 
-        jScrollPane1.setBackground(Polaris.TRANSPARENT_COLOR);
+        jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jScrollPane1.setBorder(null);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jPanel6.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
         jPanel6.add(buildingWidget1);
         jPanel6.add(buildingWidget2);
@@ -396,6 +401,10 @@ public class MainPage extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
+       App.redirect("SEARCH");
+    }//GEN-LAST:event_searchBarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

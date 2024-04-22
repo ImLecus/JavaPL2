@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
+import javax.swing.*;
+import polaris.Polaris;
+import poo.javabnb.FontManager;
 
-/**
- *
- * @author marcos
- */
 public class SearchPage extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SearchPage
-     */
+
     public SearchPage() {
         initComponents();
     }
@@ -25,20 +18,227 @@ public class SearchPage extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
-        );
+        header = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        atrasButton = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        searchBar1 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        searchBar = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        comboBox = new javax.swing.JComboBox<>();
+        muroScroll = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel6 = new javax.swing.JPanel();
+        buildingWidget1 = new gui.BuildingWidget();
+        buildingWidget2 = new gui.BuildingWidget();
+
+        setBackground(Polaris.BG_COLOR);
+        setLayout(new java.awt.BorderLayout());
+
+        header.setBackground(polaris.Polaris.MAIN_COLOR);
+        header.setMaximumSize(new java.awt.Dimension(32767, 100));
+        header.setLayout(new java.awt.GridLayout());
+
+        jPanel7.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
+
+        atrasButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        atrasButton.setBorder(null);
+        atrasButton.setBorderPainted(false);
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setEnabled(false);
+        atrasButton.setFocusable(false);
+        atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        atrasButton.setMargin(new java.awt.Insets(2, 0, 2, 0));
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasButtonActionPerformed(evt);
+            }
+        });
+        jPanel7.add(atrasButton);
+
+        header.add(jPanel7);
+
+        jPanel8.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        jPanel9.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        jTextField4.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        jTextField4.setFont(FontManager.regularFont);
+        jTextField4.setText("Fecha vuelta");
+        jTextField4.setBorder(null);
+        jTextField4.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
+        jPanel9.add(jTextField4, gridBagConstraints);
+
+        jTextField5.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        jTextField5.setFont(FontManager.regularFont);
+        jTextField5.setText("nº Personas");
+        jTextField5.setBorder(null);
+        jTextField5.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel9.add(jTextField5, gridBagConstraints);
+
+        searchBar1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        searchBar1.setFont(FontManager.regularFont);
+        searchBar1.setText("Destino");
+        searchBar1.setBorder(null);
+        searchBar1.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel9.add(searchBar1, gridBagConstraints);
+
+        jTextField6.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        jTextField6.setFont(FontManager.regularFont);
+        jTextField6.setText("Fecha ida");
+        jTextField6.setBorder(null);
+        jTextField6.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 5);
+        jPanel9.add(jTextField6, gridBagConstraints);
+
+        searchBar.setText("Buscar");
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        jPanel9.add(searchBar, gridBagConstraints);
+
+        jPanel8.add(jPanel9);
+
+        header.add(jPanel8);
+
+        jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+
+        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        comboBox.setToolTipText("");
+        comboBox.setBorder(null);
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+        jPanel10.add(comboBox);
+
+        header.add(jPanel10);
+
+        add(header, java.awt.BorderLayout.NORTH);
+
+        muroScroll.setBackground(polaris.Polaris.BG_COLOR);
+        muroScroll.setBorder(null);
+        muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jPanel2.setBackground(polaris.Polaris.BG_COLOR);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(FontManager.titleFont);
+        jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        jLabel1.setText("Resultados de tu búsqueda");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
+        jPanel2.add(jLabel1, gridBagConstraints);
+
+        jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel6.setLayout(new java.awt.GridLayout(Integer.MAX_VALUE, 2, 20, 0));
+        jPanel6.add(buildingWidget1);
+        jPanel6.add(buildingWidget2);
+
+        jScrollPane1.setViewportView(jPanel6);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
+        jPanel2.add(jScrollPane1, gridBagConstraints);
+
+        muroScroll.setViewportView(jPanel2);
+
+        add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        App.redirect("MAIN");
+    }//GEN-LAST:event_atrasButtonActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        JComboBox cb = (JComboBox) evt.getSource();
+        String selectedItem = (String) cb.getSelectedItem();
+        System.out.println("Item seleccionado: " + selectedItem);
+        switch (selectedItem) {
+            case "Perfil":
+            App.redirect("PROFILE");
+            break;
+            case "Post guardados":
+            App.redirect("PINNED_POSTS");
+            break;
+            case "Cerrar sesión":
+            App.session.endSession();
+            App.redirect("LOGIN");
+            break;
+            case "Community Guidelines":
+            App.redirect("COMMUNITY_GUIDELINES");
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_comboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atrasButton;
+    private gui.BuildingWidget buildingWidget1;
+    private gui.BuildingWidget buildingWidget2;
+    private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JButton searchBar;
+    private javax.swing.JTextField searchBar1;
     // End of variables declaration//GEN-END:variables
 }
