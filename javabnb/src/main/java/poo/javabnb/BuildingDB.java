@@ -1,6 +1,8 @@
 package poo.javabnb;
 
+import gui.App;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import poo.javabnb.Building;
 
@@ -24,7 +26,8 @@ public class BuildingDB {
             "00000000E", "Dueño", "dueño@tuyo.me", "contraseña", "666666666", new Date(), true),
             3,
             new String[]{},
-            3f  
+            new ArrayList<Comment>()
+        
         ));
         
         add(new Building(
@@ -37,7 +40,7 @@ public class BuildingDB {
             "12345678F", "Anfitrión", "anfitrion@ejemplo.com", "contraseña", "987654321", new Date(), false),
             2,
             new String[]{"wifi", "aire acondicionado"},
-            4.5f
+            new ArrayList<Comment>()
         ));
         
         add(new Building(
@@ -50,7 +53,7 @@ public class BuildingDB {
             "87654321G", "Propietario", "propietario@ejemplo.com", "contraseña", "654321987", new Date(), true),
             3,
             new String[]{"piscina", "jardín"},
-            4.0f
+            new ArrayList<Comment>()
         ));
         
     }
@@ -63,6 +66,10 @@ public class BuildingDB {
     public void add(Building b){
         entries.add(b);
         entries.getLast().setID(entries.size());
+    }
+    
+    public void update(Building b, Building newBuilding){
+        entries.set(entries.indexOf(b), newBuilding);
     }
 }
  

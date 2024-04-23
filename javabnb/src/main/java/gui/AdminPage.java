@@ -195,6 +195,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        App.isAdmin = false;
         App.redirect("LOGIN");
     }//GEN-LAST:event_SalirActionPerformed
 

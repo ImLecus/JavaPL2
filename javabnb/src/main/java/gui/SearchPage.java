@@ -1,13 +1,52 @@
 package gui;
+import java.util.ArrayList;
 import javax.swing.*;
+import polaris.DynamicPage;
 import polaris.Polaris;
+import poo.javabnb.Building;
 import poo.javabnb.FontManager;
+import poo.javabnb.SearchEngine;
 
-public class SearchPage extends javax.swing.JPanel {
+public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
-
+    ArrayList<BuildingWidget> widgets;
     public SearchPage() {
         initComponents();
+        widgets = new ArrayList<>();
+    }
+    
+    @Override
+    public void reloadContent(){
+        deleteDynamicContent();
+        createDynamicContent();
+    }
+    
+    @Override
+    public void createDynamicContent(){
+        
+        int i = 0;
+        int rows = 0;
+        
+        ArrayList<Building> array = SearchEngine.results; 
+        int max = array.size();
+        while(i < max){
+            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+                BuildingWidget bw = new BuildingWidget();
+                widgets.add(bw);
+                result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 90 + 330*rows, -1, -1));
+                bw.init(
+                array.get(i));
+                ++i;
+            }
+            ++rows;
+        }
+    }
+    
+    @Override
+    public void deleteDynamicContent(){
+        for(BuildingWidget bw: widgets){
+            result.remove(bw);
+        }
     }
 
     /**
@@ -33,19 +72,15 @@ public class SearchPage extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
+        result = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel6 = new javax.swing.JPanel();
-        buildingWidget1 = new gui.BuildingWidget();
-        buildingWidget2 = new gui.BuildingWidget();
 
         setBackground(Polaris.BG_COLOR);
         setLayout(new java.awt.BorderLayout());
 
         header.setBackground(polaris.Polaris.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
-        header.setLayout(new java.awt.GridLayout());
+        header.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel7.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
@@ -157,37 +192,15 @@ public class SearchPage extends javax.swing.JPanel {
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel2.setBackground(polaris.Polaris.BG_COLOR);
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        result.setBackground(polaris.Polaris.BG_COLOR);
+        result.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(FontManager.titleFont);
         jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel1.setText("Resultados de tu búsqueda");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
-        jPanel2.add(jLabel1, gridBagConstraints);
+        result.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jPanel6.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
-        jPanel6.add(buildingWidget1);
-        jPanel6.add(buildingWidget2);
-
-        jScrollPane1.setViewportView(jPanel6);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        jPanel2.add(jScrollPane1, gridBagConstraints);
-
-        muroScroll.setViewportView(jPanel2);
+        muroScroll.setViewportView(result);
 
         add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -222,22 +235,18 @@ public class SearchPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
-    private gui.BuildingWidget buildingWidget1;
-    private gui.BuildingWidget buildingWidget2;
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JPanel result;
     private javax.swing.JButton searchBar;
     private javax.swing.JTextField searchBar1;
     // End of variables declaration//GEN-END:variables

@@ -50,15 +50,11 @@ public class SearchEngine {
     }
 
     // Search method
-    public static ArrayList<Building> search(ArrayList<Building> array,String location, int people) {
+    public static ArrayList<Building> search(ArrayList<Building> array,String location) {
         ArrayList<Building> result = new ArrayList<>();
         
         for(Building b: array){
-            if(
-                    b.getAddress().contains(location) &&
-                    b.visitors <= people
-                    
-              ){
+            if(b.getAddress().contains(location) || b.info.title.contains(location)){
                 result.add(b);
             }
         }

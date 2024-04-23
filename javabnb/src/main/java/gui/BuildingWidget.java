@@ -24,7 +24,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating == 2.5f? "/images/star_half.png" : "/images/star.png")));
         star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
         star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
-    
+        warning.setVisible(App.isAdmin && b.reportedBy.size() > 0);
         };
     
     
@@ -48,6 +48,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star5 = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
+        warning = new javax.swing.JButton();
         pfp = new javax.swing.JButton();
         shadow = new RoundedPanel(20);
 
@@ -139,6 +140,16 @@ public class BuildingWidget extends javax.swing.JPanel {
         price.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         price.setText("Precio por noche");
 
+        warning.setBackground(Polaris.TRANSPARENT_COLOR);
+        warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/warning.png"))); // NOI18N
+        warning.setBorder(null);
+        warning.setBorderPainted(false);
+        warning.setContentAreaFilled(false);
+        warning.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        warning.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/warning.png"))); // NOI18N
+        warning.setEnabled(false);
+        warning.setFocusable(false);
+
         javax.swing.GroupLayout textLayout = new javax.swing.GroupLayout(text);
         text.setLayout(textLayout);
         textLayout.setHorizontalGroup(
@@ -146,23 +157,35 @@ public class BuildingWidget extends javax.swing.JPanel {
             .addGroup(textLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(price)
-                    .addComponent(title)
-                    .addComponent(host)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                    .addGroup(textLayout.createSequentialGroup()
+                        .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(price)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                        .addComponent(warning))
+                    .addGroup(textLayout.createSequentialGroup()
+                        .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title)
+                            .addComponent(host))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         textLayout.setVerticalGroup(
             textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(host)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(price)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textLayout.createSequentialGroup()
+                .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(textLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(warning))
+                    .addGroup(textLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(host)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(price)))
                 .addGap(34, 34, 34))
         );
 
@@ -211,14 +234,6 @@ public class BuildingWidget extends javax.swing.JPanel {
         App.redirect("BUILDING");
     }//GEN-LAST:event_pfpMouseClicked
 
-    @Override
-    protected void paintComponent(Graphics grphcs){
-        Graphics2D g2 = (Graphics2D) grphcs;
-        
-        
-        super.paintComponent(grphcs);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel button;
     private javax.swing.JLabel host;
@@ -233,5 +248,6 @@ public class BuildingWidget extends javax.swing.JPanel {
     private javax.swing.JButton star5;
     private javax.swing.JPanel text;
     private javax.swing.JLabel title;
+    private javax.swing.JButton warning;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package gui;
 
+import java.util.ArrayList;
 import polaris.DynamicPage;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -7,44 +8,60 @@ import poo.javabnb.Building;
 import poo.javabnb.FontManager;
 import polaris.Polaris;
 import poo.javabnb.Bill;
+import poo.javabnb.Comment;
         
 
 
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
-
+    private int commentRating;
     private Building b;
+    ArrayList<CommentWidget> widgets;
     private boolean saved = false;
     public BuildingPage() {
         initComponents();
         Polaris.highlightOnHover(submitButton);
+        widgets = new ArrayList<>();
+        
+        Polaris.highlightOnHover(submitCommentButton);
         
     }
     
     @Override
     public void reloadContent(){  
+      deleteDynamicContent();
       b = App.focusedBuilding;
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       
-      star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating == 0.5f? "/images/star_half.png" : "/images/star.png")));
-      star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating == 1.5f? "/images/star_half.png" : "/images/star.png")));
-      star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating == 2.5f? "/images/star_half.png" : "/images/star.png")));
-      star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
-      star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
+      star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png")));
+      star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png")));
+      star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png")));
+      star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png")));
+      star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png")));
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
+      createDynamicContent();
     }
 
     @Override
     public void createDynamicContent(){
-        
+        int i = 0;
+        for(Comment c: b.comments){   
+            CommentWidget cw = new CommentWidget();
+            widgets.add(cw);
+            comments.add(cw, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250*i, -1, -1));
+            cw.init(c);
+            ++i;
+        }
     }
     
     @Override
     public void deleteDynamicContent(){
-        
+        for(CommentWidget cw: widgets){
+            comments.remove(cw);
+        }
     }
     
     /**
@@ -100,6 +117,24 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         idaLabel = new javax.swing.JTextField();
         vueltaLabel = new javax.swing.JTextField();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        information1 = new javax.swing.JPanel();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        leftSide2 = new javax.swing.JPanel();
+        name2 = new javax.swing.JLabel();
+        msgInput = new javax.swing.JTextArea();
+        starsPanel2 = new javax.swing.JPanel();
+        setStar1 = new javax.swing.JButton();
+        setStar2 = new javax.swing.JButton();
+        setStar3 = new javax.swing.JButton();
+        setStar4 = new javax.swing.JButton();
+        setStar5 = new javax.swing.JButton();
+        submitCommentButton = new javax.swing.JButton();
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        information2 = new javax.swing.JPanel();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        leftSide4 = new javax.swing.JPanel();
+        comments = new javax.swing.JPanel();
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -113,7 +148,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         atrasButton.setBackground(polaris.Polaris.MAIN_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -212,7 +247,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         add(header);
 
         body.setBackground(polaris.Polaris.BG_COLOR);
-        body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
+        body.setLayout(new java.awt.BorderLayout());
 
         jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -404,13 +439,18 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 reportButtonMouseExited(evt);
+            }
+        });
+        reportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportButtonActionPerformed(evt);
             }
         });
         savedAndReport.add(reportButton);
@@ -433,7 +473,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         submitButton.setBackground(polaris.Polaris.MAIN_COLOR);
         submitButton.setFont(FontManager.boldFont);
         submitButton.setForeground(polaris.Polaris.BG_COLOR);
-        submitButton.setText("RESERVA");
+        submitButton.setText("Reserva");
         submitButton.setBorder(null);
         submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -450,14 +490,20 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.ipady = 12;
         reservation.add(submitButton, gridBagConstraints);
 
+        idaLabel.setBackground(Polaris.INPUT_BG_COLOR);
         idaLabel.setText("dd/mm/yyyy");
+        idaLabel.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 10;
         reservation.add(idaLabel, gridBagConstraints);
 
+        vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
         vueltaLabel.setText("dd/mm/yyyy");
+        vueltaLabel.setBorder(null);
         vueltaLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vueltaLabelActionPerformed(evt);
@@ -467,6 +513,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 10;
         reservation.add(vueltaLabel, gridBagConstraints);
 
         rightSide.add(reservation);
@@ -476,9 +524,172 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         mainBody.add(information);
 
+        information1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        information1.setLayout(new java.awt.GridLayout(1, 0));
+        information1.add(filler5);
+
+        leftSide2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        leftSide2.setLayout(new java.awt.GridBagLayout());
+
+        name2.setBackground(polaris.Polaris.TEXT_COLOR);
+        name2.setFont(FontManager.titleFont);
+        name2.setText("Reseñas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        leftSide2.add(name2, gridBagConstraints);
+
+        msgInput.setEditable(false);
+        msgInput.setBackground(Polaris.INPUT_BG_COLOR);
+        msgInput.setColumns(20);
+        msgInput.setRows(5);
+        msgInput.setText("Escribe aquí tu reseña...\n");
+        msgInput.setPreferredSize(new java.awt.Dimension(300, 100));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        leftSide2.add(msgInput, gridBagConstraints);
+
+        starsPanel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        starsPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
+
+        setStar1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar1.setBorder(null);
+        setStar1.setBorderPainted(false);
+        setStar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar1.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar1.setFocusPainted(false);
+        setStar1.setFocusable(false);
+        setStar1.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setStar1ActionPerformed(evt);
+            }
+        });
+        starsPanel2.add(setStar1);
+
+        setStar2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar2.setBorder(null);
+        setStar2.setBorderPainted(false);
+        setStar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar2.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar2.setFocusPainted(false);
+        setStar2.setFocusable(false);
+        setStar2.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setStar2ActionPerformed(evt);
+            }
+        });
+        starsPanel2.add(setStar2);
+
+        setStar3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar3.setBorder(null);
+        setStar3.setBorderPainted(false);
+        setStar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar3.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar3.setFocusPainted(false);
+        setStar3.setFocusable(false);
+        setStar3.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setStar3ActionPerformed(evt);
+            }
+        });
+        starsPanel2.add(setStar3);
+
+        setStar4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar4.setBorder(null);
+        setStar4.setBorderPainted(false);
+        setStar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar4.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar4.setFocusPainted(false);
+        setStar4.setFocusable(false);
+        setStar4.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setStar4ActionPerformed(evt);
+            }
+        });
+        starsPanel2.add(setStar4);
+
+        setStar5.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar5.setBorder(null);
+        setStar5.setBorderPainted(false);
+        setStar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar5.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        setStar5.setFocusPainted(false);
+        setStar5.setFocusable(false);
+        setStar5.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setStar5ActionPerformed(evt);
+            }
+        });
+        starsPanel2.add(setStar5);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        leftSide2.add(starsPanel2, gridBagConstraints);
+
+        submitCommentButton.setBackground(Polaris.MAIN_COLOR);
+        submitCommentButton.setFont(FontManager.boldFont);
+        submitCommentButton.setForeground(Polaris.BG_COLOR);
+        submitCommentButton.setText("Enviar");
+        submitCommentButton.setBorder(null);
+        submitCommentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitCommentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitCommentButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
+        leftSide2.add(submitCommentButton, gridBagConstraints);
+
+        information1.add(leftSide2);
+        information1.add(filler6);
+
+        mainBody.add(information1);
+
+        information2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        information2.setLayout(new java.awt.GridLayout(1, 0));
+        information2.add(filler8);
+
+        leftSide4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        leftSide4.setLayout(new java.awt.GridBagLayout());
+
+        comments.setBackground(Polaris.TRANSPARENT_COLOR);
+        comments.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        leftSide4.add(comments, gridBagConstraints);
+
+        information2.add(leftSide4);
+        information2.add(filler9);
+
+        mainBody.add(information2);
+
         jScrollPane2.setViewportView(mainBody);
 
-        body.add(jScrollPane2);
+        body.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         add(body);
     }// </editor-fold>//GEN-END:initComponents
@@ -523,7 +734,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             App.session.deletePinnedPost(b.getID());
             System.out.println("Eliminado el inmueble con id " + String.valueOf(b.getID()) + ". El usuario tiene " + String.valueOf(App.session.user.pinnedPosts.size()) + " posts guardados");
         }
-        
+        repaint();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void mainBodyComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mainBodyComponentMoved
@@ -556,22 +767,95 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         // TODO add your handling code here:
     }//GEN-LAST:event_vueltaLabelActionPerformed
 
+    private void setStar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar1ActionPerformed
+      commentRating = 1;
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      repaint();
+    }//GEN-LAST:event_setStar1ActionPerformed
+
+    private void setStar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar2ActionPerformed
+      commentRating = 2;
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      repaint();
+    }//GEN-LAST:event_setStar2ActionPerformed
+
+    private void setStar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar3ActionPerformed
+      commentRating = 3;
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      repaint();
+    }//GEN-LAST:event_setStar3ActionPerformed
+
+    private void setStar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar4ActionPerformed
+      commentRating = 4;
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      repaint();
+    }//GEN-LAST:event_setStar4ActionPerformed
+
+    private void setStar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar5ActionPerformed
+      commentRating = 5;
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      repaint();
+    }//GEN-LAST:event_setStar5ActionPerformed
+
+    private void submitCommentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCommentButtonActionPerformed
+        Comment c = new Comment(App.session.user,commentRating,msgInput.getText());
+        Building newBuilding = b;
+        newBuilding.recalculateRating(commentRating);
+        newBuilding.comments.add(c);
+        App.buildings.update(b, newBuilding);
+        App.focusedBuilding = newBuilding;
+        App.redirect("BUILDING");
+    }//GEN-LAST:event_submitCommentButtonActionPerformed
+
+    private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
+        Building newBuilding = b;
+        newBuilding.reportedBy.add(App.session.user);
+        App.buildings.update(b, newBuilding);
+    }//GEN-LAST:event_reportButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
     private javax.swing.JPanel body;
     private javax.swing.JPanel carousel;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JPanel comments;
     private javax.swing.JTextArea description;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
     private javax.swing.JPanel header;
     private javax.swing.JLabel host;
     private javax.swing.JTextField idaLabel;
     private javax.swing.JPanel information;
+    private javax.swing.JPanel information1;
+    private javax.swing.JPanel information2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
@@ -583,8 +867,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel leftSide;
+    private javax.swing.JPanel leftSide2;
+    private javax.swing.JPanel leftSide4;
     private javax.swing.JPanel mainBody;
+    private javax.swing.JTextArea msgInput;
     private javax.swing.JLabel name;
+    private javax.swing.JLabel name2;
     private javax.swing.JLabel precioTotalLabel;
     private javax.swing.JLabel props;
     private javax.swing.JButton reportButton;
@@ -593,13 +881,20 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel savedAndReport;
     private javax.swing.JTextField searchBar;
+    private javax.swing.JButton setStar1;
+    private javax.swing.JButton setStar2;
+    private javax.swing.JButton setStar3;
+    private javax.swing.JButton setStar4;
+    private javax.swing.JButton setStar5;
     private javax.swing.JButton star1;
     private javax.swing.JButton star2;
     private javax.swing.JButton star3;
     private javax.swing.JButton star4;
     private javax.swing.JButton star5;
     private javax.swing.JPanel starsPanel;
+    private javax.swing.JPanel starsPanel2;
     private javax.swing.JButton submitButton;
+    private javax.swing.JButton submitCommentButton;
     private javax.swing.JTextField vueltaLabel;
     // End of variables declaration//GEN-END:variables
 }
