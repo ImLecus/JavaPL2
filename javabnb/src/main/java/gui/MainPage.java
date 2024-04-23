@@ -2,20 +2,22 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JComboBox;
-import poo.javabnb.Building;
+import polaris.DynamicPage;
+import poo.javabnb.*;
 import polaris.Polaris;
 import poo.javabnb.FontManager;
-import poo.javabnb.Host;
-import poo.javabnb.PropertyType;
 import poo.javabnb.SearchEngine;
 
-public class MainPage extends javax.swing.JPanel {
 
+public class MainPage extends javax.swing.JPanel implements DynamicPage {
+    public ArrayList<BuildingWidget> widgets;
     public MainPage() {
         initComponents();
-        
+        widgets = new ArrayList<>();
+ 
         searchBar.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {
@@ -52,6 +54,34 @@ public class MainPage extends javax.swing.JPanel {
                     }
             }
         });
+        
+    }
+    public void deleteDynamicContent(){
+        for(BuildingWidget bw : widgets){
+            content.remove(bw);
+        }
+    }
+    
+    public void createDynamicContent(){
+        int max = App.buildings.entries.size();
+        int i = 0;
+        int rows = 0;
+        
+        while(i < max){
+            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+                BuildingWidget bw = new BuildingWidget();
+                widgets.add(bw);
+                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                bw.init(
+                App.buildings.entries.get(
+                        App.session.user.pinnedPosts.get(i) - 1
+                    )
+                );
+                ++i;
+            }
+            ++rows;
+        }
+        
         
     }
 
