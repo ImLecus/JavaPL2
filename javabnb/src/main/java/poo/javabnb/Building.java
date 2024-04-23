@@ -1,5 +1,7 @@
 package poo.javabnb;
 
+import java.util.ArrayList;
+
 public class Building {
     public BuildingInfo info;
     private String address;
@@ -12,9 +14,10 @@ public class Building {
     public int visitors;
     public String[] services;
     private int id;
+    public ArrayList<Comment> comments;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, int visitors, String[] services, float rating) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, int visitors, String[] services, float rating,ArrayList<Comment> comments) {
         this.info = new BuildingInfo(title, host, price, rating);
         this.address = address;
         this.rooms = rooms;
@@ -25,6 +28,7 @@ public class Building {
         this.images = images;
         this.visitors = visitors;
         this.services = services;
+        this.comments = comments;
     }
     
     public int getID(){
