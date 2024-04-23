@@ -34,6 +34,7 @@ public class Bill {
         try {
             PrintWriter writer = new PrintWriter("Factura.txt");
             writer.println("Factura");
+            writer.println("-----------------------------------");
             writer.println("Nombre: " + c.getName());
             writer.println("Correo: " + c.getMail());
             writer.println("DNI: " + c.getDNI());
