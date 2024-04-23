@@ -1,16 +1,18 @@
 package gui;
 
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import poo.javabnb.FontManager;
 import polaris.*;
+import poo.javabnb.Building;
 import poo.javabnb.Client;
 
 public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
-    public ArrayList<UserWidget> userWidgets;
+    public ArrayList<JPanel> widgets;
     public AdminPage() {
         initComponents();
-        userWidgets = new ArrayList<UserWidget>();
+        widgets = new ArrayList<>();
         
     }
     
@@ -26,17 +28,23 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         for(int i = 0; i < App.db.getAllUsers().size(); ++i){
             Client c = App.db.getClientData(i);
             UserWidget uw = new UserWidget();
-            userWidgets.add(uw);
+            widgets.add(uw);
             users.add(uw, new org.netbeans.lib.awtextra.AbsoluteConstraints(40 , 60 + 200*i, -1, -1));
             uw.init(c);
         }
-        System.out.println(userWidgets.size());
+        for(int i = 0; i < App.buildings.entries.size(); ++i){
+            Building b = App.buildings.entries.get(i);
+            BuildingWidget bw = new BuildingWidget();
+            widgets.add(bw);
+            buildings.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(40 , 60 + 330*i, -1, -1));
+            bw.init(b);
+        }
     }
 
     @Override
     public void deleteDynamicContent(){
-        for(UserWidget uw : userWidgets){
-            remove(uw);
+        for(JPanel w : widgets){
+            remove(w);
         }
     }
     
@@ -55,10 +63,11 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         users = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         buildings = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
-        setBackground(Polaris.BG_COLOR);
+        setBackground(Polaris.MAIN_COLOR);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanel2.setBackground(Polaris.MAIN_COLOR);
@@ -90,16 +99,21 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel1.add(jPanel3);
 
-        buildings.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel3.setBackground(Polaris.INPUT_BG_COLOR);
+        jLabel3.setFont(FontManager.subtitleFont);
+        jLabel3.setForeground(Polaris.TEXT_COLOR);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Inmuebles");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(jLabel3, java.awt.BorderLayout.NORTH);
+
+        buildings.setBackground(Polaris.BG_COLOR);
         buildings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.add(buildings, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setFont(FontManager.subtitleFont);
-        jLabel2.setForeground(Polaris.TEXT_COLOR);
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Inmuebles");
-        buildings.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, -1));
-
-        jPanel1.add(buildings);
+        jPanel1.add(jPanel4);
 
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
@@ -108,10 +122,11 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buildings;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel title;
     private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables

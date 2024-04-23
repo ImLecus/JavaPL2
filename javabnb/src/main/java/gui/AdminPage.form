@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="Polaris.BG_COLOR" type="code"/>
+      <Connection code="Polaris.MAIN_COLOR" type="code"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -102,34 +102,47 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="buildings">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Polaris.TRANSPARENT_COLOR" type="code"/>
-            </Property>
-          </Properties>
+        <Container class="javax.swing.JPanel" name="jPanel4">
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-            <Property name="useNullLayout" type="boolean" value="false"/>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Polaris.INPUT_BG_COLOR" type="code"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="FontManager.subtitleFont" type="code"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="Polaris.TEXT_COLOR" type="code"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Inmuebles"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="90" height="-1"/>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="North"/>
                 </Constraint>
               </Constraints>
             </Component>
+            <Container class="javax.swing.JPanel" name="buildings">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Polaris.BG_COLOR" type="code"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Center"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
+              </Layout>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
