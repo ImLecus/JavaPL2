@@ -2,31 +2,15 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-<<<<<<< Updated upstream
-import java.util.Date;
-=======
->>>>>>> Stashed changes
 import javax.swing.JComboBox;
-import polaris.DynamicPage;
-import poo.javabnb.*;
-import polaris.Polaris;
 import poo.javabnb.FontManager;
 import poo.javabnb.SearchEngine;
-import polaris.*;
-import poo.javabnb.Building;
 
-<<<<<<< Updated upstream
-=======
-public class MainPage extends javax.swing.JPanel implements DynamicPage{
->>>>>>> Stashed changes
+public class MainPage extends javax.swing.JPanel {
 
-public class MainPage extends javax.swing.JPanel implements DynamicPage {
-    public ArrayList<BuildingWidget> widgets;
     public MainPage() {
         initComponents();
-        widgets = new ArrayList<>();
- 
+        
         searchBar.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {
@@ -63,51 +47,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
                     }
             }
         });
-        
-    }
-<<<<<<< Updated upstream
-    public void deleteDynamicContent(){
-        for(BuildingWidget bw : widgets){
-            content.remove(bw);
-        }
-    }
-    
-    public void createDynamicContent(){
-        int max = App.buildings.entries.size();
-        int i = 0;
-        int rows = 0;
-        
-        while(i < max){
-            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
-                BuildingWidget bw = new BuildingWidget();
-                widgets.add(bw);
-                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
-                bw.init(
-                App.buildings.entries.get(
-                        App.session.user.pinnedPosts.get(i) - 1
-                    )
-                );
-                ++i;
-            }
-            ++rows;
-        }
-        
-=======
-    
-    @Override
-    public void reloadContent(){
-        deleteDynamicContent();
-        createDynamicContent();
-    }
-
-    @Override
-    public void createDynamicContent(){  
-
-    }
-    
-    @Override
-    public void deleteDynamicContent(){
->>>>>>> Stashed changes
         
     }
 
@@ -293,63 +232,58 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        jButton9.setFont(FontManager.subtitleFont);
-        jButton9.setForeground(Polaris.BG_COLOR);
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paris.png"))); // NOI18N
         jButton9.setBorder(null);
-        jButton9.setBorderPainted(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setFocusable(false);
-<<<<<<< Updated upstream
-        jButton9.setPreferredSize(new java.awt.Dimension(150, 200));
-=======
         jButton9.setPreferredSize(new java.awt.Dimension(200, 300));
-        jButton9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
->>>>>>> Stashed changes
         jPanel3.add(jButton9);
 
-        jButton2.setFont(FontManager.subtitleFont);
-        jButton2.setForeground(Polaris.BG_COLOR);
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rome.png"))); // NOI18N
         jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton2.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2);
 
-        jButton3.setFont(FontManager.subtitleFont);
-        jButton3.setForeground(Polaris.BG_COLOR);
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sanfrancisco.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton3.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3);
 
-        jButton4.setFont(FontManager.subtitleFont);
-        jButton4.setForeground(Polaris.BG_COLOR);
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tokio.png"))); // NOI18N
         jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusable(false);
-        jButton4.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton4.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton4);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -363,15 +297,11 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jPanel4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
-        jButton5.setFont(FontManager.subtitleFont);
-        jButton5.setForeground(Polaris.BG_COLOR);
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mountain.png"))); // NOI18N
         jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setFocusable(false);
         jButton5.setPreferredSize(new java.awt.Dimension(200, 300));
-        jButton5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -379,37 +309,40 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         });
         jPanel4.add(jButton5);
 
-        jButton6.setFont(FontManager.subtitleFont);
-        jButton6.setForeground(Polaris.BG_COLOR);
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/beach.png"))); // NOI18N
         jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusable(false);
-        jButton6.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton6.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton6);
 
-        jButton7.setFont(FontManager.subtitleFont);
-        jButton7.setForeground(Polaris.BG_COLOR);
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rural.png"))); // NOI18N
         jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setFocusable(false);
-        jButton7.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton7.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton7);
 
-        jButton8.setFont(FontManager.subtitleFont);
-        jButton8.setForeground(Polaris.BG_COLOR);
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/snow.png"))); // NOI18N
         jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setFocusable(false);
-        jButton8.setPreferredSize(new java.awt.Dimension(150, 200));
-        jButton8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton8.setPreferredSize(new java.awt.Dimension(200, 300));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton8);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -439,7 +372,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
         jPanel2.add(jLabel5, gridBagConstraints);
 
         jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -465,7 +398,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "montaña");
+        App.redirect("SEARCH");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
@@ -497,9 +431,44 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText(), Integer.parseInt(peopleInput.getText()));
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText());
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Paris");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Roma");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "San Francisco");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Tokio");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "playa");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "rural");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "nieve");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
