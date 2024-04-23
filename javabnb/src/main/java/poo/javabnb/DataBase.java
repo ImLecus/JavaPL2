@@ -83,6 +83,9 @@ public class DataBase implements Serializable {
         users.removeLast();
     }
     
+    public ArrayList<Client> getAllUsers(){
+        return users;
+    }
     
     /**
      * Searches if the mail already exists in the database.

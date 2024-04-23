@@ -1,22 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 
-/**
- *
- * @author marcos
- */
-public class AdminPage extends javax.swing.JPanel {
+import java.util.ArrayList;
+import poo.javabnb.FontManager;
+import polaris.*;
+import poo.javabnb.Client;
 
-    /**
-     * Creates new form AdminPage
-     */
+public class AdminPage extends javax.swing.JPanel implements DynamicPage {
+
+    public ArrayList<UserWidget> userWidgets;
     public AdminPage() {
         initComponents();
+        userWidgets = new ArrayList<UserWidget>();
+        
+    }
+    
+    @Override
+    public void reloadContent(){
+        deleteDynamicContent();
+        
+        createDynamicContent();
+    }
+    
+    @Override
+    public void createDynamicContent(){
+        for(int i = 0; i < App.db.getAllUsers().size(); ++i){
+            Client c = App.db.getClientData(i);
+            UserWidget uw = new UserWidget();
+            userWidgets.add(uw);
+            users.add(uw, new org.netbeans.lib.awtextra.AbsoluteConstraints(40 , 60 + 200*i, -1, -1));
+            uw.init(c);
+        }
+        System.out.println(userWidgets.size());
     }
 
+    @Override
+    public void deleteDynamicContent(){
+        for(UserWidget uw : userWidgets){
+            remove(uw);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +49,70 @@ public class AdminPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel2 = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        users = new javax.swing.JPanel();
+        buildings = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(Polaris.BG_COLOR);
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel2.setBackground(Polaris.MAIN_COLOR);
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
+
+        title.setFont(FontManager.titleFont);
+        title.setForeground(polaris.Polaris.BG_COLOR);
+        title.setText("Panel de administrador");
+        jPanel2.add(title);
+
+        add(jPanel2);
+
+        jPanel1.setBackground(Polaris.BG_COLOR);
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setBackground(Polaris.INPUT_BG_COLOR);
+        jLabel1.setFont(FontManager.subtitleFont);
+        jLabel1.setForeground(Polaris.TEXT_COLOR);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Usuarios");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(jLabel1, java.awt.BorderLayout.NORTH);
+
+        users.setBackground(Polaris.BG_COLOR);
+        users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(users, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel3);
+
+        buildings.setBackground(Polaris.TRANSPARENT_COLOR);
+        buildings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(FontManager.subtitleFont);
+        jLabel2.setForeground(Polaris.TEXT_COLOR);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Inmuebles");
+        buildings.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, -1));
+
+        jPanel1.add(buildings);
+
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel buildings;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel title;
+    private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables
 }
