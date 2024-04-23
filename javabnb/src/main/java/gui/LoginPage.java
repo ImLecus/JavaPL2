@@ -39,6 +39,11 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(mailInput.getText().equals("admin@javabnb.com") &&  String.valueOf(passwordInput.getPassword()).equals("admin")){
+                    App.redirect("ADMIN");
+                    return;
+                }
+                
                 String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
                 System.out.println("Hashed password: " + hashedPassword);
                 int key = App.db.getUserInDataBase(mailInput.getText(), Hashing.hashPassword(String.valueOf(passwordInput.getPassword())));

@@ -33,6 +33,7 @@ public class App {
     private static final BuildingPage building =             new BuildingPage();
     private static final SearchPage search =                 new SearchPage();
     private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
+    private static final AdminPage admin =                   new AdminPage();
     private static JPanel currentPanel = login;
     
     public static void main(String[] args){
@@ -91,6 +92,7 @@ public class App {
         pages.put("BUILDING", building);
         pages.put("SEARCH",search);
         pages.put("COMMUNITY_GUIDELINES",community);
+        pages.put("ADMIN",admin);
     }
     
 }
