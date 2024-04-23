@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.ImageIcon;
+import polaris.Polaris;
 import poo.javabnb.Comment;
 import poo.javabnb.FontManager;
 
@@ -37,6 +38,8 @@ public class CommentWidget extends javax.swing.JPanel {
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
         msg = new javax.swing.JTextArea();
+
+        setBackground(Polaris.INPUT_BG_COLOR);
 
         name.setBackground(polaris.Polaris.TEXT_COLOR);
         name.setFont(FontManager.boldFont);
@@ -101,7 +104,9 @@ public class CommentWidget extends javax.swing.JPanel {
         starsPanel.add(star5);
 
         msg.setEditable(false);
+        msg.setBackground(Polaris.BG_COLOR);
         msg.setColumns(20);
+        msg.setFont(FontManager.regularFont);
         msg.setRows(5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

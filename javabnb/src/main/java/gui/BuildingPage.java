@@ -28,28 +28,32 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){  
+      deleteDynamicContent();
       b = App.focusedBuilding;
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       
-      star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating == 0.5f? "/images/star_half.png" : "/images/star.png")));
-      star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating == 1.5f? "/images/star_half.png" : "/images/star.png")));
-      star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating == 2.5f? "/images/star_half.png" : "/images/star.png")));
-      star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
-      star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
+      star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png")));
+      star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png")));
+      star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png")));
+      star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png")));
+      star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png")));
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
+      createDynamicContent();
     }
 
     @Override
     public void createDynamicContent(){
-        for(Comment c: b.comments){
+        int i = 0;
+        for(Comment c: b.comments){   
             CommentWidget cw = new CommentWidget();
             widgets.add(cw);
-            comments.add(cw, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+            comments.add(cw, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250*i, -1, -1));
             cw.init(c);
+            ++i;
         }
     }
     
@@ -125,9 +129,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar4 = new javax.swing.JButton();
         setStar5 = new javax.swing.JButton();
         submitCommentButton = new javax.swing.JButton();
-        leftSide1 = new javax.swing.JPanel();
-        comments = new javax.swing.JPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        information2 = new javax.swing.JPanel();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        leftSide4 = new javax.swing.JPanel();
+        comments = new javax.swing.JPanel();
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -141,7 +148,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         atrasButton.setBackground(polaris.Polaris.MAIN_COLOR);
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -485,6 +492,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 10;
         reservation.add(idaLabel, gridBagConstraints);
 
         vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
@@ -499,6 +508,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 10;
         reservation.add(vueltaLabel, gridBagConstraints);
 
         rightSide.add(reservation);
@@ -647,21 +658,29 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         leftSide2.add(submitCommentButton, gridBagConstraints);
 
         information1.add(leftSide2);
+        information1.add(filler6);
 
-        leftSide1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        leftSide1.setLayout(new java.awt.GridBagLayout());
+        mainBody.add(information1);
 
+        information2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        information2.setLayout(new java.awt.GridLayout());
+        information2.add(filler8);
+
+        leftSide4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        leftSide4.setLayout(new java.awt.GridBagLayout());
+
+        comments.setBackground(Polaris.TRANSPARENT_COLOR);
         comments.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        leftSide1.add(comments, gridBagConstraints);
+        leftSide4.add(comments, gridBagConstraints);
 
-        information1.add(leftSide1);
-        information1.add(filler6);
+        information2.add(leftSide4);
+        information2.add(filler9);
 
-        mainBody.add(information1);
+        mainBody.add(information2);
 
         jScrollPane2.setViewportView(mainBody);
 
@@ -795,8 +814,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void submitCommentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCommentButtonActionPerformed
         Comment c = new Comment(App.session.user,commentRating,msgInput.getText());
-        
-        // Update the buildingDB
+        Building newBuilding = b;
+        newBuilding.recalculateRating(commentRating);
+        newBuilding.comments.add(c);
+        App.buildings.update(b, newBuilding);
+        App.focusedBuilding = newBuilding;
+        App.redirect("BUILDING");
     }//GEN-LAST:event_submitCommentButtonActionPerformed
 
 
@@ -814,11 +837,14 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
     private javax.swing.JPanel header;
     private javax.swing.JLabel host;
     private javax.swing.JTextField idaLabel;
     private javax.swing.JPanel information;
     private javax.swing.JPanel information1;
+    private javax.swing.JPanel information2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
@@ -830,8 +856,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel leftSide;
-    private javax.swing.JPanel leftSide1;
     private javax.swing.JPanel leftSide2;
+    private javax.swing.JPanel leftSide4;
     private javax.swing.JPanel mainBody;
     private javax.swing.JTextArea msgInput;
     private javax.swing.JLabel name;
