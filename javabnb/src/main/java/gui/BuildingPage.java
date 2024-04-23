@@ -532,7 +532,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Bill bill = new Bill();
-        bill.generateBill(App.session.user,b,idaLabel.getText(),idaLabel.getText());
+        bill.generateBill(App.session.user,b,idaLabel.getText(),vueltaLabel.getText());
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
