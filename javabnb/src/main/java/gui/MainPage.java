@@ -2,13 +2,8 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import javax.swing.JComboBox;
-import poo.javabnb.Building;
-import polaris.Polaris;
 import poo.javabnb.FontManager;
-import poo.javabnb.Host;
-import poo.javabnb.PropertyType;
 import poo.javabnb.SearchEngine;
 
 public class MainPage extends javax.swing.JPanel {
@@ -248,6 +243,11 @@ public class MainPage extends javax.swing.JPanel {
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton9.setFocusable(false);
         jButton9.setPreferredSize(new java.awt.Dimension(150, 200));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton9);
 
         jButton2.setText("Roma");
@@ -400,9 +400,14 @@ public class MainPage extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText(), Integer.parseInt(peopleInput.getText()));
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText());
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Paris");
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
