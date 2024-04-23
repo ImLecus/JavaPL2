@@ -40,6 +40,7 @@ public class LoginPage extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(mailInput.getText().equals("admin@javabnb.com") &&  String.valueOf(passwordInput.getPassword()).equals("admin")){
+                    App.isAdmin = true;
                     App.redirect("ADMIN");
                     return;
                 }

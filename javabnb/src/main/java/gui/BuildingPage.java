@@ -448,6 +448,11 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
                 reportButtonMouseExited(evt);
             }
         });
+        reportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportButtonActionPerformed(evt);
+            }
+        });
         savedAndReport.add(reportButton);
         savedAndReport.add(filler7);
 
@@ -520,7 +525,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         mainBody.add(information);
 
         information1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        information1.setLayout(new java.awt.GridLayout());
+        information1.setLayout(new java.awt.GridLayout(1, 0));
         information1.add(filler5);
 
         leftSide2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -663,7 +668,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         mainBody.add(information1);
 
         information2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        information2.setLayout(new java.awt.GridLayout());
+        information2.setLayout(new java.awt.GridLayout(1, 0));
         information2.add(filler8);
 
         leftSide4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -821,6 +826,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         App.focusedBuilding = newBuilding;
         App.redirect("BUILDING");
     }//GEN-LAST:event_submitCommentButtonActionPerformed
+
+    private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
+        Building newBuilding = b;
+        newBuilding.reportedBy.add(App.session.user);
+        App.buildings.update(b, newBuilding);
+    }//GEN-LAST:event_reportButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

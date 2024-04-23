@@ -15,6 +15,7 @@ public class Building {
     public String[] services;
     private int id;
     public ArrayList<Comment> comments;
+    public ArrayList<Client> reportedBy;
 
     // Constructor
     public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
@@ -32,6 +33,7 @@ public class Building {
         for(Comment c: comments){
             recalculateRating(c.rating);
         }
+        this.reportedBy = new ArrayList<>();
     }
     
     public int getID(){

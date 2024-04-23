@@ -22,7 +22,7 @@ public class App {
     public static JFrame frame = new JFrame("JavaB&B");
     
     private static final Map<String, JPanel> pages = new HashMap<>();
-    
+    public static boolean isAdmin;
     
     
     private static final LoginPage login =                   new LoginPage();

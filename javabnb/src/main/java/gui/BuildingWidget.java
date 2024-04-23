@@ -24,7 +24,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating == 2.5f? "/images/star_half.png" : "/images/star.png")));
         star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
         star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
-    
+        warning.setVisible(App.isAdmin && b.reportedBy.size() > 0);
         };
     
     
@@ -46,6 +46,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
+        warning = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         pfp = new javax.swing.JButton();
@@ -130,6 +131,14 @@ public class BuildingWidget extends javax.swing.JPanel {
         star5.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel1.add(star5);
 
+        warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/warning.png"))); // NOI18N
+        warning.setBorder(null);
+        warning.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        warning.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/warning.png"))); // NOI18N
+        warning.setEnabled(false);
+        warning.setFocusable(false);
+        jPanel1.add(warning);
+
         title.setFont(FontManager.subtitleFont);
         title.setForeground(polaris.Polaris.TEXT_COLOR);
         title.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -211,14 +220,6 @@ public class BuildingWidget extends javax.swing.JPanel {
         App.redirect("BUILDING");
     }//GEN-LAST:event_pfpMouseClicked
 
-    @Override
-    protected void paintComponent(Graphics grphcs){
-        Graphics2D g2 = (Graphics2D) grphcs;
-        
-        
-        super.paintComponent(grphcs);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel button;
     private javax.swing.JLabel host;
@@ -233,5 +234,6 @@ public class BuildingWidget extends javax.swing.JPanel {
     private javax.swing.JButton star5;
     private javax.swing.JPanel text;
     private javax.swing.JLabel title;
+    private javax.swing.JButton warning;
     // End of variables declaration//GEN-END:variables
 }
