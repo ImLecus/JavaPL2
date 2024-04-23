@@ -7,13 +7,15 @@ import poo.javabnb.FontManager;
 
 public class UserWidget extends javax.swing.JPanel {
 
+    int index;
     public UserWidget() {
         initComponents();
     }
     
-    public void init(Client c){
+    public void init(Client c, int index){
         name.setText(c.getName());
         mail.setText(c.getMail());
+        this.index = index;
     }
 
     /**
@@ -29,7 +31,7 @@ public class UserWidget extends javax.swing.JPanel {
         pfp = new javax.swing.JButton();
         mail = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ban = new javax.swing.JButton();
         jPanel2 = new RoundedPanel(20);
 
         setBackground(Polaris.TRANSPARENT_COLOR);
@@ -57,7 +59,15 @@ public class UserWidget extends javax.swing.JPanel {
         name.setForeground(polaris.Polaris.TEXT_COLOR);
         name.setText("Nombre");
 
-        jButton1.setText("Banear");
+        ban.setBackground(Polaris.MAIN_COLOR);
+        ban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/remove_pople.png"))); // NOI18N
+        ban.setBorder(null);
+        ban.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ban.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                banActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,7 +80,7 @@ public class UserWidget extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(ban))
                 .addGap(168, 168, 168))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +94,7 @@ public class UserWidget extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(ban)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -96,19 +106,26 @@ public class UserWidget extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 180, Short.MAX_VALUE)
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 180));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 180));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void banActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banActionPerformed
+        App.db.remove(index);
+        App.db.saveData();
+        ((DynamicPage) App.currentPanel).reloadContent();
+        App.currentPanel.repaint();
+    }//GEN-LAST:event_banActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton ban;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel mail;

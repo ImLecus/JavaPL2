@@ -34,7 +34,7 @@ public class App {
     private static final SearchPage search =                 new SearchPage();
     private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
     private static final AdminPage admin =                   new AdminPage();
-    private static JPanel currentPanel = login;
+    public static JPanel currentPanel = login;
     
     public static void main(String[] args){
         
