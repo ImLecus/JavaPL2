@@ -66,8 +66,6 @@ public class LoginPage extends javax.swing.JPanel {
                     String.valueOf(passwordInput.getPassword()),
                     App.session.ID);
                     
-                    System.out.printf("El usuario tiene %s posts guardados", App.session.user.pinnedPosts.size());
-                    
                     resetText();
                     App.redirect("MAIN");
                 } else {

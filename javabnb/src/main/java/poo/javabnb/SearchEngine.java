@@ -59,7 +59,6 @@ public class SearchEngine {
                 result.add(b);
             }
         }
-        System.out.println(result.size());
         return result;
     }
 
