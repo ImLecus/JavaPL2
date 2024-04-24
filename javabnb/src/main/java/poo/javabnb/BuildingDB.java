@@ -56,6 +56,19 @@ public class BuildingDB {
             new ArrayList<Comment>()
         ));
         
+        add(new Building(
+            "Casa Rural en Madrid",
+            "C/Camino del Bosque s/n",
+            4, 2, PropertyType.HOUSE,
+            150, new String[]{"valencia", "casa rural"},
+            "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Madrid.",
+            new String[]{}, new Host(
+            "87654321G", "Propietario", "propietario@ejemplo.com", "contraseña", "654321987", new Date(), true),
+            3,
+            new String[]{"piscina", "jardín"},
+            new ArrayList<Comment>()
+        ));
+        
     }
     
     /**

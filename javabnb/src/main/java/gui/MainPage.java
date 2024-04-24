@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import polaris.Polaris;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
+import poo.javabnb.SortType;
 
 public class MainPage extends javax.swing.JPanel {
 
@@ -426,12 +427,13 @@ public class MainPage extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.results = SearchEngine.search(
+        SearchEngine.sortBy = SortType.PRICE;
+        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
                 App.buildings.entries, 
                 locationInput.getText(), 
                 peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
                 
-                );
+                ));
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 

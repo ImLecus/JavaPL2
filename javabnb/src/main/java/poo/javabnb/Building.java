@@ -1,8 +1,9 @@
 package poo.javabnb;
 
 import java.util.ArrayList;
+import static poo.javabnb.SortType.*;
 
-public class Building {
+public class Building implements Comparable {
     public BuildingInfo info;
     private String address;
     public int rooms;
@@ -65,6 +66,31 @@ public class Building {
         info.rating = (info.rating * comments.size() + newValue)/(comments.size() + 1);
     }
 
+    @Override
+    public int compareTo(Object t){
+        Building b = (Building) t;
+        if(SearchEngine.sortBy == PRICE){
+            if(b.info.price > this.info.price){
+                return -1;
+            }
+            else if(b.info.price < this.info.price){
+                return 1;
+            }
+            return 0;
+        }
+        else if(SearchEngine.sortBy == STARS){
+            if(b.info.rating > this.info.rating){
+                return -1;
+            }
+            else if(b.info.rating < this.info.rating){
+                return 1;
+            }
+            return 0;
+        }
+        else{
+            return 0;
+        }
+    }
 }
 
 

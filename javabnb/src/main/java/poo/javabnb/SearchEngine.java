@@ -1,13 +1,13 @@
 package poo.javabnb;
 
 import java.util.ArrayList;
-import gui.App;
+import java.util.Collections;
 
 public class SearchEngine {
     public String search;
     public String[] hashtags;
     PropertyType type;
-    SortType sortBy;
+    public static SortType sortBy;
     public Range price;
     public Range stars;
     public Range beds;
@@ -64,7 +64,8 @@ public class SearchEngine {
     }
 
     // Sort search method
-    public void sortSearch() {
-        // Implement the sort logic here
+    public static ArrayList<Building> sortSearch(ArrayList<Building> array) {
+        Collections.sort(array);
+        return array;
     }
 }
