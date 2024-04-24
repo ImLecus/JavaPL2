@@ -21,7 +21,7 @@ public class LoginPage extends javax.swing.JPanel {
     
     public LoginPage() {
         initComponents();
-        errorLabel.setVisible(false);
+        resetText();
         
         
         passwordViewToggle.addActionListener(new ActionListener (){
@@ -67,9 +67,6 @@ public class LoginPage extends javax.swing.JPanel {
                     App.session.ID);
                     
                     System.out.printf("El usuario tiene %s posts guardados", App.session.user.pinnedPosts.size());
-                    if(App.session.user instanceof Host){
-                        System.out.println("El usuario es un anfitrión!");
-                    }
                     
                     resetText();
                     App.redirect("MAIN");
@@ -199,7 +196,7 @@ public class LoginPage extends javax.swing.JPanel {
         registerLabel.setForeground(polaris.Polaris.MAIN_COLOR);
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         registerLabel.setText("Crea una ahora.");
-        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.add(registerLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

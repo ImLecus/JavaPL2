@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
+import polaris.Polaris;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
 
@@ -176,7 +177,9 @@ public class MainPage extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         jPanel9.add(searchBar, gridBagConstraints);
 
-        peopleInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        peopleInput.setBackground(Polaris.INPUT_BG_COLOR);
+        peopleInput.setBorder(null);
+        peopleInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -242,7 +245,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton9.setBorder(null);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setFocusable(false);
-        jButton9.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -254,7 +256,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
-        jButton2.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -266,7 +267,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton3.setBorder(null);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
-        jButton3.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -278,7 +278,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton4.setBorder(null);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusable(false);
-        jButton4.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -301,7 +300,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton5.setBorder(null);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setFocusable(false);
-        jButton5.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -313,7 +311,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton6.setBorder(null);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusable(false);
-        jButton6.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -325,7 +322,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton7.setBorder(null);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setFocusable(false);
-        jButton7.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -337,7 +333,6 @@ public class MainPage extends javax.swing.JPanel {
         jButton8.setBorder(null);
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setFocusable(false);
-        jButton8.setPreferredSize(new java.awt.Dimension(200, 300));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -398,7 +393,7 @@ public class MainPage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "montaña");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "montaña", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -431,42 +426,47 @@ public class MainPage extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, locationInput.getText());
+        SearchEngine.results = SearchEngine.search(
+                App.buildings.entries, 
+                locationInput.getText(), 
+                peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
+                
+                );
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Paris");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Paris", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Roma");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Roma", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "San Francisco");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "San Francisco", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Tokio");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Tokio", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "playa");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "playa", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "rural");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "rural", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "nieve");
+        SearchEngine.results = SearchEngine.search(App.buildings.entries, "nieve", Integer.MAX_VALUE);
         App.redirect("SEARCH");
     }//GEN-LAST:event_jButton8ActionPerformed
 
