@@ -2,10 +2,10 @@ package gui;
 import java.awt.event.*;
 import javax.swing.ImageIcon;
 import poo.javabnb.Client;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import poo.javabnb.Session;
 import polaris.Polaris;
-import poo.javabnb.Hashing;
+import poo.javabnb.util.Hashing;
 import poo.javabnb.Host;
 
 public class LoginPage extends javax.swing.JPanel {

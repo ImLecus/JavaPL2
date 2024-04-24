@@ -2,7 +2,7 @@ package gui;
 
 import polaris.*;
 import poo.javabnb.Client;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 
 
 public class UserWidget extends javax.swing.JPanel {
@@ -118,7 +118,7 @@ public class UserWidget extends javax.swing.JPanel {
 
     private void banActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banActionPerformed
         App.db.remove(index);
-        App.db.saveData();
+        App.db.saveData("./src/main/resources/data/data.dat");
         ((DynamicPage) App.currentPanel).reloadContent();
         App.currentPanel.repaint();
     }//GEN-LAST:event_banActionPerformed

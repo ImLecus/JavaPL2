@@ -2,7 +2,7 @@ package gui;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import poo.javabnb.Building;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import polaris.*;
 
 public class BuildingWidget extends javax.swing.JPanel {

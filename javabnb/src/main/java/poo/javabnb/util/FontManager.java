@@ -1,4 +1,4 @@
-package poo.javabnb;
+package poo.javabnb.util;
 
 import gui.App;
 import java.awt.*;

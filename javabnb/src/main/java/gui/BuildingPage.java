@@ -5,7 +5,7 @@ import polaris.DynamicPage;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.Building;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import polaris.Polaris;
 import poo.javabnb.Bill;
 import poo.javabnb.Comment;

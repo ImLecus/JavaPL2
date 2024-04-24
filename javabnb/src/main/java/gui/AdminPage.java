@@ -2,7 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.Building;
 import poo.javabnb.Client;

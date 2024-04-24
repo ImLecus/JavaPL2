@@ -1,7 +1,7 @@
-package poo.javabnb;
+package poo.javabnb.util;
 import java.io.*;
 import java.util.ArrayList;
-import poo.javabnb.Hashing;
+import poo.javabnb.Client;
 import poo.javabnb.exceptions.DataBaseNotFoundException;
 
 public class DataBase implements Serializable {
@@ -116,11 +116,13 @@ public class DataBase implements Serializable {
     }
     
     /**
-     * Saves the data in "data.dat"
+     * Saves the data in the specified path.
+     * @param path the path of the data file, relative
+     * to the project directory.
      */
-    public void saveData(){
+    public void saveData(String path){
         try{
-            FileOutputStream fos = new FileOutputStream("./src/main/resources/data/data.dat");
+            FileOutputStream fos = new FileOutputStream(path);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             fos.close();

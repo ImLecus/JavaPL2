@@ -7,10 +7,10 @@ import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.util.Calendar;
 import poo.javabnb.Client;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import poo.javabnb.Validate;
 import polaris.Polaris;
-import poo.javabnb.Hashing;
+import poo.javabnb.util.Hashing;
 import poo.javabnb.Host;
 
 public class RegisterPage extends javax.swing.JPanel {
@@ -103,7 +103,7 @@ public class RegisterPage extends javax.swing.JPanel {
                 App.db.add(client);
             }
             
-            App.db.saveData(); 
+            App.db.saveData("./src/main/resources/data/data.dat"); 
             App.redirect("LOGIN");
         }
         resetText();

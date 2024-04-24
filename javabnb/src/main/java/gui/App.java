@@ -1,4 +1,5 @@
 package gui;
+import poo.javabnb.util.DataBase;
 import polaris.DynamicPage;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -44,7 +45,7 @@ public class App {
         catch(DataBaseNotFoundException e){
             db = new DataBase();
             db.add(new Client("00000000E","Example", "example", "3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a","666666666"));
-            db.saveData();      
+            db.saveData("./src/main/resources/data/data.dat");      
         }
         setupPages();
         setupFrame();

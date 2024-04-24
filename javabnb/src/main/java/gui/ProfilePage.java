@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import polaris.Polaris;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     

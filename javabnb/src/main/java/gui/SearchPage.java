@@ -4,7 +4,7 @@ import javax.swing.*;
 import polaris.DynamicPage;
 import polaris.Polaris;
 import poo.javabnb.Building;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
 
 public class SearchPage extends javax.swing.JPanel implements DynamicPage {

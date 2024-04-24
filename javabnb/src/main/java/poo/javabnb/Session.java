@@ -34,7 +34,7 @@ public class Session {
      */
     public void updateSession(){
         App.db.update(entry, user);
-        App.db.saveData();
+        App.db.saveData("./src/main/resources/data/data.dat");
     }
     
     /**

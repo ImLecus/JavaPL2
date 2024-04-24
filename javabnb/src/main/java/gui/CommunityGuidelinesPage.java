@@ -3,7 +3,7 @@ package gui;
 import polaris.Polaris;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 
 public class CommunityGuidelinesPage extends javax.swing.JPanel {
 

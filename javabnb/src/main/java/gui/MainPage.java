@@ -3,7 +3,7 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
 
 public class MainPage extends javax.swing.JPanel {

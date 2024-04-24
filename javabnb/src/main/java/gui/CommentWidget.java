@@ -3,7 +3,7 @@ package gui;
 import javax.swing.ImageIcon;
 import polaris.Polaris;
 import poo.javabnb.Comment;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 
 public class CommentWidget extends javax.swing.JPanel {
 

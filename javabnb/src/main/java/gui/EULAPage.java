@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicScrollBarUI;
-import poo.javabnb.FontManager;
+import poo.javabnb.util.FontManager;
 
 class ScrollBarUI extends BasicScrollBarUI {
         @Override
