@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JComboBox;
 import polaris.DynamicPage;
@@ -12,20 +13,19 @@ import poo.javabnb.SortType;
 
 public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
+    public ArrayList<BuildingWidget> widgets;
+    
     public MainPage() {
         initComponents();
-        
+        widgets = new ArrayList<>();
+         
         searchBar.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Buscando: " + searchBar.getText());
                 }
         });
-
-        buildingWidget1.init(App.buildings.entries.get(0));
-        buildingWidget2.init(App.buildings.entries.get(1));
-        
-        
+    
         comboBox.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {
@@ -51,6 +51,30 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
                     }
             }
         });
+        
+    }
+    
+    public void deleteDynamicContent(){
+        for(BuildingWidget bw : widgets){
+            content.remove(bw);
+        }
+    }
+    public void createDynamicContent(){
+        int max = App.buildings.entries.size();
+        int i = 0;
+        int rows = 0;
+        
+        while(i < max){
+            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+                BuildingWidget bw = new BuildingWidget();
+                widgets.add(bw);
+                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                bw.init(App.buildings.entries.get(i));
+                ++i;
+            }
+            ++rows;
+        }
+        
         
     }
 
@@ -81,7 +105,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -98,8 +122,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
-        buildingWidget1 = new gui.BuildingWidget();
-        buildingWidget2 = new gui.BuildingWidget();
 
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
@@ -168,7 +190,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,8 +291,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel2.setBackground(polaris.Polaris.BG_COLOR);
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        content.setBackground(polaris.Polaris.BG_COLOR);
+        content.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(FontManager.titleFont);
         jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -280,7 +302,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
-        jPanel2.add(jLabel1, gridBagConstraints);
+        content.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(FontManager.titleFont);
         jLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -291,14 +313,14 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
-        jPanel2.add(jLabel2, gridBagConstraints);
+        content.add(jLabel2, gridBagConstraints);
 
         jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paris.png"))); // NOI18N
         jButton9.setBorder(null);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton9.setFocusable(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +331,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rome.png"))); // NOI18N
         jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusable(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,7 +342,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sanfrancisco.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusable(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,7 +353,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tokio.png"))); // NOI18N
         jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusable(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,14 +368,14 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        jPanel2.add(jPanel3, gridBagConstraints);
+        content.add(jPanel3, gridBagConstraints);
 
         jPanel4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mountain.png"))); // NOI18N
         jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setFocusable(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,7 +386,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/beach.png"))); // NOI18N
         jButton6.setBorder(null);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusable(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,7 +397,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rural.png"))); // NOI18N
         jButton7.setBorder(null);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setFocusable(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,7 +408,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/snow.png"))); // NOI18N
         jButton8.setBorder(null);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton8.setFocusable(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,7 +423,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        jPanel2.add(jPanel4, gridBagConstraints);
+        content.add(jPanel4, gridBagConstraints);
 
         jLabel4.setFont(FontManager.regularFont);
         jLabel4.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -412,7 +434,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 50, 0);
-        jPanel2.add(jLabel4, gridBagConstraints);
+        content.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(FontManager.titleFont);
         jLabel5.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -423,7 +445,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
-        jPanel2.add(jLabel5, gridBagConstraints);
+        content.add(jLabel5, gridBagConstraints);
 
         jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jScrollPane1.setBorder(null);
@@ -431,18 +453,15 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
-        jPanel6.add(buildingWidget1);
-        jPanel6.add(buildingWidget2);
-
         jScrollPane1.setViewportView(jPanel6);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        jPanel2.add(jScrollPane1, gridBagConstraints);
+        content.add(jScrollPane1, gridBagConstraints);
 
-        muroScroll.setViewportView(jPanel2);
+        muroScroll.setViewportView(content);
 
         add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -533,9 +552,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
-    private gui.BuildingWidget buildingWidget1;
-    private gui.BuildingWidget buildingWidget2;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JPanel content;
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
@@ -556,7 +574,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
@@ -578,15 +595,5 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
        dateTo.setText("");
        comboBox.setSelectedItem("");
         
-    }
-
-    @Override
-    public void deleteDynamicContent() {
-
-    }
-
-    @Override
-    public void createDynamicContent() {
-  
     }
 }
