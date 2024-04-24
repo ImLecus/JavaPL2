@@ -6,6 +6,7 @@ import polaris.Polaris;
 import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
+import poo.javabnb.SortType;
 
 public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -33,7 +34,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 90 + 330*rows, -1, -1));
+                result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 120 + 330*rows, -1, -1));
                 bw.init(
                 array.get(i));
                 ++i;
@@ -64,11 +65,15 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         atrasButton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        searchBar1 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        dateTo = new javax.swing.JTextField();
+        locationInput = new javax.swing.JTextField();
         searchBar = new javax.swing.JButton();
+        peopleInput = new javax.swing.JFormattedTextField();
+        dateFrom = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
@@ -80,20 +85,21 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
         header.setBackground(polaris.Polaris.MAIN_COLOR);
         header.setMaximumSize(new java.awt.Dimension(32767, 100));
-        header.setLayout(new java.awt.GridLayout(1, 0));
+        header.setLayout(new java.awt.BorderLayout());
 
         jPanel7.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 25));
 
         atrasButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
         atrasButton.setBorderPainted(false);
         atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        atrasButton.setEnabled(false);
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         atrasButton.setMargin(new java.awt.Insets(2, 0, 2, 0));
+        atrasButton.setPreferredSize(new java.awt.Dimension(30, 30));
         atrasButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasButtonActionPerformed(evt);
@@ -101,81 +107,131 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         });
         jPanel7.add(atrasButton);
 
-        header.add(jPanel7);
+        header.add(jPanel7, java.awt.BorderLayout.WEST);
 
         jPanel8.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
-        jPanel9.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        jPanel9.setBackground(polaris.Polaris.MAIN_COLOR);
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jTextField4.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        jTextField4.setFont(FontManager.regularFont);
-        jTextField4.setText("Fecha vuelta");
-        jTextField4.setBorder(null);
-        jTextField4.setPreferredSize(new java.awt.Dimension(80, 17));
+        dateTo.setBackground(Polaris.BG_COLOR);
+        dateTo.setFont(FontManager.regularFont);
+        dateTo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        dateTo.setPreferredSize(new java.awt.Dimension(80, 17));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 15);
-        jPanel9.add(jTextField4, gridBagConstraints);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 20;
+        jPanel9.add(dateTo, gridBagConstraints);
 
-        jTextField5.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        jTextField5.setFont(FontManager.regularFont);
-        jTextField5.setText("nº Personas");
-        jTextField5.setBorder(null);
-        jTextField5.setPreferredSize(new java.awt.Dimension(80, 17));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        jPanel9.add(jTextField5, gridBagConstraints);
-
-        searchBar1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        searchBar1.setFont(FontManager.regularFont);
-        searchBar1.setText("Destino");
-        searchBar1.setBorder(null);
-        searchBar1.setPreferredSize(new java.awt.Dimension(80, 17));
+        locationInput.setBackground(polaris.Polaris.BG_COLOR);
+        locationInput.setFont(FontManager.regularFont);
+        locationInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        locationInput.setMinimumSize(new java.awt.Dimension(80, 19));
+        locationInput.setPreferredSize(new java.awt.Dimension(80, 17));
+        locationInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locationInputActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        jPanel9.add(searchBar1, gridBagConstraints);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 20;
+        jPanel9.add(locationInput, gridBagConstraints);
 
-        jTextField6.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        jTextField6.setFont(FontManager.regularFont);
-        jTextField6.setText("Fecha ida");
-        jTextField6.setBorder(null);
-        jTextField6.setPreferredSize(new java.awt.Dimension(80, 17));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 5);
-        jPanel9.add(jTextField6, gridBagConstraints);
-
+        searchBar.setBackground(Polaris.INPUT_BG_COLOR);
+        searchBar.setFont(FontManager.boldFont);
+        searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
+        searchBar.setBorder(null);
         searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel9.add(searchBar, gridBagConstraints);
+
+        peopleInput.setBackground(Polaris.BG_COLOR);
+        peopleInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        peopleInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        peopleInput.setFont(FontManager.regularFont);
+        peopleInput.setMinimumSize(new java.awt.Dimension(80, 17));
+        peopleInput.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        jPanel9.add(peopleInput, gridBagConstraints);
+
+        dateFrom.setBackground(Polaris.BG_COLOR);
+        dateFrom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        dateFrom.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        dateFrom.setFont(FontManager.regularFont);
+        dateFrom.setMinimumSize(new java.awt.Dimension(80, 17));
+        dateFrom.setPreferredSize(new java.awt.Dimension(80, 17));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        jPanel9.add(dateFrom, gridBagConstraints);
+
+        jLabel6.setFont(FontManager.boldFont);
+        jLabel6.setForeground(Polaris.BG_COLOR);
+        jLabel6.setText("¿Dónde?");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel9.add(jLabel6, gridBagConstraints);
+
+        jLabel8.setFont(FontManager.boldFont);
+        jLabel8.setForeground(Polaris.BG_COLOR);
+        jLabel8.setText("¿Cuántos?");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel9.add(jLabel8, gridBagConstraints);
+
+        jLabel7.setFont(FontManager.boldFont);
+        jLabel7.setForeground(Polaris.BG_COLOR);
+        jLabel7.setText("Desde el...");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel9.add(jLabel7, gridBagConstraints);
+
+        jLabel3.setFont(FontManager.boldFont);
+        jLabel3.setForeground(Polaris.BG_COLOR);
+        jLabel3.setText("Hasta el...");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel9.add(jLabel3, gridBagConstraints);
 
         jPanel8.add(jPanel9);
 
-        header.add(jPanel8);
+        header.add(jPanel8, java.awt.BorderLayout.CENTER);
 
         jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        jPanel10.setForeground(Polaris.TRANSPARENT_COLOR);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
 
         comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        comboBox.setMaximumRowCount(5);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
+        comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
+        comboBox.setPreferredSize(new java.awt.Dimension(80, 80));
+        comboBox.setVerifyInputWhenFocusTarget(false);
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
@@ -183,7 +239,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         });
         jPanel10.add(comboBox);
 
-        header.add(jPanel10);
+        header.add(jPanel10, java.awt.BorderLayout.EAST);
 
         add(header, java.awt.BorderLayout.NORTH);
 
@@ -198,7 +254,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jLabel1.setFont(FontManager.titleFont);
         jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
         jLabel1.setText("Resultados de tu búsqueda");
-        result.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        result.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         muroScroll.setViewportView(result);
 
@@ -208,6 +264,21 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
         App.redirect("MAIN");
     }//GEN-LAST:event_atrasButtonActionPerformed
+
+    private void locationInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_locationInputActionPerformed
+
+    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
+        SearchEngine.sortBy = SortType.PRICE;
+        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
+            App.buildings.entries,
+            locationInput.getText(),
+            peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
+
+        ));
+        App.redirect("SEARCH");
+    }//GEN-LAST:event_searchBarActionPerformed
 
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         JComboBox cb = (JComboBox) evt.getSource();
@@ -236,18 +307,22 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JFormattedTextField dateFrom;
+    private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField locationInput;
     private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JFormattedTextField peopleInput;
     private javax.swing.JPanel result;
     private javax.swing.JButton searchBar;
-    private javax.swing.JTextField searchBar1;
     // End of variables declaration//GEN-END:variables
 }

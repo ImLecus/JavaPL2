@@ -1,0 +1,11 @@
+Factura
+-----------------------------------
+Nombre: Example
+Correo: example
+DNI: 00000000E
+Nombre del inmueble: Apartamento en Barcelona
+Host del inmueble: Anfitrión
+Fecha de entrada: 01/01/2024
+Fecha de salida: 05/01/2024
+Precio por noche: 200
+Precio total: 800.0

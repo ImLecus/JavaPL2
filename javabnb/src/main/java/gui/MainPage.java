@@ -80,7 +80,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
         muroScroll = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -247,18 +246,19 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
 
         comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        comboBox.setMaximumRowCount(5);
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
         comboBox.setPreferredSize(new java.awt.Dimension(80, 80));
+        comboBox.setVerifyInputWhenFocusTarget(false);
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
         jPanel10.add(comboBox);
-        jPanel10.add(jPanel1);
 
         header.add(jPanel10, java.awt.BorderLayout.EAST);
 
@@ -555,7 +555,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
