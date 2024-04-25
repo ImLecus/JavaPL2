@@ -54,20 +54,37 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         
     }
     
+    @Override
+    public void reloadContent() {
+       // deleteDynamicContent()
+       locationInput.setText("");
+       peopleInput.setText("");
+       dateFrom.setText("");
+       dateTo.setText("");
+       comboBox.setSelectedItem("");
+       // createDynamicContent()
+    }
+    
+    // Override
     public void deleteDynamicContent(){
         for(BuildingWidget bw : widgets){
+            // change "content" to the target jpanel name
             content.remove(bw);
         }
     }
+    
+    // Override
     public void createDynamicContent(){
         int max = App.buildings.entries.size();
         int i = 0;
         int rows = 0;
         
+        // algorithm to put widgets in a grid posotion, inside an Absolute Layout
         while(i < max){
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
+                // change "content" to the target jpanel name
                 content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
                 bw.init(App.buildings.entries.get(i));
                 ++i;
@@ -587,13 +604,5 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton searchBar;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void reloadContent() {
-       locationInput.setText("");
-       peopleInput.setText("");
-       dateFrom.setText("");
-       dateTo.setText("");
-       comboBox.setSelectedItem("");
-        
-    }
+
 }
