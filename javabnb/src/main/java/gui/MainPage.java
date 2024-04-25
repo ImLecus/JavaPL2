@@ -56,20 +56,20 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void reloadContent() {
-       // deleteDynamicContent()
+       deleteDynamicContent();
        locationInput.setText("");
        peopleInput.setText("");
        dateFrom.setText("");
        dateTo.setText("");
        comboBox.setSelectedItem("");
-       // createDynamicContent()
+       createDynamicContent();
     }
     
     // Override
     public void deleteDynamicContent(){
         for(BuildingWidget bw : widgets){
             // change "content" to the target jpanel name
-            content.remove(bw);
+            buildingsPlane.remove(bw);
         }
     }
     
@@ -85,7 +85,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
                 // change "content" to the target jpanel name
-                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                buildingsPlane.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(x,330*rows,-1,-1));
                 bw.init(App.buildings.entries.get(i));
                 ++i;
             }
@@ -122,7 +122,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jPanel10 = new javax.swing.JPanel();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
-        content = new javax.swing.JPanel();
+        Jpanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -138,7 +138,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel6 = new javax.swing.JPanel();
+        buildingsPlane = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 248, 249));
         setLayout(new java.awt.BorderLayout());
@@ -308,8 +308,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         muroScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         muroScroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        content.setBackground(polaris.Polaris.BG_COLOR);
-        content.setLayout(new java.awt.GridBagLayout());
+        Jpanel2.setBackground(polaris.Polaris.BG_COLOR);
+        Jpanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(FontManager.titleFont);
         jLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -319,7 +319,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(60, 0, 10, 0);
-        content.add(jLabel1, gridBagConstraints);
+        Jpanel2.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(FontManager.titleFont);
         jLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -330,7 +330,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
-        content.add(jLabel2, gridBagConstraints);
+        Jpanel2.add(jLabel2, gridBagConstraints);
 
         jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
@@ -385,7 +385,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        content.add(jPanel3, gridBagConstraints);
+        Jpanel2.add(jPanel3, gridBagConstraints);
 
         jPanel4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
@@ -440,7 +440,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        content.add(jPanel4, gridBagConstraints);
+        Jpanel2.add(jPanel4, gridBagConstraints);
 
         jLabel4.setFont(FontManager.regularFont);
         jLabel4.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -451,7 +451,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 50, 0);
-        content.add(jLabel4, gridBagConstraints);
+        Jpanel2.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(FontManager.titleFont);
         jLabel5.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -462,23 +462,24 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
-        content.add(jLabel5, gridBagConstraints);
+        Jpanel2.add(jLabel5, gridBagConstraints);
 
         jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jScrollPane1.setBorder(null);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jPanel6.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
-        jScrollPane1.setViewportView(jPanel6);
+        buildingsPlane.setBackground(polaris.Polaris.BG_COLOR);
+        buildingsPlane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane1.setViewportView(buildingsPlane);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 30, 0);
-        content.add(jScrollPane1, gridBagConstraints);
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        Jpanel2.add(jScrollPane1, gridBagConstraints);
 
-        muroScroll.setViewportView(content);
+        muroScroll.setViewportView(Jpanel2);
 
         add(muroScroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -568,9 +569,10 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jpanel2;
     private javax.swing.JButton atrasButton;
+    private javax.swing.JPanel buildingsPlane;
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JPanel content;
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
@@ -593,7 +595,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
