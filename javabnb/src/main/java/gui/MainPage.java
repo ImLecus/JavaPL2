@@ -65,7 +65,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
        createDynamicContent();
     }
     
-    // Override
+    @Override
     public void deleteDynamicContent(){
         for(BuildingWidget bw : widgets){
             // change "content" to the target jpanel name
@@ -73,7 +73,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         }
     }
     
-    // Override
+    @Override
     public void createDynamicContent(){
         int max = App.buildings.entries.size();
         int i = 0;

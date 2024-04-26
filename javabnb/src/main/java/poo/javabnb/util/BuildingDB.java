@@ -71,5 +71,9 @@ public class BuildingDB implements Serializable{
     public void update(Building b, Building newBuilding){
         entries.set(entries.indexOf(b), newBuilding);
     }
+    
+    public Building get(int i){
+        return entries.get(i);
+    }
 }
  

@@ -91,6 +91,11 @@ public class Building implements Comparable {
             return 0;
         }
     }
+    
+    public void addComment(Comment c){
+        this.recalculateRating(c.rating);
+        this.comments.add(c);
+    }
 }
 
 
