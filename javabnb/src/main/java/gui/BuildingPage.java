@@ -592,9 +592,9 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         leftSide2.add(name2, gridBagConstraints);
 
-        msgInput.setEditable(false);
         msgInput.setBackground(Polaris.INPUT_BG_COLOR);
         msgInput.setColumns(20);
+        msgInput.setFont(FontManager.regularFont);
         msgInput.setRows(5);
         msgInput.setText("Escribe aquí tu reseña...\n");
         msgInput.setPreferredSize(new java.awt.Dimension(300, 100));

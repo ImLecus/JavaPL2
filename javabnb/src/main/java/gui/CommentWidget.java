@@ -108,6 +108,7 @@ public class CommentWidget extends javax.swing.JPanel {
         msg.setColumns(20);
         msg.setFont(FontManager.regularFont);
         msg.setRows(5);
+        msg.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -55,7 +55,7 @@ public class SearchEngine {
         
         for(Building b: array){
             if((b.getAddress().contains(location) || b.info.title.contains(location)) &&
-                b.visitors <= people){
+                b.visitors <= people ){
                 result.add(b);
             }
         }

@@ -919,11 +919,13 @@
                         </Component>
                         <Component class="javax.swing.JTextArea" name="msgInput">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="Polaris.INPUT_BG_COLOR" type="code"/>
                             </Property>
                             <Property name="columns" type="int" value="20"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FontManager.regularFont" type="code"/>
+                            </Property>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="text" type="java.lang.String" value="Escribe aqu&#xed; tu rese&#xf1;a...&#xa;"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

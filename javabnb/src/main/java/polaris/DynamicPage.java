@@ -7,7 +7,9 @@ package polaris;
  */
 public interface DynamicPage {
     /**
-     * Reloads all the existing content changing their data
+     * Reloads all the existing content changing their data.
+     * To be used with dynamic content, deleteDynamicContent()
+     * should be called at first and createDynamicContent() at last.
      */
     void reloadContent();
     /**
