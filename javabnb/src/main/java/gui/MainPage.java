@@ -352,11 +352,11 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 25, 0);
         Jpanel2.add(jLabel2, gridBagConstraints);
 
         jPanel3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0, 18, 0));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paris.png"))); // NOI18N
         jButton9.setBorder(null);
@@ -433,7 +433,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         Jpanel2.add(jPanel3, gridBagConstraints);
 
         jPanel4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0, 18, 0));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mountain.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -517,7 +517,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 50, 0);
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 50, 0);
         Jpanel2.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(FontManager.titleFont);
@@ -528,7 +528,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 0);
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 25, 0);
         Jpanel2.add(jLabel5, gridBagConstraints);
 
         jScrollPane1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
