@@ -39,6 +39,7 @@ public class EULAPage extends javax.swing.JPanel {
                 App.redirect("REGISTER");
             }
         });
+        scroll.getVerticalScrollBar().setUnitIncrement(20);
     }
 
     /**

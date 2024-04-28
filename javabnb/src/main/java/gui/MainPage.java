@@ -18,7 +18,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     public MainPage() {
         initComponents();
         widgets = new ArrayList<>();
-         
+        muroScroll.getVerticalScrollBar().setUnitIncrement(20); 
         searchBar.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e) {

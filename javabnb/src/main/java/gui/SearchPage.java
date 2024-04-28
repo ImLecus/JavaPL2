@@ -14,6 +14,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     public SearchPage() {
         initComponents();
         widgets = new ArrayList<>();
+        muroScroll.getVerticalScrollBar().setUnitIncrement(20);
     }
     
     @Override

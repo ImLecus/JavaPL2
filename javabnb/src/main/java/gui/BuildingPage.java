@@ -16,11 +16,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private Building b;
     ArrayList<CommentWidget> widgets;
     private boolean saved = false;
+    private boolean click = false;
     public BuildingPage() {
         initComponents();
         Polaris.highlightOnHover(submitButton);
         widgets = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);
     }
     
     @Override
@@ -236,7 +238,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,7 +502,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -577,7 +579,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reservation.add(submitButton, gridBagConstraints);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
         vueltaLabel.setBorder(null);
@@ -657,6 +659,11 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         msgInput.setRows(5);
         msgInput.setText("Escribe aquí tu reseña...\n");
         msgInput.setPreferredSize(new java.awt.Dimension(300, 100));
+        msgInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                msgInputMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -672,7 +679,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar1.setBorder(null);
         setStar1.setBorderPainted(false);
-        setStar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar1.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar1.setFocusPainted(false);
         setStar1.setFocusable(false);
@@ -688,7 +695,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar2.setBorder(null);
         setStar2.setBorderPainted(false);
-        setStar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar2.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar2.setFocusPainted(false);
         setStar2.setFocusable(false);
@@ -704,7 +711,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar3.setBorder(null);
         setStar3.setBorderPainted(false);
-        setStar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar3.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar3.setFocusPainted(false);
         setStar3.setFocusable(false);
@@ -720,7 +727,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar4.setBorder(null);
         setStar4.setBorderPainted(false);
-        setStar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar4.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar4.setFocusPainted(false);
         setStar4.setFocusable(false);
@@ -736,7 +743,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar5.setBorder(null);
         setStar5.setBorderPainted(false);
-        setStar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar5.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar5.setFocusPainted(false);
         setStar5.setFocusable(false);
@@ -760,7 +767,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         submitCommentButton.setForeground(Polaris.BG_COLOR);
         submitCommentButton.setText("Enviar");
         submitCommentButton.setBorder(null);
-        submitCommentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitCommentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         submitCommentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitCommentButtonActionPerformed(evt);
@@ -830,6 +837,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Bill bill = new Bill();
+        
         bill.generateBill(App.session.user,b,idaLabel.getText(),vueltaLabel.getText());
         
     }//GEN-LAST:event_submitButtonActionPerformed
@@ -958,6 +966,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         calculateTotalPrice();
         repaint();
     }//GEN-LAST:event_idaLabelActionPerformed
+
+    private void msgInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_msgInputMouseClicked
+        if(click == false){
+            msgInput.setText(null);
+            click = true;
+        }
+    }//GEN-LAST:event_msgInputMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

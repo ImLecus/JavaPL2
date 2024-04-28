@@ -15,6 +15,7 @@ public class CommunityGuidelinesPage extends javax.swing.JPanel {
         hechoButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
         });
+        scroll.getVerticalScrollBar().setUnitIncrement(20);
     }
 
     /**

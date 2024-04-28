@@ -13,6 +13,8 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     public AdminPage() {
         initComponents();
         widgets = new ArrayList<>();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);
         
     }
     

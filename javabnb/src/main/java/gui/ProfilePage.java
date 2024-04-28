@@ -16,7 +16,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     public ProfilePage() {
         initComponents();
         widgets = new ArrayList<>();
-        
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
         });
