@@ -93,8 +93,12 @@ public class DBExample {
             "", DON_PABLO,
             2,
             new String[]{"wifi", "aire acondicionado"},
-            new ArrayList<Comment>()
+            new ArrayList<>()
             ));
+        buildingDb.get(1).addComment(new Comment(
+                db.getClientData(2), 1, "Esta en un barrio muy peligroso, me robaron nada mas salir del apartamento"
+            ));
+        
         buildingDb.add(new Building(
             "Casa Rural en Valencia",
             "C/Camino del Bosque s/n",
@@ -106,6 +110,9 @@ public class DBExample {
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()
             ));
+        buildingDb.get(2).addComment(new Comment(
+                db.getClientData(1), 4, "Estancia muy tranquila, lo recomendaría a cualquiera en busqueda de un retiro"
+            ));
         buildingDb.add(new Building(
             "Casa Rural en Madrid",
             "C/Camino del Bosque s/n",
@@ -116,6 +123,9 @@ public class DBExample {
             3,
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()
+            ));
+        buildingDb.get(3).addComment(new Comment(
+                db.getClientData(3), 5, "Estancia perfecta, lo mejor fue poder disfrutar del tan afamado agua de Madrid"
             ));
     }
 }
