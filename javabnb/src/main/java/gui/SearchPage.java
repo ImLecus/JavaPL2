@@ -76,6 +76,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
         result = new javax.swing.JPanel();
@@ -148,7 +149,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,22 +224,40 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel10.setForeground(Polaris.TRANSPARENT_COLOR);
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        comboBox.setMaximumRowCount(5);
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        jButton1.setBackground(Polaris.MAIN_COLOR);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
+
+        comboBox.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        comboBox.setFont(FontManager.subText);
+        comboBox.setForeground(Polaris.TEXT_COLOR);
+        comboBox.setMaximumRowCount(3);
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
-        comboBox.setPreferredSize(new java.awt.Dimension(80, 80));
+        comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
+        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                comboBoxMouseReleased(evt);
+            }
+        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel10.add(comboBox);
+        jPanel10.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 100));
 
         header.add(jPanel10, java.awt.BorderLayout.EAST);
 
@@ -281,6 +300,14 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        comboBox.setPopupVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
+        repaint();
+    }//GEN-LAST:event_comboBoxMouseReleased
+
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         JComboBox cb = (JComboBox) evt.getSource();
         String selectedItem = (String) cb.getSelectedItem();
@@ -311,6 +338,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;

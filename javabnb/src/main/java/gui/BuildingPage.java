@@ -128,9 +128,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 0));
         carousel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
         information = new javax.swing.JPanel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
         leftSide = new javax.swing.JPanel();
         host = new javax.swing.JLabel();
         props = new javax.swing.JLabel();
@@ -142,6 +141,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -367,11 +367,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         carousel.add(jButton1);
 
         mainBody.add(carousel);
-        mainBody.add(filler1);
 
         information.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         information.setLayout(new java.awt.GridLayout(1, 0));
-        information.add(filler2);
+        information.add(filler1);
 
         leftSide.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         leftSide.setLayout(new java.awt.GridBagLayout());
@@ -488,6 +487,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
+        leftSide.add(filler2, new java.awt.GridBagConstraints());
 
         information.add(leftSide);
 
@@ -527,7 +527,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
