@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import polaris.Polaris;
+import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
@@ -55,6 +56,14 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void createDynamicContent(){
         int max = App.session.user.pinnedPosts.size();
+        if(App.session.isHost){
+            max = 0;
+            for(Building b: App.buildings.entries){
+                if(b.info.host.getMail().equals(App.session.user.getMail())){
+                    ++max;
+                }
+            }
+        }
         int i = 0;
         int rows = 0;
         
@@ -98,6 +107,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userPhoneLabel = new javax.swing.JTextField();
         banner = new javax.swing.JButton();
         pinnedPostsLabel = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -166,12 +176,15 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         banner.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
-        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -20, -1, -1));
 
         pinnedPostsLabel.setFont(FontManager.titleFont);
         pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         pinnedPostsLabel.setText("Inmuebles guardados");
         content.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+
+        jButton2.setText("Crear inmueble...");
+        content.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, -1, -1));
 
         jScrollPane1.setViewportView(content);
 
@@ -185,6 +198,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel content;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JButton pfp;

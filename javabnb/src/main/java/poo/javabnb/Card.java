@@ -1,6 +1,6 @@
 package poo.javabnb;
 
-record Card(String owner, String number, String endDate, String cvv) {
+public record Card(String owner, String number, String endDate, String cvv) {
     /**
      * Cards are used by the particulars to pay the buildings.
      *

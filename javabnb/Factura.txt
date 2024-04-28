@@ -3,9 +3,9 @@ Factura
 Nombre: Example
 Correo: example
 DNI: 00000000E
-Nombre del inmueble: Apartamento en Barcelona
-Host del inmueble: Anfitrión
-Fecha de entrada: 01/01/2024
-Fecha de salida: 05/01/2024
-Precio por noche: 200
-Precio total: 800.0
+Nombre del inmueble: Chalet en Madrid
+Host del inmueble: Dueño
+Fecha de entrada: 09/10/2022
+Fecha de salida: 10/10/2022
+Precio por noche: 125
+Precio total: 125.0

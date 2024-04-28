@@ -11,7 +11,7 @@ public class Building implements Comparable {
     private PropertyType type;
     public String[] Hashtags;
     public String description;
-    public String[] images;
+    public String image;
     public int visitors;
     public String[] services;
     private int id;
@@ -19,7 +19,7 @@ public class Building implements Comparable {
     public ArrayList<Client> reportedBy;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String[] images, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String image, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
         this.info = new BuildingInfo(title, host, price, 0);
         this.address = address;
         this.rooms = rooms;
@@ -27,7 +27,7 @@ public class Building implements Comparable {
         this.type = type;
         this.Hashtags = Hashtags;
         this.description = description;
-        this.images = images;
+        this.image = image;
         this.visitors = visitors;
         this.services = services;
         this.comments = comments;

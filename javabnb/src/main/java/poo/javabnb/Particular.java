@@ -1,5 +1,5 @@
 package poo.javabnb;
-class Particular extends Client {
+public class Particular extends Client {
     private final Card card;
     public boolean VIP;
     public PreferencesManager preferences;

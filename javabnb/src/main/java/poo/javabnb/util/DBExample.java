@@ -1,11 +1,7 @@
 package poo.javabnb.util;
 import java.util.ArrayList;
 import java.util.Date;
-import poo.javabnb.Building;
-import poo.javabnb.Client;
-import poo.javabnb.Comment;
-import poo.javabnb.Host;
-import poo.javabnb.PropertyType;
+import poo.javabnb.*;
 
 public class DBExample {
     private static Host DON_PABLO;
@@ -13,31 +9,40 @@ public class DBExample {
     public static void setup(DataBase db, BuildingDB buildingDb){
         //TO-DO: Convert client to particular
         
-        db.add(new Client(
+        db.add(new Particular(
                 "00000000E",
                 "Example", 
                 "example", 
                 // "example"
                 "3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a",
-                "666666666"
+                "666666666",
+                new Card("Example","0000 0000 0000 0000", "12/99","000"),
+                false,
+                new PreferencesManager(new String[]{""})
         ));
         
-        db.add(new Client(
+        db.add(new Particular(
                 "82629144T",
                 "Pedro", 
                 "pedro@gmail.com", 
                 // "pedrito123"
                 "af41c7be53e2eec50da54441b1ac4eb574d3b362a0f05e26066cbf404dd2968c30f47f09d200c7e82ea3bd35382ff8a09e151bd5dccda6d7dfbf62ae6de20b22",
-                "695382122"
+                "695382122",
+                new Card("Pedro","1111 2222 3333 4444", "12/99","123"),
+                false,
+                new PreferencesManager(new String[]{""})
         ));
         
-        db.add(new Client(
+        db.add(new Particular(
                 "98721323W",
                 "Sara", 
                 "sara@gmail.com", 
                 // "sarita321"
                 "dcfa87120fcd738c87d93fc4188b3461adf198a8dff577b9c4ba99e7540a1b296b590cf3ec73cd75383ca9d4e85669dd46f3156be6120a7945e928e42ebcca76",
-                "682776129"
+                "682776129",
+                new Card("Example","4321 4321 4321 4321", "12/99","321"),
+                false,
+                new PreferencesManager(new String[]{""})
         ));
         
         db.add(new Host(
@@ -70,10 +75,10 @@ public class DBExample {
             3, 3, PropertyType.HOUSE,
             125, new String[]{"madrid", "chalet"},
             "Un chalet alejado de la zona urbanísica de la ciudad de Madrid",
-            new String[]{}, HOST,
+            "", HOST,
             3,
             new String[]{},
-            new ArrayList<Comment>()
+            new ArrayList<>()
             ));
         buildingDb.get(0).addComment(new Comment(
                 db.getClientData(1), 5, "Un lugar genial para pasar las vacaciones! Lo recomiendo mucho."
@@ -85,7 +90,7 @@ public class DBExample {
             2, 1, PropertyType.APARTMENT,
             200, new String[]{"barcelona", "apartamento"},
             "Este encantador apartamento se encuentra en una ubicación privilegiada en el prestigioso Passeig de Gràcia, conocido por sus tiendas de diseño y arquitectura modernista. El apartamento cuenta con dos dormitorios luminosos, un baño completo y una cocina totalmente equipada. Desde el salón, puedes disfrutar de unas vistas impresionantes de la ciudad y del emblemático edificio de La Pedrera. Además, estarás a pocos pasos de las principales atracciones turísticas, restaurantes de renombre y excelentes conexiones de transporte público. ¡Una oportunidad única para experimentar el estilo de vida vibrante de Barcelona!",
-            new String[]{}, DON_PABLO,
+            "", DON_PABLO,
             2,
             new String[]{"wifi", "aire acondicionado"},
             new ArrayList<Comment>()
@@ -96,7 +101,7 @@ public class DBExample {
             4, 2, PropertyType.HOUSE,
             150, new String[]{"valencia", "casa rural"},
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Valencia.",
-            new String[]{}, DON_PABLO,
+            "", DON_PABLO,
             3,
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()
@@ -107,7 +112,7 @@ public class DBExample {
             4, 2, PropertyType.HOUSE,
             150, new String[]{"valencia", "casa rural"},
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Madrid.",
-            new String[]{}, HOST,
+            "", HOST,
             3,
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()

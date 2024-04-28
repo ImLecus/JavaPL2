@@ -86,6 +86,7 @@ public class App {
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(1000, 710));
+        frame.setMaximumSize(new Dimension(1920, 1080));
         frame.setVisible(true);
     }
     
