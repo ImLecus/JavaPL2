@@ -1,14 +1,16 @@
 package gui;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.*;
         
-
-
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private int commentRating;
     private Building b;
@@ -18,9 +20,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         initComponents();
         Polaris.highlightOnHover(submitButton);
         widgets = new ArrayList<>();
-        
-        Polaris.highlightOnHover(submitCommentButton);
-        
+        Polaris.highlightOnHover(submitCommentButton); 
     }
     
     @Override
@@ -31,7 +31,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       name.setText(b.info.title);
       description.setText(b.description);
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
-      
+      msgInput.setText("Escribe aquí tu mensaje...");
+      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
       star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png")));
       star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png")));
       star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png")));
@@ -59,6 +64,34 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         for(CommentWidget cw: widgets){
             comments.remove(cw);
         }
+    }
+    
+    public void calculateTotalPrice(){
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date dateEntrada = null;
+            Date dateSalida = null;
+            dateEntrada = sdf.parse(idaLabel.getText());
+            dateSalida = sdf.parse(vueltaLabel.getText());
+            Calendar calEntrada = Calendar.getInstance();
+            Calendar calSalida = Calendar.getInstance();
+            calEntrada.setTime(dateEntrada);
+            calSalida.setTime(dateSalida);
+
+            long millisEntrada = calEntrada.getTimeInMillis();
+            long millisSalida = calSalida.getTimeInMillis();
+
+            long diff = millisSalida - millisEntrada;
+            long diffDays = diff / (24 * 60 * 60 * 1000);
+
+            long totalPrice = -1 * diffDays * b.info.price;
+            
+            precioTotalLabel.setText("Total: " + String.valueOf(totalPrice) + "€");
+        }
+        catch(Exception E){
+            precioTotalLabel.setText("Total: XXX€");
+        }
+  
     }
     
     /**
@@ -115,8 +148,11 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reservation = new javax.swing.JPanel();
         precioTotalLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
-        idaLabel = new javax.swing.JTextField();
-        vueltaLabel = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        vueltaLabel = new javax.swing.JFormattedTextField();
+        idaLabel = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -131,11 +167,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar5 = new javax.swing.JButton();
         submitCommentButton = new javax.swing.JButton();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
         information2 = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         leftSide4 = new javax.swing.JPanel();
         comments = new javax.swing.JPanel();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -187,11 +225,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         locationInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         locationInput.setMinimumSize(new java.awt.Dimension(80, 19));
         locationInput.setPreferredSize(new java.awt.Dimension(80, 17));
-        locationInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locationInputActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -536,39 +569,65 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 36;
         gridBagConstraints.ipady = 12;
         reservation.add(submitButton, gridBagConstraints);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
+        vueltaLabel.setBorder(null);
+        vueltaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        vueltaLabel.setFont(FontManager.regularFont);
+        vueltaLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idaLabelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(vueltaLabel);
+
         idaLabel.setBackground(Polaris.INPUT_BG_COLOR);
-        idaLabel.setText("dd/mm/yyyy");
         idaLabel.setBorder(null);
+        idaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        idaLabel.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        idaLabel.setFont(FontManager.regularFont);
+        idaLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idaLabelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(idaLabel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        reservation.add(jPanel1, gridBagConstraints);
+
+        jLabel1.setFont(FontManager.subText);
+        jLabel1.setText("Fecha de entrada");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.ipady = 10;
-        reservation.add(idaLabel, gridBagConstraints);
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        reservation.add(jLabel1, gridBagConstraints);
 
-        vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
-        vueltaLabel.setText("dd/mm/yyyy");
-        vueltaLabel.setBorder(null);
-        vueltaLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vueltaLabelActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(FontManager.subText);
+        jLabel2.setText("Fecha de salida");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.ipady = 10;
-        reservation.add(vueltaLabel, gridBagConstraints);
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        reservation.add(jLabel2, gridBagConstraints);
 
         rightSide.add(reservation);
 
@@ -606,6 +665,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         leftSide2.add(msgInput, gridBagConstraints);
 
         starsPanel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        starsPanel2.setOpaque(false);
         starsPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
         setStar1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -719,6 +779,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         information1.add(filler6);
 
         mainBody.add(information1);
+        mainBody.add(filler10);
 
         information2.setBackground(polaris.Polaris.BG_COLOR);
         information2.setLayout(new java.awt.GridLayout(1, 0));
@@ -739,6 +800,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         information2.add(filler9);
 
         mainBody.add(information2);
+        mainBody.add(filler11);
 
         jScrollPane2.setViewportView(mainBody);
 
@@ -787,10 +849,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private void reportButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportButtonMouseEntered
         repaint();
     }//GEN-LAST:event_reportButtonMouseEntered
-
-    private void vueltaLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vueltaLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vueltaLabelActionPerformed
 
     private void setStar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar1ActionPerformed
       commentRating = 1;
@@ -862,10 +920,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("MAIN");
     }//GEN-LAST:event_atrasButtonActionPerformed
 
-    private void locationInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_locationInputActionPerformed
-
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         SearchEngine.sortBy = SortType.PRICE;
         SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
@@ -900,6 +954,11 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         }
     }//GEN-LAST:event_comboBoxActionPerformed
 
+    private void idaLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idaLabelActionPerformed
+        calculateTotalPrice();
+        repaint();
+    }//GEN-LAST:event_idaLabelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -911,6 +970,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField dateTo;
     private javax.swing.JTextArea description;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler10;
+    private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
@@ -921,15 +982,18 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler9;
     private javax.swing.JPanel header;
     private javax.swing.JLabel host;
-    private javax.swing.JTextField idaLabel;
+    private javax.swing.JFormattedTextField idaLabel;
     private javax.swing.JPanel information;
     private javax.swing.JPanel information1;
     private javax.swing.JPanel information2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -966,6 +1030,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel starsPanel2;
     private javax.swing.JButton submitButton;
     private javax.swing.JButton submitCommentButton;
-    private javax.swing.JTextField vueltaLabel;
+    private javax.swing.JFormattedTextField vueltaLabel;
     // End of variables declaration//GEN-END:variables
 }

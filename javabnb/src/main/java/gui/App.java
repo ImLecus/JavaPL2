@@ -4,8 +4,6 @@ import poo.javabnb.util.DataBase;
 import polaris.DynamicPage;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import poo.javabnb.*;
