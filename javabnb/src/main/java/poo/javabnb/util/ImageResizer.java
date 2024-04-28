@@ -9,11 +9,8 @@ import javax.imageio.ImageIO;
 
 public class ImageResizer {
 
-    public static void resizeImage(String inputImagePath, String outputImagePath, int scaledWidth, int scaledHeight)
-            throws IOException {
+    public static void resizeImage(File inputFile, String outputImagePath, int scaledWidth, int scaledHeight) {
         try{
-        // Leer la imagen
-        File inputFile = new File(inputImagePath);
         BufferedImage inputImage = ImageIO.read(inputFile);
 
         // Crear una nueva imagen con las dimensiones deseadas

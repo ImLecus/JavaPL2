@@ -1,7 +1,10 @@
 package poo.javabnb;
 
+import gui.App;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import poo.javabnb.util.ImageResizer;
 
 public class Client implements Serializable {
     private final String DNI;

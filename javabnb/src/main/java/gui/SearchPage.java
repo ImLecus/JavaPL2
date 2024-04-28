@@ -20,6 +20,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void reloadContent(){
         deleteDynamicContent();
+        //pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
         createDynamicContent();
     }
     
@@ -76,7 +77,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        pfp = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
         result = new javax.swing.JPanel();
@@ -226,16 +227,16 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jPanel10.setForeground(Polaris.TRANSPARENT_COLOR);
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(Polaris.MAIN_COLOR);
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pfp.setBackground(Polaris.MAIN_COLOR);
+        pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
+        pfp.setBorder(null);
+        pfp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pfp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pfpActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
+        jPanel10.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
 
         comboBox.setBackground(polaris.Polaris.INPUT_BG_COLOR);
         comboBox.setFont(FontManager.subText);
@@ -300,9 +301,9 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
         comboBox.setPopupVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pfpActionPerformed
 
     private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
         repaint();
@@ -338,7 +339,6 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -351,6 +351,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField locationInput;
     private javax.swing.JScrollPane muroScroll;
     private javax.swing.JFormattedTextField peopleInput;
+    private javax.swing.JButton pfp;
     private javax.swing.JPanel result;
     private javax.swing.JButton searchBar;
     // End of variables declaration//GEN-END:variables

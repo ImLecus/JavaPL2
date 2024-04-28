@@ -2,10 +2,15 @@ package gui;
 import polaris.DynamicPage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import polaris.Polaris;
 import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
+import poo.javabnb.util.ImageResizer;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     
@@ -41,6 +46,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
         
+        ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
+        pfp.setIcon(pfpIcon);
+        pfpIcon.getImage().flush();
+        ImageIcon bannerIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "3.png"));
+        banner.setIcon(bannerIcon);
+        bannerIcon.getImage().flush();
         
         App.session.updateSession();
         createDynamicContent();
@@ -125,7 +136,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backButton.setFocusable(false);
         content.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
@@ -135,10 +146,13 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         pfp.setBorderPainted(false);
         pfp.setContentAreaFilled(false);
         pfp.setDefaultCapable(false);
-        pfp.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
-        pfp.setEnabled(false);
         pfp.setFocusPainted(false);
         pfp.setFocusable(false);
+        pfp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfpActionPerformed(evt);
+            }
+        });
         content.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
 
         editButton.setText("Editar perfil");
@@ -169,13 +183,17 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
-        banner.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
-        banner.setEnabled(false);
+        banner.setDisabledIcon(null);
         banner.setFocusPainted(false);
         banner.setFocusable(false);
         banner.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
+        banner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bannerActionPerformed(evt);
+            }
+        });
         content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -20, -1, -1));
 
         pinnedPostsLabel.setFont(FontManager.titleFont);
@@ -190,6 +208,31 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         add(jScrollPane1);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos PNG (*.png)", "png"));
+        int result = fileChooser.showOpenDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "1.png", 150, 150);
+            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "2.png", 80, 80);
+            App.redirect("PROFILE");
+        }
+    }//GEN-LAST:event_pfpActionPerformed
+
+    private void bannerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bannerActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos PNG (*.png)", "png"));
+        int result = fileChooser.showOpenDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
+            App.redirect("PROFILE");
+        }
+    }//GEN-LAST:event_bannerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
