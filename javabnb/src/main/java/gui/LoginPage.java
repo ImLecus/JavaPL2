@@ -172,7 +172,7 @@ public class LoginPage extends javax.swing.JPanel {
         loginButton.setAlignmentX(0.5F);
         loginButton.setBorder(null);
         loginButton.setBorderPainted(false);
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;

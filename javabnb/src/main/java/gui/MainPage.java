@@ -120,6 +120,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
         muroScroll = new javax.swing.JScrollPane();
         Jpanel2 = new javax.swing.JPanel();
@@ -282,22 +283,42 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel10.setForeground(Polaris.TRANSPARENT_COLOR);
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        comboBox.setMaximumRowCount(5);
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        jButton1.setBackground(Polaris.MAIN_COLOR);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(80, 80));
+        jButton1.setPreferredSize(new java.awt.Dimension(80, 80));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
+
+        comboBox.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        comboBox.setFont(FontManager.subText);
+        comboBox.setForeground(Polaris.TEXT_COLOR);
+        comboBox.setMaximumRowCount(3);
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
-        comboBox.setPreferredSize(new java.awt.Dimension(80, 80));
+        comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
+        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                comboBoxMouseReleased(evt);
+            }
+        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel10.add(comboBox);
+        jPanel10.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 100));
 
         header.add(jPanel10, java.awt.BorderLayout.EAST);
 
@@ -493,30 +514,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("MAIN");
     }//GEN-LAST:event_atrasButtonActionPerformed
 
-    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        JComboBox cb = (JComboBox) evt.getSource();
-        String selectedItem = (String) cb.getSelectedItem();
-        System.out.println("Item seleccionado: " + selectedItem);
-        switch (selectedItem) {
-            case "Perfil":
-            App.redirect("PROFILE");
-            break;
-            case "Post guardados":
-            App.redirect("PINNED_POSTS");
-            break;
-            case "Cerrar sesión":
-            App.session.endSession();
-            App.redirect("LOGIN");
-            break;
-            case "Community Guidelines":
-            App.redirect("COMMUNITY_GUIDELINES");
-            break;
-            default:
-            break;
-        }
-
-    }//GEN-LAST:event_comboBoxActionPerformed
-
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         SearchEngine.sortBy = SortType.PRICE;
         SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
@@ -567,6 +564,37 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         // TODO add your handling code here:
     }//GEN-LAST:event_locationInputActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        comboBox.setPopupVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        JComboBox cb = (JComboBox) evt.getSource();
+        String selectedItem = (String) cb.getSelectedItem();
+        System.out.println("Item seleccionado: " + selectedItem);
+        switch (selectedItem) {
+            case "Perfil":
+            App.redirect("PROFILE");
+            break;
+            case "Post guardados":
+            App.redirect("PINNED_POSTS");
+            break;
+            case "Cerrar sesión":
+            App.session.endSession();
+            App.redirect("LOGIN");
+            break;
+            case "Community Guidelines":
+            App.redirect("COMMUNITY_GUIDELINES");
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
+        repaint();
+    }//GEN-LAST:event_comboBoxMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel2;
@@ -576,6 +604,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
