@@ -138,6 +138,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -290,7 +292,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         jButton1.setBackground(Polaris.MAIN_COLOR);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
         jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -358,7 +360,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paris.png"))); // NOI18N
         jButton9.setBorder(null);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setFocusable(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,7 +371,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rome.png"))); // NOI18N
         jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +382,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sanfrancisco.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,7 +393,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tokio.png"))); // NOI18N
         jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusable(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,7 +404,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/galicia.png"))); // NOI18N
         jButton10.setBorder(null);
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.setFocusable(false);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,7 +415,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/morocco.png"))); // NOI18N
         jButton11.setBorder(null);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton11.setFocusable(false);
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,7 +437,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mountain.png"))); // NOI18N
         jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setFocusable(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,7 +448,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/beach.png"))); // NOI18N
         jButton6.setBorder(null);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusable(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -457,7 +459,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rural.png"))); // NOI18N
         jButton7.setBorder(null);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setFocusable(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,7 +470,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/snow.png"))); // NOI18N
         jButton8.setBorder(null);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setFocusable(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,6 +478,28 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
             }
         });
         jPanel4.add(jButton8);
+
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/galapagos.png"))); // NOI18N
+        jButton12.setBorder(null);
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.setFocusable(false);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton12);
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/desert.png"))); // NOI18N
+        jButton13.setBorder(null);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.setFocusable(false);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton13);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -625,6 +649,14 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel2;
@@ -637,6 +669,8 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

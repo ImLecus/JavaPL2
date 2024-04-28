@@ -23,11 +23,15 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         widgets = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);
+        
     }
     
     @Override
     public void reloadContent(){  
       deleteDynamicContent();
+      submitCommentButton.setVisible(!App.session.isHost);
+      starsPanel2.setVisible(!App.session.isHost);
+      msgInput.setVisible(!App.session.isHost);
       b = App.focusedBuilding;
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
@@ -121,6 +125,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
         body = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -128,6 +133,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 0));
         carousel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 100));
         information = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
         leftSide = new javax.swing.JPanel();
@@ -169,7 +175,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         setStar5 = new javax.swing.JButton();
         submitCommentButton = new javax.swing.JButton();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
         information2 = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         leftSide4 = new javax.swing.JPanel();
@@ -238,7 +243,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,22 +318,40 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel10.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         jPanel10.setForeground(Polaris.TRANSPARENT_COLOR);
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 25, 25));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBox.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        comboBox.setMaximumRowCount(5);
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Perfil", "Community Guidelines", "Cerrar sesión" }));
+        jButton2.setBackground(Polaris.MAIN_COLOR);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 110));
+
+        comboBox.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        comboBox.setFont(FontManager.subText);
+        comboBox.setForeground(Polaris.TEXT_COLOR);
+        comboBox.setMaximumRowCount(3);
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfil", "Community Guidelines", "Cerrar sesión" }));
         comboBox.setToolTipText("");
         comboBox.setBorder(null);
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
-        comboBox.setPreferredSize(new java.awt.Dimension(80, 80));
+        comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
+        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                comboBoxMouseReleased(evt);
+            }
+        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
-        jPanel10.add(comboBox);
+        jPanel10.add(comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 100));
 
         header.add(jPanel10, java.awt.BorderLayout.EAST);
 
@@ -367,6 +390,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         carousel.add(jButton1);
 
         mainBody.add(carousel);
+        mainBody.add(filler12);
 
         information.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         information.setLayout(new java.awt.GridLayout(1, 0));
@@ -502,7 +526,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -786,7 +810,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         information1.add(filler6);
 
         mainBody.add(information1);
-        mainBody.add(filler10);
 
         information2.setBackground(polaris.Polaris.BG_COLOR);
         information2.setLayout(new java.awt.GridLayout(1, 0));
@@ -939,6 +962,26 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
+    private void idaLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idaLabelActionPerformed
+        calculateTotalPrice();
+        repaint();
+    }//GEN-LAST:event_idaLabelActionPerformed
+
+    private void msgInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_msgInputMouseClicked
+        if(click == false){
+            msgInput.setText(null);
+            click = true;
+        }
+    }//GEN-LAST:event_msgInputMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        comboBox.setPopupVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
+        repaint();
+    }//GEN-LAST:event_comboBoxMouseReleased
+
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         JComboBox cb = (JComboBox) evt.getSource();
         String selectedItem = (String) cb.getSelectedItem();
@@ -962,18 +1005,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         }
     }//GEN-LAST:event_comboBoxActionPerformed
 
-    private void idaLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idaLabelActionPerformed
-        calculateTotalPrice();
-        repaint();
-    }//GEN-LAST:event_idaLabelActionPerformed
-
-    private void msgInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_msgInputMouseClicked
-        if(click == false){
-            msgInput.setText(null);
-            click = true;
-        }
-    }//GEN-LAST:event_msgInputMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -985,8 +1016,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField dateTo;
     private javax.swing.JTextArea description;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler10;
     private javax.swing.Box.Filler filler11;
+    private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
@@ -1002,6 +1033,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel information1;
     private javax.swing.JPanel information2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
