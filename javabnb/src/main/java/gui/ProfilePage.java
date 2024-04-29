@@ -5,13 +5,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import polaris.Polaris;
 import poo.javabnb.Building;
 import poo.javabnb.Host;
 import poo.javabnb.util.FontManager;
-import poo.javabnb.util.ImageResizer;
+import poo.javabnb.util.Images;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     
@@ -125,9 +123,9 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userMailLabel = new javax.swing.JTextField();
         phoneLabel = new javax.swing.JLabel();
         userPhoneLabel = new javax.swing.JTextField();
-        banner = new javax.swing.JButton();
         pinnedPostsLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        banner = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -189,6 +187,14 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userPhoneLabel.setText("****");
         content.add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
 
+        pinnedPostsLabel.setFont(FontManager.titleFont);
+        pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel.setText("Inmuebles guardados");
+        content.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+
+        jButton2.setText("Crear inmueble...");
+        content.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, -1, -1));
+
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
@@ -203,15 +209,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 bannerActionPerformed(evt);
             }
         });
-        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -20, -1, -1));
-
-        pinnedPostsLabel.setFont(FontManager.titleFont);
-        pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
-        pinnedPostsLabel.setText("Inmuebles guardados");
-        content.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
-
-        jButton2.setText("Crear inmueble...");
-        content.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, -1, -1));
+        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jScrollPane1.setViewportView(content);
 
@@ -219,28 +217,16 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos PNG (*.png)", "png"));
-        int result = fileChooser.showOpenDialog(null);
-        if(result == JFileChooser.APPROVE_OPTION){
-            File file = fileChooser.getSelectedFile();
-            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "1.png", 150, 150);
-            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "2.png", 80, 80);
-            App.redirect("PROFILE");
-        }
+        File file = Images.createImageChooser();
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "1.png", 150, 150);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "2.png", 80, 80);
+        App.redirect("PROFILE");
     }//GEN-LAST:event_pfpActionPerformed
 
     private void bannerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bannerActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos PNG (*.png)", "png"));
-        int result = fileChooser.showOpenDialog(null);
-        if(result == JFileChooser.APPROVE_OPTION){
-            File file = fileChooser.getSelectedFile();
-            ImageResizer.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
-            App.redirect("PROFILE");
-        }
+        File file = Images.createImageChooser();
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
+        App.redirect("PROFILE");
     }//GEN-LAST:event_bannerActionPerformed
 
 

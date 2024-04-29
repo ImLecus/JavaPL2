@@ -30,7 +30,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     public void reloadContent(){  
       deleteDynamicContent();
       submitCommentButton.setVisible(!App.session.isHost);
-      pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+      try{
+        pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+      }
+      catch(Exception e){
+        pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+      }
       starsPanel2.setVisible(!App.session.isHost);
       msgInput.setVisible(!App.session.isHost);
       b = App.focusedBuilding;
@@ -953,14 +958,11 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.sortBy = SortType.PRICE;
-        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
-            App.buildings.entries,
+        SearchEngine.search( App.buildings.entries,
             locationInput.getText(),
-            peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
-
-        ));
-        App.redirect("SEARCH");
+            peopleInput.getText().length() == 0? 0: Integer.parseInt(peopleInput.getText()),
+            SortType.PRICE
+        );
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void idaLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idaLabelActionPerformed

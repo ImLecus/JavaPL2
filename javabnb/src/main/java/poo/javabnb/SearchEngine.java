@@ -1,5 +1,6 @@
 package poo.javabnb;
 
+import gui.App;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -50,12 +51,12 @@ public class SearchEngine {
     }
 
     // Search method
-    public static ArrayList<Building> search(ArrayList<Building> array,String location, int people) {
+    public static ArrayList<Building> getSearch(ArrayList<Building> array,String location, int people) {
         ArrayList<Building> result = new ArrayList<>();
         
         for(Building b: array){
             if((b.getAddress().contains(location) || b.info.title.contains(location)) &&
-                b.visitors <= people ){
+                b.visitors >= people ){
                 result.add(b);
             }
         }
@@ -66,5 +67,11 @@ public class SearchEngine {
     public static ArrayList<Building> sortSearch(ArrayList<Building> array) {
         Collections.sort(array);
         return array;
+    }
+    
+    public static void search(ArrayList<Building> array,String location, int people, SortType sortType){
+        SearchEngine.sortBy = sortType;
+        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.getSearch(array, location, people));
+        App.redirect("SEARCH");
     }
 }

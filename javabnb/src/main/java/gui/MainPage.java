@@ -2,9 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import polaris.DynamicPage;
@@ -12,7 +10,6 @@ import polaris.Polaris;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
 import poo.javabnb.SortType;
-import poo.javabnb.util.ImageResizer;
 
 public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -77,7 +74,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void deleteDynamicContent(){
         for(BuildingWidget bw : widgets){
-            // change "content" to the target jpanel name
             buildingsPlane.remove(bw);
         }
     }
@@ -88,7 +84,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         int i = 0;
         int rows = 0;
         
-        // algorithm to put widgets in a grid posotion, inside an Absolute Layout
         while(i < max){
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
@@ -561,8 +556,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "montaña", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"montaña",Integer.MAX_VALUE,SortType.PRICE);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
@@ -571,48 +565,41 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         SearchEngine.sortBy = SortType.PRICE;
-        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
+        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.getSearch(
                 App.buildings.entries, 
                 locationInput.getText(), 
-                peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
+                peopleInput.getText().length() == 0? 0: Integer.parseInt(peopleInput.getText())
                 
                 ));
         App.redirect("SEARCH");
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Paris", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"Paris",0,SortType.PRICE);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Roma", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"Roma",0,SortType.PRICE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "San Francisco", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"San Francisco",0,SortType.PRICE);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "Tokio", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"Tokio",0,SortType.PRICE);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "playa", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"playa",0,SortType.PRICE);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "rural", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"rural",0,SortType.PRICE);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        SearchEngine.results = SearchEngine.search(App.buildings.entries, "nieve", Integer.MAX_VALUE);
-        App.redirect("SEARCH");
+        SearchEngine.search( App.buildings.entries,"nieve",0,SortType.PRICE);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void locationInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationInputActionPerformed
@@ -651,19 +638,19 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_comboBoxMouseReleased
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+       SearchEngine.search( App.buildings.entries,"montaña",0,SortType.PRICE);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        SearchEngine.search( App.buildings.entries,"montaña",0,SortType.PRICE);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        SearchEngine.search( App.buildings.entries,"montaña",0,SortType.PRICE);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
+        SearchEngine.search( App.buildings.entries,"montaña",0,SortType.PRICE);
     }//GEN-LAST:event_jButton13ActionPerformed
 
 

@@ -20,6 +20,12 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void reloadContent(){
         deleteDynamicContent();
+        try{
+            pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+        }
+        catch(Exception e){
+            pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+        }
         //pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
         createDynamicContent();
     }
@@ -291,14 +297,11 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_locationInputActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        SearchEngine.sortBy = SortType.PRICE;
-        SearchEngine.results = SearchEngine.sortSearch(SearchEngine.search(
-            App.buildings.entries,
+        SearchEngine.search( App.buildings.entries,
             locationInput.getText(),
-            peopleInput.getText().length() == 0? Integer.MAX_VALUE: Integer.parseInt(peopleInput.getText())
-
-        ));
-        App.redirect("SEARCH");
+            peopleInput.getText().length() == 0? 0: Integer.parseInt(peopleInput.getText()),
+            SortType.PRICE
+        );
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
