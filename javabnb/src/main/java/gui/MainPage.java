@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.ImageIcon;
@@ -11,6 +12,7 @@ import polaris.Polaris;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.SearchEngine;
 import poo.javabnb.SortType;
+import poo.javabnb.util.ImageResizer;
 
 public class MainPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -58,7 +60,12 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void reloadContent() {
        deleteDynamicContent();
-       pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+        try{
+           pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+        }
+        catch(Exception e){
+           pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+        }
        locationInput.setText("");
        peopleInput.setText("");
        dateFrom.setText("");

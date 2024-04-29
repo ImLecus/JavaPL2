@@ -1,5 +1,7 @@
 package poo.javabnb;
 
+import gui.App;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Host extends Client {
@@ -11,5 +13,15 @@ public class Host extends Client {
         super(DNI, name, mail, password, number);
         this.date = date;
         this.superhost = superhost;
+    }
+    
+    public ArrayList<Building> getAllBuildings(){
+        ArrayList<Building> result = new ArrayList<>();
+        for(Building b: App.buildings.entries){
+            if(b.info.host.getDNI().equals(this.getDNI())){
+                result.add(b);
+            }
+        }
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.ImageIcon;
 import polaris.*;
 import poo.javabnb.Client;
 import poo.javabnb.util.FontManager;
@@ -15,6 +16,12 @@ public class UserWidget extends javax.swing.JPanel {
     public void init(Client c, int index){
         name.setText(c.getName());
         mail.setText(c.getMail());
+        try{
+            pfp.setDisabledIcon(new ImageIcon(getClass().getResource("/images/" + c.getDNI() + "1.png")));
+        }
+        catch(Exception e){
+            pfp.setDisabledIcon(new ImageIcon(getClass().getResource("/images/profile_default.png")));
+        }
         this.index = index;
     }
 

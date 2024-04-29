@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import polaris.Polaris;
 import poo.javabnb.Building;
+import poo.javabnb.Host;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.util.ImageResizer;
 
@@ -46,12 +47,25 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
         
-        ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
-        pfp.setIcon(pfpIcon);
-        pfpIcon.getImage().flush();
-        ImageIcon bannerIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "3.png"));
-        banner.setIcon(bannerIcon);
-        bannerIcon.getImage().flush();
+        try{
+            ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
+            pfpIcon.getImage().flush();
+            pfp.setIcon(pfpIcon);
+        }
+        catch(Exception e){
+           pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default.png")));
+        }
+        
+        
+        try{           
+            ImageIcon bannerIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "3.png"));
+            bannerIcon.getImage().flush();
+            banner.setIcon(bannerIcon);
+        }
+        catch(Exception e){
+           banner.setIcon(new ImageIcon(getClass().getResource("/images/banner.png")));
+        }
+
         
         App.session.updateSession();
         createDynamicContent();
@@ -66,15 +80,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void createDynamicContent(){
-        int max = App.session.user.pinnedPosts.size();
-        if(App.session.isHost){
-            max = 0;
-            for(Building b: App.buildings.entries){
-                if(b.info.host.getMail().equals(App.session.user.getMail())){
-                    ++max;
-                }
-            }
-        }
+        ArrayList<Building> array = App.session.isHost ? ((Host) App.session.user).getAllBuildings() : App.buildings.entries;
+        
+        int max = App.session.isHost? array.size() : App.session.user.pinnedPosts.size();
+
         int i = 0;
         int rows = 0;
         
@@ -84,9 +93,9 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 widgets.add(bw);
                 content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                App.buildings.entries.get(
-                        App.session.user.pinnedPosts.get(i) - 1
-                    )
+                App.session.isHost ? 
+                App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) :
+                array.get(i)
                 );
                 ++i;
             }
