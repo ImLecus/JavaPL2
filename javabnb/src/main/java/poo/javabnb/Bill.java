@@ -29,7 +29,7 @@ public class Bill {
         long diff = millisSalida - millisEntrada;
         long diffDays = diff / (24 * 60 * 60 * 1000);
 
-        float precioTotal = diffDays * b.info.price;
+        float precioTotal = diffDays * b.info.price*-1;
 
         try {
             PrintWriter writer = new PrintWriter("Factura.txt");

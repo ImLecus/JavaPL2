@@ -164,8 +164,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         precioTotalLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        vueltaLabel = new javax.swing.JFormattedTextField();
         idaLabel = new javax.swing.JFormattedTextField();
+        vueltaLabel = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -250,7 +250,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,7 +330,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         pfp.setBackground(Polaris.MAIN_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default_mini.png"))); // NOI18N
         pfp.setBorder(null);
-        pfp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pfp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pfp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfpActionPerformed(evt);
@@ -533,7 +533,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -558,7 +558,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
@@ -612,17 +612,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
-        vueltaLabel.setBorder(null);
-        vueltaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        vueltaLabel.setFont(FontManager.regularFont);
-        vueltaLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idaLabelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(vueltaLabel);
-
         idaLabel.setBackground(Polaris.INPUT_BG_COLOR);
         idaLabel.setBorder(null);
         idaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
@@ -634,6 +623,17 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             }
         });
         jPanel1.add(idaLabel);
+
+        vueltaLabel.setBackground(Polaris.INPUT_BG_COLOR);
+        vueltaLabel.setBorder(null);
+        vueltaLabel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        vueltaLabel.setFont(FontManager.regularFont);
+        vueltaLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idaLabelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(vueltaLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
