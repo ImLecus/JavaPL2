@@ -1,6 +1,6 @@
 package poo.javabnb;
 
-public record Range(int min, int max) {
+public record Range<T>(T min, T max) {
     /**
      * Simple representation of a range.
      *
@@ -13,8 +13,11 @@ public record Range(int min, int max) {
      * @param value value to check
      * @return if the value is in the range bounds.
      */
-    public boolean isInRange(int value) {
-        return value >= min && value <= max;
+    public boolean isInRange(T value) {
+        if(value instanceof Comparable){
+            return ((Comparable)value).compareTo(min) > -1 &&  ((Comparable)value).compareTo(max) < 1;
+        }
+        return false;
     }
 
 }

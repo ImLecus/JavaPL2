@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.*;
+import poo.javabnb.Range;
         
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private int commentRating;
@@ -866,7 +867,17 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Bill bill = new Bill();
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateEntrada = null;
+        Date dateSalida = null;
+        try {
+            dateEntrada = sdf.parse(idaLabel.getText());
+            dateSalida = sdf.parse(vueltaLabel.getText());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Range<Date> range = new Range<>(dateEntrada, dateSalida);
+        Reservation r = new Reservation((Particular)App.session.user, range, new Date());
         bill.generateBill(App.session.user,b,idaLabel.getText(),vueltaLabel.getText());
         
     }//GEN-LAST:event_submitButtonActionPerformed

@@ -47,6 +47,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         
         try{
             ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
+            
+            
+            
+          
             pfpIcon.getImage().flush();
             pfp.setIcon(pfpIcon);
         }

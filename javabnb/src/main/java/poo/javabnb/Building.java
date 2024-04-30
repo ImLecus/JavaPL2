@@ -2,6 +2,7 @@ package poo.javabnb;
 
 import java.util.ArrayList;
 import static poo.javabnb.SortType.*;
+import poo.javabnb.Reservation;
 
 public class Building implements Comparable {
     public BuildingInfo info;
@@ -17,6 +18,7 @@ public class Building implements Comparable {
     private int id;
     public ArrayList<Comment> comments;
     public ArrayList<Client> reportedBy;
+    public ArrayList<Reservation> reservations;
 
     // Constructor
     public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String image, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
@@ -35,6 +37,7 @@ public class Building implements Comparable {
             recalculateRating(c.rating);
         }
         this.reportedBy = new ArrayList<>();
+        this.reservations= new ArrayList<>();
     }
     
     public int getID(){

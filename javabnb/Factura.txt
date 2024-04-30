@@ -5,7 +5,7 @@ Correo: example
 DNI: 00000000E
 Nombre del inmueble: Chalet en Madrid
 Host del inmueble: Dueño
-Fecha de entrada: 09/10/2022
-Fecha de salida: 10/10/2022
+Fecha de entrada: 25/01/2024
+Fecha de salida: 01/01/2024
 Precio por noche: 125
-Precio total: 125.0
+Precio total: -3000.0

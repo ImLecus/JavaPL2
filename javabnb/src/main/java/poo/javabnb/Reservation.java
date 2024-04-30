@@ -3,24 +3,19 @@ package poo.javabnb;
 import java.util.Date;
 
 public class Reservation {
-    Building building;
     Particular client;
-    Date[] dateBounds;
+    Range<Date> dateBounds;
     Date reservationDate;
 
     // Constructor
-    public Reservation(Building building, Particular client, Date[] dateBounds, Date reservationDate) {
-        this.building = building;
+    public Reservation(Particular client, Range<Date> dateBounds, Date reservationDate) {
         this.client = client;
         this.dateBounds = dateBounds;
         this.reservationDate = reservationDate;
     }
 
     // Getters
-    public Building getBuilding() {
-        return building;
-    }
-
+    
     public Particular getClient() {
         return client;
     }
@@ -29,12 +24,12 @@ public class Reservation {
         return reservationDate;
     }
 
-    public Date[] getDateBounds() {
+    public Range<Date> getDateBounds() {
         return dateBounds;
     }
 
     // Setter
-    public void setDateBounds(Date[] dateBounds) {
+    public void setDateBounds(Range<Date> dateBounds) {
         this.dateBounds = dateBounds;
     }
 }
