@@ -1,11 +1,12 @@
 package poo.javabnb.util;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import poo.javabnb.Reservation;
 
+
 public class ReservationChecker {
-    public boolean isOverlapping(Date dateEntrada, Date dateSalida, List<Reservation> reservations) {
+    public boolean isOverlapping(Date dateEntrada, Date dateSalida, ArrayList<Reservation> reservations) {
         
         for (Reservation r : reservations) {
             if (dateEntrada.before(r.getDateBounds().getEnd()) && dateSalida.after(r.getDateBounds().getStart())) {
