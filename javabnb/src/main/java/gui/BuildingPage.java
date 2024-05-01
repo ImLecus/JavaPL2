@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.*;
+import poo.javabnb.util.Images;
 import poo.javabnb.util.Range;
         
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
@@ -57,6 +58,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png")));
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
+      image.setIcon(Images.resizeImage(App.focusedBuilding.image,0, 564));
       createDynamicContent();
     }
 
@@ -139,7 +141,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         mainBody = new javax.swing.JPanel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 0));
         carousel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        image = new javax.swing.JButton();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 100));
         information = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
@@ -384,18 +386,18 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
         carousel.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        jButton1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setDefaultCapable(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.setRolloverEnabled(false);
-        jButton1.setVerifyInputWhenFocusTarget(false);
-        carousel.add(jButton1);
+        image.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/example1.jpg"))); // NOI18N
+        image.setBorder(null);
+        image.setBorderPainted(false);
+        image.setContentAreaFilled(false);
+        image.setDefaultCapable(false);
+        image.setFocusPainted(false);
+        image.setFocusable(false);
+        image.setRequestFocusEnabled(false);
+        image.setRolloverEnabled(false);
+        image.setVerifyInputWhenFocusTarget(false);
+        carousel.add(image);
 
         mainBody.add(carousel);
         mainBody.add(filler12);
@@ -1044,10 +1046,10 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel header;
     private javax.swing.JLabel host;
     private javax.swing.JFormattedTextField idaLabel;
+    private javax.swing.JButton image;
     private javax.swing.JPanel information;
     private javax.swing.JPanel information1;
     private javax.swing.JPanel information2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

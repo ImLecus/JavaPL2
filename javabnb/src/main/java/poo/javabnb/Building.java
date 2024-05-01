@@ -2,7 +2,6 @@ package poo.javabnb;
 
 import java.io.File;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import static poo.javabnb.SortType.*;
 import poo.javabnb.Reservation;
 

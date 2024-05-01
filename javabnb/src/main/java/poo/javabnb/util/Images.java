@@ -43,7 +43,9 @@ public class Images {
     public static ImageIcon resizeImage(File inputFile, int scaledWidth, int scaledHeight) {
         try{
             BufferedImage inputImage = ImageIO.read(inputFile);
-            BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, inputImage.getType());
+            scaledWidth = scaledWidth == 0? inputImage.getWidth(null) : scaledWidth;
+            scaledHeight = scaledHeight == 0? inputImage.getHeight(null) : scaledHeight;
+            BufferedImage outputImage = new BufferedImage(scaledWidth,scaledHeight, inputImage.getType());
 
             Graphics2D g2d = outputImage.createGraphics();
             g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);

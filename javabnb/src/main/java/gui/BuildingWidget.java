@@ -1,5 +1,4 @@
 package gui;
-import java.awt.*;
 import javax.swing.ImageIcon;
 import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
