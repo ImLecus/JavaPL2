@@ -7,16 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Bill {
-    public void generateBill(Client c, Building b, String fechaEntrada, String fechaSalida) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateEntrada = null;
-        Date dateSalida = null;
-        try {
-            dateEntrada = sdf.parse(fechaEntrada);
-            dateSalida = sdf.parse(fechaSalida);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void generateBill(Client c, Building b, Date dateEntrada, Date dateSalida) {
 
         Calendar calEntrada = Calendar.getInstance();
         Calendar calSalida = Calendar.getInstance();
@@ -29,7 +20,7 @@ public class Bill {
         long diff = millisSalida - millisEntrada;
         long diffDays = diff / (24 * 60 * 60 * 1000);
 
-        float precioTotal = diffDays * b.info.price*-1;
+        float precioTotal = diffDays * b.info.price;
 
         try {
             PrintWriter writer = new PrintWriter("Factura.txt");
@@ -40,8 +31,8 @@ public class Bill {
             writer.println("DNI: " + c.getDNI());
             writer.println("Nombre del inmueble: " + b.info.title);
             writer.println("Host del inmueble: " + b.info.host.getName());
-            writer.println("Fecha de entrada: " + fechaEntrada);
-            writer.println("Fecha de salida: " + fechaSalida);
+            writer.println("Fecha de entrada: " + dateEntrada);
+            writer.println("Fecha de salida: " + dateSalida);
             writer.println("Precio por noche: " + b.info.price);
             writer.println("Precio total: " + precioTotal);
             writer.close();

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
@@ -12,6 +13,9 @@ import polaris.*;
 import poo.javabnb.*;
 import poo.javabnb.util.Images;
 import poo.javabnb.util.Range;
+import poo.javabnb.util.ReservationChecker;
+
+
         
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private int commentRating;
@@ -21,6 +25,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private boolean click = false;
     public BuildingPage() {
         initComponents();
+        resetErrorLabels();
         Polaris.highlightOnHover(submitButton);
         widgets = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
@@ -32,6 +37,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     public void reloadContent(){  
       deleteDynamicContent();
       submitCommentButton.setVisible(!App.session.isHost);
+      resetErrorLabels();
       try{
         pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
       }
@@ -60,6 +66,12 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
       image.setIcon(Images.resizeImage(App.focusedBuilding.image,0, 564));
       createDynamicContent();
+      
+    }
+    
+    private void resetErrorLabels(){
+        errorLabel1.setVisible(false);
+        errorLabel2.setVisible(false);
     }
 
     @Override
@@ -170,6 +182,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         vueltaLabel = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        errorLabel2 = new javax.swing.JLabel();
+        errorLabel1 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -253,7 +267,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         searchBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchBar.setText("Buscar");
         searchBar.setBorder(null);
-        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchBar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -665,6 +679,29 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         reservation.add(jLabel2, gridBagConstraints);
 
+        errorLabel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        errorLabel2.setFont(FontManager.regularFont);
+        errorLabel2.setForeground(polaris.Polaris.SECONDARY_COLOR);
+        errorLabel2.setText("compruebe la disponibilidad");
+        errorLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        reservation.add(errorLabel2, gridBagConstraints);
+
+        errorLabel1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        errorLabel1.setFont(FontManager.regularFont);
+        errorLabel1.setForeground(polaris.Polaris.SECONDARY_COLOR);
+        errorLabel1.setText("El inmueble ya está reservado en esas fechas, ");
+        errorLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 9;
+        reservation.add(errorLabel1, gridBagConstraints);
+
         rightSide.add(reservation);
 
         information.add(rightSide);
@@ -869,7 +906,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_mainBodyComponentMoved
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Bill bill = new Bill();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dateEntrada = null;
         Date dateSalida = null;
@@ -878,13 +914,32 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             dateSalida = sdf.parse(vueltaLabel.getText());
         } catch (ParseException e) {
             e.printStackTrace();
+            return;
         }
+
+        // Check if there is an overlapping reservation
+        for (Reservation r : b.reservations) {
+            ReservationChecker checker = new ReservationChecker();
+            if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations)) {
+                System.out.println("ya hay una reserva en esas fechas");
+                errorLabel1.setVisible(true);
+                errorLabel1.setVisible(true);
+                return;
+            }
+        }
+
+        // Create a new reservation and add it to the building's reservations
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
-        Reservation r = new Reservation((Particular)App.session.user, range, new Date());
-        bill.generateBill(App.session.user,b,idaLabel.getText(),vueltaLabel.getText());
+        Reservation newReservation = new Reservation((Particular)App.session.user, range, new Date());
+        b.reservations.add(newReservation);
+
+        // Generate the bill
+        Bill bill = new Bill();
+        bill.generateBill(App.session.user, b, dateEntrada, dateSalida);
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
+      
     private void saveButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseExited
         repaint();
     }//GEN-LAST:event_saveButtonMouseExited
@@ -1032,6 +1087,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JTextArea description;
+    private javax.swing.JLabel errorLabel1;
+    private javax.swing.JLabel errorLabel2;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;

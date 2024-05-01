@@ -1,23 +1,24 @@
 package poo.javabnb.util;
 
-public record Range<T>(T min, T max) {
-    /**
-     * Simple representation of a range.
-     *
-     * @param min minimum value
-     * @param max maximum value
-     */
-    public Range {}
+public class Range<T extends Comparable<T>> {
+    private T min;
+    private T max;
 
-    /**
-     * @param value value to check
-     * @return if the value is in the range bounds.
-     */
-    public boolean isInRange(T value) {
-        if(value instanceof Comparable){
-            return ((Comparable)value).compareTo(min) > -1 &&  ((Comparable)value).compareTo(max) < 1;
-        }
-        return false;
+    public Range(T min, T max) {
+        this.min = min;
+        this.max = max;
     }
 
+    public boolean isInRange(T value) {
+        return value.compareTo(min) > -1 && value.compareTo(max) < 1;
+    }
+
+    public T getStart() {
+        return min;
+    }
+
+    public T getEnd() {
+        return max;
+    }
 }
+
