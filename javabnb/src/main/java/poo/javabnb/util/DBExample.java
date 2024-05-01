@@ -78,8 +78,7 @@ public class DBExample {
             "Un chalet alejado de la zona urbanísica de la ciudad de Madrid",
             Images.getResource("/images/morocco.png"), HOST,
             3,
-            new String[]{},
-            new ArrayList<>()
+            new String[]{}
             ));
         buildingDb.get(0).addComment(new Comment(
                 db.getClientData(1), 5, "Un lugar genial para pasar las vacaciones! Lo recomiendo mucho."
@@ -93,8 +92,7 @@ public class DBExample {
             "Este encantador apartamento se encuentra en una ubicación privilegiada en el prestigioso Passeig de Gràcia, conocido por sus tiendas de diseño y arquitectura modernista. El apartamento cuenta con dos dormitorios luminosos, un baño completo y una cocina totalmente equipada. Desde el salón, puedes disfrutar de unas vistas impresionantes de la ciudad y del emblemático edificio de La Pedrera. Además, estarás a pocos pasos de las principales atracciones turísticas, restaurantes de renombre y excelentes conexiones de transporte público. ¡Una oportunidad única para experimentar el estilo de vida vibrante de Barcelona!",
             Images.getResource("/images/example1.jpg"), DON_PABLO,
             2,
-            new String[]{"wifi", "aire acondicionado"},
-            new ArrayList<>()
+            new String[]{"wifi", "aire acondicionado"}
             ));
         buildingDb.get(1).addComment(new Comment(
                 db.getClientData(2), 1, "Esta en un barrio muy peligroso, me robaron nada mas salir del apartamento"
@@ -108,8 +106,7 @@ public class DBExample {
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Valencia.",
             Images.getResource("/images/example2.jpg"), DON_PABLO,
             3,
-            new String[]{"piscina", "jardín"},
-            new ArrayList<Comment>()
+            new String[]{"piscina", "jardín"}
             ));
         buildingDb.get(2).addComment(new Comment(
                 db.getClientData(1), 4, "Estancia muy tranquila, lo recomendaría a cualquiera en busqueda de un retiro"
@@ -122,8 +119,7 @@ public class DBExample {
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Madrid.",
            Images.getResource("/images/example3.jpg"), HOST,
             3,
-            new String[]{"piscina", "jardín"},
-            new ArrayList<Comment>()
+            new String[]{"piscina", "jardín"}
             ));
         buildingDb.get(3).addComment(new Comment(
                 db.getClientData(3), 5, "Estancia perfecta, lo mejor fue poder disfrutar del tan afamado agua de Madrid"

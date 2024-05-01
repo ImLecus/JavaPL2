@@ -104,7 +104,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             precioTotalLabel.setText("Total: " + String.valueOf(totalPrice) + "€");
         }
         catch(Exception E){
-            precioTotalLabel.setText("Total: XXX€");
+            precioTotalLabel.setText("Total: " + String.valueOf(b.info.price) + "€/noche");
         }
   
     }

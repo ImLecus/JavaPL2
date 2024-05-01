@@ -1,19 +1,12 @@
 package poo.javabnb.util;
 
-import gui.App;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import poo.javabnb.Building;
-import poo.javabnb.Building;
-import poo.javabnb.Comment;
-import poo.javabnb.Host;
-import poo.javabnb.PropertyType;
 import poo.javabnb.exceptions.DataBaseNotFoundException;
 
 public class BuildingDB implements Serializable{

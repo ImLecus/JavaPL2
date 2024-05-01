@@ -2,6 +2,9 @@ package gui;
 import java.awt.Dimension;
 import java.io.File;
 import polaris.Polaris;
+import poo.javabnb.Building;
+import poo.javabnb.Host;
+import poo.javabnb.PropertyType;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.util.Images;
 
@@ -354,6 +357,21 @@ public class NewBuildingPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        App.buildings.add(new Building(
+                titleInput.getText(),
+                addressInput.getText(),
+                Integer.parseInt(roomsInput.getText()),
+                Integer.parseInt(bathsInput.getText()),
+                PropertyType.HOUSE,
+                Integer.parseInt(priceInput.getText()),
+                new String[]{},
+                descriptionInput.getText(),
+                image, (Host) App.session.user,
+                Integer.parseInt(visitorsInput.getText()),
+                new String[]{}  
+        ));
+        App.buildings.saveData("./src/main/resources/data/b_data.dat");
+        App.redirect("PROFILE");
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

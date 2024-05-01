@@ -22,7 +22,7 @@ public class Building implements Comparable {
     public ArrayList<Reservation> reservations;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, File image, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, File image, Host host, int visitors, String[] services) {
         this.info = new BuildingInfo(title, host, price, 0);
         this.address = address;
         this.rooms = rooms;
@@ -33,8 +33,8 @@ public class Building implements Comparable {
         this.image = image;
         this.visitors = visitors;
         this.services = services;
-        this.comments = comments;
-        for(Comment c: comments){
+        this.comments = new ArrayList<>();
+        for(Comment c: this.comments){
             recalculateRating(c.rating);
         }
         this.reportedBy = new ArrayList<>();

@@ -81,7 +81,7 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void createDynamicContent(){
-        int max = App.buildings.entries.size();
+        int max = 4;
         int i = 0;
         int rows = 0;   
         
