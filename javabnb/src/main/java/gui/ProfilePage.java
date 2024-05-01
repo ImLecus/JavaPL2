@@ -215,6 +215,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         newPostButton.setText("Crear inmueble...");
         newPostButton.setBorder(null);
         newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newPostButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPostButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(newPostButton, java.awt.BorderLayout.EAST);
 
         content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 740, 30));
@@ -252,6 +257,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
         App.redirect("PROFILE");
     }//GEN-LAST:event_bannerActionPerformed
+
+    private void newPostButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPostButtonActionPerformed
+        new NewBuildingPage().main(null);
+    }//GEN-LAST:event_newPostButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
