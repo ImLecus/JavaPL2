@@ -1,6 +1,7 @@
 package poo.javabnb.util;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import poo.javabnb.*;
 
 public class DBExample {
@@ -75,7 +76,7 @@ public class DBExample {
             3, 3, PropertyType.HOUSE,
             125, new String[]{"madrid", "chalet"},
             "Un chalet alejado de la zona urbanísica de la ciudad de Madrid",
-            "", HOST,
+            Images.getResource("/images/morocco.png"), HOST,
             3,
             new String[]{},
             new ArrayList<>()
@@ -90,7 +91,7 @@ public class DBExample {
             2, 1, PropertyType.APARTMENT,
             200, new String[]{"barcelona", "apartamento"},
             "Este encantador apartamento se encuentra en una ubicación privilegiada en el prestigioso Passeig de Gràcia, conocido por sus tiendas de diseño y arquitectura modernista. El apartamento cuenta con dos dormitorios luminosos, un baño completo y una cocina totalmente equipada. Desde el salón, puedes disfrutar de unas vistas impresionantes de la ciudad y del emblemático edificio de La Pedrera. Además, estarás a pocos pasos de las principales atracciones turísticas, restaurantes de renombre y excelentes conexiones de transporte público. ¡Una oportunidad única para experimentar el estilo de vida vibrante de Barcelona!",
-            "", DON_PABLO,
+            Images.getResource("/images/example1.jpg"), DON_PABLO,
             2,
             new String[]{"wifi", "aire acondicionado"},
             new ArrayList<>()
@@ -105,7 +106,7 @@ public class DBExample {
             4, 2, PropertyType.HOUSE,
             150, new String[]{"valencia", "casa rural"},
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Valencia.",
-            "", DON_PABLO,
+            Images.getResource("/images/example2.jpg"), DON_PABLO,
             3,
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()
@@ -119,7 +120,7 @@ public class DBExample {
             4, 2, PropertyType.HOUSE,
             150, new String[]{"valencia", "casa rural"},
             "Disfruta de la tranquilidad y naturaleza en esta encantadora casa rural en las afueras de Madrid.",
-            "", HOST,
+           Images.getResource("/images/example3.jpg"), HOST,
             3,
             new String[]{"piscina", "jardín"},
             new ArrayList<Comment>()

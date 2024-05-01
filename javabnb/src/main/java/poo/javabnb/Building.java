@@ -1,6 +1,8 @@
 package poo.javabnb;
 
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import static poo.javabnb.SortType.*;
 import poo.javabnb.Reservation;
 
@@ -12,7 +14,7 @@ public class Building implements Comparable {
     private PropertyType type;
     public String[] Hashtags;
     public String description;
-    public String image;
+    public File image;
     public int visitors;
     public String[] services;
     private int id;
@@ -21,7 +23,7 @@ public class Building implements Comparable {
     public ArrayList<Reservation> reservations;
 
     // Constructor
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, String image, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, File image, Host host, int visitors, String[] services, ArrayList<Comment> comments) {
         this.info = new BuildingInfo(title, host, price, 0);
         this.address = address;
         this.rooms = rooms;

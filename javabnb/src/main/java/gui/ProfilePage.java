@@ -33,13 +33,13 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 userPhoneLabel.setEditable(isEditing);
                 userMailLabel.setEditable(isEditing);
             }
-        });
-        
+        }); 
     }
     
     @Override
     public void reloadContent(){
         deleteDynamicContent();
+        newPostButton.setVisible(App.session.isHost);
         pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
         //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
@@ -48,17 +48,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         
         try{
             ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
-            
-            
-            
-          
             pfpIcon.getImage().flush();
             pfp.setIcon(pfpIcon);
         }
         catch(Exception e){
            pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default.png")));
         }
-        
         
         try{           
             ImageIcon bannerIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "3.png"));
@@ -96,16 +91,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 widgets.add(bw);
                 content.add(bw, new AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                !App.session.isHost ? 
-                App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) :
-                array.get(i)
+                    App.session.isHost ? array.get(i): App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) 
                 );
                 ++i;
             }
             ++rows;
-        }
-        
-        
+        }  
     }
 
     /**
@@ -133,7 +124,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userPhoneLabel = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        newPostButton = new javax.swing.JButton();
         banner = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -218,13 +209,13 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         pinnedPostsLabel.setText("Inmuebles guardados");
         jPanel1.add(pinnedPostsLabel, java.awt.BorderLayout.WEST);
 
-        jButton2.setBackground(Polaris.MAIN_COLOR);
-        jButton2.setFont(FontManager.boldFont);
-        jButton2.setForeground(Polaris.BG_COLOR);
-        jButton2.setText("Crear inmueble...");
-        jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, java.awt.BorderLayout.EAST);
+        newPostButton.setBackground(Polaris.MAIN_COLOR);
+        newPostButton.setFont(FontManager.boldFont);
+        newPostButton.setForeground(Polaris.BG_COLOR);
+        newPostButton.setText("Crear inmueble...");
+        newPostButton.setBorder(null);
+        newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(newPostButton, java.awt.BorderLayout.EAST);
 
         content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 740, 30));
 
@@ -269,12 +260,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel content;
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
+    private javax.swing.JButton newPostButton;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel pinnedPostsLabel;

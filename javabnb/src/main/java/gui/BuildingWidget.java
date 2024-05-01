@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
 import polaris.*;
+import poo.javabnb.util.Images;
 
 public class BuildingWidget extends javax.swing.JPanel {
 
@@ -25,6 +26,8 @@ public class BuildingWidget extends javax.swing.JPanel {
         star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
         star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
         warning.setVisible(App.isAdmin && b.reportedBy.size() > 0);
+        
+        pfp.setDisabledIcon(Images.resizeImage(b.image, 300, 300)); 
     };
     
     
