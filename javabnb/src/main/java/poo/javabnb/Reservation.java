@@ -1,5 +1,6 @@
 package poo.javabnb;
 
+import poo.javabnb.util.Range;
 import java.util.Date;
 
 public class Reservation {

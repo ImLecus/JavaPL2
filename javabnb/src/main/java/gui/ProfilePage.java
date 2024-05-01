@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import polaris.Polaris;
 import poo.javabnb.Building;
 import poo.javabnb.Host;
@@ -93,9 +94,9 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                content.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                content.add(bw, new AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                App.session.isHost ? 
+                !App.session.isHost ? 
                 App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) :
                 array.get(i)
                 );
@@ -115,18 +116,22 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        userNameLabel = new javax.swing.JLabel();
         pfp = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        userNameLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         mailLabel = new javax.swing.JLabel();
         userMailLabel = new javax.swing.JTextField();
         phoneLabel = new javax.swing.JLabel();
         userPhoneLabel = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         banner = new javax.swing.JButton();
@@ -151,6 +156,13 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.setFocusable(false);
         content.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
+        jPanel2.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        userNameLabel.setFont(FontManager.titleFont);
+        userNameLabel.setText("Nombre");
+        jPanel2.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+
         pfp.setBackground(polaris.Polaris.BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
         pfp.setBorder(null);
@@ -164,40 +176,57 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 pfpActionPerformed(evt);
             }
         });
-        content.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        jPanel2.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         editButton.setText("Editar perfil");
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
-        content.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        jPanel2.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        userNameLabel.setFont(FontManager.titleFont);
-        userNameLabel.setText("Nombre");
-        content.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        content.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 330, 180));
+
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
         mailLabel.setFont(FontManager.boldFont);
         mailLabel.setText("Correo");
-        content.add(mailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+        jPanel3.add(mailLabel, new java.awt.GridBagConstraints());
 
         userMailLabel.setEditable(false);
         userMailLabel.setText("****");
-        content.add(userMailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
+        jPanel3.add(userMailLabel, new java.awt.GridBagConstraints());
 
         phoneLabel.setFont(FontManager.boldFont);
         phoneLabel.setText("Teléfono");
-        content.add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel3.add(phoneLabel, gridBagConstraints);
 
         userPhoneLabel.setEditable(false);
         userPhoneLabel.setText("****");
-        content.add(userPhoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanel3.add(userPhoneLabel, gridBagConstraints);
+
+        content.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         pinnedPostsLabel.setFont(FontManager.titleFont);
         pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         pinnedPostsLabel.setText("Inmuebles guardados");
-        content.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, -1, -1));
+        jPanel1.add(pinnedPostsLabel, java.awt.BorderLayout.WEST);
 
+        jButton2.setBackground(Polaris.MAIN_COLOR);
+        jButton2.setFont(FontManager.boldFont);
+        jButton2.setForeground(Polaris.BG_COLOR);
         jButton2.setText("Crear inmueble...");
-        content.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, -1, -1));
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButton2, java.awt.BorderLayout.EAST);
+
+        content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 740, 30));
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
@@ -241,6 +270,9 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton editButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JButton pfp;

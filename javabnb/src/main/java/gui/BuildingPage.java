@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.*;
-import poo.javabnb.Range;
+import poo.javabnb.util.Range;
         
 public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private int commentRating;

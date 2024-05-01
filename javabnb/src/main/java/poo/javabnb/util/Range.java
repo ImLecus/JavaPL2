@@ -1,4 +1,4 @@
-package poo.javabnb;
+package poo.javabnb.util;
 
 public record Range<T>(T min, T max) {
     /**

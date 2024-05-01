@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import polaris.DynamicPage;
 import polaris.Polaris;
 import poo.javabnb.util.FontManager;
@@ -82,14 +83,13 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     public void createDynamicContent(){
         int max = App.buildings.entries.size();
         int i = 0;
-        int rows = 0;
+        int rows = 0;   
         
         while(i < max){
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                // change "content" to the target jpanel name
-                buildingsPlane.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(x,330*rows,-1,-1));
+                buildingsPlane.add(bw, new AbsoluteConstraints(x,330*rows,-1,-1));
                 bw.init(App.buildings.entries.get(i));
                 ++i;
             }

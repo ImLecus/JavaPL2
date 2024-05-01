@@ -1,5 +1,6 @@
 package poo.javabnb;
 
+import poo.javabnb.util.Range;
 import gui.App;
 import java.util.ArrayList;
 import java.util.Collections;
