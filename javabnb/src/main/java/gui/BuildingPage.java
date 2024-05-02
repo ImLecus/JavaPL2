@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import poo.javabnb.util.FontManager;
@@ -14,6 +13,7 @@ import poo.javabnb.*;
 import poo.javabnb.util.Images;
 import poo.javabnb.util.Range;
 import poo.javabnb.util.ReservationChecker;
+import poo.javabnb.Reservation;
 
 
         
@@ -50,6 +50,14 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
+      if(b.reservations==null){
+      reservasLabel.setVisible(false);
+      }
+      else{
+          reservasLabel.setVisible(true);
+          reservasLabel.setText("Reservado"+String.valueOf(b.reservations.toString()));
+      }
+      
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       msgInput.setText("Escribe aquí tu mensaje...");
       setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
@@ -169,6 +177,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        reservasLabel = new javax.swing.JLabel();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -536,6 +545,15 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
         leftSide.add(filler2, new java.awt.GridBagConstraints());
+
+        reservasLabel.setText("Reservado entre");
+        reservasLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        reservasLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        reservasLabel.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        leftSide.add(reservasLabel, gridBagConstraints);
 
         information.add(leftSide);
 
@@ -923,7 +941,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations)) {
                 System.out.println("ya hay una reserva en esas fechas");
                 errorLabel1.setVisible(true);
-                errorLabel1.setVisible(true);
+                errorLabel2.setVisible(true);
                 return;
             }
         }
@@ -1132,6 +1150,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JLabel precioTotalLabel;
     private javax.swing.JLabel props;
     private javax.swing.JButton reportButton;
+    private javax.swing.JLabel reservasLabel;
     private javax.swing.JPanel reservation;
     private javax.swing.JPanel rightSide;
     private javax.swing.JButton saveButton;
