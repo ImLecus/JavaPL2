@@ -9,11 +9,11 @@ public class ReservationChecker {
     public boolean isOverlapping(Date dateEntrada, Date dateSalida, ArrayList<Reservation> reservations) {
         
         for (Reservation r : reservations) {
-            if (dateEntrada.before(r.getDateBounds().getEnd()) && dateSalida.after(r.getDateBounds().getStart())) {
+            if(r.getDateBounds().isInRange(dateEntrada) || r.getDateBounds().isInRange(dateSalida)){
                 return true;
-            }
+            }        
         }
-
-        return false;
+        return false;  
     }
 }
+     
