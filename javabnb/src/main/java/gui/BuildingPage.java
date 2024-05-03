@@ -2,20 +2,13 @@ package gui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import poo.javabnb.util.FontManager;
+import java.util.*;
+import javax.swing.*;
 import polaris.*;
 import poo.javabnb.*;
-import poo.javabnb.util.Images;
-import poo.javabnb.util.Range;
-import poo.javabnb.util.ReservationChecker;
-import poo.javabnb.Reservation;
+import poo.javabnb.util.*;
         
-public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
+public class BuildingPage extends JPanel implements DynamicPage {
     private int commentRating;
     private Building b;
     ArrayList<CommentWidget> widgets;
@@ -30,19 +23,15 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     }
     
     @Override
-    public void reloadContent(){  
-      deleteDynamicContent();
-      
+    public void reloadContent(){   
       if(!App.isAdmin){
         commentSection.setVisible(!App.session.isHost);  
         try{
-            pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png"));
         }
         catch(Exception e){
-            pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+            pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
         }
-        
-        
       }
       else{
           jPanel8.setVisible(false);
@@ -51,11 +40,9 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
           msgInput.setVisible(false);
           starsPanel2.setVisible(false);
           submitCommentButton.setVisible(false);
-          reservation.setVisible(false);
-          
-          
+          reservation.setVisible(false);  
       }
-      reportButton.setIcon(new ImageIcon(getClass().getResource(App.isAdmin? "/images/ban.png" : "/images/report.png")));
+      reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
       b = App.focusedBuilding;
       saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
@@ -63,24 +50,22 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       checkForReservations();
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       msgInput.setText("Escribe aquí tu mensaje...");
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      star1.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png")));
-      star2.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png")));
-      star3.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png")));
-      star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png")));
-      star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png")));
+      setStar1.setIcon( Images.getIcon("/images/star.png")); 
+      setStar2.setIcon( Images.getIcon("/images/star.png"));
+      setStar3.setIcon( Images.getIcon("/images/star.png"));
+      setStar4.setIcon( Images.getIcon("/images/star.png"));
+      setStar5.setIcon( Images.getIcon("/images/star.png"));
+      star1.setDisabledIcon( Images.getIcon( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png"));
+      star2.setDisabledIcon( Images.getIcon( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png"));
+      star3.setDisabledIcon( Images.getIcon( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png"));
+      star4.setDisabledIcon( Images.getIcon( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png"));
+      star5.setDisabledIcon( Images.getIcon( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png"));
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
       image.setIcon(Images.resizeImage(App.focusedBuilding.image,0, 564));
       idaLabel.setText("");
       vueltaLabel.setText("");
       errorLabel1.setVisible(false);
-      createDynamicContent();
-      
     }
     @Override
     public void createDynamicContent(){
@@ -390,11 +375,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
         comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
-        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                comboBoxMouseReleased(evt);
-            }
-        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
@@ -913,15 +893,13 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         saved = !saved;
-        saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
+        saveButton.setIcon(Images.getIcon( saved ? "/images/save_filled.png" : "/images/save.png"));
         repaint();
         if(saved){
             App.session.addPinnedPost(b.getID());
-            System.out.println("Añadido el inmueble con id " + String.valueOf(b.getID()) + ". El usuario tiene " + String.valueOf(App.session.user.pinnedPosts.size()) + " posts guardados");
         }
         if(!saved && App.session.user.pinnedPosts.contains(b.getID())){
             App.session.deletePinnedPost(b.getID());
-            System.out.println("Eliminado el inmueble con id " + String.valueOf(b.getID()) + ". El usuario tiene " + String.valueOf(App.session.user.pinnedPosts.size()) + " posts guardados");
         }
         repaint();
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -972,51 +950,51 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
 
     private void setStar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar1ActionPerformed
       commentRating = 1;
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar1.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar2.setIcon(Images.getIcon("/images/star.png"));
+      setStar3.setIcon(Images.getIcon("/images/star.png"));
+      setStar4.setIcon(Images.getIcon("/images/star.png"));
+      setStar5.setIcon(Images.getIcon("/images/star.png"));
       repaint();
     }//GEN-LAST:event_setStar1ActionPerformed
 
     private void setStar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar2ActionPerformed
       commentRating = 2;
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar1.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar2.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar3.setIcon(Images.getIcon("/images/star.png"));
+      setStar4.setIcon(Images.getIcon("/images/star.png"));
+      setStar5.setIcon(Images.getIcon("/images/star.png"));
       repaint();
     }//GEN-LAST:event_setStar2ActionPerformed
 
     private void setStar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar3ActionPerformed
       commentRating = 3;
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar1.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar2.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar3.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar4.setIcon(Images.getIcon("/images/star.png"));
+      setStar5.setIcon(Images.getIcon("/images/star.png"));
       repaint();
     }//GEN-LAST:event_setStar3ActionPerformed
 
     private void setStar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar4ActionPerformed
       commentRating = 4;
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star.png")));
+      setStar1.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar2.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar3.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar4.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar5.setIcon(Images.getIcon("/images/star.png"));
       repaint();
     }//GEN-LAST:event_setStar4ActionPerformed
 
     private void setStar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setStar5ActionPerformed
       commentRating = 5;
-      setStar1.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar2.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar3.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar4.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
-      setStar5.setIcon( new ImageIcon(getClass().getResource("/images/star_filled.png")));
+      setStar1.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar2.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar3.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar4.setIcon(Images.getIcon("/images/star_filled.png"));
+      setStar5.setIcon(Images.getIcon("/images/star_filled.png"));
       repaint();
     }//GEN-LAST:event_setStar5ActionPerformed
 
@@ -1036,7 +1014,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
             App.redirect("ADMIN");
             return;
         }
-        
         Building newBuilding = b;
         newBuilding.reportedBy.add(App.session.user);
         App.buildings.update(b, newBuilding);
@@ -1071,14 +1048,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         comboBox.setPopupVisible(true);
     }//GEN-LAST:event_pfpActionPerformed
 
-    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
-        repaint();
-    }//GEN-LAST:event_comboBoxMouseReleased
-
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        JComboBox cb = (JComboBox) evt.getSource();
-        String selectedItem = (String) cb.getSelectedItem();
-        System.out.println("Item seleccionado: " + selectedItem);
+        String selectedItem = (String) comboBox.getSelectedItem();
         switch (selectedItem) {
             case "Perfil":
             App.redirect("PROFILE");

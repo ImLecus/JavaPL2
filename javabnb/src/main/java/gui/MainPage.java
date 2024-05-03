@@ -3,73 +3,60 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
+import javax.swing.*;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
-import polaris.DynamicPage;
-import polaris.Polaris;
-import poo.javabnb.util.FontManager;
-import poo.javabnb.SearchEngine;
-import poo.javabnb.SortType;
+import polaris.*;
+import poo.javabnb.util.*;
+import poo.javabnb.*;
 
-public class MainPage extends javax.swing.JPanel implements DynamicPage {
+public class MainPage extends JPanel implements DynamicPage {
 
     public ArrayList<BuildingWidget> widgets;
     
     public MainPage() {
         initComponents();
         widgets = new ArrayList<>();
-        muroScroll.getVerticalScrollBar().setUnitIncrement(20); 
-        searchBar.addActionListener(new ActionListener(){
-            @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Buscando: " + searchBar.getText());
-                }
-        });
-    
+        muroScroll.getVerticalScrollBar().setUnitIncrement(20);
         comboBox.addActionListener(new ActionListener(){
             @Override
-                public void actionPerformed(ActionEvent e) {
-                    JComboBox cb = (JComboBox) e.getSource();
-                    String selectedItem = (String) cb.getSelectedItem();
-                    System.out.println("Item seleccionado: " + selectedItem);
-                    switch (selectedItem) {
-                        case "Perfil":
-                            App.redirect("PROFILE");
-                            break;
-                        case "Post guardados":
-                            App.redirect("PINNED_POSTS");
-                            break;
-                        case "Cerrar sesión":
-                            App.session.endSession();
-                            App.redirect("LOGIN");
+            public void actionPerformed(ActionEvent e) {
+                JComboBox cb = (JComboBox) e.getSource();
+                String selectedItem = (String) cb.getSelectedItem();
+                System.out.println("Item seleccionado: " + selectedItem);
+                switch (selectedItem) {
+                    case "Perfil":
+                        App.redirect("PROFILE");
                         break;
-                        case "Community Guidelines":
-                            App.redirect("COMMUNITY_GUIDELINES");
+                    case "Post guardados":
+                        App.redirect("PINNED_POSTS");
                         break;
+                    case "Cerrar sesión":
+                        App.session.endSession();
+                        App.redirect("LOGIN");
+                    break;
+                    case "Community Guidelines":
+                        App.redirect("COMMUNITY_GUIDELINES");
+                    break;
                     default:
-                        break;
-                    }
+                    break;
+                }
             }
-        });
-        
+        });    
     }
     
     @Override
     public void reloadContent() {
-       deleteDynamicContent();
         try{
-           pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+           pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png") );
         }
         catch(Exception e){
-           pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+           pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
         }
        locationInput.setText("");
        peopleInput.setText("");
        dateFrom.setText("");
        dateTo.setText("");
        comboBox.setSelectedItem("");
-       createDynamicContent();
     }
     
     @Override
@@ -83,17 +70,12 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     public void createDynamicContent(){
         int max = App.buildings.entries.size() > 4? 4 : App.buildings.entries.size();
         int i = 0;
-        int rows = 0;   
-        
-        while(i < max){
-            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
-                BuildingWidget bw = new BuildingWidget();
-                widgets.add(bw);
-                buildingsPlane.add(bw, new AbsoluteConstraints(x,330*rows,-1,-1));
-                bw.init(App.buildings.entries.get(i));
-                ++i;
-            }
-            ++rows;
+        for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+            BuildingWidget bw = new BuildingWidget();
+            widgets.add(bw);
+            buildingsPlane.add(bw, new AbsoluteConstraints(x,0,-1,-1));
+            bw.init(App.buildings.entries.get(i));
+            ++i;
         }
     }
 
@@ -307,11 +289,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
         comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
-        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                comboBoxMouseReleased(evt);
-            }
-        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
@@ -621,10 +598,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
             break;
         }
     }//GEN-LAST:event_comboBoxActionPerformed
-
-    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
-        repaint();
-    }//GEN-LAST:event_comboBoxMouseReleased
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
        SearchEngine.search( App.buildings.entries,"montaña",0,SortType.PRICE);

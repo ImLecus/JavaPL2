@@ -20,20 +20,20 @@ public class App {
     public static Building focusedBuilding;
     public static JFrame frame = new JFrame("JavaB&B");
     
-    private static final Map<String, JPanel> pages = new HashMap<>();
+    private static final Map<String, JPanel> pages = new HashMap<>(){{
+        put("LOGIN",new LoginPage());
+        put("REGISTER", new RegisterPage());
+        put("MAIN", new MainPage());
+        put("PROFILE", new ProfilePage());
+        put("EULA", new EULAPage());
+        put("BUILDING", new BuildingPage());
+        put("SEARCH", new SearchPage());
+        put("COMMUNITY", new CommunityGuidelinesPage());
+        put("ADMIN", new AdminPage());
+    }};
+    public static JPanel currentPanel = pages.get("LOGIN");
+    
     public static boolean isAdmin;
-    
-    
-    private static final LoginPage login =                   new LoginPage();
-    private static final RegisterPage register =             new RegisterPage();
-    private static final MainPage main =                     new MainPage();
-    private static final ProfilePage profile =               new ProfilePage();
-    private static final EULAPage eula =                     new EULAPage();
-    private static final BuildingPage building =             new BuildingPage();
-    private static final SearchPage search =                 new SearchPage();
-    private static final CommunityGuidelinesPage community = new CommunityGuidelinesPage();
-    private static final AdminPage admin =                   new AdminPage();
-    public static JPanel currentPanel = login;
     
     public static void main(String[] args){
         
@@ -48,7 +48,6 @@ public class App {
             db.saveData("./src/main/resources/data/data.dat");      
             buildings.saveData("./src/main/resources/data/b_data.dat");       
         }
-        setupPages();
         setupFrame();
         redirect("LOGIN");
     }
@@ -64,7 +63,7 @@ public class App {
         JPanel p = pages.get(page);
         cards.add(p, page);
         if(p instanceof DynamicPage){
-            ((DynamicPage) p).reloadContent();
+            ((DynamicPage) p).reload();
         }
         cardLayout.show(cards, page);
         if(currentPanel != p){
@@ -77,25 +76,10 @@ public class App {
      * setting the minimum resizeable size.
      */
     public static void setupFrame(){
-        ImageIcon img =  new ImageIcon("/images/logo.png");
-        frame.setIconImage(img.getImage());
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(1000, 710));
         frame.setMaximumSize(new Dimension(1920, 1080));
         frame.setVisible(true);
-    }
-    
-    public static void setupPages(){
-        pages.put("LOGIN", login);
-        pages.put("REGISTER", register);
-        pages.put("MAIN", main);
-        pages.put("PROFILE", profile);
-        pages.put("EULA", eula);
-        pages.put("BUILDING", building);
-        pages.put("SEARCH",search);
-        pages.put("COMMUNITY_GUIDELINES",community);
-        pages.put("ADMIN",admin);
-    }
-    
+    }    
 }

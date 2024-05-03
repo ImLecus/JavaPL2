@@ -27,6 +27,7 @@ public class Session {
      */
     public void endSession() {
         finished = true;
+        App.db.saveData("./src/main/resources/data/data.dat");
     }
     
     /**

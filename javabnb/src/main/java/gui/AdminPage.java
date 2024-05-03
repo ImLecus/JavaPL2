@@ -15,15 +15,10 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         widgets = new ArrayList<>();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);
-        
     }
     
     @Override
-    public void reloadContent(){
-        deleteDynamicContent();
-        createDynamicContent();
-        repaint();
-    }
+    public void reloadContent(){}
     
     @Override
     public void createDynamicContent(){

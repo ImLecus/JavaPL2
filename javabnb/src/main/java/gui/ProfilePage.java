@@ -1,23 +1,15 @@
 package gui;
-import polaris.DynamicPage;
+import polaris.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
-import polaris.Polaris;
-import poo.javabnb.Building;
-import poo.javabnb.Client;
-import poo.javabnb.Host;
-import poo.javabnb.Validate;
-import poo.javabnb.util.FontManager;
-import poo.javabnb.util.Hashing;
-import poo.javabnb.util.Images;
+import poo.javabnb.*;
+import poo.javabnb.util.*;
 
-public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
-    
-    private boolean isEditing = false;
+public class ProfilePage extends JPanel implements DynamicPage {
     
     public ArrayList<BuildingWidget> widgets;
     
@@ -33,22 +25,20 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                isEditing = true;
-                userPhoneLabel.setEditable(isEditing);
-                userMailLabel.setEditable(isEditing);
-                nameLabel.setEditable(isEditing);
+                userPhoneLabel.setEditable(true);
+                userMailLabel.setEditable(true);
+                nameLabel.setEditable(true);
                 userPhoneLabel.setBackground(Polaris.INPUT_BG_COLOR);
                 userMailLabel.setBackground(Polaris.INPUT_BG_COLOR);
                 nameLabel.setBackground(Polaris.INPUT_BG_COLOR);
-                jButton2.setVisible(isEditing);
-                deleteAccountButton.setVisible(isEditing);
+                jButton2.setVisible(true);
+                deleteAccountButton.setVisible(true);
             }
         }); 
     }
     
     @Override
     public void reloadContent(){
-        deleteDynamicContent();
         newPostButton.setVisible(App.session.isHost);
         pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
@@ -61,26 +51,22 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jButton2.setVisible(false);
         deleteAccountButton.setVisible(false);
         try{
-            ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
+            ImageIcon pfpIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "1.png");
             pfpIcon.getImage().flush();
             pfp.setIcon(pfpIcon);
         }
         catch(Exception e){
-           pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default.png")));
+           pfp.setIcon(Images.getIcon("/images/profile_default.png"));
         }
         
         try{           
-            ImageIcon bannerIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "3.png"));
+            ImageIcon bannerIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "3.png");
             bannerIcon.getImage().flush();
             banner.setIcon(bannerIcon);
         }
         catch(Exception e){
-           banner.setIcon(new ImageIcon(getClass().getResource("/images/banner.png")));
+           banner.setIcon(Images.getIcon("/images/banner.png"));
         }
-
-        
-        App.session.updateSession();
-        createDynamicContent();
     }
     
     @Override
@@ -417,16 +403,14 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         if(jButton2.isEnabled()){
             App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
             App.session.updateSession(); 
-
-            isEditing = false;
-            userPhoneLabel.setEditable(isEditing);
-            userMailLabel.setEditable(isEditing);
-            nameLabel.setEditable(isEditing);
+            userPhoneLabel.setEditable(false);
+            userMailLabel.setEditable(false);
+            nameLabel.setEditable(false);
             userPhoneLabel.setBackground(Polaris.BG_COLOR);
             userMailLabel.setBackground(Polaris.BG_COLOR);
             nameLabel.setBackground(Polaris.BG_COLOR);
-            jButton2.setVisible(isEditing);
-            deleteAccountButton.setVisible(isEditing);
+            jButton2.setVisible(false);
+            deleteAccountButton.setVisible(false);
             App.redirect("PROFILE");
         }
             

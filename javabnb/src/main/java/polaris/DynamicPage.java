@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * executes.
  */
 public interface DynamicPage {
-    ArrayList<Object> items = new ArrayList<>();
     default void reload(){
         deleteDynamicContent();
         reloadContent();

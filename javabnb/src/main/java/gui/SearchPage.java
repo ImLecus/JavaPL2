@@ -1,12 +1,9 @@
 package gui;
 import java.util.ArrayList;
 import javax.swing.*;
-import polaris.DynamicPage;
-import polaris.Polaris;
-import poo.javabnb.Building;
+import polaris.*;
 import poo.javabnb.util.FontManager;
-import poo.javabnb.SearchEngine;
-import poo.javabnb.SortType;
+import poo.javabnb.*;
 
 public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -19,20 +16,16 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){
-        deleteDynamicContent();
         try{
             pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
         }
         catch(Exception e){
             pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
         }
-        //pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
-        createDynamicContent();
     }
     
     @Override
     public void createDynamicContent(){
-        
         int i = 0;
         int rows = 0;
         
@@ -140,11 +133,6 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         locationInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         locationInput.setMinimumSize(new java.awt.Dimension(80, 19));
         locationInput.setPreferredSize(new java.awt.Dimension(80, 17));
-        locationInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locationInputActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -254,11 +242,6 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         comboBox.setMinimumSize(new java.awt.Dimension(150, 150));
         comboBox.setPreferredSize(new java.awt.Dimension(150, 50));
         comboBox.setVerifyInputWhenFocusTarget(false);
-        comboBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                comboBoxMouseReleased(evt);
-            }
-        });
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
@@ -292,10 +275,6 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         App.redirect("MAIN");
     }//GEN-LAST:event_atrasButtonActionPerformed
 
-    private void locationInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_locationInputActionPerformed
-
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         SearchEngine.search( App.buildings.entries,
             locationInput.getText(),
@@ -308,14 +287,8 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         comboBox.setPopupVisible(true);
     }//GEN-LAST:event_pfpActionPerformed
 
-    private void comboBoxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxMouseReleased
-        repaint();
-    }//GEN-LAST:event_comboBoxMouseReleased
-
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        JComboBox cb = (JComboBox) evt.getSource();
-        String selectedItem = (String) cb.getSelectedItem();
-        System.out.println("Item seleccionado: " + selectedItem);
+        String selectedItem = (String) comboBox.getSelectedItem();
         switch (selectedItem) {
             case "Perfil":
             App.redirect("PROFILE");

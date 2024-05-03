@@ -16,6 +16,16 @@ public class Images {
         return new File("src/main/resources/" + path);
     }
     
+    public static ImageIcon getIcon(String path){
+        File f = getResource(path);
+        try{
+            return new ImageIcon(f.toURI().toURL());
+        }
+        catch(Exception e){
+            return null;
+        }
+    }   
+    
     /**
      * Resizes an image to an specified dimensions and saves it in a new path.
      * @param inputFile the file to be rescaled.
