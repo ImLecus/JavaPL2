@@ -95,8 +95,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
             }
             ++rows;
         }
-        
-        
     }
 
     /**
@@ -200,11 +198,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
         locationInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         locationInput.setMinimumSize(new java.awt.Dimension(80, 19));
         locationInput.setPreferredSize(new java.awt.Dimension(80, 17));
-        locationInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locationInputActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -601,10 +594,6 @@ public class MainPage extends javax.swing.JPanel implements DynamicPage {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         SearchEngine.search( App.buildings.entries,"nieve",0,SortType.PRICE);
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void locationInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_locationInputActionPerformed
 
     private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
         comboBox.setPopupVisible(true);

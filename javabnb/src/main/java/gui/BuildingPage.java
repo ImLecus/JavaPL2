@@ -41,7 +41,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         catch(Exception e){
             pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
         }
-        saved = App.session.user.pinnedPosts.contains(b.getID());
+        
         
       }
       else{
@@ -57,7 +57,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
       }
       reportButton.setIcon(new ImageIcon(getClass().getResource(App.isAdmin? "/images/ban.png" : "/images/report.png")));
       b = App.focusedBuilding;
-      
+      saved = App.session.user.pinnedPosts.contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.description);
       checkForReservations();

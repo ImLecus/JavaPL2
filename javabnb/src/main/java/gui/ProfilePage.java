@@ -8,8 +8,10 @@ import javax.swing.ImageIcon;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import polaris.Polaris;
 import poo.javabnb.Building;
+import poo.javabnb.Client;
 import poo.javabnb.Host;
 import poo.javabnb.util.FontManager;
+import poo.javabnb.util.Hashing;
 import poo.javabnb.util.Images;
 
 public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
@@ -32,6 +34,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 isEditing = true;
                 userPhoneLabel.setEditable(isEditing);
                 userMailLabel.setEditable(isEditing);
+                nameLabel.setEditable(isEditing);
             }
         }); 
     }
@@ -42,7 +45,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         newPostButton.setVisible(App.session.isHost);
         pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
         userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        //userDNILabel.setText(App.session == null? "null" : App.session.user.getDNI());
+        nameLabel.setText(App.session == null? "null" : App.session.user.getName());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
         
@@ -117,15 +120,25 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userNameLabel = new javax.swing.JLabel();
         pfp = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
+        banner = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        mailLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
         mailLabel = new javax.swing.JLabel();
         userMailLabel = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
         phoneLabel = new javax.swing.JLabel();
         userPhoneLabel = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
         newPostButton = new javax.swing.JButton();
-        banner = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -176,54 +189,6 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         content.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 330, 180));
 
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        mailLabel.setFont(FontManager.boldFont);
-        mailLabel.setText("Correo");
-        jPanel3.add(mailLabel, new java.awt.GridBagConstraints());
-
-        userMailLabel.setEditable(false);
-        userMailLabel.setText("****");
-        jPanel3.add(userMailLabel, new java.awt.GridBagConstraints());
-
-        phoneLabel.setFont(FontManager.boldFont);
-        phoneLabel.setText("Teléfono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        jPanel3.add(phoneLabel, gridBagConstraints);
-
-        userPhoneLabel.setEditable(false);
-        userPhoneLabel.setText("****");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        jPanel3.add(userPhoneLabel, gridBagConstraints);
-
-        content.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
-
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        pinnedPostsLabel.setFont(FontManager.titleFont);
-        pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
-        pinnedPostsLabel.setText("Inmuebles guardados");
-        jPanel1.add(pinnedPostsLabel, java.awt.BorderLayout.WEST);
-
-        newPostButton.setBackground(Polaris.MAIN_COLOR);
-        newPostButton.setFont(FontManager.boldFont);
-        newPostButton.setForeground(Polaris.BG_COLOR);
-        newPostButton.setText("Crear inmueble...");
-        newPostButton.setBorder(null);
-        newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newPostButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newPostButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(newPostButton, java.awt.BorderLayout.EAST);
-
-        content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 740, 30));
-
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
@@ -239,6 +204,92 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
             }
         });
         content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel3.setLayout(new java.awt.GridLayout());
+
+        jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.PAGE_AXIS));
+
+        mailLabel1.setFont(FontManager.boldFont);
+        mailLabel1.setText("Nombre");
+        jPanel8.add(mailLabel1);
+
+        nameLabel.setEditable(false);
+        nameLabel.setText("****");
+        jPanel8.add(nameLabel);
+
+        jPanel3.add(jPanel8);
+
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
+
+        mailLabel.setFont(FontManager.boldFont);
+        mailLabel.setText("Correo");
+        jPanel5.add(mailLabel);
+
+        userMailLabel.setEditable(false);
+        userMailLabel.setText("****");
+        jPanel5.add(userMailLabel);
+
+        jPanel3.add(jPanel5);
+
+        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
+
+        phoneLabel.setFont(FontManager.boldFont);
+        phoneLabel.setText("Teléfono");
+        jPanel6.add(phoneLabel);
+
+        userPhoneLabel.setEditable(false);
+        userPhoneLabel.setText("****");
+        jPanel6.add(userPhoneLabel);
+
+        jPanel3.add(jPanel6);
+
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        jButton2.setText("Guardar cambios");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 12;
+        jPanel9.add(jButton2, gridBagConstraints);
+
+        jPanel3.add(jPanel9);
+
+        jPanel4.add(jPanel3);
+        jPanel4.add(filler1);
+
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        pinnedPostsLabel.setFont(FontManager.titleFont);
+        pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel.setText("Inmuebles guardados");
+        jPanel1.add(pinnedPostsLabel);
+
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        newPostButton.setBackground(Polaris.MAIN_COLOR);
+        newPostButton.setFont(FontManager.boldFont);
+        newPostButton.setForeground(Polaris.BG_COLOR);
+        newPostButton.setText("Crear inmueble...");
+        newPostButton.setBorder(null);
+        newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newPostButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPostButtonActionPerformed(evt);
+            }
+        });
+        jPanel7.add(newPostButton);
+
+        jPanel1.add(jPanel7);
+
+        jPanel4.add(jPanel1);
+
+        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 840, 140));
 
         jScrollPane1.setViewportView(content);
 
@@ -262,18 +313,38 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         new NewBuildingPage().main(null);
     }//GEN-LAST:event_newPostButtonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
+        App.session.updateSession();
+        isEditing = false;
+        userPhoneLabel.setEditable(isEditing);
+        userMailLabel.setEditable(isEditing);
+        nameLabel.setEditable(isEditing);
+        App.redirect("PROFILE");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton banner;
     private javax.swing.JPanel content;
     private javax.swing.JButton editButton;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel mailLabel;
+    private javax.swing.JLabel mailLabel1;
+    private javax.swing.JTextField nameLabel;
     private javax.swing.JButton newPostButton;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;

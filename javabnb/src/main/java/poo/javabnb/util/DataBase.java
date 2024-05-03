@@ -65,6 +65,8 @@ public class DataBase implements Serializable {
      */
     public void update(int index, Client client){
         users.set(index, client);
+        mails.set(index, client.getMail());
+        passwords.set(index, client.getPassword());
     }
     
     /**

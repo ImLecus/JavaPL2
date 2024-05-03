@@ -1,17 +1,13 @@
 package gui;
-import poo.javabnb.util.BuildingDB;
-import poo.javabnb.util.DataBase;
+import poo.javabnb.util.*;
 import polaris.DynamicPage;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 import poo.javabnb.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import poo.javabnb.exceptions.DataBaseNotFoundException;
-import poo.javabnb.util.DBExample;
 
 public class App {
 
