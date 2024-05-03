@@ -117,6 +117,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         backButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         userNameLabel = new javax.swing.JLabel();
@@ -158,9 +159,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setFocusable(false);
-        content.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLayeredPane1.setLayer(backButton, javax.swing.JLayeredPane.MODAL_LAYER);
+        jLayeredPane1.add(backButton);
+        backButton.setBounds(20, 20, 24, 24);
 
         jPanel2.setBackground(Polaris.TRANSPARENT_COLOR);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -189,15 +192,19 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         editButton.setBorderPainted(false);
         jPanel2.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        content.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 330, 180));
+        jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.MODAL_LAYER);
+        jLayeredPane1.add(jPanel2);
+        jPanel2.setBounds(160, 180, 700, 150);
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
         banner.setBorderPainted(false);
+        banner.setDefaultCapable(false);
         banner.setDisabledIcon(null);
         banner.setFocusPainted(false);
         banner.setFocusable(false);
         banner.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        banner.setOpaque(true);
         banner.setRequestFocusEnabled(false);
         banner.setRolloverEnabled(false);
         banner.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +212,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 bannerActionPerformed(evt);
             }
         });
-        content.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLayeredPane1.add(banner);
+        banner.setBounds(0, 0, 1920, 250);
+
+        content.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 330));
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -373,6 +383,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
