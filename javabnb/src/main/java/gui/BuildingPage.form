@@ -66,7 +66,7 @@
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor Por defecto"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -801,7 +801,7 @@
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                                  <Color id="Cursor Por defecto"/>
+                                  <Color id="Cursor de Mano"/>
                                 </Property>
                                 <Property name="defaultCapable" type="boolean" value="false"/>
                                 <Property name="focusPainted" type="boolean" value="false"/>
@@ -828,7 +828,7 @@
                                 </Property>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                                  <Color id="Cursor Por defecto"/>
+                                  <Color id="Cursor de Mano"/>
                                 </Property>
                               </Properties>
                               <Events>
@@ -1019,7 +1019,7 @@
                   <SubComponents>
                     <Component class="javax.swing.Box$Filler" name="filler5">
                     </Component>
-                    <Container class="javax.swing.JPanel" name="leftSide2">
+                    <Container class="javax.swing.JPanel" name="commentSection">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>

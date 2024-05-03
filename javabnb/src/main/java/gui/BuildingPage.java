@@ -32,17 +32,32 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void reloadContent(){  
       deleteDynamicContent();
-      submitCommentButton.setVisible(!App.session.isHost);
-      try{
-        pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+      
+      if(!App.isAdmin){
+        commentSection.setVisible(!App.session.isHost);  
+        try{
+            pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+        }
+        catch(Exception e){
+            pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+        }
+        saved = App.session.user.pinnedPosts.contains(b.getID());
+        
       }
-      catch(Exception e){
-        pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+      else{
+          jPanel8.setVisible(false);
+          jPanel10.setVisible(false);
+          saveButton.setVisible(false);
+          msgInput.setVisible(false);
+          starsPanel2.setVisible(false);
+          submitCommentButton.setVisible(false);
+          reservation.setVisible(false);
+          
+          
       }
-      starsPanel2.setVisible(!App.session.isHost);
-      msgInput.setVisible(!App.session.isHost);
+      reportButton.setIcon(new ImageIcon(getClass().getResource(App.isAdmin? "/images/ban.png" : "/images/report.png")));
       b = App.focusedBuilding;
-      saved = App.session.user.pinnedPosts.contains(b.getID());
+      
       name.setText(b.info.title);
       description.setText(b.description);
       checkForReservations();
@@ -197,7 +212,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
-        leftSide2 = new javax.swing.JPanel();
+        commentSection = new javax.swing.JPanel();
         name2 = new javax.swing.JLabel();
         msgInput = new javax.swing.JTextArea();
         starsPanel2 = new javax.swing.JPanel();
@@ -229,7 +244,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
         atrasButton.setBorderPainted(false);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -560,7 +575,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -585,7 +600,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
@@ -723,8 +738,8 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         information1.setLayout(new java.awt.GridLayout(1, 0));
         information1.add(filler5);
 
-        leftSide2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        leftSide2.setLayout(new java.awt.GridBagLayout());
+        commentSection.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        commentSection.setLayout(new java.awt.GridBagLayout());
 
         name2.setBackground(polaris.Polaris.TEXT_COLOR);
         name2.setFont(FontManager.titleFont);
@@ -732,7 +747,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        leftSide2.add(name2, gridBagConstraints);
+        commentSection.add(name2, gridBagConstraints);
 
         msgInput.setBackground(Polaris.INPUT_BG_COLOR);
         msgInput.setColumns(20);
@@ -750,7 +765,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        leftSide2.add(msgInput, gridBagConstraints);
+        commentSection.add(msgInput, gridBagConstraints);
 
         starsPanel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         starsPanel2.setOpaque(false);
@@ -841,7 +856,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        leftSide2.add(starsPanel2, gridBagConstraints);
+        commentSection.add(starsPanel2, gridBagConstraints);
 
         submitCommentButton.setBackground(Polaris.MAIN_COLOR);
         submitCommentButton.setFont(FontManager.boldFont);
@@ -861,9 +876,9 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
         gridBagConstraints.ipady = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
-        leftSide2.add(submitCommentButton, gridBagConstraints);
+        commentSection.add(submitCommentButton, gridBagConstraints);
 
-        information1.add(leftSide2);
+        information1.add(commentSection);
         information1.add(filler6);
 
         mainBody.add(information1);
@@ -1016,13 +1031,19 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_submitCommentButtonActionPerformed
 
     private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
+        if(App.isAdmin){
+            App.buildings.remove(App.buildings.entries.indexOf(App.focusedBuilding));
+            App.redirect("ADMIN");
+            return;
+        }
+        
         Building newBuilding = b;
         newBuilding.reportedBy.add(App.session.user);
         App.buildings.update(b, newBuilding);
     }//GEN-LAST:event_reportButtonActionPerformed
 
     private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        App.redirect("MAIN");
+        App.redirect(App.isAdmin ? "ADMIN" : "MAIN");
     }//GEN-LAST:event_atrasButtonActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
@@ -1089,6 +1110,7 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel body;
     private javax.swing.JPanel carousel;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JPanel commentSection;
     private javax.swing.JPanel comments;
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
@@ -1125,7 +1147,6 @@ public class BuildingPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel leftSide;
-    private javax.swing.JPanel leftSide2;
     private javax.swing.JPanel leftSide4;
     private javax.swing.JTextField locationInput;
     private javax.swing.JPanel mainBody;
