@@ -68,4 +68,8 @@ public class Session {
         sessionID += String.format("%02d",date.get(Calendar.DAY_OF_MONTH))+String.format("%02d",date.get(Calendar.MONTH) + 1)+String.format("%04d",date.get(Calendar.YEAR))+String.format("%04d",sessionNumber);
         return new Session(client, sessionID, key);
     }
+    
+    public int getKey(){
+        return entry;
+    }
 }

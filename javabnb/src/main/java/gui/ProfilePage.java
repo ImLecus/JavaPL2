@@ -28,7 +28,8 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
         });
-        
+        Polaris.highlightOnHover(jButton2);
+        Polaris.highlightOnHover(editButton);
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -36,7 +37,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 userPhoneLabel.setEditable(isEditing);
                 userMailLabel.setEditable(isEditing);
                 nameLabel.setEditable(isEditing);
+                userPhoneLabel.setBackground(Polaris.INPUT_BG_COLOR);
+                userMailLabel.setBackground(Polaris.INPUT_BG_COLOR);
+                nameLabel.setBackground(Polaris.INPUT_BG_COLOR);
                 jButton2.setVisible(isEditing);
+                deleteAccountButton.setVisible(isEditing);
             }
         }); 
     }
@@ -50,7 +55,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         nameLabel.setText(App.session == null? "null" : App.session.user.getName());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
+        userPhoneLabel.setBackground(Polaris.BG_COLOR);
+        userMailLabel.setBackground(Polaris.BG_COLOR);
+        nameLabel.setBackground(Polaris.BG_COLOR);
         jButton2.setVisible(false);
+        deleteAccountButton.setVisible(false);
         try{
             ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
             pfpIcon.getImage().flush();
@@ -122,6 +131,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jPanel2 = new javax.swing.JPanel();
         userNameLabel = new javax.swing.JLabel();
         pfp = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
         editButton = new javax.swing.JButton();
         banner = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -137,6 +147,8 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         userPhoneLabel = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        deleteAccountButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
@@ -148,10 +160,12 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         setBackground(polaris.Polaris.BG_COLOR);
         setLayout(new java.awt.GridLayout(1, 0));
 
+        jScrollPane1.setBackground(Polaris.BG_COLOR);
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+        content.setBackground(Polaris.BG_COLOR);
         content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backButton.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -170,7 +184,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         userNameLabel.setFont(FontManager.titleFont);
         userNameLabel.setText("Nombre");
-        jPanel2.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        jPanel2.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 75, -1, -1));
 
         pfp.setBackground(polaris.Polaris.BG_COLOR);
         pfp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile_default.png"))); // NOI18N
@@ -187,14 +201,27 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         });
         jPanel2.add(pfp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jPanel10.setLayout(new java.awt.GridBagLayout());
+
+        editButton.setBackground(Polaris.MAIN_COLOR);
+        editButton.setFont(FontManager.boldFont);
+        editButton.setForeground(Polaris.BG_COLOR);
         editButton.setText("Editar perfil");
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
-        jPanel2.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setFocusPainted(false);
+        editButton.setFocusable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        jPanel10.add(editButton, gridBagConstraints);
+
+        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 125, -1, -1));
 
         jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.MODAL_LAYER);
         jLayeredPane1.add(jPanel2);
-        jPanel2.setBounds(160, 180, 700, 150);
+        jPanel2.setBounds(160, 180, 700, 225);
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
@@ -217,10 +244,13 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         content.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 330));
 
+        jPanel4.setBackground(Polaris.BG_COLOR);
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setBackground(Polaris.BG_COLOR);
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
+        jPanel8.setBackground(Polaris.BG_COLOR);
         jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.PAGE_AXIS));
 
         mailLabel1.setFont(FontManager.boldFont);
@@ -228,7 +258,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jPanel8.add(mailLabel1);
 
         nameLabel.setEditable(false);
+        nameLabel.setBackground(Polaris.INPUT_BG_COLOR);
+        nameLabel.setFont(FontManager.regularFont);
         nameLabel.setText("****");
+        nameLabel.setBorder(null);
         nameLabel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameLabelKeyPressed(evt);
@@ -238,6 +271,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel3.add(jPanel8);
 
+        jPanel5.setBackground(Polaris.BG_COLOR);
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
 
         mailLabel.setFont(FontManager.boldFont);
@@ -245,7 +279,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jPanel5.add(mailLabel);
 
         userMailLabel.setEditable(false);
+        userMailLabel.setBackground(Polaris.INPUT_BG_COLOR);
+        userMailLabel.setFont(FontManager.regularFont);
         userMailLabel.setText("****");
+        userMailLabel.setBorder(null);
         userMailLabel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameLabelKeyPressed(evt);
@@ -255,6 +292,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel3.add(jPanel5);
 
+        jPanel6.setBackground(Polaris.BG_COLOR);
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
 
         phoneLabel.setFont(FontManager.boldFont);
@@ -262,7 +300,10 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         jPanel6.add(phoneLabel);
 
         userPhoneLabel.setEditable(false);
+        userPhoneLabel.setBackground(Polaris.INPUT_BG_COLOR);
+        userPhoneLabel.setFont(FontManager.regularFont);
         userPhoneLabel.setText("****");
+        userPhoneLabel.setBorder(null);
         userPhoneLabel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameLabelKeyPressed(evt);
@@ -272,6 +313,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel3.add(jPanel6);
 
+        jPanel9.setBackground(Polaris.BG_COLOR);
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
         jButton2.setBackground(Polaris.MAIN_COLOR);
@@ -292,16 +334,41 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel3.add(jPanel9);
 
+        jPanel11.setBackground(Polaris.BG_COLOR);
+        jPanel11.setLayout(new java.awt.GridBagLayout());
+
+        deleteAccountButton.setBackground(Polaris.SECONDARY_COLOR);
+        deleteAccountButton.setFont(FontManager.boldFont);
+        deleteAccountButton.setForeground(Polaris.TEXT_COLOR);
+        deleteAccountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ban.png"))); // NOI18N
+        deleteAccountButton.setText("Eliminar cuenta");
+        deleteAccountButton.setBorder(null);
+        deleteAccountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAccountButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        jPanel11.add(deleteAccountButton, gridBagConstraints);
+
+        jPanel3.add(jPanel11);
+
         jPanel4.add(jPanel3);
         jPanel4.add(filler1);
 
+        jPanel1.setBackground(Polaris.BG_COLOR);
         jPanel1.setLayout(new java.awt.GridLayout());
 
+        pinnedPostsLabel.setBackground(Polaris.BG_COLOR);
         pinnedPostsLabel.setFont(FontManager.titleFont);
         pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
         pinnedPostsLabel.setText("Inmuebles guardados");
         jPanel1.add(pinnedPostsLabel);
 
+        jPanel7.setBackground(Polaris.BG_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         newPostButton.setBackground(Polaris.MAIN_COLOR);
@@ -355,7 +422,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
             userPhoneLabel.setEditable(isEditing);
             userMailLabel.setEditable(isEditing);
             nameLabel.setEditable(isEditing);
+            userPhoneLabel.setBackground(Polaris.BG_COLOR);
+            userMailLabel.setBackground(Polaris.BG_COLOR);
+            nameLabel.setBackground(Polaris.BG_COLOR);
             jButton2.setVisible(isEditing);
+            deleteAccountButton.setVisible(isEditing);
             App.redirect("PROFILE");
         }
             
@@ -374,17 +445,26 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         }
     }//GEN-LAST:event_nameLabelKeyPressed
 
+    private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
+        App.db.remove(App.session.getKey());
+        App.db.saveData("./src/main/resources/data/data.dat");
+        App.redirect("LOGIN");
+    }//GEN-LAST:event_deleteAccountButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton banner;
     private javax.swing.JPanel content;
+    private javax.swing.JButton deleteAccountButton;
     private javax.swing.JButton editButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
