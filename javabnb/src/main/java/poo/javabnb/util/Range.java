@@ -1,8 +1,8 @@
 package poo.javabnb.util;
 
 public class Range<T extends Comparable<T>> {
-    private T min;
-    private T max;
+    private final T min;
+    private final T max;
 
     public Range(T min, T max) {
         this.min = min;
@@ -12,13 +12,4 @@ public class Range<T extends Comparable<T>> {
     public boolean isInRange(T value) {
         return value.compareTo(min) > -1 && value.compareTo(max) < 1;
     }
-
-    public T getStart() {
-        return min;
-    }
-
-    public T getEnd() {
-        return max;
-    }
 }
-

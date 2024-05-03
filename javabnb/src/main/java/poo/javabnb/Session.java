@@ -7,7 +7,7 @@ public class Session {
     public final Client user;
     public final String ID;
     public final boolean isHost;
-    private boolean finished;
+
     /**
      * A session manages the current user data, and it's assigned to an ID.
      * When a session finishes, it can't be reused, it requires to create a new one.
@@ -18,7 +18,6 @@ public class Session {
         this.user = user;
         this.ID = ID;
         this.isHost = user instanceof Host;
-        this.finished = false;
         this.entry = key;
     }
 
@@ -26,7 +25,6 @@ public class Session {
      * Finishes the actual session.
      */
     public void endSession() {
-        finished = true;
         App.db.saveData("./src/main/resources/data/data.dat");
     }
     
@@ -43,16 +41,16 @@ public class Session {
      * @param id the ID to be added.
      */
     public void addPinnedPost(int id){
-        this.user.pinnedPosts.add(id);
+        user.pinnedPosts.add(id);
         updateSession();
     }
 
     /**
-     * 
-     * @param id 
+     * Deletes a pinned post, without deleting the original.
+     * @param id the ID to be deleted.
      */
     public void deletePinnedPost(int id){
-        this.user.pinnedPosts.remove(this.user.pinnedPosts.indexOf(id));
+        user.pinnedPosts.remove(user.pinnedPosts.indexOf(id));
         updateSession();
     }
         

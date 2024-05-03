@@ -14,8 +14,6 @@ public class Reservation {
         this.dateBounds = dateBounds;
         this.reservationDate = reservationDate;
     }
-
-    // Getters
     
     public Particular getClient() {
         return client;
@@ -29,7 +27,6 @@ public class Reservation {
         return dateBounds;
     }
 
-    // Setter
     public void setDateBounds(Range<Date> dateBounds) {
         this.dateBounds = dateBounds;
     }

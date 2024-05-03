@@ -1,15 +1,11 @@
 package poo.javabnb.util;
-import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.ImageIcon;
 import poo.javabnb.*;
 
 public class DBExample {
     private static Host DON_PABLO;
     private static Host HOST;
-    public static void setup(DataBase db, BuildingDB buildingDb){
-        //TO-DO: Convert client to particular
-        
+    public static void setup(DataBase db, BuildingDB buildingDb){    
         db.add(new Particular(
                 "00000000E",
                 "Example", 

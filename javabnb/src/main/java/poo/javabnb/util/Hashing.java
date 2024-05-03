@@ -1,5 +1,4 @@
 package poo.javabnb.util;
-
 import java.security.MessageDigest;
 
 public class Hashing {
