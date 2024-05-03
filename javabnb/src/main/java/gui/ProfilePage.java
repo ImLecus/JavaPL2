@@ -10,6 +10,7 @@ import polaris.Polaris;
 import poo.javabnb.Building;
 import poo.javabnb.Client;
 import poo.javabnb.Host;
+import poo.javabnb.Validate;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.util.Hashing;
 import poo.javabnb.util.Images;
@@ -35,6 +36,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
                 userPhoneLabel.setEditable(isEditing);
                 userMailLabel.setEditable(isEditing);
                 nameLabel.setEditable(isEditing);
+                jButton2.setVisible(isEditing);
             }
         }); 
     }
@@ -48,7 +50,7 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
         nameLabel.setText(App.session == null? "null" : App.session.user.getName());
         userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
         userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
-        
+        jButton2.setVisible(false);
         try{
             ImageIcon pfpIcon = new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "1.png"));
             pfpIcon.getImage().flush();
@@ -217,6 +219,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         nameLabel.setEditable(false);
         nameLabel.setText("****");
+        nameLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameLabelKeyPressed(evt);
+            }
+        });
         jPanel8.add(nameLabel);
 
         jPanel3.add(jPanel8);
@@ -229,6 +236,11 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         userMailLabel.setEditable(false);
         userMailLabel.setText("****");
+        userMailLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameLabelKeyPressed(evt);
+            }
+        });
         jPanel5.add(userMailLabel);
 
         jPanel3.add(jPanel5);
@@ -241,13 +253,23 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
 
         userPhoneLabel.setEditable(false);
         userPhoneLabel.setText("****");
+        userPhoneLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameLabelKeyPressed(evt);
+            }
+        });
         jPanel6.add(userPhoneLabel);
 
         jPanel3.add(jPanel6);
 
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
+        jButton2.setBackground(Polaris.MAIN_COLOR);
+        jButton2.setFont(FontManager.boldFont);
+        jButton2.setForeground(Polaris.BG_COLOR);
         jButton2.setText("Guardar cambios");
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -314,14 +336,33 @@ public class ProfilePage extends javax.swing.JPanel implements DynamicPage {
     }//GEN-LAST:event_newPostButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
-        App.session.updateSession();
-        isEditing = false;
-        userPhoneLabel.setEditable(isEditing);
-        userMailLabel.setEditable(isEditing);
-        nameLabel.setEditable(isEditing);
-        App.redirect("PROFILE");
+        
+        if(jButton2.isEnabled()){
+            App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
+            App.session.updateSession(); 
+
+            isEditing = false;
+            userPhoneLabel.setEditable(isEditing);
+            userMailLabel.setEditable(isEditing);
+            nameLabel.setEditable(isEditing);
+            jButton2.setVisible(isEditing);
+            App.redirect("PROFILE");
+        }
+            
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nameLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameLabelKeyPressed
+        boolean name = Validate.validateName(nameLabel.getText());
+        boolean mail = Validate.validateMail(userMailLabel.getText());
+        boolean number = Validate.validatePhone(userPhoneLabel.getText());
+        boolean password = true; // to be implemented
+        if(name && mail && number && password){
+            Polaris.enable(jButton2);
+        }
+        else{
+            Polaris.disable(jButton2);
+        }
+    }//GEN-LAST:event_nameLabelKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

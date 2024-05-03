@@ -76,4 +76,9 @@ public class Polaris {
         component.setBackground(DISABLED_COLOR);
     }
     
+    public static void enable(JComponent component){
+        component.setEnabled(true);
+        component.setBackground(MAIN_COLOR);
+    }
+    
 }
