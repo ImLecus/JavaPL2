@@ -14,12 +14,14 @@ public class BuildingPage extends JPanel implements DynamicPage {
     ArrayList<CommentWidget> widgets;
     private boolean saved = false;
     private boolean click = false;
+    private boolean reserve = false;
     public BuildingPage() {
         initComponents();
         Polaris.highlightOnHover(submitButton);
         widgets = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);     
+       
     }
     
     @Override
@@ -31,7 +33,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         }
         catch(Exception e){
             pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
-        }
+        } 
       }
       else{
           jPanel8.setVisible(false);
@@ -66,6 +68,12 @@ public class BuildingPage extends JPanel implements DynamicPage {
       idaLabel.setText("");
       vueltaLabel.setText("");
       errorLabel1.setVisible(false);
+       if (b.reservations != null){
+            reservationLabel.setText(b.reservations.toString());
+        }
+        else{
+            reservationLabel.setText(null);
+        }
     }
     @Override
     public void createDynamicContent(){
@@ -130,6 +138,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             errorLabel1.setVisible(true);
             repaint();
         }
+        else{reserve = true;}
     }
     
     /**
@@ -179,7 +188,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        reservationLabel = new javax.swing.JLabel();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -229,7 +238,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         atrasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         atrasButton.setBorder(null);
         atrasButton.setBorderPainted(false);
-        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        atrasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         atrasButton.setFocusable(false);
         atrasButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         atrasButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -540,7 +549,13 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
-        leftSide.add(filler2, new java.awt.GridBagConstraints());
+
+        reservationLabel.setText("Reservas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        leftSide.add(reservationLabel, gridBagConstraints);
 
         information.add(leftSide);
 
@@ -555,7 +570,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -580,7 +595,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
@@ -616,7 +631,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         submitButton.setForeground(polaris.Polaris.BG_COLOR);
         submitButton.setText("Reserva");
         submitButton.setBorder(null);
-        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
@@ -755,7 +770,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar1.setBorder(null);
         setStar1.setBorderPainted(false);
-        setStar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar1.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar1.setFocusPainted(false);
         setStar1.setFocusable(false);
@@ -771,7 +786,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar2.setBorder(null);
         setStar2.setBorderPainted(false);
-        setStar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar2.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar2.setFocusPainted(false);
         setStar2.setFocusable(false);
@@ -787,7 +802,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar3.setBorder(null);
         setStar3.setBorderPainted(false);
-        setStar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar3.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar3.setFocusPainted(false);
         setStar3.setFocusable(false);
@@ -803,7 +818,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar4.setBorder(null);
         setStar4.setBorderPainted(false);
-        setStar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar4.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar4.setFocusPainted(false);
         setStar4.setFocusable(false);
@@ -819,7 +834,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar5.setBorder(null);
         setStar5.setBorderPainted(false);
-        setStar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setStar5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setStar5.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar5.setFocusPainted(false);
         setStar5.setFocusable(false);
@@ -843,7 +858,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         submitCommentButton.setForeground(Polaris.BG_COLOR);
         submitCommentButton.setText("Enviar");
         submitCommentButton.setBorder(null);
-        submitCommentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitCommentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         submitCommentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitCommentButtonActionPerformed(evt);
@@ -919,7 +934,8 @@ public class BuildingPage extends JPanel implements DynamicPage {
             e.printStackTrace();
             return;
         }
-
+        checkForReservations();
+        if(reserve==true){
         // Create a new reservation and add it to the building's reservations
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
         Reservation newReservation = new Reservation((Particular)App.session.user, range, new Date());
@@ -928,7 +944,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         // Generate the bill
         Bill bill = new Bill();
         bill.generateBill(App.session.user, b, dateEntrada, dateSalida);
-        
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
       
@@ -1090,7 +1106,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
@@ -1130,6 +1145,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JLabel props;
     private javax.swing.JButton reportButton;
     private javax.swing.JPanel reservation;
+    private javax.swing.JLabel reservationLabel;
     private javax.swing.JPanel rightSide;
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel savedAndReport;

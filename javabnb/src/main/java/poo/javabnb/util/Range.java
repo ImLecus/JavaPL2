@@ -12,4 +12,9 @@ public class Range<T extends Comparable<T>> {
     public boolean isInRange(T value) {
         return value.compareTo(min) > -1 && value.compareTo(max) < 1;
     }
+    
+    @Override
+    public String toString(){
+        return String.valueOf(min) + " to " + String.valueOf(max);
+    }
 }

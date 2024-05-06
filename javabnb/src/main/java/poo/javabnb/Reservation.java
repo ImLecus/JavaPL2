@@ -30,4 +30,8 @@ public class Reservation {
     public void setDateBounds(Range<Date> dateBounds) {
         this.dateBounds = dateBounds;
     }
+    
+    public String toString() {
+        return dateBounds.toString();
+    }
 }
