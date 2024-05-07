@@ -105,17 +105,25 @@ public class DataBase implements Serializable {
      * @return the existing DataBase
      */
     public static DataBase from(String path) throws DataBaseNotFoundException {
-        try{
-            FileInputStream fis = new FileInputStream(path);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            DataBase result = (DataBase) ois.readObject();
-            fis.close();
-            return result;
-        }
-        catch(Exception e){
-            throw new DataBaseNotFoundException();
-        }
+    try {
+        System.out.println("Intentando cargar la base de datos desde: " + path); // Agrega esta línea
+        FileInputStream fis = new FileInputStream(path);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        DataBase result = (DataBase) ois.readObject();
+        fis.close();
+        return result;
+    } catch (FileNotFoundException e) {
+        System.err.println("Error: Archivo no encontrado al cargar la base de datos desde " + path);
+        throw new DataBaseNotFoundException();
+    } catch (IOException e) {
+        System.err.println("Error de entrada/salida al leer el archivo de la base de datos desde " + path);
+        throw new DataBaseNotFoundException();
+    } catch (ClassNotFoundException e) {
+        System.err.println("Error: Clase no encontrada al deserializar el archivo de la base de datos desde " + path);
+        throw new DataBaseNotFoundException();
     }
+}
+
     
     /**
      * Saves the data in the specified path.

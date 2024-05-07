@@ -1,6 +1,7 @@
 package poo.javabnb.util;
 
 import java.io.FileInputStream;
+import java.io.*;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,17 +23,23 @@ public class BuildingDB implements Serializable{
    
     }
     public static BuildingDB from(String path) throws DataBaseNotFoundException {
-        try{
-            FileInputStream fis = new FileInputStream(path);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            BuildingDB result = (BuildingDB) ois.readObject();
-            fis.close();
-            return result;
-        }
-        catch(Exception e){
-            throw new DataBaseNotFoundException();
-        }
+    try {
+        FileInputStream fis = new FileInputStream(path);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        BuildingDB result = (BuildingDB) ois.readObject();
+        fis.close();
+        return result;
+    } catch (FileNotFoundException e) {
+        System.out.println("FileNotFoundException");
+        throw new DataBaseNotFoundException();
+    } catch (IOException e) {
+        System.out.println("IOException");
+        throw new DataBaseNotFoundException();
+    } catch (ClassNotFoundException e) {
+        System.out.println("ClassNotFoundException");
+        throw new DataBaseNotFoundException();
     }
+}
     
     public void saveData(String path){
         try{

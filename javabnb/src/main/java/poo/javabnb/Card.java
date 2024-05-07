@@ -1,6 +1,8 @@
 package poo.javabnb;
 
-public record Card(String owner, String number, String endDate, String cvv) {
+import java.io.Serializable;
+
+public record Card(String owner, String number, String endDate, String cvv) implements Serializable{
     /**
      * Cards are used by the particulars to pay the buildings.
      *

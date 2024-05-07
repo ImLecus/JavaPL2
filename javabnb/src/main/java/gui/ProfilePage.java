@@ -20,7 +20,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
         });
-        Polaris.highlightOnHover(jButton2);
+        Polaris.highlightOnHover(saveButton);
         Polaris.highlightOnHover(editButton);
         editButton.addActionListener(new ActionListener() {
             @Override
@@ -31,7 +31,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
                 userPhoneLabel.setBackground(Polaris.INPUT_BG_COLOR);
                 userMailLabel.setBackground(Polaris.INPUT_BG_COLOR);
                 nameLabel.setBackground(Polaris.INPUT_BG_COLOR);
-                jButton2.setVisible(true);
+                saveButton.setVisible(true);
                 deleteAccountButton.setVisible(true);
             }
         }); 
@@ -48,7 +48,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         userPhoneLabel.setBackground(Polaris.BG_COLOR);
         userMailLabel.setBackground(Polaris.BG_COLOR);
         nameLabel.setBackground(Polaris.BG_COLOR);
-        jButton2.setVisible(false);
+        saveButton.setVisible(false);
         deleteAccountButton.setVisible(false);
         try{
             ImageIcon pfpIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "1.png");
@@ -132,7 +132,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         phoneLabel = new javax.swing.JLabel();
         userPhoneLabel = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         deleteAccountButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
@@ -159,7 +159,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         backButton.setBorder(null);
         backButton.setBorderPainted(false);
         backButton.setContentAreaFilled(false);
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backButton.setFocusable(false);
         jLayeredPane1.setLayer(backButton, javax.swing.JLayeredPane.MODAL_LAYER);
         jLayeredPane1.add(backButton);
@@ -195,7 +195,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         editButton.setText("Editar perfil");
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
-        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editButton.setFocusPainted(false);
         editButton.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -207,7 +207,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
 
         jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.MODAL_LAYER);
         jLayeredPane1.add(jPanel2);
-        jPanel2.setBounds(160, 180, 700, 225);
+        jPanel2.setBounds(160, 180, 700, 150);
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner.png"))); // NOI18N
         banner.setBorder(null);
@@ -302,21 +302,21 @@ public class ProfilePage extends JPanel implements DynamicPage {
         jPanel9.setBackground(Polaris.BG_COLOR);
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jButton2.setBackground(Polaris.MAIN_COLOR);
-        jButton2.setFont(FontManager.boldFont);
-        jButton2.setForeground(Polaris.BG_COLOR);
-        jButton2.setText("Guardar cambios");
-        jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setBackground(Polaris.MAIN_COLOR);
+        saveButton.setFont(FontManager.boldFont);
+        saveButton.setForeground(Polaris.BG_COLOR);
+        saveButton.setText("Guardar cambios");
+        saveButton.setBorder(null);
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 36;
         gridBagConstraints.ipady = 12;
-        jPanel9.add(jButton2, gridBagConstraints);
+        jPanel9.add(saveButton, gridBagConstraints);
 
         jPanel3.add(jPanel9);
 
@@ -329,7 +329,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         deleteAccountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ban.png"))); // NOI18N
         deleteAccountButton.setText("Eliminar cuenta");
         deleteAccountButton.setBorder(null);
-        deleteAccountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteAccountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteAccountButtonActionPerformed(evt);
@@ -346,7 +346,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         jPanel4.add(filler1);
 
         jPanel1.setBackground(Polaris.BG_COLOR);
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         pinnedPostsLabel.setBackground(Polaris.BG_COLOR);
         pinnedPostsLabel.setFont(FontManager.titleFont);
@@ -362,7 +362,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         newPostButton.setForeground(Polaris.BG_COLOR);
         newPostButton.setText("Crear inmueble...");
         newPostButton.setBorder(null);
-        newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newPostButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         newPostButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newPostButtonActionPerformed(evt);
@@ -398,9 +398,9 @@ public class ProfilePage extends JPanel implements DynamicPage {
         new NewBuildingPage().main(null);
     }//GEN-LAST:event_newPostButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
-        if(jButton2.isEnabled()){
+        if(saveButton.isEnabled()){
             App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
             App.session.updateSession(); 
             userPhoneLabel.setEditable(false);
@@ -409,12 +409,12 @@ public class ProfilePage extends JPanel implements DynamicPage {
             userPhoneLabel.setBackground(Polaris.BG_COLOR);
             userMailLabel.setBackground(Polaris.BG_COLOR);
             nameLabel.setBackground(Polaris.BG_COLOR);
-            jButton2.setVisible(false);
+            saveButton.setVisible(false);
             deleteAccountButton.setVisible(false);
             App.redirect("PROFILE");
         }
             
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void nameLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameLabelKeyPressed
         boolean name = Validate.validateName(nameLabel.getText());
@@ -422,10 +422,10 @@ public class ProfilePage extends JPanel implements DynamicPage {
         boolean number = Validate.validatePhone(userPhoneLabel.getText());
         boolean password = true; // to be implemented
         if(name && mail && number && password){
-            Polaris.enable(jButton2);
+            Polaris.enable(saveButton);
         }
         else{
-            Polaris.disable(jButton2);
+            Polaris.disable(saveButton);
         }
     }//GEN-LAST:event_nameLabelKeyPressed
 
@@ -444,7 +444,6 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JButton editButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -465,6 +464,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel pinnedPostsLabel;
+    private javax.swing.JButton saveButton;
     private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;
     private javax.swing.JTextField userPhoneLabel;

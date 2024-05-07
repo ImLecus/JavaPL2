@@ -1,6 +1,8 @@
 package poo.javabnb;
 
-public class PreferencesManager {
+import java.io.Serializable;
+
+public class PreferencesManager implements Serializable{
     private String[] preferences;
 
     // Constructor

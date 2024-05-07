@@ -1,6 +1,8 @@
 package poo.javabnb;
 
-public class BuildingInfo {
+import java.io.Serializable;
+
+public class BuildingInfo implements Serializable{
     public String title;
     public final Host host;
     public int price;

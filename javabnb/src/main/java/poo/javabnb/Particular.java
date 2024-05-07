@@ -1,5 +1,8 @@
 package poo.javabnb;
-public class Particular extends Client {
+
+import java.io.Serializable;
+
+public class Particular extends Client implements Serializable{
     private final Card card;
     public boolean VIP;
     public PreferencesManager preferences;

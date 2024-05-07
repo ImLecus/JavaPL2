@@ -1,9 +1,10 @@
 package poo.javabnb;
 
+import java.io.Serializable;
 import poo.javabnb.util.Range;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Serializable{
     Particular client;
     Range<Date> dateBounds;
     Date reservationDate;

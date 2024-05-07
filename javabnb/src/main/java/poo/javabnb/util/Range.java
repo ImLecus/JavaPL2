@@ -1,6 +1,8 @@
 package poo.javabnb.util;
 
-public class Range<T extends Comparable<T>> {
+import java.io.Serializable;
+
+public class Range<T extends Comparable<T>> implements Serializable{
     private final T min;
     private final T max;
 

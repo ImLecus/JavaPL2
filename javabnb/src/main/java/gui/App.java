@@ -35,22 +35,26 @@ public class App {
     
     public static boolean isAdmin;
     
-    public static void main(String[] args){
-        
-        try{
+    public static void main(String[] args) {
+
+        try {
             db = DataBase.from("./src/main/resources/data/data.dat");
             buildings = BuildingDB.from("./src/main/resources/data/b_data.dat");
-        }
-        catch(DataBaseNotFoundException e){
+        } 
+        catch (DataBaseNotFoundException e) {
+            System.out.println("me muero");
             db = new DataBase();
             buildings = new BuildingDB();
             DBExample.setup(db, buildings);
-            db.saveData("./src/main/resources/data/data.dat");      
-            buildings.saveData("./src/main/resources/data/b_data.dat");       
-        }
-        setupFrame();
-        redirect("LOGIN");
+            db.saveData("./src/main/resources/data/data.dat");
+            buildings.saveData("./src/main/resources/data/b_data.dat");
     }
+    
+    // Utiliza la base de datos y los datos de edificios creados o cargados
+    setupFrame();
+    redirect("LOGIN");
+}
+
 
     /**
      * Pages are inside a CardLayout. Inside the page's procedure, they can

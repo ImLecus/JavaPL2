@@ -1,11 +1,12 @@
 package poo.javabnb;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import static poo.javabnb.SortType.*;
 import poo.javabnb.Reservation;
 
-public class Building implements Comparable {
+public class Building implements Comparable,Serializable{
     public BuildingInfo info;
     private String address;
     public int rooms;

@@ -1,10 +1,11 @@
 package poo.javabnb;
 
 import gui.App;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Host extends Client {
+public class Host extends Client implements Serializable{
     public final Date date;
     public boolean superhost;
 
