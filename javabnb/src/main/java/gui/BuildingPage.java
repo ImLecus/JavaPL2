@@ -14,7 +14,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
     ArrayList<CommentWidget> widgets;
     private boolean saved = false;
     private boolean click = false;
-    private boolean reserve = false;
     public BuildingPage() {
         initComponents();
         Polaris.highlightOnHover(submitButton);
@@ -65,11 +64,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
       image.setIcon(Images.resizeImage(App.focusedBuilding.image,0, 564));
-      idaLabel.setText("");
-      vueltaLabel.setText("");
+      idaLabel.setValue(null);
+      vueltaLabel.setValue(null);
       errorLabel1.setVisible(false);
        if (b.reservations != null){
-            reservationLabel.setText(b.reservations.toString());
+            reservationLabel.setText(b.reservations.toString().substring(1, b.reservations.toString().length() - 1));
         }
         else{
             reservationLabel.setText(null);
@@ -138,7 +137,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
             errorLabel1.setVisible(true);
             repaint();
         }
-        else{reserve = true;}
+        else{
+            Polaris.enable(submitButton);
+            errorLabel1.setVisible(false);
+            repaint();
+        }
     }
     
     /**
@@ -188,7 +191,8 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
-        reservationLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reservationLabel = new javax.swing.JTextArea();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -550,12 +554,19 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
 
-        reservationLabel.setText("Reservas");
+        reservationLabel.setColumns(20);
+        reservationLabel.setLineWrap(true);
+        reservationLabel.setRows(5);
+        reservationLabel.setWrapStyleWord(true);
+        reservationLabel.setMaximumSize(new java.awt.Dimension(252, 30));
+        reservationLabel.setPreferredSize(new java.awt.Dimension(252, 30));
+        jScrollPane1.setViewportView(reservationLabel);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        leftSide.add(reservationLabel, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        leftSide.add(jScrollPane1, gridBagConstraints);
 
         information.add(leftSide);
 
@@ -645,6 +656,9 @@ public class BuildingPage extends JPanel implements DynamicPage {
             }
         });
         idaLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vueltaLabelKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 idaLabelKeyTyped(evt);
             }
@@ -662,6 +676,9 @@ public class BuildingPage extends JPanel implements DynamicPage {
             }
         });
         vueltaLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vueltaLabelKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 idaLabelKeyTyped(evt);
             }
@@ -921,16 +938,14 @@ public class BuildingPage extends JPanel implements DynamicPage {
             return;
         }
         checkForReservations();
-        if(reserve==true){
-        // Create a new reservation and add it to the building's reservations
+
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
         Reservation newReservation = new Reservation((Particular)App.session.user, range, new Date());
         b.reservations.add(newReservation);
 
-        // Generate the bill
         Bill bill = new Bill();
         bill.generateBill(App.session.user, b, dateEntrada, dateSalida);
-        }
+        App.redirect("BUILDING");
     }//GEN-LAST:event_submitButtonActionPerformed
 
       
@@ -1061,6 +1076,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
         repaint();
     }//GEN-LAST:event_idaLabelKeyTyped
 
+    private void vueltaLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vueltaLabelKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vueltaLabelKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -1101,6 +1120,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel leftSide;
     private javax.swing.JPanel leftSide4;
@@ -1115,7 +1135,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JLabel props;
     private javax.swing.JButton reportButton;
     private javax.swing.JPanel reservation;
-    private javax.swing.JLabel reservationLabel;
+    private javax.swing.JTextArea reservationLabel;
     private javax.swing.JPanel rightSide;
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel savedAndReport;
