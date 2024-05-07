@@ -55,6 +55,7 @@ public class App {
     }
 
 
+
     /**
      * Pages are inside a CardLayout. Inside the page's procedure, they can
      * call the App.redirect() method to change the view.

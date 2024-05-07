@@ -497,6 +497,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star1.setFocusPainted(false);
         star1.setFocusable(false);
         star1.setPreferredSize(new java.awt.Dimension(20, 20));
+        star1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                star1MouseEntered(evt);
+            }
+        });
         starsPanel.add(star1);
 
         star2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -508,6 +513,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star2.setFocusPainted(false);
         star2.setFocusable(false);
         star2.setPreferredSize(new java.awt.Dimension(20, 20));
+        star2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                star2MouseEntered(evt);
+            }
+        });
         starsPanel.add(star2);
 
         star3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -519,6 +529,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star3.setFocusPainted(false);
         star3.setFocusable(false);
         star3.setPreferredSize(new java.awt.Dimension(20, 20));
+        star3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                star3MouseEntered(evt);
+            }
+        });
         starsPanel.add(star3);
 
         star4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -530,6 +545,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star4.setFocusPainted(false);
         star4.setFocusable(false);
         star4.setPreferredSize(new java.awt.Dimension(20, 20));
+        star4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                star4MouseEntered(evt);
+            }
+        });
         starsPanel.add(star4);
 
         star5.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -574,6 +594,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
+        saveButton.setOpaque(true);
         saveButton.setRequestFocusEnabled(false);
         saveButton.setVerifyInputWhenFocusTarget(false);
         saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -596,6 +617,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
         reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reportButton.setOpaque(true);
         reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportButtonMouseEntered(evt);
@@ -762,11 +784,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         commentSection.add(msgInput, gridBagConstraints);
 
-        starsPanel2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        starsPanel2.setBackground(polaris.Polaris.BG_COLOR);
         starsPanel2.setOpaque(false);
         starsPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        setStar1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar1.setBackground(polaris.Polaris.BG_COLOR);
         setStar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar1.setBorder(null);
         setStar1.setBorderPainted(false);
@@ -775,6 +797,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar1.setFocusPainted(false);
         setStar1.setFocusable(false);
         setStar1.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setStar1MouseExited(evt);
+            }
+        });
         setStar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setStar1ActionPerformed(evt);
@@ -782,7 +809,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         });
         starsPanel2.add(setStar1);
 
-        setStar2.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar2.setBackground(polaris.Polaris.BG_COLOR);
         setStar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar2.setBorder(null);
         setStar2.setBorderPainted(false);
@@ -791,6 +818,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar2.setFocusPainted(false);
         setStar2.setFocusable(false);
         setStar2.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setStar2MouseExited(evt);
+            }
+        });
         setStar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setStar2ActionPerformed(evt);
@@ -798,7 +830,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         });
         starsPanel2.add(setStar2);
 
-        setStar3.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar3.setBackground(polaris.Polaris.BG_COLOR);
         setStar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar3.setBorder(null);
         setStar3.setBorderPainted(false);
@@ -807,6 +839,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar3.setFocusPainted(false);
         setStar3.setFocusable(false);
         setStar3.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setStar3MouseExited(evt);
+            }
+        });
         setStar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setStar3ActionPerformed(evt);
@@ -814,7 +851,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         });
         starsPanel2.add(setStar3);
 
-        setStar4.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar4.setBackground(polaris.Polaris.BG_COLOR);
         setStar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar4.setBorder(null);
         setStar4.setBorderPainted(false);
@@ -823,6 +860,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar4.setFocusPainted(false);
         setStar4.setFocusable(false);
         setStar4.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setStar4MouseExited(evt);
+            }
+        });
         setStar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setStar4ActionPerformed(evt);
@@ -830,7 +872,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         });
         starsPanel2.add(setStar4);
 
-        setStar5.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        setStar5.setBackground(polaris.Polaris.BG_COLOR);
         setStar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         setStar5.setBorder(null);
         setStar5.setBorderPainted(false);
@@ -839,6 +881,14 @@ public class BuildingPage extends JPanel implements DynamicPage {
         setStar5.setFocusPainted(false);
         setStar5.setFocusable(false);
         setStar5.setPreferredSize(new java.awt.Dimension(20, 20));
+        setStar5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setStar5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setStar5MouseExited(evt);
+            }
+        });
         setStar5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setStar5ActionPerformed(evt);
@@ -1090,6 +1140,46 @@ public class BuildingPage extends JPanel implements DynamicPage {
         checkForReservations();
         repaint();
     }//GEN-LAST:event_idaLabelKeyTyped
+
+    private void star1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_star1MouseEntered
+        repaint();
+    }//GEN-LAST:event_star1MouseEntered
+
+    private void star2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_star2MouseEntered
+        repaint();
+    }//GEN-LAST:event_star2MouseEntered
+
+    private void star3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_star3MouseEntered
+        repaint();
+    }//GEN-LAST:event_star3MouseEntered
+
+    private void star4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_star4MouseEntered
+        repaint();
+    }//GEN-LAST:event_star4MouseEntered
+
+    private void setStar5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar5MouseEntered
+        repaint();
+    }//GEN-LAST:event_setStar5MouseEntered
+
+    private void setStar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar1MouseExited
+        repaint();
+    }//GEN-LAST:event_setStar1MouseExited
+
+    private void setStar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar2MouseExited
+        repaint();
+    }//GEN-LAST:event_setStar2MouseExited
+
+    private void setStar3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar3MouseExited
+        repaint();
+    }//GEN-LAST:event_setStar3MouseExited
+
+    private void setStar4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar4MouseExited
+        repaint();
+    }//GEN-LAST:event_setStar4MouseExited
+
+    private void setStar5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setStar5MouseExited
+        repaint();
+    }//GEN-LAST:event_setStar5MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

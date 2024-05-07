@@ -660,6 +660,9 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star1MouseEntered"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star2">
                               <Properties>
@@ -683,6 +686,9 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star2MouseEntered"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star3">
                               <Properties>
@@ -706,6 +712,9 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star3MouseEntered"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star4">
                               <Properties>
@@ -729,6 +738,9 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star4MouseEntered"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star5">
                               <Properties>
@@ -808,6 +820,7 @@
                                 <Property name="defaultCapable" type="boolean" value="false"/>
                                 <Property name="focusPainted" type="boolean" value="false"/>
                                 <Property name="focusable" type="boolean" value="false"/>
+                                <Property name="opaque" type="boolean" value="true"/>
                                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                               </Properties>
@@ -832,6 +845,7 @@
                                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                                   <Color id="Default Cursor"/>
                                 </Property>
+                                <Property name="opaque" type="boolean" value="true"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="reportButtonMouseEntered"/>
@@ -1073,7 +1087,7 @@
                         <Container class="javax.swing.JPanel" name="starsPanel2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                              <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                             </Property>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
@@ -1091,7 +1105,7 @@
                             <Component class="javax.swing.JButton" name="setStar1">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                                  <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                                 </Property>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/images/star.png"/>
@@ -1113,13 +1127,14 @@
                                 </Property>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar1MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar1ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="setStar2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                                  <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                                 </Property>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/images/star.png"/>
@@ -1141,13 +1156,14 @@
                                 </Property>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar2MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar2ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="setStar3">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                                  <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                                 </Property>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/images/star.png"/>
@@ -1169,13 +1185,14 @@
                                 </Property>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar3MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar3ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="setStar4">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                                  <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                                 </Property>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/images/star.png"/>
@@ -1197,13 +1214,14 @@
                                 </Property>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar4MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar4ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="setStar5">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="polaris.Polaris.TRANSPARENT_COLOR" type="code"/>
+                                  <Connection code="polaris.Polaris.BG_COLOR" type="code"/>
                                 </Property>
                                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                                   <Image iconType="3" name="/images/star.png"/>
@@ -1225,6 +1243,8 @@
                                 </Property>
                               </Properties>
                               <Events>
+                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar5MouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar5MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar5ActionPerformed"/>
                               </Events>
                             </Component>
