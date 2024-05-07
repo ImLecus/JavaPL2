@@ -660,9 +660,6 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
-                              <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star1MouseEntered"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star2">
                               <Properties>
@@ -686,9 +683,6 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
-                              <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star2MouseEntered"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star3">
                               <Properties>
@@ -712,9 +706,6 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
-                              <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star3MouseEntered"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star4">
                               <Properties>
@@ -738,9 +729,6 @@
                                   <Dimension value="[20, 20]"/>
                                 </Property>
                               </Properties>
-                              <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="star4MouseEntered"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="star5">
                               <Properties>
@@ -825,8 +813,6 @@
                                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="saveButtonMouseEntered"/>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="saveButtonMouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
                               </Events>
                             </Component>
@@ -848,8 +834,6 @@
                                 <Property name="opaque" type="boolean" value="true"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="reportButtonMouseEntered"/>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="reportButtonMouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportButtonActionPerformed"/>
                               </Events>
                             </Component>
@@ -1127,7 +1111,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar1MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar1ActionPerformed"/>
                               </Events>
                             </Component>
@@ -1156,7 +1139,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar2MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar2ActionPerformed"/>
                               </Events>
                             </Component>
@@ -1185,7 +1167,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar3MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar3ActionPerformed"/>
                               </Events>
                             </Component>
@@ -1214,7 +1195,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar4MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar4ActionPerformed"/>
                               </Events>
                             </Component>
@@ -1243,8 +1223,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar5MouseEntered"/>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setStar5MouseExited"/>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setStar5ActionPerformed"/>
                               </Events>
                             </Component>
