@@ -126,8 +126,7 @@ public class UserWidget extends javax.swing.JPanel {
     private void banActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banActionPerformed
         App.db.remove(index);
         App.db.saveData("./src/main/resources/data/data.dat");
-        ((DynamicPage) App.currentPanel).reloadContent();
-        App.currentPanel.repaint();
+        ((DynamicPage) App.currentPanel).reload();
     }//GEN-LAST:event_banActionPerformed
 
 

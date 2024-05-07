@@ -48,12 +48,11 @@ public class App {
             DBExample.setup(db, buildings);
             db.saveData("./src/main/resources/data/data.dat");
             buildings.saveData("./src/main/resources/data/b_data.dat");
+        }
+
+        setupFrame();
+        redirect("LOGIN");
     }
-    
-    // Utiliza la base de datos y los datos de edificios creados o cargados
-    setupFrame();
-    redirect("LOGIN");
-}
 
 
     /**

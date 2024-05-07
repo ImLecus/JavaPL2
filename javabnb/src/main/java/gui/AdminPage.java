@@ -18,7 +18,9 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     }
     
     @Override
-    public void reloadContent(){}
+    public void reloadContent(){
+        repaint();
+    }
     
     @Override
     public void createDynamicContent(){
