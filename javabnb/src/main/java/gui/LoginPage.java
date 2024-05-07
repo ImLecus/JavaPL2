@@ -47,7 +47,7 @@ public class LoginPage extends javax.swing.JPanel {
                 
                 String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
                 System.out.println("Hashed password: " + hashedPassword);
-                int key = App.db.getUserInDataBase(mailInput.getText(), Hashing.hashPassword(String.valueOf(passwordInput.getPassword())));
+                int key = App.db.getUserInDataBase(mailInput.getText(), hashedPassword);
                 if (key >= 0) {
                     Client user = App.db.getClientData(key);
                     App.session = Session.init(user, key);
