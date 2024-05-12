@@ -23,12 +23,12 @@ public class ReservationWidget extends javax.swing.JPanel {
     public ReservationWidget() {
         initComponents();
     }
-    public void init(Client c, Building b, Reservation r){
+    public void init(Building b, Reservation r){
         this.building = b;
         this.reservation = r;
-        Userlabel.setText(c.getName());
+        Userlabel.setText(String.valueOf(r.getClient()));
         dateBoundsLabel.setText(r.toString());
-        if(App.session.user != c || App.session.user != b.info.host || !App.isAdmin){
+        if(App.session.user != r.getClient() || App.session.user != b.info.host || !App.isAdmin){
           Polaris.disable(cancelReservation);
         }
     }
@@ -56,7 +56,7 @@ public class ReservationWidget extends javax.swing.JPanel {
         cancelReservation.setBorderPainted(false);
         cancelReservation.setContentAreaFilled(false);
         cancelReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancelReservation.setDisabledIcon(null);
+        cancelReservation.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelReservation.png"))); // NOI18N
         cancelReservation.setEnabled(false);
         cancelReservation.setFocusable(false);
         cancelReservation.addMouseListener(new java.awt.event.MouseAdapter() {
