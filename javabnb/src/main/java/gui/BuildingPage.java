@@ -12,12 +12,14 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private int commentRating;
     private Building b;
     ArrayList<CommentWidget> widgets;
+    ArrayList<ReservationWidget> widgets_r;
     private boolean saved = false;
     private boolean click = false;
     public BuildingPage() {
         initComponents();
         Polaris.highlightOnHover(submitButton);
         widgets = new ArrayList<>();
+        widgets_r = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);     
        
@@ -67,12 +69,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
       idaLabel.setValue(null);
       vueltaLabel.setValue(null);
       errorLabel1.setVisible(false);
-       if (b.reservations != null){
-            reservationLabel.setText(b.reservations.toString().substring(1, b.reservations.toString().length() - 1));
-        }
-        else{
-            reservationLabel.setText(null);
-        }
     }
     @Override
     public void createDynamicContent(){
@@ -84,12 +80,23 @@ public class BuildingPage extends JPanel implements DynamicPage {
             cw.init(c);
             ++i;
         }
+        int j = 0;
+        for(Reservation r:b.reservations){
+            ReservationWidget rw = new ReservationWidget();
+            widgets_r.add(rw);
+            reservationsPanel.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+            rw.init(App.session.user,b,r);
+            ++i;
+        }
     }
     
     @Override
     public void deleteDynamicContent(){
         for(CommentWidget cw: widgets){
             comments.remove(cw);
+        }
+        for(ReservationWidget rw: widgets_r){
+            reservationsPanel.remove(rw);
         }
     }
     
@@ -192,7 +199,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        reservationLabel = new javax.swing.JTextArea();
+        reservationsPanel = new javax.swing.JPanel();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -438,7 +445,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         information.setLayout(new java.awt.GridLayout(1, 0));
         information.add(filler1);
 
-        leftSide.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        leftSide.setBackground(polaris.Polaris.BG_COLOR);
         leftSide.setLayout(new java.awt.GridBagLayout());
 
         host.setBackground(polaris.Polaris.TEXT_COLOR);
@@ -462,7 +469,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         leftSide.add(props, gridBagConstraints);
 
         description.setEditable(false);
-        description.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        description.setBackground(polaris.Polaris.BG_COLOR);
         description.setColumns(20);
         description.setFont(FontManager.regularFont);
         description.setForeground(polaris.Polaris.TEXT_COLOR);
@@ -478,7 +485,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 40, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
         leftSide.add(description, gridBagConstraints);
 
         name.setBackground(polaris.Polaris.TEXT_COLOR);
@@ -489,7 +496,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         leftSide.add(name, gridBagConstraints);
 
-        starsPanel.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
+        starsPanel.setBackground(polaris.Polaris.BG_COLOR);
         starsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
         star1.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -554,21 +561,13 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
 
-        reservationLabel.setBackground(polaris.Polaris.BG_COLOR);
-        reservationLabel.setColumns(20);
-        reservationLabel.setForeground(polaris.Polaris.BG_COLOR);
-        reservationLabel.setLineWrap(true);
-        reservationLabel.setRows(5);
-        reservationLabel.setWrapStyleWord(true);
-        reservationLabel.setBorder(null);
-        reservationLabel.setCaretColor(polaris.Polaris.BG_COLOR);
-        reservationLabel.setMaximumSize(new java.awt.Dimension(252, 30));
-        jScrollPane1.setViewportView(reservationLabel);
+        reservationsPanel.setBackground(Polaris.BG_COLOR);
+        reservationsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane1.setViewportView(reservationsPanel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         leftSide.add(jScrollPane1, gridBagConstraints);
 
         information.add(leftSide);
@@ -1138,7 +1137,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JLabel props;
     private javax.swing.JButton reportButton;
     private javax.swing.JPanel reservation;
-    private javax.swing.JTextArea reservationLabel;
+    private javax.swing.JPanel reservationsPanel;
     private javax.swing.JPanel rightSide;
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel savedAndReport;
