@@ -41,6 +41,15 @@ public class Building implements Comparable,Serializable{
         this.reportedBy = new ArrayList<>();
         this.reservations= new ArrayList<>();
     }
+
+
+    public ArrayList<Reservation> getReservations() {
+    return reservations;
+}
+    
+    public int getReservationIndex(Reservation r) {
+        return reservations.indexOf(r);
+    }
     
     public int getID(){
         return this.id;

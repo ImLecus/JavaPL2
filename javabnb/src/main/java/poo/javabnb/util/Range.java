@@ -1,6 +1,7 @@
 package poo.javabnb.util;
 
 import java.io.Serializable;
+import poo.javabnb.util.DateFormatter;
 
 public class Range<T extends Comparable<T>> implements Serializable{
     private final T min;
@@ -17,6 +18,8 @@ public class Range<T extends Comparable<T>> implements Serializable{
     
     @Override
     public String toString(){
-        return String.valueOf(min) + " to " + String.valueOf(max);
+        String reformattedDateStrMin = DateFormatter.reformatDate(String.valueOf(min));
+        String reformattedDateStrMax = DateFormatter.reformatDate(String.valueOf(max));
+        return reformattedDateStrMin + " to " + reformattedDateStrMax;
     }
 }

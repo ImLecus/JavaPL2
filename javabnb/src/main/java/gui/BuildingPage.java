@@ -554,12 +554,15 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
 
+        reservationLabel.setBackground(polaris.Polaris.BG_COLOR);
         reservationLabel.setColumns(20);
+        reservationLabel.setForeground(polaris.Polaris.BG_COLOR);
         reservationLabel.setLineWrap(true);
         reservationLabel.setRows(5);
         reservationLabel.setWrapStyleWord(true);
+        reservationLabel.setBorder(null);
+        reservationLabel.setCaretColor(polaris.Polaris.BG_COLOR);
         reservationLabel.setMaximumSize(new java.awt.Dimension(252, 30));
-        reservationLabel.setPreferredSize(new java.awt.Dimension(252, 30));
         jScrollPane1.setViewportView(reservationLabel);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
