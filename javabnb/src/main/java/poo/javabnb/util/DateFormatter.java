@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class DateFormatter {
     private static final SimpleDateFormat originalFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-    private static final SimpleDateFormat targetFormat = new SimpleDateFormat("dd MMM", Locale.ENGLISH);
+    private static final SimpleDateFormat targetFormat = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
 
     public static String reformatDate(String originalDateStr) {
         try{
