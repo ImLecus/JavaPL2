@@ -30,6 +30,7 @@ public class ReservationWidget extends javax.swing.JPanel {
         dateBoundsLabel.setText(r.toString());
         if(App.session.user != r.getClient() || App.session.user != b.info.host || !App.isAdmin){
           Polaris.disable(cancelReservation);
+          cancelReservation.setVisible(false);
         }
     }
     
@@ -48,6 +49,7 @@ public class ReservationWidget extends javax.swing.JPanel {
 
         Userlabel.setFont(FontManager.boldFont);
         Userlabel.setText("Nombre Usuario");
+        Userlabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         add(Userlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 40));
 
         cancelReservation.setBackground(Polaris.TRANSPARENT_COLOR);
@@ -55,7 +57,7 @@ public class ReservationWidget extends javax.swing.JPanel {
         cancelReservation.setBorder(null);
         cancelReservation.setBorderPainted(false);
         cancelReservation.setContentAreaFilled(false);
-        cancelReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cancelReservation.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelReservation.png"))); // NOI18N
         cancelReservation.setEnabled(false);
         cancelReservation.setFocusable(false);
