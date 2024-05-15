@@ -22,7 +22,6 @@ public class Building implements Comparable,Serializable{
     public ArrayList<Client> reportedBy;
     public ArrayList<Reservation> reservations;
 
-    // Constructor
     public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, File image, Host host, int visitors, String[] services) {
         this.info = new BuildingInfo(title, host, price, 0);
         this.address = address;

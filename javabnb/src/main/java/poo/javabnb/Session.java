@@ -21,34 +21,20 @@ public class Session {
         this.entry = key;
     }
 
-    /**
-     * Finishes the actual session.
-     */
     public void endSession() {
         App.db.saveData("./src/main/resources/data/data.dat");
     }
     
-    /**
-     * Updates the client information in the database and saves the data
-     */
     public void updateSession(){
         App.db.update(entry, user);
         App.db.saveData("./src/main/resources/data/data.dat");
     }
     
-    /**
-     * Adds a new ID in the client pinned posts.
-     * @param id the ID to be added.
-     */
     public void addPinnedPost(int id){
         user.pinnedPosts.add(id);
         updateSession();
     }
 
-    /**
-     * Deletes a pinned post, without deleting the original.
-     * @param id the ID to be deleted.
-     */
     public void deletePinnedPost(int id){
         user.pinnedPosts.remove(user.pinnedPosts.indexOf(id));
         updateSession();

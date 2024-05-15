@@ -1,11 +1,6 @@
 package poo.javabnb.util;
 
-import java.io.FileInputStream;
 import java.io.*;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import poo.javabnb.Building;
 import poo.javabnb.exceptions.DataBaseNotFoundException;
@@ -29,14 +24,8 @@ public class BuildingDB implements Serializable{
         BuildingDB result = (BuildingDB) ois.readObject();
         fis.close();
         return result;
-    } catch (FileNotFoundException e) {
-        System.out.println("FileNotFoundException");
-        throw new DataBaseNotFoundException();
-    } catch (IOException e) {
-        System.out.println("IOException");
-        throw new DataBaseNotFoundException();
-    } catch (ClassNotFoundException e) {
-        System.out.println("ClassNotFoundException");
+    } 
+    catch (Exception e) {
         throw new DataBaseNotFoundException();
     }
 }
@@ -52,19 +41,15 @@ public class BuildingDB implements Serializable{
             e.fillInStackTrace();
         }
     }
+
     
-    /**
-     * Adds a new Building and assigns a new ID based on the order
-     * of addition.
-     * @param b the building to be added.
-     */
     public void add(Building b){
         entries.add(b);
         entries.getLast().setID(entries.size());
     }
+    
     public void remove(int index){
         entries.set(index, entries.getLast());
-
         entries.removeLast();
     }
     

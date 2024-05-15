@@ -2,11 +2,7 @@ package poo.javabnb.util;
 import java.security.MessageDigest;
 
 public class Hashing {
-    /**
-     * Generates a hashed password.
-     * @param passwordToHash the password
-     * @return a new String with the hashed passwordl.
-     */
+
     public static String hashPassword(String passwordToHash) {
         String generatedPassword = null;
         try {

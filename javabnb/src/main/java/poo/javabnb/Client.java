@@ -11,8 +11,6 @@ public class Client implements Serializable {
     private String number;
     public final ArrayList<Integer> pinnedPosts;
     
-
-    // Constructor
     public Client(String DNI, String name, String mail, String password, String number) {
         this.DNI = DNI;
         this.name = name;

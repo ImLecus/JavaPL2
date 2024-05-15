@@ -47,22 +47,12 @@ public class DataBase implements Serializable {
         return users.get(entry);
     }
 
-    /**
-     * Adds a new entry in the database.
-     * @param client the new Client entry.
-     */
     public void add(Client client){
         mails.add(client.getMail());
         passwords.add(Hashing.hashPassword(client.getPassword()));
         users.add(client);
     }
     
-    
-    /**
-     * Updates a Client in a specific index
-     * @param index the index to be replaced
-     * @param client the client new information
-     */
     public void update(int index, Client client){
         users.set(index, client);
         mails.set(index, client.getMail());
@@ -89,11 +79,6 @@ public class DataBase implements Serializable {
         return users;
     }
     
-    /**
-     * Searches if the mail already exists in the database.
-     * @param mail the mail to be searched
-     * @return true if the mail already exists, false otherwise
-     */
     public boolean contains(String mail){
         return mails.contains(mail);
     }
@@ -105,31 +90,21 @@ public class DataBase implements Serializable {
      * @return the existing DataBase
      */
     public static DataBase from(String path) throws DataBaseNotFoundException {
-    try {
-        System.out.println("Intentando cargar la base de datos desde: " + path); // Agrega esta línea
-        FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        DataBase result = (DataBase) ois.readObject();
-        fis.close();
-        return result;
-    } catch (FileNotFoundException e) {
-        System.err.println("Error: Archivo no encontrado al cargar la base de datos desde " + path);
-        throw new DataBaseNotFoundException();
-    } catch (IOException e) {
-        System.err.println("Error de entrada/salida al leer el archivo de la base de datos desde " + path);
-        throw new DataBaseNotFoundException();
-    } catch (ClassNotFoundException e) {
-        System.err.println("Error: Clase no encontrada al deserializar el archivo de la base de datos desde " + path);
-        throw new DataBaseNotFoundException();
+        try {
+            System.out.println("Intentando cargar la base de datos desde: " + path); // Agrega esta línea
+            FileInputStream fis = new FileInputStream(path);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            DataBase result = (DataBase) ois.readObject();
+            fis.close();
+            return result;
+        }
+        catch (Exception e) {
+            System.err.println("Error: No se pudo cargar la base de datos desde " + path);
+            throw new DataBaseNotFoundException();
+        } 
     }
-}
 
-    
-    /**
-     * Saves the data in the specified path.
-     * @param path the path of the data file, relative
-     * to the project directory.
-     */
+
     public void saveData(String path){
         try{
             FileOutputStream fos = new FileOutputStream(path);

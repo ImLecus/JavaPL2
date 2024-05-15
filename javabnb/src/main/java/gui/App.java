@@ -42,7 +42,6 @@ public class App {
             buildings = BuildingDB.from("./src/main/resources/data/b_data.dat");
         } 
         catch (DataBaseNotFoundException e) {
-            System.out.println("me muero");
             db = new DataBase();
             buildings = new BuildingDB();
             DBExample.setup(db, buildings);
@@ -75,10 +74,8 @@ public class App {
         }
         currentPanel = p;
     }
-    /**
-     * setupFrame() method prepares the JFrame, making it visible, adding the title and
-     * setting the minimum resizeable size.
-     */
+
+    
     public static void setupFrame(){
         frame.setContentPane(cards);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

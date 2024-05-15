@@ -14,8 +14,7 @@ public class DBExample {
                 "3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a",
                 "666666666",
                 new Card("Example","0000000000000000", "12/99","000"),
-                false,
-                new PreferencesManager(new String[]{""})
+                false
         ));
         
         db.add(new Particular(
@@ -26,8 +25,7 @@ public class DBExample {
                 "af41c7be53e2eec50da54441b1ac4eb574d3b362a0f05e26066cbf404dd2968c30f47f09d200c7e82ea3bd35382ff8a09e151bd5dccda6d7dfbf62ae6de20b22",
                 "695382122",
                 new Card("Pedro","1111222233334444", "12/99","123"),
-                false,
-                new PreferencesManager(new String[]{""})
+                false
         ));
         
         db.add(new Particular(
@@ -38,8 +36,7 @@ public class DBExample {
                 "dcfa87120fcd738c87d93fc4188b3461adf198a8dff577b9c4ba99e7540a1b296b590cf3ec73cd75383ca9d4e85669dd46f3156be6120a7945e928e42ebcca76",
                 "682776129",
                 new Card("Example","4321432143214321", "12/99","321"),
-                false,
-                new PreferencesManager(new String[]{""})
+                false
         ));
         
         db.add(new Host(

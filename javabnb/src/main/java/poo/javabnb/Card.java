@@ -13,9 +13,6 @@ public record Card(String owner, String number, String endDate, String cvv) impl
      **/
     public Card {}
 
-    /**
-     * @return all the card information packaged into an array of Strings.
-     */
     public String[] getInfo() {
         return new String[]{owner, number, endDate, cvv};
     }
