@@ -15,5 +15,9 @@ public class ReservationChecker {
         }
         return false;  
     }
+    public static boolean notPastDate(Date dateEntrada, Date dateSalida) {
+        Date currentDate = new Date();
+        return (dateEntrada.compareTo(currentDate) >= 0 && dateSalida.compareTo(currentDate) >= 0);
+    }
 }
      

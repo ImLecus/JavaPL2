@@ -2,6 +2,7 @@ package gui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.*;
 import javax.swing.*;
 import polaris.*;
@@ -132,6 +133,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private void checkForReservations(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dateEntrada, dateSalida;
+        
         try {
             dateEntrada = sdf.parse(idaLabel.getText());
             dateSalida = sdf.parse(vueltaLabel.getText());
@@ -139,7 +141,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             return;
         }
         ReservationChecker checker = new ReservationChecker();
-        if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations)) {
+        if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations) || checker.notPastDate(dateEntrada, dateSalida)) {
             Polaris.disable(submitButton);
             errorLabel1.setVisible(true);
             repaint();
