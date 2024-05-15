@@ -198,8 +198,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        reservationsPanel = new javax.swing.JPanel();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
@@ -214,6 +212,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         errorLabel1 = new javax.swing.JLabel();
+        reservationsPanel = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -561,17 +560,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
 
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-        reservationsPanel.setBackground(Polaris.BG_COLOR);
-        reservationsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jScrollPane1.setViewportView(reservationsPanel);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        leftSide.add(jScrollPane1, gridBagConstraints);
-
         information.add(leftSide);
 
         rightSide.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
@@ -732,6 +720,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
         rightSide.add(reservation);
 
         information.add(rightSide);
+
+        reservationsPanel.setBackground(Polaris.BG_COLOR);
+        reservationsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        information.add(reservationsPanel);
         information.add(filler3);
 
         mainBody.add(information);
@@ -1124,7 +1116,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel leftSide;
     private javax.swing.JPanel leftSide4;
