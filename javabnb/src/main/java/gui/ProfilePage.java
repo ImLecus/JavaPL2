@@ -152,6 +152,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         deleteAccountButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
+        pinnedPostsLabel1 = new javax.swing.JLabel();
         pinnedPostsLabel = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         newPostButton = new javax.swing.JButton();
@@ -363,10 +364,20 @@ public class ProfilePage extends JPanel implements DynamicPage {
         jPanel1.setBackground(Polaris.BG_COLOR);
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
+        pinnedPostsLabel1.setBackground(Polaris.BG_COLOR);
+        pinnedPostsLabel1.setFont(FontManager.titleFont);
+        pinnedPostsLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pinnedPostsLabel1.setText("Reservas realizadas");
+        pinnedPostsLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(pinnedPostsLabel1);
+
         pinnedPostsLabel.setBackground(Polaris.BG_COLOR);
         pinnedPostsLabel.setFont(FontManager.titleFont);
         pinnedPostsLabel.setForeground(polaris.Polaris.TEXT_COLOR);
-        pinnedPostsLabel.setText("Inmuebles guardados");
+        pinnedPostsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pinnedPostsLabel.setText(" Inmuebles guardados");
+        pinnedPostsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jPanel1.add(pinnedPostsLabel);
 
         jPanel7.setBackground(Polaris.BG_COLOR);
@@ -389,7 +400,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
 
         jPanel4.add(jPanel1);
 
-        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 840, 140));
+        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 840, 140));
 
         jScrollPane1.setViewportView(content);
 
@@ -479,6 +490,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel pinnedPostsLabel;
+    private javax.swing.JLabel pinnedPostsLabel1;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;

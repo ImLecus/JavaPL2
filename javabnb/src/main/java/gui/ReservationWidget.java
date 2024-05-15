@@ -26,10 +26,13 @@ public class ReservationWidget extends javax.swing.JPanel {
     public void init(Building b, Reservation r){
         this.building = b;
         this.reservation = r;
-        if(App.currentPanel instanceof BuildingPage){Userlabel.setText(r.getClient().getName());}
-        else{Userlabel.setText(b.info.title);}
+        Userlabel.setText(r.getClient().getName());
+        BuildingLabel.setText(b.info.title);
         dateBoundsLabel.setText(r.toString());
-        if(App.session.user != r.getClient() || App.session.user != b.info.host || !App.isAdmin){
+        if(App.session.user.equals(r.getClient())|| App.session.user.equals(b.info.host) || App.isAdmin){
+          cancelReservation.setVisible(true);
+        }
+        else{
           Polaris.disable(cancelReservation);
           cancelReservation.setVisible(false);
         }
@@ -45,13 +48,14 @@ public class ReservationWidget extends javax.swing.JPanel {
         Userlabel = new javax.swing.JLabel();
         cancelReservation = new javax.swing.JButton();
         dateBoundsLabel = new javax.swing.JLabel();
+        BuildingLabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Userlabel.setFont(FontManager.boldFont);
         Userlabel.setText("Nombre Usuario");
-        Userlabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        add(Userlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 40));
+        Userlabel.setToolTipText("");
+        add(Userlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 210, 40));
 
         cancelReservation.setBackground(Polaris.TRANSPARENT_COLOR);
         cancelReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelReservation.png"))); // NOI18N
@@ -77,11 +81,16 @@ public class ReservationWidget extends javax.swing.JPanel {
         dateBoundsLabel.setFont(FontManager.boldFont);
         dateBoundsLabel.setText("Bounds");
         dateBoundsLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        add(dateBoundsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 210, 40));
+        add(dateBoundsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 40));
+
+        BuildingLabel.setFont(FontManager.boldFont);
+        BuildingLabel.setText("Inmueble");
+        BuildingLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        add(BuildingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelReservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelReservationMouseClicked
-        int index = building.getReservationIndex(reservation);
+       int index = building.getReservationIndex(reservation);
        if (index != -1) {
         building.getReservations().remove(index);
         App.buildings.saveData("./src/main/resources/data/b_data.dat");
@@ -95,6 +104,7 @@ public class ReservationWidget extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BuildingLabel;
     private javax.swing.JLabel Userlabel;
     private javax.swing.JButton cancelReservation;
     private javax.swing.JLabel dateBoundsLabel;
