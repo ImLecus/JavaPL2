@@ -85,7 +85,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             ReservationWidget rw = new ReservationWidget();
             widgets_r.add(rw);
             reservationsPanel.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-            rw.init(App.session.user,b,r);
+            rw.init(b,r);
             ++i;
         }
     }
@@ -560,6 +560,8 @@ public class BuildingPage extends JPanel implements DynamicPage {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         reservationsPanel.setBackground(Polaris.BG_COLOR);
         reservationsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
