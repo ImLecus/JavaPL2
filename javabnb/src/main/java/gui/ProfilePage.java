@@ -12,10 +12,12 @@ import poo.javabnb.util.*;
 public class ProfilePage extends JPanel implements DynamicPage {
     
     public ArrayList<BuildingWidget> widgets;
+    ArrayList<ReservationWidget> widgets_r;
     
     public ProfilePage() {
         initComponents();
         widgets = new ArrayList<>();
+        widgets_r = new ArrayList<>();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         backButton.addActionListener((ActionEvent e) -> {
             App.redirect("MAIN");
@@ -89,14 +91,27 @@ public class ProfilePage extends JPanel implements DynamicPage {
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                content.add(bw, new AbsoluteConstraints(160 + x, 520 + 330*rows, -1, -1));
+                content.add(bw, new AbsoluteConstraints(475 + x, 520 + 330*rows, -1, -1));
                 bw.init(
                     App.session.isHost ? array.get(i): App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) 
                 );
                 ++i;
             }
             ++rows;
-        }  
+        }
+        int j = 0;
+        rows = 0;
+        for(Building b : App.buildings.entries){
+            for(Reservation r:b.reservations){
+               if(r.getClient().equals(App.session.user)){
+                   ReservationWidget rw = new ReservationWidget();
+                   widgets_r.add(rw);
+                   content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 330*rows, -1, -1));
+                   rw.init(b,r);
+                   ++j;
+                }     
+            }     
+        }
     }
 
     /**
