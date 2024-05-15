@@ -26,7 +26,8 @@ public class ReservationWidget extends javax.swing.JPanel {
     public void init(Building b, Reservation r){
         this.building = b;
         this.reservation = r;
-        Userlabel.setText(r.getClient().getName());
+        if(App.currentPanel instanceof BuildingPage){Userlabel.setText(r.getClient().getName());}
+        else{Userlabel.setText(b.info.title);}
         dateBoundsLabel.setText(r.toString());
         if(App.session.user != r.getClient() || App.session.user != b.info.host || !App.isAdmin){
           Polaris.disable(cancelReservation);
