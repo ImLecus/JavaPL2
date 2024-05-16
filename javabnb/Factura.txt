@@ -1,11 +1,11 @@
 Factura
 -----------------------------------
-Nombre: Example
-Correo: example
-DNI: 00000000E
+Nombre: Pedro
+Correo: pedro@gmail.com
+DNI: 82629144T
 Nombre del inmueble: Chalet en Madrid
 Host del inmueble: Dueño
-Fecha de entrada: Wed Feb 03 00:00:00 CET 2021
-Fecha de salida: Fri Feb 12 00:00:00 CET 2021
+Fecha de entrada: Sun Jan 01 00:00:00 CET 2023
+Fecha de salida: Wed Feb 01 00:00:00 CET 2023
 Precio por noche: 125
-Precio total: 1125.0
+Precio total: 3875.0

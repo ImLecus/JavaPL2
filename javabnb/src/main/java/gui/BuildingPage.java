@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,12 +31,14 @@ public class BuildingPage extends JPanel implements DynamicPage {
     public void reloadContent(){   
       if(!App.isAdmin){
         commentSection.setVisible(!App.session.isHost);  
-        try{
-            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png"));
+        File file = new File("./src/main/resources/images/" + App.session.user.getDNI() + "2.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png") );
         }
-        catch(Exception e){
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
             pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
-        } 
+        }
       }
       else{
           jPanel8.setVisible(false);

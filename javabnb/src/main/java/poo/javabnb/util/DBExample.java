@@ -1,11 +1,24 @@
 package poo.javabnb.util;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import poo.javabnb.*;
 
 public class DBExample {
     private static Host DON_PABLO;
     private static Host HOST;
-    public static void setup(DataBase db, BuildingDB buildingDb){    
+    private static final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    
+    private static Date parse(String str){
+        try {
+            return df.parse(str);
+        }
+        catch(Exception e){
+            return new Date();
+        }
+    }
+    
+    public static void setup(DataBase db, BuildingDB buildingDb){  
+        
         db.add(new Particular(
                 "00000000E",
                 "Example", 
@@ -43,7 +56,7 @@ public class DBExample {
                 "dueño@tuyo.me", 
                 Hashing.hashPassword("password"),
                 "687332119",
-                new Date("23/04/2024"),
+                parse("23/04/2024"),
                 false
         ));
         HOST = (Host) db.getClientData(3);
@@ -54,7 +67,7 @@ public class DBExample {
                 "dpablo@gmail.com", 
                 Hashing.hashPassword("donpablodonpablo"),
                 "683736112",
-                new Date("10/04/2024"),
+                parse("12/02/2024"),
                 true
         ));
         DON_PABLO = (Host) db.getClientData(4);

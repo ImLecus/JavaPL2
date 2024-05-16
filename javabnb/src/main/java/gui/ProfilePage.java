@@ -52,23 +52,25 @@ public class ProfilePage extends JPanel implements DynamicPage {
         nameLabel.setBackground(Polaris.BG_COLOR);
         saveButton.setVisible(false);
         deleteAccountButton.setVisible(false);
-        try{
-            ImageIcon pfpIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "1.png");
-            pfpIcon.getImage().flush();
-            pfp.setIcon(pfpIcon);
+        
+        File file = new File("./src/main/resources/images/" + App.session.user.getDNI() + "1.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "1.png") );
         }
-        catch(Exception e){
-           pfp.setIcon(Images.getIcon("/images/profile_default.png"));
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
+            pfp.setIcon(Images.getIcon("/images/profile_default.png"));
         }
         
-        try{           
-            ImageIcon bannerIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "3.png");
-            bannerIcon.getImage().flush();
-            banner.setIcon(bannerIcon);
+        File bannerFile = new File("./src/main/resources/images/" + App.session.user.getDNI() + "3.png");
+        if(bannerFile.exists()){
+            banner.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "3.png") );
         }
-        catch(Exception e){
-           banner.setIcon(Images.getIcon("/images/banner.png"));
+        else {
+            System.out.println("Warning: el usuario no tiene banner");
+            banner.setIcon(Images.getIcon("/images/banner.png"));
         }
+        
     }
     
     @Override

@@ -1,6 +1,5 @@
 package poo.javabnb;
 
-import poo.javabnb.util.Range;
 import gui.App;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,11 +9,6 @@ public class SearchEngine {
     public String[] hashtags;
     PropertyType type;
     public static SortType sortBy;
-    public Range price;
-    public Range stars;
-    public Range beds;
-    public Range baths;
-    public Range visitors;
     public String[] services;
     public String[] dateBounds;
     public String[] location;
@@ -27,11 +21,6 @@ public class SearchEngine {
                         String[] hashtags,
                         PropertyType type,
                         SortType sortBy,
-                        Range price,
-                        Range stars,
-                        Range beds,
-                        Range baths,
-                        Range visitors,
                         String[] services,
                         String[] dateBounds,
                         String[] location,
@@ -40,11 +29,6 @@ public class SearchEngine {
         this.hashtags = hashtags;
         this.type = type;
         this.sortBy = sortBy;
-        this.price = price;
-        this.stars = stars;
-        this.beds = beds;
-        this.baths = baths;
-        this.visitors = visitors;
         this.services = services;
         this.dateBounds = dateBounds;
         this.location = location;
