@@ -12,13 +12,13 @@ public class CommentWidget extends javax.swing.JPanel {
     }
     
     public void init(Comment c){
-        name.setText(c.client.getName());
-        star1.setDisabledIcon( new ImageIcon(getClass().getResource( c.rating >= 1 ? "/images/star_filled.png" : c.rating == 0.5f? "/images/star_half.png" : "/images/star.png")));
-        star2.setDisabledIcon( new ImageIcon(getClass().getResource( c.rating >= 2 ? "/images/star_filled.png" : c.rating == 1.5f? "/images/star_half.png" : "/images/star.png")));
-        star3.setDisabledIcon( new ImageIcon(getClass().getResource( c.rating >= 3 ? "/images/star_filled.png" : c.rating == 2.5f? "/images/star_half.png" : "/images/star.png")));
-        star4.setDisabledIcon( new ImageIcon(getClass().getResource( c.rating >= 4 ? "/images/star_filled.png" : c.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
-        star5.setDisabledIcon( new ImageIcon(getClass().getResource( c.rating == 5 ? "/images/star_filled.png" : c.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
-        msg.setText(c.message);
+        name.setText(c.getClient().getName());
+        star1.setDisabledIcon( new ImageIcon(getClass().getResource( c.getRating() >= 1 ? "/images/star_filled.png" : c.getRating() == 0.5f? "/images/star_half.png" : "/images/star.png")));
+        star2.setDisabledIcon( new ImageIcon(getClass().getResource( c.getRating() >= 2 ? "/images/star_filled.png" : c.getRating() == 1.5f? "/images/star_half.png" : "/images/star.png")));
+        star3.setDisabledIcon( new ImageIcon(getClass().getResource( c.getRating() >= 3 ? "/images/star_filled.png" : c.getRating() == 2.5f? "/images/star_half.png" : "/images/star.png")));
+        star4.setDisabledIcon( new ImageIcon(getClass().getResource( c.getRating() >= 4 ? "/images/star_filled.png" : c.getRating() == 3.5f? "/images/star_half.png" : "/images/star.png")));
+        star5.setDisabledIcon( new ImageIcon(getClass().getResource( c.getRating() == 5 ? "/images/star_filled.png" : c.getRating() == 4.5f? "/images/star_half.png" : "/images/star.png")));
+        msg.setText(c.getMessage());
     }
 
     /**

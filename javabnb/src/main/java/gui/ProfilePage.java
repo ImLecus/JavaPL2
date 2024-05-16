@@ -41,30 +41,30 @@ public class ProfilePage extends JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){
-        newPostButton.setVisible(App.session.isHost);
-        pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
-        userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        nameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
-        userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
+        newPostButton.setVisible(App.session.isHost());
+        pinnedPostsLabel.setText(App.session.isHost()? "Mis inmuebles" : "Inmuebles guardados");
+        userNameLabel.setText(App.session == null? "null" : App.session.getUser().getName());
+        nameLabel.setText(App.session == null? "null" : App.session.getUser().getName());
+        userMailLabel.setText(App.session == null? "null" : App.session.getUser().getMail());
+        userPhoneLabel.setText(App.session == null? "null" : App.session.getUser().getNumber());
         userPhoneLabel.setBackground(Polaris.BG_COLOR);
         userMailLabel.setBackground(Polaris.BG_COLOR);
         nameLabel.setBackground(Polaris.BG_COLOR);
         saveButton.setVisible(false);
         deleteAccountButton.setVisible(false);
         
-        File file = new File("./src/main/resources/images/" + App.session.user.getDNI() + "1.png");
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "1.png");
         if(file.exists()){
-            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "1.png") );
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "1.png") );
         }
         else {
             System.out.println("Warning: el usuario no tiene foto de perfil");
             pfp.setIcon(Images.getIcon("/images/profile_default.png"));
         }
         
-        File bannerFile = new File("./src/main/resources/images/" + App.session.user.getDNI() + "3.png");
+        File bannerFile = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "3.png");
         if(bannerFile.exists()){
-            banner.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "3.png") );
+            banner.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "3.png") );
         }
         else {
             System.out.println("Warning: el usuario no tiene banner");
@@ -82,9 +82,9 @@ public class ProfilePage extends JPanel implements DynamicPage {
     
     @Override
     public void createDynamicContent(){
-        ArrayList<Building> array = App.session.isHost ? ((Host) App.session.user).getAllBuildings() : App.buildings.entries;
+        ArrayList<Building> array = App.session.isHost() ? ((Host) App.session.getUser()).getAllBuildings() : App.buildings.entries;
         
-        int max = App.session.isHost? array.size() : App.session.user.pinnedPosts.size();
+        int max = App.session.isHost()? array.size() : App.session.getUser().getPinnedPosts().size();
 
         int i = 0;
         int rows = 0;
@@ -95,7 +95,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
                 widgets.add(bw);
                 content.add(bw, new AbsoluteConstraints(475 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                    App.session.isHost ? array.get(i): App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) 
+                    App.session.isHost() ? array.get(i): App.buildings.entries.get(App.session.getUser().getPinnedPosts().get(i) - 1) 
                 );
                 ++i;
             }
@@ -105,7 +105,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         rows = 0;
         for(Building b : App.buildings.entries){
             for(Reservation r:b.reservations){
-               if(r.getClient().equals(App.session.user)){
+               if(r.getClient().equals(App.session.getUser())){
                    ReservationWidget rw = new ReservationWidget();
                    widgets_r.add(rw);
                    content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 330*rows, -1, -1));
@@ -417,14 +417,14 @@ public class ProfilePage extends JPanel implements DynamicPage {
 
     private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
         File file = Images.createImageChooser();
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "1.png", 150, 150);
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "2.png", 80, 80);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "1.png", 150, 150);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png", 80, 80);
         App.redirect("PROFILE");
     }//GEN-LAST:event_pfpActionPerformed
 
     private void bannerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bannerActionPerformed
         File file = Images.createImageChooser();
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "3.png", 1920, 250);
         App.redirect("PROFILE");
     }//GEN-LAST:event_bannerActionPerformed
 
@@ -435,7 +435,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
         if(saveButton.isEnabled()){
-            App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.user.getPassword()));
+            App.session.getUser().setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.getUser().getPassword()));
             App.session.updateSession(); 
             userPhoneLabel.setEditable(false);
             userMailLabel.setEditable(false);
@@ -464,7 +464,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_nameLabelKeyPressed
 
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
-        App.db.remove(App.session.getKey());
+        App.db.remove(App.session.getEntry());
         App.db.saveData("./src/main/resources/data/data.dat");
         App.redirect("LOGIN");
     }//GEN-LAST:event_deleteAccountButtonActionPerformed

@@ -9,7 +9,7 @@ public class Client implements Serializable {
     private String mail;
     private String password;
     private String number;
-    public final ArrayList<Integer> pinnedPosts;
+    private final ArrayList<Integer> pinnedPosts;
     
     public Client(String DNI, String name, String mail, String password, String number) {
         this.DNI = DNI;
@@ -20,7 +20,6 @@ public class Client implements Serializable {
         this.pinnedPosts = new ArrayList<>(); 
     }
 
-    // Getters
     public String getName() {
         return name;
     }
@@ -39,6 +38,11 @@ public class Client implements Serializable {
     
     public String getPassword(){
         return password;
+    }
+    
+    
+    public ArrayList<Integer> getPinnedPosts(){
+        return pinnedPosts;
     }
 
     public void setInfo(String name, String mail, String number, String password){

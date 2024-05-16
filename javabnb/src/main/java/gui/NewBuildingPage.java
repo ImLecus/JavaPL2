@@ -364,9 +364,8 @@ public class NewBuildingPage extends javax.swing.JFrame {
                 Integer.parseInt(bathsInput.getText()),
                 PropertyType.HOUSE,
                 Integer.parseInt(priceInput.getText()),
-                new String[]{},
                 descriptionInput.getText(),
-                image, (Host) App.session.user,
+                image, (Host) App.session.getUser(),
                 Integer.parseInt(visitorsInput.getText()),
                 new String[]{}  
         ));

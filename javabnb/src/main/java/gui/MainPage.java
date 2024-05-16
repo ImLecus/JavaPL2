@@ -47,9 +47,9 @@ public class MainPage extends JPanel implements DynamicPage {
     
     @Override
     public void reloadContent() {
-        File file = new File("./src/main/resources/images/" + App.session.user.getDNI() + "2.png");
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
         if(file.exists()){
-            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png") );
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "2.png") );
         }
         else {
             System.out.println("Warning: el usuario no tiene foto de perfil");

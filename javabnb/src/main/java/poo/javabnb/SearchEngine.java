@@ -6,10 +6,8 @@ import java.util.Collections;
 
 public class SearchEngine {
     public String search;
-    public String[] hashtags;
     PropertyType type;
     public static SortType sortBy;
-    public String[] services;
     public String[] dateBounds;
     public String[] location;
     public String[] host;
@@ -26,16 +24,14 @@ public class SearchEngine {
                         String[] location,
                         String[] host) {
         this.search = search;
-        this.hashtags = hashtags;
         this.type = type;
         this.sortBy = sortBy;
-        this.services = services;
         this.dateBounds = dateBounds;
         this.location = location;
         this.host = host;
     }
 
-    // Search method
+    // Search method. TO-DO: reservation bounds
     public static ArrayList<Building> getSearch(ArrayList<Building> array,String location, int people) {
         ArrayList<Building> result = new ArrayList<>();
         

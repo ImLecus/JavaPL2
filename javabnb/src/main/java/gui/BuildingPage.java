@@ -30,10 +30,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
     @Override
     public void reloadContent(){   
       if(!App.isAdmin){
-        commentSection.setVisible(!App.session.isHost);  
-        File file = new File("./src/main/resources/images/" + App.session.user.getDNI() + "2.png");
+        commentSection.setVisible(!App.session.isHost());  
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
         if(file.exists()){
-            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png") );
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "2.png") );
         }
         else {
             System.out.println("Warning: el usuario no tiene foto de perfil");
@@ -51,9 +51,9 @@ public class BuildingPage extends JPanel implements DynamicPage {
       }
       reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
       b = App.focusedBuilding;
-      saved = App.session.user.pinnedPosts.contains(b.getID());
+      saved = App.session.getUser().getPinnedPosts().contains(b.getID());
       name.setText(b.info.title);
-      description.setText(b.description);
+      description.setText(b.getDescription());
       checkForReservations();
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       msgInput.setText("Escribe aquí tu mensaje...");
@@ -923,7 +923,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         if(saved){
             App.session.addPinnedPost(b.getID());
         }
-        if(!saved && App.session.user.pinnedPosts.contains(b.getID())){
+        if(!saved && App.session.getUser().getPinnedPosts().contains(b.getID())){
             App.session.deletePinnedPost(b.getID());
         }
         repaint();
@@ -947,11 +947,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         checkForReservations();
 
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
-        Reservation newReservation = new Reservation((Particular)App.session.user, range, new Date());
+        Reservation newReservation = new Reservation((Particular)App.session.getUser(), range, new Date());
         b.reservations.add(newReservation);
 
         Bill bill = new Bill();
-        bill.generateBill(App.session.user, b, dateEntrada, dateSalida);
+        bill.generateBill(App.session.getUser(), b, dateEntrada, dateSalida);
         App.redirect("BUILDING");
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -1007,7 +1007,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_setStar5ActionPerformed
 
     private void submitCommentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCommentButtonActionPerformed
-        Comment c = new Comment(App.session.user,commentRating,msgInput.getText());
+        Comment c = new Comment(App.session.getUser(),commentRating,msgInput.getText());
         Building newBuilding = b;
         newBuilding.recalculateRating(commentRating);
         newBuilding.comments.add(c);
@@ -1023,7 +1023,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             return;
         }
         Building newBuilding = b;
-        newBuilding.reportedBy.add(App.session.user);
+        newBuilding.reportedBy.add(App.session.getUser());
         App.buildings.update(b, newBuilding);
     }//GEN-LAST:event_reportButtonActionPerformed
 
