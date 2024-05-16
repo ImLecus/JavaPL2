@@ -435,7 +435,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
         if(saveButton.isEnabled()){
-            App.session.getUser().setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.getUser().getPassword()));
+            App.session.getUser().setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashInfo(App.session.getUser().getPassword()));
             App.session.updateSession(); 
             userPhoneLabel.setEditable(false);
             userMailLabel.setEditable(false);
