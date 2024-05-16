@@ -108,11 +108,13 @@ public class ProfilePage extends JPanel implements DynamicPage {
                if(r.getClient().equals(App.session.getUser())){
                    ReservationWidget rw = new ReservationWidget();
                    widgets_r.add(rw);
-                   content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 330*rows, -1, -1));
+                   content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 170*rows, -1, -1));
                    rw.init(b,r);
                    ++j;
-                }     
-            }     
+                } 
+               ++rows;
+            } 
+            
         }
     }
 
