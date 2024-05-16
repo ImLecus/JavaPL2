@@ -31,7 +31,7 @@ public class DataBase implements Serializable {
      */
     public int getUserInDataBase(String mail, String password) {
         for(int i = 0; i < mails.size(); ++i){
-            if(mails.get(i).equals(mail) && passwords.get(i).equals(Hashing.hashInfo(password))){
+            if(mails.get(i).equals(mail) && passwords.get(i).equals(password)){
                 return i;
             }
         }
@@ -49,7 +49,7 @@ public class DataBase implements Serializable {
 
     public void add(Client client){
         mails.add(client.getMail());
-        passwords.add(Hashing.hashInfo(client.getPassword()));
+        passwords.add(client.getPassword());
         users.add(client);
     }
     
