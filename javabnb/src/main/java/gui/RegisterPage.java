@@ -78,7 +78,7 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel5.setVisible(!password);
 
         if(name && phone && dni && mail && password){
-            String hashedPassword = Hashing.hashPassword(String.valueOf(passwordInput.getPassword()));
+            String hashedPassword = Hashing.hashInfo(String.valueOf(passwordInput.getPassword()));
             System.out.println("Hashed password: " + hashedPassword);
             if(hostRegister){
                 Host host = new Host(
