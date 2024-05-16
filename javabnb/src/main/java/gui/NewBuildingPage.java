@@ -64,7 +64,7 @@ public class NewBuildingPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nuevo inmueble");
         setBackground(Polaris.BG_COLOR);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setBackground(Polaris.BG_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -364,9 +364,8 @@ public class NewBuildingPage extends javax.swing.JFrame {
                 Integer.parseInt(bathsInput.getText()),
                 PropertyType.HOUSE,
                 Integer.parseInt(priceInput.getText()),
-                new String[]{},
                 descriptionInput.getText(),
-                image, (Host) App.session.user,
+                image, (Host) App.session.getUser(),
                 Integer.parseInt(visitorsInput.getText()),
                 new String[]{}  
         ));

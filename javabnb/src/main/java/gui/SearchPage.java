@@ -1,9 +1,10 @@
 package gui;
+import java.io.File;
 import java.util.ArrayList;
-import javax.swing.*;
 import polaris.*;
 import poo.javabnb.util.FontManager;
 import poo.javabnb.*;
+import poo.javabnb.util.Images;
 
 public class SearchPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -16,11 +17,13 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){
-        try{
-            pfp.setIcon(new ImageIcon(getClass().getResource("/images/" + App.session.user.getDNI() + "2.png")));
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "2.png") );
         }
-        catch(Exception e){
-            pfp.setIcon(new ImageIcon(getClass().getResource("/images/profile_default_mini.png")));
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
+            pfp.setIcon( Images.getIcon("/images/profile_default_mini.png"));
         }
     }
     
@@ -81,6 +84,8 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         muroScroll = new javax.swing.JScrollPane();
         result = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        orderByComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(Polaris.BG_COLOR);
         setLayout(new java.awt.BorderLayout());
@@ -266,6 +271,17 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jLabel1.setText("Resultados de tu búsqueda");
         result.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
+        orderByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Precio", "Estrellas", "Casas", "Apartamentos" }));
+        orderByComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderByComboBoxActionPerformed(evt);
+            }
+        });
+        result.add(orderByComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
+
+        jLabel2.setText("Ordenar por...");
+        result.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+
         muroScroll.setViewportView(result);
 
         add(muroScroll, java.awt.BorderLayout.CENTER);
@@ -290,23 +306,28 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
         String selectedItem = (String) comboBox.getSelectedItem();
         switch (selectedItem) {
-            case "Perfil":
-            App.redirect("PROFILE");
-            break;
-            case "Post guardados":
-            App.redirect("PINNED_POSTS");
-            break;
-            case "Cerrar sesión":
-            App.session.endSession();
-            App.redirect("LOGIN");
-            break;
-            case "Community Guidelines":
-            App.redirect("COMMUNITY_GUIDELINES");
-            break;
-            default:
-            break;
+            case "Perfil" -> App.redirect("PROFILE");
+            case "Post guardados" -> App.redirect("PINNED_POSTS");
+            case "Cerrar sesión" -> {
+                App.session.endSession();
+                App.redirect("LOGIN");
+            }
+            case "Community Guidelines" -> App.redirect("COMMUNITY_GUIDELINES");
+            default -> {
+            }
         }
     }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void orderByComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderByComboBoxActionPerformed
+        String selectedItem = (String) comboBox.getSelectedItem();
+        switch (selectedItem) {
+            case "Precio" -> {SearchEngine.sortBy = SortType.PRICE; SearchEngine.sortSearch(SearchEngine.results);  App.redirect("PROFILE");}
+            case "Estrellas" -> {SearchEngine.sortBy = SortType.STARS;SearchEngine.sortSearch(SearchEngine.results); App.redirect("PROFILE");}
+            case "Casa" -> {}
+            case "Apartamento" -> {}
+            default -> {}
+        }
+    }//GEN-LAST:event_orderByComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,6 +337,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JTextField dateTo;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -326,6 +348,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField locationInput;
     private javax.swing.JScrollPane muroScroll;
+    private javax.swing.JComboBox<String> orderByComboBox;
     private javax.swing.JFormattedTextField peopleInput;
     private javax.swing.JButton pfp;
     private javax.swing.JPanel result;

@@ -9,7 +9,7 @@ public class DataBase implements Serializable {
     private final ArrayList<String> mails;
     private final ArrayList<String> passwords;
     private final ArrayList<Client> users;
-    public int sessionNumber;
+    private int sessionNumber;
 
     /**
      * A DataBase consists in three columns: two String columns that contain the mail and password

@@ -5,9 +5,9 @@ import poo.javabnb.util.Range;
 import java.util.Date;
 
 public class Reservation implements Serializable{
-    Particular client;
-    Range<Date> dateBounds;
-    Date reservationDate;
+    private Particular client;
+    private Range<Date> dateBounds;
+    private Date reservationDate;
 
     // Constructor
     public Reservation(Particular client, Range<Date> dateBounds, Date reservationDate) {

@@ -41,34 +41,36 @@ public class ProfilePage extends JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){
-        newPostButton.setVisible(App.session.isHost);
-        pinnedPostsLabel.setText(App.session.isHost? "Mis inmuebles" : "Inmuebles guardados");
-        userNameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        nameLabel.setText(App.session == null? "null" : App.session.user.getName());
-        userMailLabel.setText(App.session == null? "null" : App.session.user.getMail());
-        userPhoneLabel.setText(App.session == null? "null" : App.session.user.getNumber());
+        newPostButton.setVisible(App.session.isHost());
+        pinnedPostsLabel.setText(App.session.isHost()? "Mis inmuebles" : "Inmuebles guardados");
+        userNameLabel.setText(App.session == null? "null" : App.session.getUser().getName());
+        nameLabel.setText(App.session == null? "null" : App.session.getUser().getName());
+        userMailLabel.setText(App.session == null? "null" : App.session.getUser().getMail());
+        userPhoneLabel.setText(App.session == null? "null" : App.session.getUser().getNumber());
         userPhoneLabel.setBackground(Polaris.BG_COLOR);
         userMailLabel.setBackground(Polaris.BG_COLOR);
         nameLabel.setBackground(Polaris.BG_COLOR);
         saveButton.setVisible(false);
         deleteAccountButton.setVisible(false);
-        try{
-            ImageIcon pfpIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "1.png");
-            pfpIcon.getImage().flush();
-            pfp.setIcon(pfpIcon);
+        
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "1.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "1.png") );
         }
-        catch(Exception e){
-           pfp.setIcon(Images.getIcon("/images/profile_default.png"));
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
+            pfp.setIcon(Images.getIcon("/images/profile_default.png"));
         }
         
-        try{           
-            ImageIcon bannerIcon = Images.getIcon("/images/" + App.session.user.getDNI() + "3.png");
-            bannerIcon.getImage().flush();
-            banner.setIcon(bannerIcon);
+        File bannerFile = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "3.png");
+        if(bannerFile.exists()){
+            banner.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "3.png") );
         }
-        catch(Exception e){
-           banner.setIcon(Images.getIcon("/images/banner.png"));
+        else {
+            System.out.println("Warning: el usuario no tiene banner");
+            banner.setIcon(Images.getIcon("/images/banner.png"));
         }
+        
     }
     
     @Override
@@ -80,9 +82,9 @@ public class ProfilePage extends JPanel implements DynamicPage {
     
     @Override
     public void createDynamicContent(){
-        ArrayList<Building> array = App.session.isHost ? ((Host) App.session.user).getAllBuildings() : App.buildings.entries;
+        ArrayList<Building> array = App.session.isHost() ? ((Host) App.session.getUser()).getAllBuildings() : App.buildings.entries;
         
-        int max = App.session.isHost? array.size() : App.session.user.pinnedPosts.size();
+        int max = App.session.isHost()? array.size() : App.session.getUser().getPinnedPosts().size();
 
         int i = 0;
         int rows = 0;
@@ -93,7 +95,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
                 widgets.add(bw);
                 content.add(bw, new AbsoluteConstraints(475 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                    App.session.isHost ? array.get(i): App.buildings.entries.get(App.session.user.pinnedPosts.get(i) - 1) 
+                    App.session.isHost() ? array.get(i): App.buildings.entries.get(App.session.getUser().getPinnedPosts().get(i) - 1) 
                 );
                 ++i;
             }
@@ -103,7 +105,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         rows = 0;
         for(Building b : App.buildings.entries){
             for(Reservation r:b.reservations){
-               if(r.getClient().equals(App.session.user)){
+               if(r.getClient().equals(App.session.getUser())){
                    ReservationWidget rw = new ReservationWidget();
                    widgets_r.add(rw);
                    content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 330*rows, -1, -1));
@@ -152,7 +154,9 @@ public class ProfilePage extends JPanel implements DynamicPage {
         deleteAccountButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
+        pinnedPostsLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         newPostButton = new javax.swing.JButton();
 
@@ -361,7 +365,10 @@ public class ProfilePage extends JPanel implements DynamicPage {
         jPanel4.add(filler1);
 
         jPanel1.setBackground(Polaris.BG_COLOR);
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel12.setBackground(Polaris.BG_COLOR);
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pinnedPostsLabel.setBackground(Polaris.BG_COLOR);
         pinnedPostsLabel.setFont(FontManager.titleFont);
@@ -369,7 +376,17 @@ public class ProfilePage extends JPanel implements DynamicPage {
         pinnedPostsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pinnedPostsLabel.setText(" Inmuebles guardados");
         pinnedPostsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(pinnedPostsLabel);
+        jPanel12.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 400, -1));
+
+        pinnedPostsLabel1.setBackground(Polaris.BG_COLOR);
+        pinnedPostsLabel1.setFont(FontManager.titleFont);
+        pinnedPostsLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pinnedPostsLabel1.setText("Mis reservas");
+        pinnedPostsLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel12.add(pinnedPostsLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        jPanel1.add(jPanel12, java.awt.BorderLayout.WEST);
 
         jPanel7.setBackground(Polaris.BG_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
@@ -387,11 +404,11 @@ public class ProfilePage extends JPanel implements DynamicPage {
         });
         jPanel7.add(newPostButton);
 
-        jPanel1.add(jPanel7);
+        jPanel1.add(jPanel7, java.awt.BorderLayout.EAST);
 
         jPanel4.add(jPanel1);
 
-        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 840, 140));
+        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 910, 140));
 
         jScrollPane1.setViewportView(content);
 
@@ -400,14 +417,14 @@ public class ProfilePage extends JPanel implements DynamicPage {
 
     private void pfpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfpActionPerformed
         File file = Images.createImageChooser();
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "1.png", 150, 150);
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "2.png", 80, 80);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "1.png", 150, 150);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png", 80, 80);
         App.redirect("PROFILE");
     }//GEN-LAST:event_pfpActionPerformed
 
     private void bannerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bannerActionPerformed
         File file = Images.createImageChooser();
-        Images.resizeImage(file, "./src/main/resources/images/" + App.session.user.getDNI() + "3.png", 1920, 250);
+        Images.resizeImage(file, "./src/main/resources/images/" + App.session.getUser().getDNI() + "3.png", 1920, 250);
         App.redirect("PROFILE");
     }//GEN-LAST:event_bannerActionPerformed
 
@@ -418,7 +435,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
         if(saveButton.isEnabled()){
-            App.session.user.setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashInfo(App.session.user.getPassword()));
+            App.session.getUser().setInfo(nameLabel.getText(), userMailLabel.getText(), userPhoneLabel.getText(), Hashing.hashPassword(App.session.getUser().getPassword()));
             App.session.updateSession(); 
             userPhoneLabel.setEditable(false);
             userMailLabel.setEditable(false);
@@ -447,7 +464,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_nameLabelKeyPressed
 
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
-        App.db.remove(App.session.getKey());
+        App.db.remove(App.session.getEntry());
         App.db.saveData("./src/main/resources/data/data.dat");
         App.redirect("LOGIN");
     }//GEN-LAST:event_deleteAccountButtonActionPerformed
@@ -465,6 +482,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -481,6 +499,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel pinnedPostsLabel;
+    private javax.swing.JLabel pinnedPostsLabel1;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;

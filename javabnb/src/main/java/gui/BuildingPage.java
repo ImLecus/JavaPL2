@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,13 +30,15 @@ public class BuildingPage extends JPanel implements DynamicPage {
     @Override
     public void reloadContent(){   
       if(!App.isAdmin){
-        commentSection.setVisible(!App.session.isHost);  
-        try{
-            pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png"));
+        commentSection.setVisible(!App.session.isHost());  
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "2.png") );
         }
-        catch(Exception e){
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
             pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
-        } 
+        }
       }
       else{
           jPanel8.setVisible(false);
@@ -48,9 +51,9 @@ public class BuildingPage extends JPanel implements DynamicPage {
       }
       reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
       b = App.focusedBuilding;
-      saved = App.session.user.pinnedPosts.contains(b.getID());
+      saved = App.session.getUser().getPinnedPosts().contains(b.getID());
       name.setText(b.info.title);
-      description.setText(b.description);
+      description.setText(b.getDescription());
       checkForReservations();
       host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
       msgInput.setText("Escribe aquí tu mensaje...");
@@ -216,7 +219,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         errorLabel1 = new javax.swing.JLabel();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         commentSection = new javax.swing.JPanel();
@@ -444,7 +447,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         mainBody.add(filler12);
 
         information.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        information.setLayout(new java.awt.GridLayout(1, 0));
+        information.setLayout(new java.awt.GridLayout(1, 5));
         information.add(filler1);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -732,7 +735,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         rightSide.add(reservation);
 
         information.add(rightSide);
-        information.add(filler3);
+        information.add(filler2);
 
         mainBody.add(information);
 
@@ -920,7 +923,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         if(saved){
             App.session.addPinnedPost(b.getID());
         }
-        if(!saved && App.session.user.pinnedPosts.contains(b.getID())){
+        if(!saved && App.session.getUser().getPinnedPosts().contains(b.getID())){
             App.session.deletePinnedPost(b.getID());
         }
         repaint();
@@ -944,11 +947,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
         checkForReservations();
 
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
-        Reservation newReservation = new Reservation((Particular)App.session.user, range, new Date());
+        Reservation newReservation = new Reservation((Particular)App.session.getUser(), range, new Date());
         b.reservations.add(newReservation);
 
         Bill bill = new Bill();
-        bill.generateBill(App.session.user, b, dateEntrada, dateSalida);
+        bill.generateBill(App.session.getUser(), b, dateEntrada, dateSalida);
         App.redirect("BUILDING");
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -1004,7 +1007,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_setStar5ActionPerformed
 
     private void submitCommentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCommentButtonActionPerformed
-        Comment c = new Comment(App.session.user,commentRating,msgInput.getText());
+        Comment c = new Comment(App.session.getUser(),commentRating,msgInput.getText());
         Building newBuilding = b;
         newBuilding.recalculateRating(commentRating);
         newBuilding.comments.add(c);
@@ -1020,7 +1023,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             return;
         }
         Building newBuilding = b;
-        newBuilding.reportedBy.add(App.session.user);
+        newBuilding.reportedBy.add(App.session.getUser());
         App.buildings.update(b, newBuilding);
     }//GEN-LAST:event_reportButtonActionPerformed
 
@@ -1099,7 +1102,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;

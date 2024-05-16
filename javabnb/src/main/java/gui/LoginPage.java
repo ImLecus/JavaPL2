@@ -61,10 +61,10 @@ public class LoginPage extends javax.swing.JPanel {
                     Contraseña: %s
                     ID: %s
                     %n""", 
-                    App.session.user.getName(), 
-                    App.session.user.getMail(), 
+                    App.session.getUser().getName(), 
+                    App.session.getUser().getMail(), 
                     String.valueOf(passwordInput.getPassword()),
-                    App.session.ID);
+                    App.session.getID());
                     
                     resetText();
                     App.redirect("MAIN");

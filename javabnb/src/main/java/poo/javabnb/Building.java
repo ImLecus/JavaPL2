@@ -12,8 +12,7 @@ public class Building implements Comparable,Serializable{
     public int rooms;
     public int baths;
     private PropertyType type;
-    public String[] Hashtags;
-    public String description;
+    private String description;
     public File image;
     public int visitors;
     public String[] services;
@@ -22,20 +21,19 @@ public class Building implements Comparable,Serializable{
     public ArrayList<Client> reportedBy;
     public ArrayList<Reservation> reservations;
 
-    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String[] Hashtags, String description, File image, Host host, int visitors, String[] services) {
+    public Building(String title, String address, int rooms, int baths, PropertyType type, int price, String description, File image, Host host, int visitors, String[] services) {
         this.info = new BuildingInfo(title, host, price, 0);
         this.address = address;
         this.rooms = rooms;
         this.baths = baths;
         this.type = type;
-        this.Hashtags = Hashtags;
         this.description = description;
         this.image = image;
         this.visitors = visitors;
         this.services = services;
         this.comments = new ArrayList<>();
         for(Comment c: this.comments){
-            recalculateRating(c.rating);
+            recalculateRating(c.getRating());
         }
         this.reportedBy = new ArrayList<>();
         this.reservations= new ArrayList<>();
@@ -55,6 +53,10 @@ public class Building implements Comparable,Serializable{
     }
     public void setID(int id){
         this.id = id;
+    }
+    
+    public String getDescription(){
+        return description;
     }
 
     public String getAddress() {
@@ -106,7 +108,7 @@ public class Building implements Comparable,Serializable{
     }
     
     public void addComment(Comment c){
-        this.recalculateRating(c.rating);
+        this.recalculateRating(c.getRating());
         this.comments.add(c);
     }
 }

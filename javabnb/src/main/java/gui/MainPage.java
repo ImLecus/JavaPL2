@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -46,17 +47,20 @@ public class MainPage extends JPanel implements DynamicPage {
     
     @Override
     public void reloadContent() {
-        try{
-           pfp.setIcon(Images.getIcon("/images/" + App.session.user.getDNI() + "2.png") );
+        File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
+        if(file.exists()){
+            pfp.setIcon(Images.getIcon("/images/" + App.session.getUser().getDNI() + "2.png") );
         }
-        catch(Exception e){
-           pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
+        else {
+            System.out.println("Warning: el usuario no tiene foto de perfil");
+            pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
         }
-       locationInput.setText("");
-       peopleInput.setText("");
-       dateFrom.setText("");
-       dateTo.setText("");
-       comboBox.setSelectedItem("");
+
+        locationInput.setText("");
+        peopleInput.setText("");
+        dateFrom.setText("");
+        dateTo.setText("");
+        comboBox.setSelectedItem("");
     }
     
     @Override

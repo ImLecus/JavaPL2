@@ -4,9 +4,9 @@ import java.util.Calendar;
 
 public class Session {
     private final int entry;
-    public final Client user;
-    public final String ID;
-    public final boolean isHost;
+    private final Client user;
+    private final String ID;
+    private final boolean isHost;
 
     /**
      * A session manages the current user data, and it's assigned to an ID.
@@ -31,15 +31,26 @@ public class Session {
     }
     
     public void addPinnedPost(int id){
-        user.pinnedPosts.add(id);
+        user.getPinnedPosts().add(id);
         updateSession();
     }
 
     public void deletePinnedPost(int id){
-        user.pinnedPosts.remove(user.pinnedPosts.indexOf(id));
+        user.getPinnedPosts().remove(user.getPinnedPosts().indexOf(id));
         updateSession();
     }
+    
+    public Client getUser(){
+        return user;
+    }
+    
+    public String getID(){
+        return ID;
+    }
         
+    public boolean isHost(){
+        return isHost;
+    }
 
     /**
      * Creates a new session and generates a session ID.
@@ -54,7 +65,7 @@ public class Session {
         return new Session(client, sessionID, key);
     }
     
-    public int getKey(){
+    public int getEntry(){
         return entry;
     }
 }

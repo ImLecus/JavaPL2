@@ -40,6 +40,7 @@ public class App {
         try {
             db = DataBase.from("./src/main/resources/data/data.dat");
             buildings = BuildingDB.from("./src/main/resources/data/b_data.dat");
+            System.out.println("La base de datos se ha cargado correctamebte.");
         } 
         catch (DataBaseNotFoundException e) {
             db = new DataBase();

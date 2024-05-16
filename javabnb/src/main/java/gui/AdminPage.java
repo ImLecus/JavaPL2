@@ -6,6 +6,8 @@ import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.Building;
 import poo.javabnb.Client;
+import poo.javabnb.Reservation;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
@@ -33,7 +35,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
                 Client c = App.db.getClientData(i);
                 UserWidget uw = new UserWidget();
                 widgets.add(uw);
-                users.add(uw, new org.netbeans.lib.awtextra.AbsoluteConstraints(40 + x, 60 + 200*rows, -1, -1));
+                users.add(uw, new AbsoluteConstraints(40 + x, 60 + uw.getHeight()*rows, -1, -1));
                 uw.init(c, i);
                 ++i;
             }
@@ -49,12 +51,29 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
                 Building b = App.buildings.entries.get(i);
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                buildings.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(40 + x , 60 + 330*rows, -1, -1));
+                buildings.add(bw, new AbsoluteConstraints(40 + x , 60 + bw.getHeight()*rows, -1, -1));
                 bw.init(b);
                 ++i;
             }
             ++rows;
         }
+        
+        /*max = App.buildings.entries.size();
+        i = 0;
+        rows = 0;
+        
+        while(i < max){
+            for(int x = 0; x + 300 < App.frame.getWidth()/2 && i < max; x += 330){
+                Reservation r = null;//App.buildings.entries.get(i);
+                ReservationWidget rw = new ReservationWidget();
+                widgets.add(rw);
+                reservations.add(rw, new AbsoluteConstraints(40 + x , 60 + rw.getHeight()*rows, -1, -1));
+                rw.init(r);
+                ++i;
+            }
+            ++rows;
+        }
+        */
     }
 
     @Override
@@ -62,9 +81,13 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         for(JPanel w : widgets){
             if(w instanceof UserWidget){
                 users.remove(w);
-                continue;
             }
-            buildings.remove(w);
+            else if(w instanceof BuildingWidget){
+                buildings.remove(w);
+            }
+            else {
+                reservations.remove(w);
+            }
         }
         widgets.clear();
     }
@@ -93,6 +116,10 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         buildings = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        reservations = new javax.swing.JPanel();
 
         setBackground(Polaris.MAIN_COLOR);
         setLayout(new java.awt.BorderLayout());
@@ -112,7 +139,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         jButton2.setBackground(Polaris.TRANSPARENT_COLOR);
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setFocusable(false);
         jPanel6.add(jButton2);
@@ -125,7 +152,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         Salir.setBackground(Polaris.TRANSPARENT_COLOR);
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         Salir.setBorder(null);
-        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Salir.setFocusPainted(false);
         Salir.setFocusable(false);
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +167,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel1.setBackground(Polaris.BG_COLOR);
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel3.setBackground(Polaris.INPUT_BG_COLOR);
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -190,6 +217,30 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
         jPanel1.add(jPanel4);
 
+        jPanel7.setBackground(Polaris.INPUT_BG_COLOR);
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setBackground(Polaris.INPUT_BG_COLOR);
+        jLabel4.setFont(FontManager.subtitleFont);
+        jLabel4.setForeground(Polaris.TEXT_COLOR);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Reservas");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel7.add(jLabel4, java.awt.BorderLayout.NORTH);
+
+        jScrollPane3.setBackground(Polaris.TRANSPARENT_COLOR);
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        reservations.setBackground(Polaris.BG_COLOR);
+        reservations.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane3.setViewportView(reservations);
+
+        jPanel7.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel7);
+
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,14 +256,18 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel reservations;
     private javax.swing.JLabel title;
     private javax.swing.JPanel users;
     // End of variables declaration//GEN-END:variables
