@@ -152,7 +152,9 @@ public class ProfilePage extends JPanel implements DynamicPage {
         deleteAccountButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
         pinnedPostsLabel = new javax.swing.JLabel();
+        pinnedPostsLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         newPostButton = new javax.swing.JButton();
 
@@ -361,7 +363,10 @@ public class ProfilePage extends JPanel implements DynamicPage {
         jPanel4.add(filler1);
 
         jPanel1.setBackground(Polaris.BG_COLOR);
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel12.setBackground(Polaris.BG_COLOR);
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pinnedPostsLabel.setBackground(Polaris.BG_COLOR);
         pinnedPostsLabel.setFont(FontManager.titleFont);
@@ -369,7 +374,17 @@ public class ProfilePage extends JPanel implements DynamicPage {
         pinnedPostsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pinnedPostsLabel.setText(" Inmuebles guardados");
         pinnedPostsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(pinnedPostsLabel);
+        jPanel12.add(pinnedPostsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 400, -1));
+
+        pinnedPostsLabel1.setBackground(Polaris.BG_COLOR);
+        pinnedPostsLabel1.setFont(FontManager.titleFont);
+        pinnedPostsLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        pinnedPostsLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pinnedPostsLabel1.setText("Mis reservas");
+        pinnedPostsLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel12.add(pinnedPostsLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        jPanel1.add(jPanel12, java.awt.BorderLayout.WEST);
 
         jPanel7.setBackground(Polaris.BG_COLOR);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
@@ -387,11 +402,11 @@ public class ProfilePage extends JPanel implements DynamicPage {
         });
         jPanel7.add(newPostButton);
 
-        jPanel1.add(jPanel7);
+        jPanel1.add(jPanel7, java.awt.BorderLayout.EAST);
 
         jPanel4.add(jPanel1);
 
-        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 840, 140));
+        content.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 910, 140));
 
         jScrollPane1.setViewportView(content);
 
@@ -465,6 +480,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -481,6 +497,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
     private javax.swing.JButton pfp;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel pinnedPostsLabel;
+    private javax.swing.JLabel pinnedPostsLabel1;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField userMailLabel;
     private javax.swing.JLabel userNameLabel;

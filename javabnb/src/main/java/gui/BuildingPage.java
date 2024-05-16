@@ -216,7 +216,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         errorLabel1 = new javax.swing.JLabel();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 10));
         information1 = new javax.swing.JPanel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         commentSection = new javax.swing.JPanel();
@@ -444,7 +444,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         mainBody.add(filler12);
 
         information.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
-        information.setLayout(new java.awt.GridLayout(1, 0));
+        information.setLayout(new java.awt.GridLayout(1, 5));
         information.add(filler1);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -732,7 +732,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         rightSide.add(reservation);
 
         information.add(rightSide);
-        information.add(filler3);
+        information.add(filler2);
 
         mainBody.add(information);
 
@@ -1099,7 +1099,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;

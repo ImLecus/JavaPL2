@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package gui;
 import polaris.DynamicPage;
 import poo.javabnb.Client;
@@ -10,16 +6,10 @@ import poo.javabnb.Building;
 import poo.javabnb.Reservation;
 import polaris.*;
 
-/**
- *
- * @author guille
- */
 public class ReservationWidget extends javax.swing.JPanel {
     private Building building;
     private Reservation reservation;
-    /**
-     * Creates new form ReservationWidget
-     */
+
     public ReservationWidget() {
         initComponents();
     }

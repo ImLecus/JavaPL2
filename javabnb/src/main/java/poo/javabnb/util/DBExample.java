@@ -10,8 +10,7 @@ public class DBExample {
                 "00000000E",
                 "Example", 
                 "example", 
-                // "example"
-                "3bb12eda3c298db5de25597f54d924f2e17e78a26ad8953ed8218ee682f0bbbe9021e2f3009d152c911bf1f25ec683a902714166767afbd8e5bd0fb0124ecb8a",
+                Hashing.hashPassword("example"),
                 "666666666",
                 new Card("Example","0000000000000000", "12/99","000"),
                 false
@@ -21,8 +20,7 @@ public class DBExample {
                 "82629144T",
                 "Pedro", 
                 "pedro@gmail.com", 
-                // "pedrito123"
-                "af41c7be53e2eec50da54441b1ac4eb574d3b362a0f05e26066cbf404dd2968c30f47f09d200c7e82ea3bd35382ff8a09e151bd5dccda6d7dfbf62ae6de20b22",
+                Hashing.hashPassword("pedrito123"),
                 "695382122",
                 new Card("Pedro","1111222233334444", "12/99","123"),
                 false
@@ -33,7 +31,7 @@ public class DBExample {
                 "Sara", 
                 "sara@gmail.com", 
                 // "sarita321"
-                "dcfa87120fcd738c87d93fc4188b3461adf198a8dff577b9c4ba99e7540a1b296b590cf3ec73cd75383ca9d4e85669dd46f3156be6120a7945e928e42ebcca76",
+                Hashing.hashPassword("sarita321"),
                 "682776129",
                 new Card("Example","4321432143214321", "12/99","321"),
                 false
@@ -43,8 +41,7 @@ public class DBExample {
                 "88734454E",
                 "Dueño", 
                 "dueño@tuyo.me", 
-                // "password"
-                "b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86",
+                Hashing.hashPassword("password"),
                 "687332119",
                 new Date("23/04/2024"),
                 false
@@ -55,8 +52,7 @@ public class DBExample {
                 "82649376A",
                 "Don Pablo", 
                 "dpablo@gmail.com", 
-                // "donpablodonpablo"
-                "4b599a99d59d6fb4716f3440b0462ced06270478160f458ba4492f4460bc0bd9f8b4da608e787ef984478bd945fec7ef80412267227a2bacd6598bb7ace47233",
+                Hashing.hashPassword("donpablodonpablo"),
                 "683736112",
                 new Date("10/04/2024"),
                 true
