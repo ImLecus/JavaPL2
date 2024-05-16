@@ -133,10 +133,10 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         title.setText("Panel de administrador");
         jPanel2.add(title, java.awt.BorderLayout.CENTER);
 
-        jPanel6.setBackground(Polaris.TRANSPARENT_COLOR);
+        jPanel6.setBackground(polaris.Polaris.MAIN_COLOR);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        jButton2.setBackground(Polaris.TRANSPARENT_COLOR);
+        jButton2.setBackground(polaris.Polaris.MAIN_COLOR);
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
