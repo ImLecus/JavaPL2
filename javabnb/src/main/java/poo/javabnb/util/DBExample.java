@@ -23,7 +23,7 @@ public class DBExample {
                 "00000000E",
                 "Example", 
                 "example", 
-                Hashing.hashPassword("example"),
+                Hashing.hashInfo("example"),
                 "666666666",
                 new Card("Example","0000000000000000", "12/99","000"),
                 false
@@ -33,7 +33,7 @@ public class DBExample {
                 "82629144T",
                 "Pedro", 
                 "pedro@gmail.com", 
-                Hashing.hashPassword("pedrito123"),
+                Hashing.hashInfo("pedrito123"),
                 "695382122",
                 new Card("Pedro","1111222233334444", "12/99","123"),
                 false
@@ -44,7 +44,7 @@ public class DBExample {
                 "Sara", 
                 "sara@gmail.com", 
                 // "sarita321"
-                Hashing.hashPassword("sarita321"),
+                Hashing.hashInfo("sarita321"),
                 "682776129",
                 new Card("Example","4321432143214321", "12/99","321"),
                 false
@@ -54,7 +54,7 @@ public class DBExample {
                 "88734454E",
                 "Dueño", 
                 "dueño@tuyo.me", 
-                Hashing.hashPassword("password"),
+                Hashing.hashInfo("password"),
                 "687332119",
                 parse("23/04/2024"),
                 false
@@ -65,7 +65,7 @@ public class DBExample {
                 "82649376A",
                 "Don Pablo", 
                 "dpablo@gmail.com", 
-                Hashing.hashPassword("donpablodonpablo"),
+                Hashing.hashInfo("donpablodonpablo"),
                 "683736112",
                 parse("12/02/2024"),
                 true
