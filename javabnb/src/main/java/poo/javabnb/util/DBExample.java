@@ -126,5 +126,36 @@ public class DBExample {
         buildingDb.get(3).addComment(new Comment(
                 db.getClientData(3), 5, "Estancia perfecta, lo mejor fue poder disfrutar del tan afamado agua de Madrid"
             ));
+        addReservationsToBuildings(db, buildingDb);
+    }
+    private static void addReservationsToBuildings(DataBase db, BuildingDB buildingDb) {
+        // Crea varias reservas
+        Reservation reservation1 = new Reservation(
+                (Particular) db.getClientData(1),
+                new Range<>(parse("01/01/2024"), parse("01/02/2024")),
+                parse("01/01/2023")
+        );
+
+        Reservation reservation2 = new Reservation(
+                (Particular) db.getClientData(2),
+                new Range<>(parse("01/03/2024"), parse("01/04/2024")),
+                parse("01/02/2023")
+        );
+
+        Reservation reservation3 = new Reservation(
+                (Particular) db.getClientData(1),
+                new Range<>(parse("01/05/2024"), parse("01/06/2024")),
+                parse("01/03/2023")
+        );
+        Reservation reservation4 = new Reservation(
+                (Particular) db.getClientData(0),
+                new Range<>(parse("01/05/2024"), parse("01/06/2024")),
+                parse("01/03/2023")
+        );
+        // Añade las reservas a los edificios
+        buildingDb.get(1).reservations.add(reservation1);
+        buildingDb.get(0).reservations.add(reservation4);
+        buildingDb.get(2).reservations.add(reservation2);
+        buildingDb.get(3).reservations.add(reservation3);
     }
 }
