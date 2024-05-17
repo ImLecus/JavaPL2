@@ -23,11 +23,11 @@ public class Session {
 
     public void endSession() {
         App.db.saveData("./src/main/resources/data/data.dat");
+        App.buildings.saveData("./src/main/resources/data/b_data.dat");
     }
     
     public void updateSession(){
         App.db.update(entry, user);
-        App.db.saveData("./src/main/resources/data/data.dat");
     }
     
     public void addPinnedPost(int id){

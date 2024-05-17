@@ -949,7 +949,8 @@ public class BuildingPage extends JPanel implements DynamicPage {
         Range<Date> range = new Range<>(dateEntrada, dateSalida);
         Reservation newReservation = new Reservation((Particular)App.session.getUser(), range, new Date());
         b.reservations.add(newReservation);
-
+        App.buildings.saveData("./src/main/resources/data/b_data.dat");
+        App.BDreload();
         Bill bill = new Bill();
         bill.generateBill(App.session.getUser(), b, dateEntrada, dateSalida);
         App.redirect("BUILDING");

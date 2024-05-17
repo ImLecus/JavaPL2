@@ -53,6 +53,20 @@ public class App {
         setupFrame();
         redirect("LOGIN");
     }
+    
+    public static void BDreload(){
+       try {
+            buildings = BuildingDB.from("./src/main/resources/data/b_data.dat");
+            System.out.println("La base de datos se ha recargado correctamebte.");
+        } 
+        catch (DataBaseNotFoundException e) {
+            db = new DataBase();
+            buildings = new BuildingDB();
+            DBExample.setup(db, buildings);
+            db.saveData("./src/main/resources/data/data.dat");
+            buildings.saveData("./src/main/resources/data/b_data.dat");
+        } 
+    }
 
 
 

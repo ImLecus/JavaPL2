@@ -12,6 +12,14 @@ public class Range<T extends Comparable<T>> implements Serializable{
         this.max = max;
     }
 
+    public T getStart() {
+        return min;
+    }
+
+    public T getEnd() {
+        return max;
+    }
+
     public boolean isInRange(T value) {
         return value.compareTo(min) > -1 && value.compareTo(max) < 1;
     }
