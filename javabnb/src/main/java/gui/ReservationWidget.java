@@ -19,13 +19,10 @@ public class ReservationWidget extends javax.swing.JPanel {
         Userlabel.setText(r.getClient().getName());
         BuildingLabel.setText(b.info.title);
         dateBoundsLabel.setText(r.toString());
-        if(App.session.getUser().equals(r.getClient())|| App.session.getUser().equals(b.info.host) || App.isAdmin){
-          cancelReservation.setVisible(true);
-        }
-        else{
-          Polaris.disable(cancelReservation);
-          cancelReservation.setVisible(false);
-        }
+        cancelReservation.setVisible(
+                App.isAdmin || 
+                App.session.getUser().equals(r.getClient()) || 
+                App.session.getUser().equals(b.info.host));
     }
     
     /**

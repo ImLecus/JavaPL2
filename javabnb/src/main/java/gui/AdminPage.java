@@ -27,53 +27,42 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     @Override
     public void createDynamicContent(){
         int max = App.db.getAllUsers().size();
-        int i = 0;
-        int rows = 0;
+        int width = App.frame.getWidth()/12;
         
-        while(i < max){
-            for(int x = 0; x + 380 < App.frame.getWidth()/2 && i < max; x += 400){
-                Client c = App.db.getClientData(i);
-                UserWidget uw = new UserWidget();
-                widgets.add(uw);
-                users.add(uw, new AbsoluteConstraints(40 + x, 60 + uw.getHeight()*rows, -1, -1));
-                uw.init(c, i);
-                ++i;
-            }
-            ++rows;
+        for(int x = 0; x < max; x++){
+            Client c = App.db.getClientData(x);
+            UserWidget uw = new UserWidget();
+            widgets.add(uw);
+            users.add(uw, new AbsoluteConstraints(width, 60 + 180*x, -1, -1));
+            uw.init(c, x);
         }
         
         max = App.buildings.entries.size();
-        i = 0;
-        rows = 0;
         
-        while(i < max){
-            for(int x = 0; x + 300 < App.frame.getWidth()/2 && i < max; x += 330){
-                Building b = App.buildings.entries.get(i);
-                BuildingWidget bw = new BuildingWidget();
-                widgets.add(bw);
-                buildings.add(bw, new AbsoluteConstraints(40 + x , 60 + bw.getHeight()*rows, -1, -1));
-                bw.init(b);
-                ++i;
-            }
-            ++rows;
+        for(int x = 0; x < max; x++){
+            Building b = App.buildings.entries.get(x);
+            BuildingWidget bw = new BuildingWidget();
+            widgets.add(bw);
+            buildings.add(bw, new AbsoluteConstraints(width, 60 + 305*x, -1, -1));
+            bw.init(b);
         }
         
-        /*max = App.buildings.entries.size();
-        i = 0;
-        rows = 0;
         
-        while(i < max){
-            for(int x = 0; x + 300 < App.frame.getWidth()/2 && i < max; x += 330){
-                Reservation r = null;//App.buildings.entries.get(i);
+        ArrayList<ReservationWidget> reservationWidgets = new ArrayList<>();
+        for(Building b: App.buildings.entries){
+            for(Reservation r: b.getReservations()){
                 ReservationWidget rw = new ReservationWidget();
-                widgets.add(rw);
-                reservations.add(rw, new AbsoluteConstraints(40 + x , 60 + rw.getHeight()*rows, -1, -1));
-                rw.init(r);
-                ++i;
+                rw.init(b,r);
+                reservationWidgets.add(rw);
             }
-            ++rows;
         }
-        */
+        max = reservationWidgets.size();
+
+        for(int x = 0; x < max; x++){
+            widgets.add(reservationWidgets.get(x));
+            reservations.add(reservationWidgets.get(x), new AbsoluteConstraints(width, 60 + 136*x, -1, -1));
+        }
+        
     }
 
     @Override

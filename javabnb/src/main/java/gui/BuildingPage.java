@@ -39,6 +39,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             System.out.println("Warning: el usuario no tiene foto de perfil");
             pfp.setIcon(Images.getIcon("/images/profile_default_mini.png"));
         }
+        saved = App.session.getUser().getPinnedPosts().contains(b.getID());
       }
       else{
           jPanel8.setVisible(false);
@@ -51,7 +52,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
       }
       reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
       b = App.focusedBuilding;
-      saved = App.session.getUser().getPinnedPosts().contains(b.getID());
       name.setText(b.info.title);
       description.setText(b.getDescription());
       checkForReservations();
