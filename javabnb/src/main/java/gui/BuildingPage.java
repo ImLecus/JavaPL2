@@ -29,6 +29,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){   
+      b = App.focusedBuilding;
       if(!App.isAdmin){
         commentSection.setVisible(!App.session.isHost());  
         File file = new File("./src/main/resources/images/" + App.session.getUser().getDNI() + "2.png");
@@ -51,7 +52,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
           reservation.setVisible(false);  
       }
       reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
-      b = App.focusedBuilding;
+      
       name.setText(b.info.title);
       description.setText(b.getDescription());
       checkForReservations();
