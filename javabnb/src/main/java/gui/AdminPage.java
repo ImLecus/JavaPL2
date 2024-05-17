@@ -1,6 +1,8 @@
 package gui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JPanel;
 import poo.javabnb.util.FontManager;
 import polaris.*;
@@ -12,6 +14,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
     public ArrayList<JPanel> widgets;
+    private Date minDate = null;
     public AdminPage() {
         initComponents();
         widgets = new ArrayList<>();
@@ -21,7 +24,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     
     @Override
     public void reloadContent(){
-        repaint();
+        dateInput.setValue(null);
     }
     
     @Override
@@ -48,20 +51,20 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         }
         
         
-        ArrayList<ReservationWidget> reservationWidgets = new ArrayList<>();
+        int i = 0;
         for(Building b: App.buildings.entries){
-            for(Reservation r: b.getReservations()){
-                ReservationWidget rw = new ReservationWidget();
-                rw.init(b,r);
-                reservationWidgets.add(rw);
+            for(Reservation r: b.getReservations()){ 
+                if(minDate == null || r.getDateBounds().getStart().after(minDate)){
+                    ReservationWidget rw = new ReservationWidget();
+                    widgets.add(rw);
+                    reservations.add(rw, new AbsoluteConstraints(width, 60 + 136*i, -1, -1));
+                    rw.init(b,r); 
+                    i++;
+                }
             }
         }
-        max = reservationWidgets.size();
-
-        for(int x = 0; x < max; x++){
-            widgets.add(reservationWidgets.get(x));
-            reservations.add(reservationWidgets.get(x), new AbsoluteConstraints(width, 60 + 136*x, -1, -1));
-        }
+        
+        repaint();
         
     }
 
@@ -106,7 +109,12 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         jScrollPane2 = new javax.swing.JScrollPane();
         buildings = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        dateInput = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         reservations = new javax.swing.JPanel();
 
@@ -209,13 +217,46 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
         jPanel7.setBackground(Polaris.INPUT_BG_COLOR);
         jPanel7.setLayout(new java.awt.BorderLayout());
 
+        jPanel8.setBackground(Polaris.INPUT_BG_COLOR);
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
         jLabel4.setBackground(Polaris.INPUT_BG_COLOR);
         jLabel4.setFont(FontManager.subtitleFont);
         jLabel4.setForeground(Polaris.TEXT_COLOR);
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Reservas");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel7.add(jLabel4, java.awt.BorderLayout.NORTH);
+        jPanel8.add(jLabel4, java.awt.BorderLayout.NORTH);
+
+        jPanel9.setBackground(Polaris.INPUT_BG_COLOR);
+
+        jLabel2.setFont(FontManager.regularFont);
+        jLabel2.setForeground(Polaris.TEXT_COLOR);
+        jLabel2.setText("A partir del:");
+        jPanel9.add(jLabel2);
+
+        dateInput.setBackground(Polaris.BG_COLOR);
+        dateInput.setBorder(null);
+        dateInput.setColumns(10);
+        dateInput.setForeground(Polaris.TEXT_COLOR);
+        dateInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        dateInput.setFont(FontManager.regularFont);
+        jPanel9.add(dateInput);
+
+        jButton1.setBackground(Polaris.BG_COLOR);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jButton1);
+
+        jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_END);
+
+        jPanel7.add(jPanel8, java.awt.BorderLayout.NORTH);
 
         jScrollPane3.setBackground(Polaris.TRANSPARENT_COLOR);
         jScrollPane3.setBorder(null);
@@ -235,15 +276,30 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         App.isAdmin = false;
+        minDate = null;
         App.redirect("LOGIN");
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            minDate = sdf.parse(dateInput.getText());
+        }
+        catch(Exception e){
+            minDate = null;
+        }
+        reload();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
     private javax.swing.JPanel buildings;
+    private javax.swing.JFormattedTextField dateInput;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -253,6 +309,8 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
