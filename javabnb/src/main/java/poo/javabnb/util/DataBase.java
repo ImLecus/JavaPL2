@@ -12,8 +12,6 @@ public class DataBase implements Serializable {
     private final ArrayList<String> mails;
     private final ArrayList<String> passwords;
     private final ArrayList<Client> users;
-    private int sessionNumber;
-
     /**
      * A DataBase consists in three columns: two String columns that contain the mail and password
      * and a third column that contains the user related to that information.
@@ -23,7 +21,6 @@ public class DataBase implements Serializable {
         this.mails = new ArrayList<>();
         this.passwords = new ArrayList<>();
         this.users = new ArrayList<>();
-        sessionNumber = 0;
     }
 
     /**

@@ -494,11 +494,13 @@ public class RegisterPage extends javax.swing.JPanel {
 
         cardpropsPanel.setLayout(new java.awt.GridLayout(2, 2));
 
+        cardnumberLabel1.setBackground(Polaris.BG_COLOR);
         cardnumberLabel1.setFont(FontManager.regularFont);
         cardnumberLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
         cardnumberLabel1.setText("Fecha de caducidad");
         cardpropsPanel.add(cardnumberLabel1);
 
+        cardnumberLabel2.setBackground(Polaris.BG_COLOR);
         cardnumberLabel2.setFont(FontManager.regularFont);
         cardnumberLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
         cardnumberLabel2.setText("CVV");

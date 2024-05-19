@@ -613,6 +613,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="cardnumberLabel1">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Polaris.BG_COLOR" type="code"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="FontManager.regularFont" type="code"/>
                 </Property>
@@ -624,6 +627,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cardnumberLabel2">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Polaris.BG_COLOR" type="code"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="FontManager.regularFont" type="code"/>
                 </Property>
