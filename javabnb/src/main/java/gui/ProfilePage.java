@@ -105,7 +105,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         rows = 0;
         for(Building b : App.buildings.entries){
             for(Reservation r:b.reservations){
-               if(r.getClient().equals(App.session.getUser())){
+               if(r.getClient().getDNI().equals(App.session.getUser().getDNI())){
                    ReservationWidget rw = new ReservationWidget();
                    widgets_r.add(rw);
                    content.add(rw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520 + 170*rows, -1, -1));

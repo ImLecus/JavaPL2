@@ -21,8 +21,8 @@ public class ReservationWidget extends javax.swing.JPanel {
         dateBoundsLabel.setText(r.toString());
         cancelReservation.setVisible(
                 App.isAdmin || 
-                App.session.getUser().equals(r.getClient()) || 
-                App.session.getUser().equals(b.info.host));
+                App.session.getUser().getDNI().equals(r.getClient().getDNI()) || 
+                App.session.getUser().getDNI().equals(b.info.host.getDNI()));
     }
     
     /**
