@@ -69,13 +69,14 @@ public class DataBase implements Serializable {
      * @param index the entry index
      */
     public void remove(int index){
-        for(Building b : App.buildings.entries){
-            for(Reservation r:b.reservations){
-                if(users.get(index).getDNI().equals(r.getClient().getDNI())){
-                    b.reservations.remove(r);
-                }
+        for (Building b : App.buildings.entries) {
+        ArrayList<Reservation> reservationsCopy = new ArrayList<>(b.reservations);
+        for (Reservation r : reservationsCopy) {
+            if (users.get(index).getDNI().equals(r.getClient().getDNI())) {
+                b.reservations.remove(r);
             }
         }
+    }
         mails.set(index, mails.getLast());
         passwords.set(index, passwords.getLast());
         users.set(index, users.getLast());
