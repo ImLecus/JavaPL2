@@ -49,7 +49,7 @@ public class ReservationWidget extends javax.swing.JPanel {
         cancelReservation.setBorder(null);
         cancelReservation.setBorderPainted(false);
         cancelReservation.setContentAreaFilled(false);
-        cancelReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cancelReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelReservation.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelReservation.png"))); // NOI18N
         cancelReservation.setEnabled(false);
         cancelReservation.setFocusable(false);

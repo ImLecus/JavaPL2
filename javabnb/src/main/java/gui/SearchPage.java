@@ -40,7 +40,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
                 widgets.add(bw);
                 result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 120 + 330*rows, -1, -1));
                 bw.init(
-                array.get(i));
+                array.get(i),i);
                 ++i;
             }
             ++rows;

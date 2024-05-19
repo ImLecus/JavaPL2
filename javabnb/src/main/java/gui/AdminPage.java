@@ -47,7 +47,7 @@ public class AdminPage extends javax.swing.JPanel implements DynamicPage {
             BuildingWidget bw = new BuildingWidget();
             widgets.add(bw);
             buildings.add(bw, new AbsoluteConstraints(width, 60 + 305*x, -1, -1));
-            bw.init(b);
+            bw.init(b,x);
         }
         
         

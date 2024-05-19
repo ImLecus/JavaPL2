@@ -1,21 +1,24 @@
 package gui;
+import static gui.App.buildings;
 import javax.swing.ImageIcon;
 import poo.javabnb.Building;
 import poo.javabnb.util.FontManager;
 import polaris.*;
 import poo.javabnb.util.Images;
+import poo.javabnb.util.BuildingDB;
 
 public class BuildingWidget extends javax.swing.JPanel {
 
     private Building b;
-    
+    int index;
     public BuildingWidget() {
         initComponents();
     }
 
     
-    public void init(Building b){
+    public void init(Building b, int index){
         this.b = b;
+        this.index = index;
         title.setText(b.info.title);
         host.setText(b.info.host.getName());
         price.setText(String.valueOf(b.info.price) + "€ / noche");
@@ -25,6 +28,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         star4.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating == 3.5f? "/images/star_half.png" : "/images/star.png")));
         star5.setDisabledIcon( new ImageIcon(getClass().getResource( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating == 4.5f? "/images/star_half.png" : "/images/star.png")));
         warning.setVisible(App.isAdmin && b.reportedBy.size() > 0);
+        banButton.setVisible(App.isAdmin || App.session.getUser().getDNI().equals(b.info.host.getDNI()));
         
         pfp.setDisabledIcon(Images.resizeImage(b.image, 300, 300)); 
     };
@@ -51,6 +55,7 @@ public class BuildingWidget extends javax.swing.JPanel {
         title = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         warning = new javax.swing.JButton();
+        banButton = new javax.swing.JButton();
         pfp = new javax.swing.JButton();
         shadow = new RoundedPanel(20);
 
@@ -61,7 +66,7 @@ public class BuildingWidget extends javax.swing.JPanel {
 
         button.setBackground(new java.awt.Color(255, 255, 255));
         button.setForeground(polaris.Polaris.TRANSPARENT_COLOR);
-        button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         button.setMaximumSize(new java.awt.Dimension(300, 300));
         button.setMinimumSize(new java.awt.Dimension(300, 300));
         button.setPreferredSize(new java.awt.Dimension(300, 300));
@@ -152,6 +157,21 @@ public class BuildingWidget extends javax.swing.JPanel {
         warning.setEnabled(false);
         warning.setFocusable(false);
 
+        banButton.setBackground(Polaris.TRANSPARENT_COLOR);
+        banButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ban.png"))); // NOI18N
+        banButton.setBorder(null);
+        banButton.setBorderPainted(false);
+        banButton.setContentAreaFilled(false);
+        banButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        banButton.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ban.png"))); // NOI18N
+        banButton.setEnabled(false);
+        banButton.setFocusable(false);
+        banButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                banButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout textLayout = new javax.swing.GroupLayout(text);
         text.setLayout(textLayout);
         textLayout.setHorizontalGroup(
@@ -166,21 +186,24 @@ public class BuildingWidget extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addComponent(warning))
                     .addGroup(textLayout.createSequentialGroup()
-                        .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(title)
-                            .addComponent(host))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(host)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(textLayout.createSequentialGroup()
+                        .addComponent(title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(banButton)))
                 .addContainerGap())
         );
         textLayout.setVerticalGroup(
             textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(textLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(textLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(banButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(warning))
                     .addGroup(textLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(host)
@@ -236,7 +259,18 @@ public class BuildingWidget extends javax.swing.JPanel {
         App.redirect("BUILDING");
     }//GEN-LAST:event_pfpMouseClicked
 
+    private void banButtonActionPerformed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_banButtonActionPerformed
+       int index = buildings.entries.indexOf(b);
+       if (index != -1) {
+        App.buildings.remove(index);
+        buildings.saveData("./src/main/resources/data/b_data.dat");
+        App.BDreload();
+        ((DynamicPage) App.currentPanel).reload();
+       }
+    }//GEN-LAST:event_banButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton banButton;
     private javax.swing.JPanel button;
     private javax.swing.JLabel host;
     private javax.swing.JPanel jPanel1;

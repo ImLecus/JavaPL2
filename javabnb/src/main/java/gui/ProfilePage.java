@@ -95,7 +95,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
                 widgets.add(bw);
                 content.add(bw, new AbsoluteConstraints(475 + x, 520 + 330*rows, -1, -1));
                 bw.init(
-                    App.session.isHost() ? array.get(i): App.buildings.entries.get(App.session.getUser().getPinnedPosts().get(i) - 1) 
+                    App.session.isHost() ? array.get(i): App.buildings.entries.get(App.session.getUser().getPinnedPosts().get(i) - 1),i 
                 );
                 ++i;
             }

@@ -78,7 +78,7 @@ public class MainPage extends JPanel implements DynamicPage {
             BuildingWidget bw = new BuildingWidget();
             widgets.add(bw);
             buildingsPlane.add(bw, new AbsoluteConstraints(x,0,-1,-1));
-            bw.init(App.buildings.entries.get(i));
+            bw.init(App.buildings.entries.get(i),i);
             ++i;
         }
     }
