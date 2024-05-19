@@ -1,10 +1,6 @@
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Date;
+import java.awt.event.*;
 import java.util.Calendar;
 import poo.javabnb.Client;
 import poo.javabnb.util.FontManager;
@@ -76,8 +72,9 @@ public class RegisterPage extends javax.swing.JPanel {
         errorLabel4.setVisible(!mail);
         boolean password = Validate.validatePassword(passwordInput.getPassword());
         errorLabel5.setVisible(!password);
-
-        if(name && phone && dni && mail && password){
+        boolean card = Validate.validateCard(cardnumberInput.getText(), dateInput.getText(), cvvInput.getText());
+        errorLabel6.setVisible(!card);
+        if(name && phone && dni && mail && password && card){
             String hashedPassword = Hashing.hashInfo(String.valueOf(passwordInput.getPassword()));
             System.out.println("Hashed password: " + hashedPassword);
             if(hostRegister){
@@ -169,12 +166,14 @@ public class RegisterPage extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         particularButton = new javax.swing.JButton();
         hostButton = new javax.swing.JButton();
-        mailLabel1 = new javax.swing.JLabel();
-        mailInput1 = new javax.swing.JTextField();
+        cardnumberLabel = new javax.swing.JLabel();
+        cardnumberInput = new javax.swing.JTextField();
         errorLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cardpropsPanel = new javax.swing.JPanel();
+        cardnumberLabel1 = new javax.swing.JLabel();
+        cardnumberLabel2 = new javax.swing.JLabel();
+        dateInput = new javax.swing.JFormattedTextField();
+        cvvInput = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -462,20 +461,20 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel7.add(jPanel3, gridBagConstraints);
 
-        mailLabel1.setFont(FontManager.regularFont);
-        mailLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
-        mailLabel1.setText("Número de tarjeta");
+        cardnumberLabel.setFont(FontManager.regularFont);
+        cardnumberLabel.setForeground(polaris.Polaris.TEXT_COLOR);
+        cardnumberLabel.setText("Número de tarjeta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 19;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        jPanel7.add(mailLabel1, gridBagConstraints);
+        jPanel7.add(cardnumberLabel, gridBagConstraints);
 
-        mailInput1.setBackground(polaris.Polaris.INPUT_BG_COLOR);
-        mailInput1.setFont(FontManager.regularFont);
-        mailInput1.setForeground(polaris.Polaris.TEXT_COLOR);
-        mailInput1.setBorder(null);
+        cardnumberInput.setBackground(polaris.Polaris.INPUT_BG_COLOR);
+        cardnumberInput.setFont(FontManager.regularFont);
+        cardnumberInput.setForeground(polaris.Polaris.TEXT_COLOR);
+        cardnumberInput.setBorder(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
@@ -483,7 +482,7 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
-        jPanel7.add(mailInput1, gridBagConstraints);
+        jPanel7.add(cardnumberInput, gridBagConstraints);
 
         errorLabel6.setFont(FontManager.regularFont);
         errorLabel6.setForeground(polaris.Polaris.SECONDARY_COLOR);
@@ -493,27 +492,36 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 22;
         jPanel7.add(errorLabel6, gridBagConstraints);
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        cardpropsPanel.setLayout(new java.awt.GridLayout(2, 2));
 
-        jTextField1.setBackground(Polaris.INPUT_BG_COLOR);
-        jTextField1.setFont(FontManager.regularFont);
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("mm/yy");
-        jTextField1.setBorder(null);
-        jPanel5.add(jTextField1);
+        cardnumberLabel1.setFont(FontManager.regularFont);
+        cardnumberLabel1.setForeground(polaris.Polaris.TEXT_COLOR);
+        cardnumberLabel1.setText("Fecha de caducidad");
+        cardpropsPanel.add(cardnumberLabel1);
 
-        jTextField2.setBackground(Polaris.INPUT_BG_COLOR);
-        jTextField2.setFont(FontManager.regularFont);
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("cvv");
-        jTextField2.setBorder(null);
-        jPanel5.add(jTextField2);
+        cardnumberLabel2.setFont(FontManager.regularFont);
+        cardnumberLabel2.setForeground(polaris.Polaris.TEXT_COLOR);
+        cardnumberLabel2.setText("CVV");
+        cardpropsPanel.add(cardnumberLabel2);
+
+        dateInput.setBackground(Polaris.INPUT_BG_COLOR);
+        dateInput.setBorder(null);
+        dateInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/yy"))));
+        dateInput.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        dateInput.setFont(FontManager.regularFont);
+        cardpropsPanel.add(dateInput);
+
+        cvvInput.setBackground(Polaris.INPUT_BG_COLOR);
+        cvvInput.setFont(FontManager.regularFont);
+        cvvInput.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cvvInput.setBorder(null);
+        cardpropsPanel.add(cvvInput);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 21;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel7.add(jPanel5, gridBagConstraints);
+        jPanel7.add(cardpropsPanel, gridBagConstraints);
 
         add(jPanel7, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -523,6 +531,9 @@ public class RegisterPage extends javax.swing.JPanel {
         particularButton.setBackground(Polaris.MAIN_COLOR);
         hostButton.setBackground(Polaris.INPUT_BG_COLOR);
         hostButton.setForeground(Polaris.TEXT_COLOR);
+        cardnumberLabel.setVisible(true);
+        cardnumberInput.setVisible(true);
+        cardpropsPanel.setVisible(true);
         hostRegister = false;
     }//GEN-LAST:event_particularButtonActionPerformed
 
@@ -531,6 +542,9 @@ public class RegisterPage extends javax.swing.JPanel {
         hostButton.setBackground(Polaris.MAIN_COLOR);
         particularButton.setBackground(Polaris.INPUT_BG_COLOR);
         particularButton.setForeground(Polaris.TEXT_COLOR);
+        cardnumberLabel.setVisible(false);
+        cardnumberInput.setVisible(false);
+        cardpropsPanel.setVisible(false);
         hostRegister = true;
     }//GEN-LAST:event_hostButtonActionPerformed
 
@@ -539,6 +553,13 @@ public class RegisterPage extends javax.swing.JPanel {
     private javax.swing.JTextField DNIInput;
     private javax.swing.JLabel DNILabel;
     private javax.swing.JButton atrasButton;
+    private javax.swing.JTextField cardnumberInput;
+    private javax.swing.JLabel cardnumberLabel;
+    private javax.swing.JLabel cardnumberLabel1;
+    private javax.swing.JLabel cardnumberLabel2;
+    private javax.swing.JPanel cardpropsPanel;
+    private javax.swing.JTextField cvvInput;
+    private javax.swing.JFormattedTextField dateInput;
     private javax.swing.JLabel errorLabel1;
     private javax.swing.JLabel errorLabel2;
     private javax.swing.JLabel errorLabel3;
@@ -552,15 +573,10 @@ public class RegisterPage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField mailInput;
-    private javax.swing.JTextField mailInput1;
     private javax.swing.JLabel mailLabel;
-    private javax.swing.JLabel mailLabel1;
     private javax.swing.JTextField nameInput;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton particularButton;
@@ -574,4 +590,5 @@ public class RegisterPage extends javax.swing.JPanel {
     private javax.swing.JCheckBox termsCheckbox;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
+
 }

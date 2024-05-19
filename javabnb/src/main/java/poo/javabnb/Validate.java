@@ -1,5 +1,8 @@
 package poo.javabnb;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Validate {
     public static boolean validateDNI(char[] dni){
         int number = 0;
@@ -65,5 +68,26 @@ public class Validate {
             if(c == '.'){domain = true;}
         }
         return arrobas == 1 && domain;
+    }
+    
+    public static boolean validateCard(String number, String date, String cvv){
+        number = number.replaceAll(" ","");
+        if(number.length() != 16 || cvv.length() != 3){
+            return false;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/yy");
+        Date d = null;
+        try{
+            Long.parseLong(number);
+            Integer.parseInt(cvv);
+            d = sdf.parse(date);
+        }
+        catch(Exception e){
+            return false;
+        }
+        if(d.before(new Date())){
+            return false;
+        }
+        return true;
     }
 }
