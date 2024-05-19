@@ -1,8 +1,11 @@
 package poo.javabnb.util;
+import gui.App;
 import java.io.*;
 import java.util.ArrayList;
 import poo.javabnb.Client;
 import poo.javabnb.exceptions.DataBaseNotFoundException;
+import poo.javabnb.Building;
+import poo.javabnb.Reservation;
 
 public class DataBase implements Serializable {
 
@@ -66,6 +69,13 @@ public class DataBase implements Serializable {
      * @param index the entry index
      */
     public void remove(int index){
+        for(Building b : App.buildings.entries){
+            for(Reservation r:b.reservations){
+                if(users.get(index).getDNI().equals(r.getClient().getDNI())){
+                    b.reservations.remove(r);
+                }
+            }
+        }
         mails.set(index, mails.getLast());
         passwords.set(index, passwords.getLast());
         users.set(index, users.getLast());
