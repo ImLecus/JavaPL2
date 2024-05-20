@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Particular extends Client implements Serializable{
     private final Card card;
-    public boolean VIP;
+    private boolean VIP;
 
     // Constructor
     public Particular(String DNI, String name, String mail, String password, String number, Card card, boolean VIP) {

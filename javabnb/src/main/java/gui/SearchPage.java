@@ -38,7 +38,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
             for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
-                result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 120 + 330*rows, -1, -1));
+                result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 140 + 330*rows, -1, -1));
                 bw.init(
                 array.get(i),i);
                 ++i;
@@ -271,16 +271,21 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         jLabel1.setText("Resultados de tu búsqueda");
         result.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
+        orderByComboBox.setFont(FontManager.regularFont);
+        orderByComboBox.setForeground(Polaris.TEXT_COLOR);
         orderByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Precio", "Estrellas", "Casas", "Apartamentos" }));
+        orderByComboBox.setBorder(null);
         orderByComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderByComboBoxActionPerformed(evt);
             }
         });
-        result.add(orderByComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
+        result.add(orderByComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
+        jLabel2.setFont(FontManager.regularFont);
+        jLabel2.setForeground(Polaris.TEXT_COLOR);
         jLabel2.setText("Ordenar por...");
-        result.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+        result.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, 30));
 
         muroScroll.setViewportView(result);
 
