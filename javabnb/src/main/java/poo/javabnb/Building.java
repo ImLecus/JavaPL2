@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import static poo.javabnb.SortType.*;
 import poo.javabnb.Reservation;
 
+
 public class Building implements Comparable,Serializable{
     public BuildingInfo info;
     private String address;
@@ -110,6 +111,24 @@ public class Building implements Comparable,Serializable{
     public void addComment(Comment c){
         this.recalculateRating(c.getRating());
         this.comments.add(c);
+    }
+    
+    public void setInfo(String text, String title, String description, int price){
+        
+        int roomsEndIndex = text.indexOf(" habitaciones · ");
+        int bathsStartIndex = roomsEndIndex + " habitaciones · ".length();
+        int bathsEndIndex = text.indexOf(" baños · ");
+        int visitorsStartIndex = bathsEndIndex + " baños · ".length();
+        
+        int rooms = Integer.parseInt(text.substring(0, roomsEndIndex));
+        int baths = Integer.parseInt(text.substring(bathsStartIndex, bathsEndIndex));
+        int visitors = Integer.parseInt(text.substring(visitorsStartIndex, text.length() - " huéspedes".length()));
+        
+        this.rooms = rooms;
+        this.baths = baths;
+        this.visitors = visitors;
+        Host currentHost = this.info.getHost();
+        this.info = new BuildingInfo(title, currentHost, price,0);
     }
 }
 

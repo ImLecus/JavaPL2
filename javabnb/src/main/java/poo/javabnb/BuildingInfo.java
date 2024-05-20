@@ -23,4 +23,9 @@ public class BuildingInfo implements Serializable{
         this.rating = rating;
     }
 
+    public Host getHost() {
+        return host;
+    }
+    
+
 }

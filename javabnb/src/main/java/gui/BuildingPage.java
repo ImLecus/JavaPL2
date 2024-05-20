@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,7 +54,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
           reservation.setVisible(false);  
       }
       reportButton.setIcon(Images.getIcon(App.isAdmin? "/images/ban.png" : "/images/report.png"));
-      
+      pricePerNight.setText(String.valueOf(b.info.price)); 
       name.setText(b.info.title);
       description.setText(b.getDescription());
       checkForReservations();
@@ -74,6 +76,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
       idaLabel.setValue(null);
       vueltaLabel.setValue(null);
       errorLabel1.setVisible(false);
+      saveButton.setVisible(false);
     }
     @Override
     public void createDynamicContent(){
@@ -197,17 +200,20 @@ public class BuildingPage extends JPanel implements DynamicPage {
         reservationsPanel = new javax.swing.JPanel();
         leftSide = new javax.swing.JPanel();
         host = new javax.swing.JLabel();
-        props = new javax.swing.JLabel();
         description = new javax.swing.JTextArea();
-        name = new javax.swing.JLabel();
         starsPanel = new javax.swing.JPanel();
         star1 = new javax.swing.JButton();
         star2 = new javax.swing.JButton();
         star3 = new javax.swing.JButton();
         star4 = new javax.swing.JButton();
         star5 = new javax.swing.JButton();
+        name = new javax.swing.JTextField();
+        props = new javax.swing.JTextField();
+        pricePerNight = new javax.swing.JTextField();
         rightSide = new javax.swing.JPanel();
         savedAndReport = new javax.swing.JPanel();
+        saveChangesButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         reportButton = new javax.swing.JButton();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -468,20 +474,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
         host.setText("Anfitrión: Pedrito (Superanfitrión)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         leftSide.add(host, gridBagConstraints);
-
-        props.setBackground(polaris.Polaris.TEXT_COLOR);
-        props.setFont(FontManager.boldFont);
-        props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
-        leftSide.add(props, gridBagConstraints);
 
         description.setEditable(false);
         description.setBackground(polaris.Polaris.BG_COLOR);
@@ -498,18 +494,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
         description.setVerifyInputWhenFocusTarget(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
         leftSide.add(description, gridBagConstraints);
-
-        name.setBackground(polaris.Polaris.TEXT_COLOR);
-        name.setFont(FontManager.titleFont);
-        name.setText("Nombre del inmueble");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
-        leftSide.add(name, gridBagConstraints);
 
         starsPanel.setBackground(polaris.Polaris.BG_COLOR);
         starsPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
@@ -571,10 +559,54 @@ public class BuildingPage extends JPanel implements DynamicPage {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         leftSide.add(starsPanel, gridBagConstraints);
+
+        name.setEditable(false);
+        name.setBackground(polaris.Polaris.BG_COLOR);
+        name.setFont(FontManager.regularFont);
+        name.setForeground(polaris.Polaris.TEXT_COLOR);
+        name.setText("Nombre del inmueble");
+        name.setBorder(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        leftSide.add(name, gridBagConstraints);
+
+        props.setEditable(false);
+        props.setBackground(polaris.Polaris.BG_COLOR);
+        props.setFont(FontManager.regularFont);
+        props.setForeground(polaris.Polaris.TEXT_COLOR);
+        props.setText("4 huéspedes · 1 baño · 3 habitaciones · 3 camas");
+        props.setBorder(null);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        leftSide.add(props, gridBagConstraints);
+
+        pricePerNight.setEditable(false);
+        pricePerNight.setBackground(polaris.Polaris.BG_COLOR);
+        pricePerNight.setFont(FontManager.regularFont);
+        pricePerNight.setForeground(polaris.Polaris.TEXT_COLOR);
+        pricePerNight.setText("125€/noche");
+        pricePerNight.setBorder(null);
+        pricePerNight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pricePerNightActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        leftSide.add(pricePerNight, gridBagConstraints);
 
         information.add(leftSide);
 
@@ -584,12 +616,50 @@ public class BuildingPage extends JPanel implements DynamicPage {
         savedAndReport.setBackground(polaris.Polaris.TRANSPARENT_COLOR);
         savedAndReport.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        saveChangesButton.setBackground(polaris.Polaris.BG_COLOR);
+        saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveChangesButton.setBorder(null);
+        saveChangesButton.setBorderPainted(false);
+        saveChangesButton.setContentAreaFilled(false);
+        saveChangesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveChangesButton.setDefaultCapable(false);
+        saveChangesButton.setFocusPainted(false);
+        saveChangesButton.setFocusable(false);
+        saveChangesButton.setOpaque(true);
+        saveChangesButton.setRequestFocusEnabled(false);
+        saveChangesButton.setVerifyInputWhenFocusTarget(false);
+        saveChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveChangesButtonActionPerformed(evt);
+            }
+        });
+        savedAndReport.add(saveChangesButton);
+
+        editButton.setBackground(polaris.Polaris.BG_COLOR);
+        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        editButton.setBorder(null);
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setDefaultCapable(false);
+        editButton.setFocusPainted(false);
+        editButton.setFocusable(false);
+        editButton.setOpaque(true);
+        editButton.setRequestFocusEnabled(false);
+        editButton.setVerifyInputWhenFocusTarget(false);
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+        savedAndReport.add(editButton);
+
         saveButton.setBackground(polaris.Polaris.BG_COLOR);
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -607,7 +677,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportButton.setOpaque(true);
         reportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1089,6 +1159,52 @@ public class BuildingPage extends JPanel implements DynamicPage {
         // TODO add your handling code here:
     }//GEN-LAST:event_vueltaLabelKeyPressed
 
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+       editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                saveChangesButton.setVisible(true);
+                
+                name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+                pricePerNight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+                props.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+                description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+                
+                name.setEditable(true);
+                pricePerNight.setEditable(true);
+                props.setEditable(true);
+                description.setEditable(true);
+                name.setBackground(Polaris.INPUT_BG_COLOR);
+                pricePerNight.setBackground(Polaris.INPUT_BG_COLOR);
+                props.setBackground(Polaris.INPUT_BG_COLOR);
+                description.setBackground(Polaris.INPUT_BG_COLOR);
+                saveChangesButton.setVisible(true);
+            }
+        }); 
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
+        if(saveButton.isEnabled()){
+            
+            App.focusedBuilding.setInfo(props.getText(), name.getText(), description.getText(), Integer.valueOf(pricePerNight.getText()));
+            App.session.updateSession(); 
+            pricePerNight.setEditable(false);
+            name.setEditable(false);
+            props.setEditable(false);
+            description.setEditable(false);
+            pricePerNight.setBackground(Polaris.BG_COLOR);
+            name.setBackground(Polaris.BG_COLOR);
+            props.setBackground(Polaris.BG_COLOR);
+            description.setBackground(Polaris.BG_COLOR);
+            saveButton.setVisible(false);
+            App.redirect("BUILDING");
+        }
+    }//GEN-LAST:event_saveChangesButtonActionPerformed
+
+    private void pricePerNightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pricePerNightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pricePerNightActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasButton;
@@ -1100,6 +1216,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JFormattedTextField dateFrom;
     private javax.swing.JTextField dateTo;
     private javax.swing.JTextArea description;
+    private javax.swing.JButton editButton;
     private javax.swing.JLabel errorLabel1;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
@@ -1136,17 +1253,19 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private javax.swing.JTextField locationInput;
     private javax.swing.JPanel mainBody;
     private javax.swing.JTextArea msgInput;
-    private javax.swing.JLabel name;
+    private javax.swing.JTextField name;
     private javax.swing.JLabel name2;
     private javax.swing.JFormattedTextField peopleInput;
     private javax.swing.JButton pfp;
     private javax.swing.JLabel precioTotalLabel;
-    private javax.swing.JLabel props;
+    private javax.swing.JTextField pricePerNight;
+    private javax.swing.JTextField props;
     private javax.swing.JButton reportButton;
     private javax.swing.JPanel reservation;
     private javax.swing.JPanel reservationsPanel;
     private javax.swing.JPanel rightSide;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton saveChangesButton;
     private javax.swing.JPanel savedAndReport;
     private javax.swing.JButton searchBar;
     private javax.swing.JButton setStar1;
