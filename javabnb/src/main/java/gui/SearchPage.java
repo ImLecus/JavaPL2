@@ -35,7 +35,7 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         ArrayList<Building> array = SearchEngine.results; 
         int max = array.size();
         while(i < max){
-            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+            for(int x = 0; x < App.frame.getWidth()-160-330 && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
                 result.add(bw, new org.netbeans.lib.awtextra.AbsoluteConstraints(160 + x, 140 + 330*rows, -1, -1));
@@ -300,6 +300,8 @@ public class SearchPage extends javax.swing.JPanel implements DynamicPage {
         SearchEngine.search( App.buildings.entries,
             locationInput.getText(),
             peopleInput.getText().length() == 0? 0: Integer.parseInt(peopleInput.getText()),
+            dateFrom.getText(),
+            dateTo.getText(),
             SortType.PRICE
         );
     }//GEN-LAST:event_searchBarActionPerformed

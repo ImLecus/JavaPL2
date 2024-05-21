@@ -1146,6 +1146,8 @@ public class BuildingPage extends JPanel implements DynamicPage {
         SearchEngine.search( App.buildings.entries,
             locationInput.getText(),
             peopleInput.getText().length() == 0? 0: Integer.parseInt(peopleInput.getText()),
+            dateFrom.getText(),
+            dateTo.getText(),
             SortType.PRICE
         );
     }//GEN-LAST:event_searchBarActionPerformed
