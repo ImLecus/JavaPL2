@@ -549,7 +549,7 @@ public class MainPage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        SearchEngine.search( App.buildings.entries,"Paris",0,"","",SortType.PRICE);
+        SearchEngine.search( App.buildings.entries,"París",0,"","",SortType.PRICE);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
