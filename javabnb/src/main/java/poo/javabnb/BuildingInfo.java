@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BuildingInfo implements Serializable{
     public String title;
-    public final Host host;
+    public Host host;
     public int price;
     public float rating;
     

@@ -26,7 +26,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         widgets_r = new ArrayList<>();
         Polaris.highlightOnHover(submitCommentButton); 
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(20);     
-       
+        pricePerNight.setVisible(false);
     }
     
     @Override
@@ -58,18 +58,18 @@ public class BuildingPage extends JPanel implements DynamicPage {
       name.setText(b.info.title);
       description.setText(b.getDescription());
       checkForReservations();
-      host.setText(b.info.host.getName() + (b.info.host.superhost ? "(Superanfitrión)" : ""));
+      host.setText(b.info.host.getName() + (b.info.host.superhost ? " (Superanfitrión)" : ""));
       msgInput.setText("Escribe aquí tu mensaje...");
       setStar1.setIcon( Images.getIcon("/images/star.png")); 
       setStar2.setIcon( Images.getIcon("/images/star.png"));
       setStar3.setIcon( Images.getIcon("/images/star.png"));
       setStar4.setIcon( Images.getIcon("/images/star.png"));
       setStar5.setIcon( Images.getIcon("/images/star.png"));
-      star1.setDisabledIcon( Images.getIcon( b.info.rating >= 1 ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png"));
-      star2.setDisabledIcon( Images.getIcon( b.info.rating >= 2 ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png"));
-      star3.setDisabledIcon( Images.getIcon( b.info.rating >= 3 ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png"));
-      star4.setDisabledIcon( Images.getIcon( b.info.rating >= 4 ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png"));
-      star5.setDisabledIcon( Images.getIcon( b.info.rating == 5 ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png"));
+      star1.setDisabledIcon( Images.getIcon( b.info.rating >= 1.0f ? "/images/star_filled.png" : b.info.rating >= 0.5f? "/images/star_half.png" : "/images/star.png"));
+      star2.setDisabledIcon( Images.getIcon( b.info.rating >= 2.0f ? "/images/star_filled.png" : b.info.rating >= 1.5f? "/images/star_half.png" : "/images/star.png"));
+      star3.setDisabledIcon( Images.getIcon( b.info.rating >= 3.0f ? "/images/star_filled.png" : b.info.rating >= 2.5f? "/images/star_half.png" : "/images/star.png"));
+      star4.setDisabledIcon( Images.getIcon( b.info.rating >= 4.0f ? "/images/star_filled.png" : b.info.rating >= 3.5f? "/images/star_half.png" : "/images/star.png"));
+      star5.setDisabledIcon( Images.getIcon( b.info.rating == 5.0f ? "/images/star_filled.png" : b.info.rating >= 4.5f? "/images/star_half.png" : "/images/star.png"));
       props.setText(String.valueOf(b.rooms) + " habitaciones · " + String.valueOf(b.baths) + " baños · " + String.valueOf(b.visitors) + " huéspedes");
       saveButton.setIcon( new ImageIcon(getClass().getResource( saved ? "/images/save_filled.png" : "/images/save.png")));
       image.setIcon(Images.resizeImage(App.focusedBuilding.image,0, 564));
@@ -153,7 +153,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             return;
         }
         ReservationChecker checker = new ReservationChecker();
-        if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations) || checker.notPastDate(dateEntrada, dateSalida)) {
+        if (checker.isOverlapping(dateEntrada,dateSalida, b.reservations) && dateEntrada.after(dateSalida) && checker.notPastDate(dateEntrada, dateSalida)) {
             Polaris.disable(submitButton);
             errorLabel1.setVisible(true);
             repaint();
@@ -1086,8 +1086,39 @@ public class BuildingPage extends JPanel implements DynamicPage {
     private void submitCommentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCommentButtonActionPerformed
         Comment c = new Comment(App.session.getUser(),commentRating,msgInput.getText());
         Building newBuilding = b;
-        newBuilding.recalculateRating(commentRating);
-        newBuilding.comments.add(c);
+        newBuilding.addComment(c);
+        float avg = 0;
+        int sum = 0;
+        for(Building bl: App.buildings.entries){
+            if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+                sum++;
+                avg += bl.info.rating;
+            }
+        }
+        avg /= sum;
+        System.out.println(String.valueOf(avg));
+        if(avg > 4.0f){
+            int entry = App.db.getUserInDataBase(b.info.getHost().getMail(), b.info.getHost().getPassword());
+            Host newHost = b.info.getHost();
+            newHost.superhost = true;
+            App.db.update(entry, newHost);
+            for(Building bl: App.buildings.entries){
+                if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+                    bl.info.host = newHost;
+                }
+            }
+        }
+        else if(b.info.getHost().superhost == true){
+            int entry = App.db.getUserInDataBase(b.info.getHost().getMail(), b.info.getHost().getPassword());
+            Host newHost = b.info.getHost();
+            newHost.superhost = false;
+            App.db.update(entry, newHost);
+            for(Building bl: App.buildings.entries){
+                if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+                    bl.info.host = newHost;
+                }
+            }
+        }
         App.buildings.update(b, newBuilding);
         App.focusedBuilding = newBuilding;
         App.redirect("BUILDING");
@@ -1172,7 +1203,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         pricePerNight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
         props.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
         description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
-                
+        pricePerNight.setVisible(true);
         name.setEditable(true);
         pricePerNight.setEditable(true);
         props.setEditable(true);
@@ -1191,12 +1222,16 @@ public class BuildingPage extends JPanel implements DynamicPage {
             
             App.buildings.saveData("./src/main/resources/data/b_data.dat");
             App.BDreload();
-            
             pricePerNight.setEditable(false);
             name.setEditable(false);
+            name.setBorder(null);
             props.setEditable(false);
+            props.setBorder(null);
             description.setEditable(false);
+            description.setBorder(null);
             pricePerNight.setBackground(Polaris.BG_COLOR);
+            pricePerNight.setBorder(null);
+            pricePerNight.setVisible(false);
             name.setBackground(Polaris.BG_COLOR);
             props.setBackground(Polaris.BG_COLOR);
             description.setBackground(Polaris.BG_COLOR);
