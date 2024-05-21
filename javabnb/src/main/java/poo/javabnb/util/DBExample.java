@@ -26,7 +26,7 @@ public class DBExample {
                 Hashing.hashInfo("example"),
                 "666666666",
                 new Card("Example","0000000000000000", "12/99","000"),
-                false
+                true
         ));
         
         db.add(new Particular(

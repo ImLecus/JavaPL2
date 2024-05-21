@@ -129,6 +129,11 @@ public class BuildingPage extends JPanel implements DynamicPage {
             long totalPrice = diffDays * b.info.price;
             if(totalPrice < 0) throw new Exception();
             
+            if(((Particular)App.session.getUser()).isVIP()){
+                totalPrice*=0.9f;
+                precioTotalLabel.setText("Total: " + String.valueOf(totalPrice) + "€ (-10% para VIP)");
+                return;
+            }
             precioTotalLabel.setText("Total: " + String.valueOf(totalPrice) + "€");
         }
         catch(Exception E){
@@ -621,7 +626,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         saveChangesButton.setBorder(null);
         saveChangesButton.setBorderPainted(false);
         saveChangesButton.setContentAreaFilled(false);
-        saveChangesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveChangesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveChangesButton.setDefaultCapable(false);
         saveChangesButton.setFocusPainted(false);
         saveChangesButton.setFocusable(false);
@@ -640,7 +645,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
         editButton.setContentAreaFilled(false);
-        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editButton.setDefaultCapable(false);
         editButton.setFocusPainted(false);
         editButton.setFocusable(false);
@@ -659,7 +664,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         saveButton.setBorder(null);
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
-        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         saveButton.setDefaultCapable(false);
         saveButton.setFocusPainted(false);
         saveButton.setFocusable(false);
@@ -677,7 +682,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         reportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         reportButton.setBorder(null);
         reportButton.setContentAreaFilled(false);
-        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         reportButton.setOpaque(true);
         reportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

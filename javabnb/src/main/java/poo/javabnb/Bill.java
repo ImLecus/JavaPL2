@@ -32,6 +32,9 @@ public class Bill {
             writer.println("Fecha de entrada: " + dateEntrada);
             writer.println("Fecha de salida: " + dateSalida);
             writer.println("Precio por noche: " + b.info.price);
+            if(((Particular)c).isVIP()){
+                writer.println("Descuento del 10% (Cliente VIP)");
+            }
             writer.println("Precio total: " + precioTotal);
             writer.close();
         } catch (FileNotFoundException e) {
