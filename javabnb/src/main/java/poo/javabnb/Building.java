@@ -127,8 +127,9 @@ public class Building implements Comparable,Serializable{
         this.rooms = rooms;
         this.baths = baths;
         this.visitors = visitors;
+        this.description = description;
         Host currentHost = this.info.getHost();
-        this.info = new BuildingInfo(title, currentHost, price,0);
+        this.info = new BuildingInfo(title, currentHost, price,this.info.rating);
     }
 }
 

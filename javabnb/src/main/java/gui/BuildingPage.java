@@ -77,6 +77,10 @@ public class BuildingPage extends JPanel implements DynamicPage {
       vueltaLabel.setValue(null);
       errorLabel1.setVisible(false);
       saveChangesButton.setVisible(false);
+      editButton.setVisible(false);
+      if(App.session.getUser() instanceof Host && b.info.getHost().getDNI().equals(App.session.getUser().getDNI())){
+          editButton.setVisible(true);
+      }
     }
     @Override
     public void createDynamicContent(){
@@ -495,7 +499,6 @@ public class BuildingPage extends JPanel implements DynamicPage {
         description.setWrapStyleWord(true);
         description.setBorder(null);
         description.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        description.setFocusable(false);
         description.setVerifyInputWhenFocusTarget(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -622,7 +625,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         savedAndReport.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         saveChangesButton.setBackground(polaris.Polaris.BG_COLOR);
-        saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
         saveChangesButton.setBorder(null);
         saveChangesButton.setBorderPainted(false);
         saveChangesButton.setContentAreaFilled(false);
@@ -641,7 +644,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         savedAndReport.add(saveChangesButton);
 
         editButton.setBackground(polaris.Polaris.BG_COLOR);
-        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
         editButton.setBorder(null);
         editButton.setBorderPainted(false);
         editButton.setContentAreaFilled(false);
@@ -1090,7 +1093,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         float avg = 0;
         int sum = 0;
         for(Building bl: App.buildings.entries){
-            if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+            if(bl.info.getHost().getDNI().equals( b.info.getHost().getDNI())){
                 sum++;
                 avg += bl.info.rating;
             }
@@ -1103,7 +1106,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             newHost.superhost = true;
             App.db.update(entry, newHost);
             for(Building bl: App.buildings.entries){
-                if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+                if(bl.info.getHost().getDNI().equals(b.info.getHost().getDNI())){
                     bl.info.host = newHost;
                 }
             }
@@ -1114,7 +1117,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             newHost.superhost = false;
             App.db.update(entry, newHost);
             for(Building bl: App.buildings.entries){
-                if(bl.info.getHost().getDNI() == b.info.getHost().getDNI()){
+                if(bl.info.getHost().getDNI().equals(b.info.getHost().getDNI())){
                     bl.info.host = newHost;
                 }
             }
@@ -1208,6 +1211,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
         pricePerNight.setEditable(true);
         props.setEditable(true);
         description.setEditable(true);
+        
         name.setBackground(Polaris.INPUT_BG_COLOR);
         pricePerNight.setBackground(Polaris.INPUT_BG_COLOR);
         props.setBackground(Polaris.INPUT_BG_COLOR);

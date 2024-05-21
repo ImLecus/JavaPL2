@@ -26,6 +26,6 @@ public class BuildingInfo implements Serializable{
     public Host getHost() {
         return host;
     }
-    
+
 
 }
