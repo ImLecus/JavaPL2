@@ -85,27 +85,43 @@ public class Building implements Comparable,Serializable{
     @Override
     public int compareTo(Object t){
         Building b = (Building) t;
-        if(SearchEngine.sortBy == PRICE){
-            if(b.info.price > this.info.price){
+        if(null != SearchEngine.sortBy)switch (SearchEngine.sortBy) {
+            case PRICE:
+                if(b.info.price > this.info.price){
+                    return -1;
+                }
+                else if(b.info.price < this.info.price){
+                    return 1;
+                }
+                return 0;
+            case STARS:
+                if(b.info.rating > this.info.rating){
+                    return -1;
+                }
+                else if(b.info.rating < this.info.rating){
+                    return 1;
+                }
+                return 0;
+            case HOUSE:
+                if(b.type == PropertyType.HOUSE){
+                    if(this.type == PropertyType.HOUSE){
+                        return 0;
+                    }
+                    return 1;
+                }
                 return -1;
-            }
-            else if(b.info.price < this.info.price){
-                return 1;
-            }
-            return 0;
-        }
-        else if(SearchEngine.sortBy == STARS){
-            if(b.info.rating > this.info.rating){
+            case APARTMENT:
+                if(b.type == PropertyType.APARTMENT){
+                    if(this.type == PropertyType.APARTMENT){
+                        return 0;
+                    }
+                    return 1;
+                }
                 return -1;
-            }
-            else if(b.info.rating < this.info.rating){
-                return 1;
-            }
-            return 0;
+            default:
+                break;
         }
-        else{
-            return 0;
-        }
+        return 0;
     }
     
     public void addComment(Comment c){

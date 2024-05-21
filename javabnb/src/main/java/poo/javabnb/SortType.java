@@ -6,6 +6,7 @@ package poo.javabnb;
 public enum SortType {
     PRICE,
     STARS,
-    TYPE
+    HOUSE,
+    APARTMENT
 }
 
