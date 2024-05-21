@@ -76,7 +76,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
       idaLabel.setValue(null);
       vueltaLabel.setValue(null);
       errorLabel1.setVisible(false);
-      saveButton.setVisible(false);
+      saveChangesButton.setVisible(false);
     }
     @Override
     public void createDynamicContent(){
@@ -1165,34 +1165,33 @@ public class BuildingPage extends JPanel implements DynamicPage {
     }//GEN-LAST:event_vueltaLabelKeyPressed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-       editButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                saveChangesButton.setVisible(true);
+       
+        saveChangesButton.setVisible(true);
+
+        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+        pricePerNight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+        props.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
+        description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
                 
-                name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
-                pricePerNight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
-                props.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
-                description.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
-                
-                name.setEditable(true);
-                pricePerNight.setEditable(true);
-                props.setEditable(true);
-                description.setEditable(true);
-                name.setBackground(Polaris.INPUT_BG_COLOR);
-                pricePerNight.setBackground(Polaris.INPUT_BG_COLOR);
-                props.setBackground(Polaris.INPUT_BG_COLOR);
-                description.setBackground(Polaris.INPUT_BG_COLOR);
-                saveChangesButton.setVisible(true);
-            }
-        }); 
+        name.setEditable(true);
+        pricePerNight.setEditable(true);
+        props.setEditable(true);
+        description.setEditable(true);
+        name.setBackground(Polaris.INPUT_BG_COLOR);
+        pricePerNight.setBackground(Polaris.INPUT_BG_COLOR);
+        props.setBackground(Polaris.INPUT_BG_COLOR);
+        description.setBackground(Polaris.INPUT_BG_COLOR);
+        saveChangesButton.setVisible(true); 
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
         if(saveButton.isEnabled()){
             
             App.focusedBuilding.setInfo(props.getText(), name.getText(), description.getText(), Integer.valueOf(pricePerNight.getText()));
-            App.session.updateSession(); 
+            
+            App.buildings.saveData("./src/main/resources/data/b_data.dat");
+            App.BDreload();
+            
             pricePerNight.setEditable(false);
             name.setEditable(false);
             props.setEditable(false);
@@ -1201,7 +1200,7 @@ public class BuildingPage extends JPanel implements DynamicPage {
             name.setBackground(Polaris.BG_COLOR);
             props.setBackground(Polaris.BG_COLOR);
             description.setBackground(Polaris.BG_COLOR);
-            saveButton.setVisible(false);
+            saveChangesButton.setVisible(false);
             App.redirect("BUILDING");
         }
     }//GEN-LAST:event_saveChangesButtonActionPerformed
