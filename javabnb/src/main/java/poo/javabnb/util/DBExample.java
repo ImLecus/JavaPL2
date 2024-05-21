@@ -79,7 +79,7 @@ public class DBExample {
                 parse("23/04/2024"),
                 false
         ));
-        HOST = (Host) db.getClientData(3);
+        HOST = (Host) db.getClientData(5);
         
         db.add(new Host(
                 "82649376A",
@@ -90,7 +90,7 @@ public class DBExample {
                 parse("12/02/2024"),
                 true
         ));
-        DON_PABLO = (Host) db.getClientData(4);
+        DON_PABLO = (Host) db.getClientData(6);
         
         buildingDb.add(new Building(
             "Chalet en Madrid",
@@ -274,14 +274,14 @@ public class DBExample {
 
 
         Reservation reservation7 = new Reservation(
-                (Particular) db.getClientData(5),
+                (Particular) db.getClientData(0),
                 new Range<>(parse("01/11/2024"), parse("01/12/2024")),
                 parse("01/06/2023")
         );
 
 
         Reservation reservation8 = new Reservation(
-                (Particular) db.getClientData(6),
+                (Particular) db.getClientData(1),
                 new Range<>(parse("01/01/2025"), parse("01/02/2025")),
                 parse("01/07/2023")
         );
