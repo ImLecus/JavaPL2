@@ -154,7 +154,7 @@ public class DBExample {
             2, 1, PropertyType.APARTMENT,
             250,
             "Apartamento con vista a la Torre Eiffel, ideal para una escapada romántica.",
-            Images.getResource("/images/paris.jpg"), DON_PABLO,
+            Images.getResource("/images/casaparis.png"), DON_PABLO,
             2,
             new String[]{"wifi", "calefacción"}
         ));
@@ -168,7 +168,7 @@ public class DBExample {
             4, 3, PropertyType.HOUSE,
             300,
             "Lujosa villa en el corazón de Roma, a pasos de la Plaza de España.",
-            Images.getResource("/images/roma.jpg"), DON_PABLO,
+            Images.getResource("/images/villaroma.jpg"), DON_PABLO,
             4,
             new String[]{"piscina", "garaje"}
         ));
@@ -182,7 +182,7 @@ public class DBExample {
             3, 2, PropertyType.HOUSE,
             180,
             "Casa moderna en la famosa calle Lombard, con vistas panorámicas de la ciudad.",
-            Images.getResource("/images/sanfrancisco.jpg"), HOST,
+            Images.getResource("/images/casasf.jpg"), HOST,
             3,
             new String[]{"wifi", "garaje"}
         ));
@@ -196,7 +196,7 @@ public class DBExample {
             1, 1, PropertyType.APARTMENT,
             220,
             "Apartamento minimalista en el corazón de Shibuya, ideal para explorar Tokio.",
-            Images.getResource("/images/tokio.jpg"), DON_PABLO,
+            Images.getResource("/images/casatokio.png"), DON_PABLO,
             1,
             new String[]{"wifi", "aire acondicionado"}
         ));
@@ -210,7 +210,7 @@ public class DBExample {
             4, 3, PropertyType.HOUSE,
             275,
             "Casa espaciosa con acceso directo a la playa, ideal para vacaciones familiares.",
-            Images.getResource("/images/playa.jpg"), HOST,
+            Images.getResource("/images/casaplaya.jpg"), HOST,
             4,
             new String[]{"piscina", "wifi"}
         ));
@@ -224,7 +224,7 @@ public class DBExample {
             5, 4, PropertyType.HOUSE,
             320,
             "Encantadora casa rural en los Alpes, perfecta para unas vacaciones de invierno.",
-            Images.getResource("/images/nieve.jpg"), HOST,
+            Images.getResource("/images/casaalpes.png"), HOST,
             5,
             new String[]{"chimenea", "sauna"}
         ));
