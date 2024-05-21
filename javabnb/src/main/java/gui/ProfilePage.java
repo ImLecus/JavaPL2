@@ -90,7 +90,7 @@ public class ProfilePage extends JPanel implements DynamicPage {
         int rows = 0;
         
         while(i < max){
-            for(int x = 0; x < App.frame.getWidth() && i < max; x += 330){
+            for(int x = 0; x < App.frame.getWidth()-520-160 && i < max; x += 330){
                 BuildingWidget bw = new BuildingWidget();
                 widgets.add(bw);
                 content.add(bw, new AbsoluteConstraints(475 + x, 520 + 330*rows, -1, -1));

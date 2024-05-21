@@ -79,7 +79,7 @@ public class UserWidget extends javax.swing.JPanel {
         name.setForeground(polaris.Polaris.TEXT_COLOR);
         name.setText("Nombre");
 
-        vip.setBackground(Polaris.MAIN_COLOR);
+        vip.setBackground(Polaris.TRANSPARENT_COLOR);
         vip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
         vip.setBorder(null);
         vip.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -89,7 +89,7 @@ public class UserWidget extends javax.swing.JPanel {
             }
         });
 
-        ban.setBackground(Polaris.MAIN_COLOR);
+        ban.setBackground(Polaris.TRANSPARENT_COLOR);
         ban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/remove_pople.png"))); // NOI18N
         ban.setBorder(null);
         ban.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

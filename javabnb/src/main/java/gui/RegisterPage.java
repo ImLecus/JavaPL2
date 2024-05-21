@@ -492,6 +492,7 @@ public class RegisterPage extends javax.swing.JPanel {
         gridBagConstraints.gridy = 22;
         jPanel7.add(errorLabel6, gridBagConstraints);
 
+        cardpropsPanel.setBackground(Polaris.BG_COLOR);
         cardpropsPanel.setLayout(new java.awt.GridLayout(2, 2));
 
         cardnumberLabel1.setBackground(Polaris.BG_COLOR);
