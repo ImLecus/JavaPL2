@@ -3,17 +3,22 @@ package gui;
 import javax.swing.ImageIcon;
 import polaris.*;
 import poo.javabnb.Client;
+import poo.javabnb.Particular;
 import poo.javabnb.util.FontManager;
+import poo.javabnb.util.Images;
 
 
 public class UserWidget extends javax.swing.JPanel {
 
     int index;
+    Client client;
     public UserWidget() {
         initComponents();
+        
     }
     
     public void init(Client c, int index){
+        
         name.setText(c.getName());
         mail.setText(c.getMail());
         try{
@@ -23,6 +28,13 @@ public class UserWidget extends javax.swing.JPanel {
             pfp.setDisabledIcon(new ImageIcon(getClass().getResource("/images/profile_default.png")));
         }
         this.index = index;
+        this.client = c;
+        
+        vip.setVisible(false);
+        if(App.isAdmin && client instanceof Particular){
+            vip.setVisible(true);
+        }
+        
     }
 
     /**
@@ -38,6 +50,7 @@ public class UserWidget extends javax.swing.JPanel {
         pfp = new javax.swing.JButton();
         mail = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
+        vip = new javax.swing.JButton();
         ban = new javax.swing.JButton();
         jPanel2 = new RoundedPanel(20);
 
@@ -66,10 +79,20 @@ public class UserWidget extends javax.swing.JPanel {
         name.setForeground(polaris.Polaris.TEXT_COLOR);
         name.setText("Nombre");
 
+        vip.setBackground(Polaris.MAIN_COLOR);
+        vip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        vip.setBorder(null);
+        vip.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        vip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vipActionPerformed(evt);
+            }
+        });
+
         ban.setBackground(Polaris.MAIN_COLOR);
         ban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/remove_pople.png"))); // NOI18N
         ban.setBorder(null);
-        ban.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ban.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 banActionPerformed(evt);
@@ -83,10 +106,11 @@ public class UserWidget extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pfp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vip)
                     .addComponent(ban))
                 .addGap(168, 168, 168))
         );
@@ -94,15 +118,17 @@ public class UserWidget extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pfp)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ban)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ban)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(vip)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 370, 170));
@@ -123,6 +149,18 @@ public class UserWidget extends javax.swing.JPanel {
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 180));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void vipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vipActionPerformed
+        if ((client instanceof Particular && !((Particular)client).isVIP())){
+            vip.setIcon(Images.getIcon("/images/star_filled.png"));
+            ((Particular)client).setVIP(true);
+        }
+        else{
+             vip.setIcon(Images.getIcon("/images/star.png"));
+             ((Particular)client).setVIP(false);
+             }
+        
+    }//GEN-LAST:event_vipActionPerformed
+
     private void banActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banActionPerformed
         App.db.remove(index);
         App.db.saveData("./src/main/resources/data/data.dat");
@@ -137,5 +175,6 @@ public class UserWidget extends javax.swing.JPanel {
     private javax.swing.JLabel mail;
     private javax.swing.JLabel name;
     private javax.swing.JButton pfp;
+    private javax.swing.JButton vip;
     // End of variables declaration//GEN-END:variables
 }
