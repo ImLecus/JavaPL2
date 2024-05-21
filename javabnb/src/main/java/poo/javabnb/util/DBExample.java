@@ -215,7 +215,48 @@ public class DBExample {
             new String[]{"piscina", "wifi"}
         ));
         buildingDb.get(8).addComment(new Comment(
-            db.getClientData(6), 5, "La mejor experiencia de playa que he tenido. Muy recomendable."
+            db.getClientData(6), 5, "La mejor experiencia. Muy recomendable."
+        ));
+        
+        buildingDb.add(new Building(
+            "Cabaña en una isla en lago",
+            "Krakatoa street 1",
+            4, 3, PropertyType.HOUSE,
+            275,
+            "Cabaña acogedora con vistas increibles",
+            Images.getResource("/images/casaplaya.jpg"), DON_PABLO,
+            4,
+            new String[]{"soledad", "sin cobertura"}
+        ));
+        
+        buildingDb.add(new Building(
+            "Casa desierto Casa Blanca",
+            "el Malik",
+            4, 3, PropertyType.HOUSE,
+            275,
+            "Casa en las afueras de Casa Blanca",
+            Images.getResource("/images/casaplaya.jpg"), DON_PABLO,
+            4,
+            new String[]{"soledad", "vistas increibles"}
+        ));
+        
+        buildingDb.get(8).addComment(new Comment(
+            db.getClientData(6), 5, "Se disfruta de la belleza del desierto. Muy recomendable."
+        ));
+        
+        buildingDb.add(new Building(
+            "Apartamento en Quito",
+            "José Calama",
+            4, 3, PropertyType.APARTMENT,
+            275,
+            "Maravilloso apartamento en Quito",
+            Images.getResource("/images/casaplaya.jpg"), HOST,
+            4,
+            new String[]{"piscina", "wifi"}
+        ));
+        
+        buildingDb.get(8).addComment(new Comment(
+            db.getClientData(4), 5, "Volvería 100%. Muy recomendable."
         ));
         
         buildingDb.add(new Building(
